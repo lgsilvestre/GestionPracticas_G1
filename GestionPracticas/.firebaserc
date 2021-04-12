@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gestionpracticas-1a6cf": {
+      "hosting": {
+        "GestionPracticas": [
+          "gestionpracticas-1a6cf"
+        ]
+      }
+    }
+  }
+}
