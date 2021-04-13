@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare let alertify: any;
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   constructor(){}
+
+  success()
+  {
+    alertify.success("Todo bien, todo correcto");
+  }
 
 }
