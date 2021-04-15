@@ -22,11 +22,13 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
+import { MenuAdminGeneralComponent } from './menu-admin-general/menu-admin-general/menu-admin-general.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent
+    SidenavComponent,
+    MenuAdminGeneralComponent
   ],
   imports: [
     BrowserModule,
