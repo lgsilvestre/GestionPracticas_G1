@@ -1,0 +1,59 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="push" style="background-image: linear-gradient(180deg,rgba(255, 175, 83), white);">
+    
+    <mat-toolbar style="background-image: linear-gradient(90deg, #30a5ba, #3fa5b886);">
+      <span>Menú</span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <mat-card class="example-card" style="margin: 10px;">
+        <img mat-card-image src="../../../assets/logo_practica.png">
+      </mat-card>
+      
+      <mat-card class="example-card" style="margin: 10px;">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>¡Bienvenido!</mat-card-title>
+          <mat-card-subtitle>Juan Perico de los palotes</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      
+      <a routerLink="./plantilla" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>dvr</mat-icon>
+        <span>Plantilla</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a routerLink="./plantilla" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>sync</mat-icon>
+        <span>Proceso de práctica</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a routerLink="./plantilla" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>supervisor_account</mat-icon>
+        <span>Gestionar usuarios</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a routerLink="./plantilla" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>attachment</mat-icon>
+        <span>Cargar estudiantes</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a routerLink="./exit" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <span>Exit</span>
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+</mat-sidenav-container>
