@@ -13,16 +13,14 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireModule } from '@angular/fire'
 import { environment } from '../environments/environment';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { SidenavComponent } from './sidenav/sidenav/sidenav.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
+
+/**
+ * Fin importaciones firebase
+ */
+
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatDividerModule} from '@angular/material/divider';
-import { MenuAdminGeneralComponent } from './menu-admin-general/menu-admin-general/menu-admin-general.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-admin-general.component';
 
 @NgModule({
   declarations: [
@@ -38,14 +36,7 @@ import { MenuAdminGeneralComponent } from './menu-admin-general/menu-admin-gener
     AngularFireStorageModule,
     AppRoutingModule,
     MaterialModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
     FlexLayoutModule,
-    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
