@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 
 /**
  * Firebase
@@ -21,12 +21,17 @@ import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-admin-general.component';
+import { MenuEstudianteComponent } from './components/menu-estudiante/menu-estudiante.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InicioComponent } from './components/menu-estudiante/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    MenuAdminGeneralComponent
+    MenuAdminGeneralComponent,
+    MenuEstudianteComponent,
+    InicioComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,8 @@ import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,15 +5,23 @@ import { Component, OnInit} from '@angular/core';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit 
+export class SidenavComponent implements OnInit
 {
+  soyEstudiante:boolean = false;
+  soyAdminGeneral:boolean = false;
 
-  constructor() 
-  {
-    
+  constructor(){}
+
+  ngOnInit(): void {}
+
+  cambiarAdmin(){
+    this.soyAdminGeneral = true;
+    this.soyEstudiante = false;
   }
 
-  ngOnInit(): void {
+  cambiarEstudiante(){
+    this.soyEstudiante = true;
+    this.soyAdminGeneral = false;
   }
 
 }

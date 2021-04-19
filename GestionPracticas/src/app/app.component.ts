@@ -8,11 +8,8 @@ declare let alertify: any;
 })
 export class AppComponent {
 
-  constructor(){}
+  tipoUsuario:string = "estudiante";
 
-  success()
-  {
-    alertify.success("Todo bien, todo correcto");
-  }
+  constructor(){}
 
 }
