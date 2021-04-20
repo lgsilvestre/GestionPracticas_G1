@@ -24,6 +24,9 @@ import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-
 import { MenuEstudianteComponent } from './components/menu-estudiante/menu-estudiante.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './components/menu-estudiante/inicio/inicio.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { InicioComponent } from './components/menu-estudiante/inicio/inicio.comp
     MenuAdminGeneralComponent,
     MenuEstudianteComponent,
     InicioComponent,
+    BarChartComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ import { InicioComponent } from './components/menu-estudiante/inicio/inicio.comp
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
