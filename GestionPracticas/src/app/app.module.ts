@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 
 /**
  * Firebase
@@ -20,23 +19,20 @@ import { environment } from '../environments/environment';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-admin-general.component';
-import { MenuEstudianteComponent } from './components/menu-estudiante/menu-estudiante.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InicioComponent } from './components/menu-estudiante/inicio/inicio.component';
-import { BarChartComponent } from './components/bar-chart/bar-chart.component';
-import { ChartsModule } from 'ng2-charts';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+
+// imports de modulos creados para modularizar.
+
+import { EstudianteModule } from './components/Estudiante/estudiante.module';
+import { AdminGeneralModule } from './components/AdministradorGeneral/adminGeneral.module';
+import { EncargadoCarreraModule } from './components/EncargadoCarrera/encargadoCarrera.module';
+import { SuperAdminModule } from './components/SuperAdministrador/superAdmin.module';
+import { MaterialModule } from './material/material.module';
+import { GraficosModule } from './components/Graficos/graficos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    MenuAdminGeneralComponent,
-    MenuEstudianteComponent,
-    InicioComponent,
-    BarChartComponent,
-    PieChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,11 +41,18 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AppRoutingModule,
-    MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ChartsModule,
+    MaterialModule,
+
+    // Modulos de roles de universidad
+    EstudianteModule,
+    AdminGeneralModule,
+    EncargadoCarreraModule,
+    SuperAdminModule,
+
+    // modulo de graficos
+    GraficosModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
