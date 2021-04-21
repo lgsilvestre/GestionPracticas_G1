@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
 
 /**
  * Firebase
@@ -20,13 +19,20 @@ import { environment } from '../environments/environment';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-admin-general.component';
+
+// imports de modulos creados para modularizar.
+
+import { EstudianteModule } from './components/Estudiante/estudiante.module';
+import { AdminGeneralModule } from './components/AdministradorGeneral/adminGeneral.module';
+import { EncargadoCarreraModule } from './components/EncargadoCarrera/encargadoCarrera.module';
+import { SuperAdminModule } from './components/SuperAdministrador/superAdmin.module';
+import { MaterialModule } from './material/material.module';
+import { GraficosModule } from './components/Graficos/graficos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    MenuAdminGeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +41,18 @@ import { MenuAdminGeneralComponent } from './components/menu-admin-general/menu-
     AngularFirestoreModule,
     AngularFireStorageModule,
     AppRoutingModule,
-    MaterialModule,
     FlexLayoutModule,
+    MaterialModule,
+
+    // Modulos de roles de universidad
+    EstudianteModule,
+    AdminGeneralModule,
+    EncargadoCarreraModule,
+    SuperAdminModule,
+
+    // modulo de graficos
+    GraficosModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

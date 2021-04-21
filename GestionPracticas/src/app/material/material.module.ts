@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 /**
  * Se agregan los modules en imports y exports para poder usarlos en los otros componentes
@@ -31,6 +34,9 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports: [
     MatSliderModule,
@@ -42,6 +48,9 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
 })
 
