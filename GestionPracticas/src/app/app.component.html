@@ -1,1 +1,6 @@
-<app-sidenav></app-sidenav>
+
+<app-sidenav *ngIf="!mostrarLogin()"> </app-sidenav>
+
+<app-login *ngIf="mostrarLogin()"> <router-outlet> </router-outlet> </app-login>
+
+

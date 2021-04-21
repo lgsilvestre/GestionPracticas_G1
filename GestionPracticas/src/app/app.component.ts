@@ -6,10 +6,20 @@ declare let alertify: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent 
+{
+  tipoUsuario : string;
 
-  tipoUsuario:string = "estudiante";
+  constructor()
+  {
+    sessionStorage.setItem('mostrarLogin', 'true'); //por default lo primero que debo mostrar es el login (evitará problemas con el sideNav)
+    this.tipoUsuario  = "estudiante";
+  }
 
-  constructor(){}
+  mostrarLogin(): boolean
+  {
+    return sessionStorage.getItem('mostrarLogin') == 'true';
+  }
+
 
 }
