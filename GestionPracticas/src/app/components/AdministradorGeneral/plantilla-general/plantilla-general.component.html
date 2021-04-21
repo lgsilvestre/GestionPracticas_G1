@@ -1,0 +1,154 @@
+<mat-horizontal-stepper #stepper>
+  <mat-step [stepControl]="primeraEtapa" errorMessage="Name is required.">
+    <form [formGroup]="primeraEtapa">
+      <ng-template matStepLabel>Datos EStudiante</ng-template>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Nombres</mat-label>
+          <input matInput placeholder="Nombres" formControlName="primerCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Apellidos</mat-label>
+          <input matInput placeholder="Apellidos" formControlName="primerCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field >
+          <mat-label>Carrera</mat-label>
+          <input matInput placeholder="Ing. Civil" formControlName="primerCtrl" required>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>N° de Matricula</mat-label>
+          <input matInput placeholder="2020407001" formControlName="primerCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>RUN</mat-label>
+          <input matInput placeholder="RUN" formControlName="primerCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Numero de Contacto</mat-label>
+          <input matInput placeholder="+569xxxxxxxx" formControlName="primerCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Correo Electronico</mat-label>
+          <input matInput placeholder="xxxx@xxxxx.xxxx" formControlName="primerCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Contacto de emergencia </mat-label>
+          <input matInput placeholder="Contacto de emergencia " formControlName="primerCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Telefono de emergencia </mat-label>
+          <input matInput placeholder="+569xxxxxxxx" formControlName="primerCtrl" required>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <button mat-button matStepperNext>Siguente</button>
+      </div>
+    </form>
+  </mat-step>
+
+<!-- fin etapa uno --->
+
+  <mat-step [stepControl]="segundaEtapa" errorMessage="Address is required.">
+    <form [formGroup]="segundaEtapa">
+      <ng-template matStepLabel>Datos Empresa</ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="SQM " formControlName="segundoCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>RUT</mat-label>
+          <input matInput placeholder=" RUT " formControlName="segundoCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label> Telefono </mat-label>
+          <input matInput placeholder="numero de telefono" formControlName="segundoCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Correo Electronico</mat-label>
+          <input matInput placeholder="Correo" formControlName="segundoCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Direccion</mat-label>
+          <input matInput placeholder="calle 1, villa 5 de mayo, curico" formControlName="segundoCtrl" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperNext>Siguente</button>
+      </div>
+    </form>
+  </mat-step>
+
+<!-- fin etapa 2-->
+
+  <mat-step [stepControl]="terseraEtapa" errorMessage="Address is required.">
+    <form [formGroup]="terseraEtapa">
+      <ng-template matStepLabel>Datos Tutor</ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Nombres</mat-label>
+          <input matInput placeholder="Nombres" formControlName="terserCtrl" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperNext>Siguente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="cuartaEtapa" errorMessage="Address is required.">
+    <form [formGroup]="cuartaEtapa">
+      <ng-template matStepLabel>Datos Practica</ng-template>
+      <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="cuartoCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperNext>Siguente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Resumen</ng-template>
+    <p>Formulario terminado</p>
+    <div>
+      <button mat-button matStepperPrevious>Atras</button>
+      <button mat-button>Enviar</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
