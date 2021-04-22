@@ -21,6 +21,7 @@ import { PlantillaGeneralComponent } from './plantilla-general/plantilla-general
   ],
   exports: [
     // Aca van los modulos que se crean
+    PlantillaGeneralComponent,
   ]
 })
 export class AdminGeneralModule{}
