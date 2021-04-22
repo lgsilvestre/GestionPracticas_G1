@@ -1,5 +1,5 @@
 <mat-horizontal-stepper #stepper>
-  <mat-step [stepControl]="primeraEtapa" errorMessage="Name is required.">
+  <mat-step [stepControl]="primeraEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="primeraEtapa">
       <ng-template matStepLabel>Datos EStudiante</ng-template>
 
@@ -66,7 +66,7 @@
 
 <!-- fin etapa uno --->
 
-  <mat-step [stepControl]="segundaEtapa" errorMessage="Address is required.">
+  <mat-step [stepControl]="segundaEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="segundaEtapa">
       <ng-template matStepLabel>Datos Empresa</ng-template>
       <div>
@@ -113,7 +113,7 @@
 
 <!-- fin etapa 2-->
 
-  <mat-step [stepControl]="terseraEtapa" errorMessage="Address is required.">
+  <mat-step [stepControl]="terseraEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="terseraEtapa">
       <ng-template matStepLabel>Datos Tutor</ng-template>
 
@@ -160,7 +160,7 @@
       <div>
         <mat-form-field>
           <mat-label>Correo Electronico</mat-label>
-          <input matInput placeholder="calle 1, villa 5 de mayo, curico" formControlName="terserCtrl" required>
+          <input matInput placeholder="xxxx@xxxxx.xxxx" formControlName="terserCtrl" required>
         </mat-form-field>
       </div>
 
