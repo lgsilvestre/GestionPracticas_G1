@@ -28,11 +28,13 @@ import { EncargadoCarreraModule } from './components/EncargadoCarrera/encargadoC
 import { SuperAdminModule } from './components/SuperAdministrador/superAdmin.module';
 import { MaterialModule } from './material/material.module';
 import { GraficosModule } from './components/Graficos/graficos.module';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
