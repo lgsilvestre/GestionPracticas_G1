@@ -2,7 +2,37 @@
   margin: 10px;
 }
 
-.centrar {
-  height: 100px;
-  margin: 0 auto;
+.centrar
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.caja2
+{
+  justify-content: center;
+  align-items: center;
+}
+.contenedorInterno
+{
+  float: left;
+  margin-right: 10px;
+}
+
+.button-div
+{
+  text-align: center;
+}
+
+.textoEplicativo
+{
+  font-style: italic;
+}
+
+.negrita
+{
+  font-weight: bold;
+}
+
+
