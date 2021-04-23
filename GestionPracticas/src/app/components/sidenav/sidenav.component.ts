@@ -7,12 +7,24 @@ import { Component, OnInit} from '@angular/core';
 })
 export class SidenavComponent implements OnInit
 {
+  user:any = JSON.parse(localStorage.getItem('user') || '{}');
   soyEstudiante:boolean = false;
   soyAdminGeneral:boolean = false;
+  constructor(){
+  }
 
-  constructor(){}
+  ngOnInit(): void {
+    console.log("ngOnInit");
+    if(this.user.rol == "estudiante"){
+      this.soyEstudiante = true;
+      this.soyAdminGeneral = false;
+    }
+    if(this.user.rol == "administradorGeneral"){
+      this.soyAdminGeneral = true;
+      this.soyEstudiante = false;
+    }
 
-  ngOnInit(): void {}
+  }
 
   cambiarAdmin(){
     this.soyAdminGeneral = true;
@@ -22,6 +34,11 @@ export class SidenavComponent implements OnInit
   cambiarEstudiante(){
     this.soyEstudiante = true;
     this.soyAdminGeneral = false;
+  }
+
+  deslogear(){
+    this.user = '';
+    localStorage.setItem('user',JSON.stringify(this.user));
   }
 
 }

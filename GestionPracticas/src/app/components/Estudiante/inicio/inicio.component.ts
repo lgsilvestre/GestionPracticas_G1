@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class InicioComponent implements OnInit {
 
+
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 

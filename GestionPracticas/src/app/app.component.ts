@@ -8,8 +8,7 @@ declare let alertify: any;
 })
 export class AppComponent {
 
-  tipoUsuario:string = "estudiante";
-
-  constructor(){}
+  constructor(){
+  }
 
 }

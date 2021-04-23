@@ -1,32 +1,66 @@
 <div class="main-div">
-  <mat-card>
-    <mat-card-content>
-      <div id="image">
-        <img src="../../../assets/logo_practica.png">
-      </div>
-      <mat-list>
-        <mat-list-item id="item">
-          <mat-form-field>
-            <mat-label>Correo electrónico</mat-label>
-            <input matInput>
-          </mat-form-field>
-        </mat-list-item>
-        <mat-list-item id="item">
-          <mat-form-field>
-            <mat-label>Contraseña</mat-label>
-            <input matInput>
-          </mat-form-field>
-        </mat-list-item>
-        <mat-list-item id="item">
-          <button mat-raised-button color="primary">Entrar</button>
-        </mat-list-item>
-        <mat-list-item id="item">
-          <a href="#">¿Olvidaste tu contraseña?</a>
-        </mat-list-item>
-        <mat-list-item id="item">
-          <button mat-stroked-button>Ingreso tutor/supervisor</button>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <div id="image">
+                <img src="../../../assets/logo_practica.png">
+            </div>
+            <!-- <mat-list>
+                <form [formGroup]="loginForm">
+                    <mat-list-item id="item">
+                        <mat-form-field>
+                            <mat-label class="form-control" formControlName="correo" required></mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item id="item">
+                        <mat-form-field appearance="fill">
+                            <mat-label class="form-control" formControlName="password" required></mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item id="item">
+                        <button mat-raised-button color="primary">Entrar</button>
+                    </mat-list-item>
+                    <mat-list-item id="item">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </mat-list-item>
+                    <mat-list-item id="item">
+                        <button mat-stroked-button>Ingreso tutor/supervisor</button>
+                    </mat-list-item>
+                </form>
+            </mat-list> -->
+
+            <form [formGroup]="loginForm">
+
+                <div class="form-group item mt-2">
+                    <input name="email" id="email" type="email" class="form-control" placeholder="Correo" formControlName="correo">
+                </div>
+
+                <div class="form-group item mt-2">
+                    <input name="password" id="password" type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                </div>
+
+                <div class="form-group mt-3 item">
+                    <button class="btn btn-block" type="submit" style="background-color: #e56121;" (click)="login()" [disabled]="loginForm.invalid">
+                        Ingresar
+                      </button>
+                </div>
+
+                <div class="form-group mt-2 item">
+                    <button class="btn btn-block" type="button" style="background-color: #a5eea0">
+                    Ingreso tutor/supervisor
+                  </button>
+                </div>
+
+                <div class="form-group mt-4 item">
+                    <button class="btn btn-block" type="button" style="background-color: #a1c9f1;">
+                      Recuperar contraseña
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
 </div>
