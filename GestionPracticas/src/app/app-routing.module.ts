@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'menu-admin-general', component: MenuAdminGeneralComponent},
   {path: 'menu-estudiante', component: MenuEstudianteComponent},
   {path: 'plantilla-general',component: PlantillaGeneralComponent},
-  {path: '', redirectTo: 'menu-admin-general',pathMatch:'full'}
+  {path: '', redirectTo: 'login',pathMatch:'full'}
 ];
 
 @NgModule({

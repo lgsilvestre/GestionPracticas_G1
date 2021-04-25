@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
+
   datosUsuario: any;
   constructor(
     private afStore: AngularFirestore,
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
 
             localStorage.setItem('user', JSON.stringify(usuario));
 
-            if (usuario.rol === "administradorGeneral") {
+            if (usuario.rol == "administradorGeneral") {
               this.router.navigate(['./menu-admin-general']);
             }
             if (usuario.rol == "estudiante") {

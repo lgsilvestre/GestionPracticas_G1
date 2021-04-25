@@ -3,4 +3,6 @@ export interface Usuario{
   nombre:string;
   apellido:string;
   rol:string;
+  carrera?:string; // preguntar.
+  habilitado:boolean;
 }

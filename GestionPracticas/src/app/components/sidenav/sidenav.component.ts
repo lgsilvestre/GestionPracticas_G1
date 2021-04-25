@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,7 +11,7 @@ export class SidenavComponent implements OnInit
   user:any = JSON.parse(localStorage.getItem('user') || '{}');
   soyEstudiante:boolean = false;
   soyAdminGeneral:boolean = false;
-  constructor(){
+  constructor(public auth: AngularFireAuth){
   }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class SidenavComponent implements OnInit
       this.soyAdminGeneral = true;
       this.soyEstudiante = false;
     }
-
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   cambiarAdmin(){
@@ -39,6 +40,7 @@ export class SidenavComponent implements OnInit
   deslogear(){
     this.user = '';
     localStorage.setItem('user',JSON.stringify(this.user));
+    this.auth.signOut();
   }
 
 }
