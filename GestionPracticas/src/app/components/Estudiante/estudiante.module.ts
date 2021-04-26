@@ -4,6 +4,7 @@ import { MenuEstudianteComponent } from "./menu-estudiante/menu-estudiante.compo
 import { MaterialModule } from '../../material/material.module';
 import { InicioComponent } from "./inicio/inicio.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AdminGeneralModule } from '../AdministradorGeneral/adminGeneral.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    AdminGeneralModule,
   ],
   exports: [
     // Aca van los modulos que se crea.

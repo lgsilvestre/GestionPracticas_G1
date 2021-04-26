@@ -12,7 +12,7 @@
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>¡Bienvenido!</mat-card-title>
-                    <mat-card-subtitle>Juan Perico de los palotes</mat-card-subtitle>
+                    <mat-card-subtitle>{{user.nombre}} {{user.apellido}}</mat-card-subtitle>
                 </mat-card-header>
             </mat-card>
             <!-- links de administrador general -->
@@ -22,7 +22,7 @@
                     <span>Inicio</span>
                 </a>
                 <mat-divider></mat-divider>
-                <a routerLink="./plantilla-admin-general" mat-list-item (click)="sidenav.toggle()">
+                <a routerLink="./plantilla-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>dvr</mat-icon>
                     <span>Plantilla</span>
                 </a>
@@ -79,18 +79,18 @@
             </div>
             <!-- fin links del estudiante -->
             <mat-divider></mat-divider>
-            <a routerLink="./login" mat-list-item (click)="sidenav.toggle()">
+            <a routerLink="./login" mat-list-item (click)="deslogear()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Salir</span>
             </a>
             <!-- cambio de sidenav -->
             <mat-divider></mat-divider>
-            <a routerLink="./menu-admin-general" mat-list-item (click)="cambiarAdmin()">
+            <a mat-list-item (click)="cambiarAdmin()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Administrador General</span>
             </a>
             <mat-divider></mat-divider>
-            <a routerLink="./menu-estudiante" mat-list-item (click)="cambiarEstudiante()">
+            <a mat-list-item (click)="cambiarEstudiante()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Estudiante</span>
             </a>
