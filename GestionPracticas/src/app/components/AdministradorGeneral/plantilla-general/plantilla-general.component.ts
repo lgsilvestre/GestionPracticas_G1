@@ -34,14 +34,27 @@ export class PlantillaGeneralComponent implements OnInit {
       Direccion : ['', Validators.required],
     });
     this.terseraEtapa = this._formBuilder.group({
-      terserCtrl: ['', Validators.required]
+      Nombres: ['', Validators.required],
+      Apellidos : [ '', Validators.required],
+      Run : [ '', Validators.required],
+      AreaDepto : [ '', Validators.required],
+      Puesto : [ '', Validators.required],
+      NumeroContacto : [ '', Validators.required],
+      CorreoElectronico : [ '', Validators.required],
     });
     this.cuartaEtapa = this._formBuilder.group({
-      cuartoCtrl: ['', Validators.required]
+      FechaInicio : ['', Validators.required],
+      FechaFin : ['', Validators.required],
+      HoraInicio : ['', Validators.required],
+      HoraFin : ['', Validators.required],
+      Jornada : ['', Validators.required],
+      cuartoCtrl : ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+    /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
    public getAlumno(): void
    {
