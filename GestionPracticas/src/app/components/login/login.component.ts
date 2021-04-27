@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
   loginForm = this.formBuilder.group({
     correo: ['', Validators.required],
     password: ['', Validators.required]
-  })
+  });
 
   ngOnInit(): void {
     this.afAuth.user.subscribe(user => {
       if (user) {
         this.ngZone.run(() => {
           this.router.navigate(['./login']);
-        })
+        });
       }
-    })
+    });
   }
 
   login() {
@@ -42,24 +42,24 @@ export class LoginComponent implements OnInit {
       this.afStore.collection('Usuarios').get().forEach(res => {
         res.forEach(res => {
           console.log(this.loginForm.value.correo);
-          let usuario: any = res.data();
+          const usuario: any = res.data();
           console.log(usuario.correo);
           if (usuario.correo == this.loginForm.value.correo) {
 
             localStorage.setItem('user', JSON.stringify(usuario));
 
-            if (usuario.rol == "administradorGeneral") {
+            if (usuario.rol == 'administradorGeneral') {
               this.router.navigate(['./menu-admin-general']);
             }
-            if (usuario.rol == "estudiante") {
+            if (usuario.rol == 'estudiante') {
               this.router.navigate(['./menu-estudiante']);
             }
           }else{
-            console.log("no existe!");
+            console.log('no existe!');
           }
         });
-      })
-    })
+      });
+    });
   }
 
 }

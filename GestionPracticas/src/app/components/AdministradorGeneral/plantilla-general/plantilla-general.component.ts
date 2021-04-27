@@ -16,10 +16,22 @@ export class PlantillaGeneralComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _formBuilder: FormBuilder) {
     this.primeraEtapa = this._formBuilder.group({
-      primerCtrl: ['', Validators.required]
+      Nombres: ['', Validators.required],
+      Apellidos : [ '', Validators.required],
+      Carrera : [ '', Validators.required],
+      NumeroMatricula : [ '', Validators.required],
+      Run : [ '', Validators.required],
+      NumeroContacto : [ '', Validators.required],
+      CorreoElectronico : [ '', Validators.required],
+      ContactoEmergencia : [ '', Validators.required],
+      TelefonoEmergencia : [ '', Validators.required],
     });
     this.segundaEtapa = this._formBuilder.group({
-      segundoCtrl: ['', Validators.required]
+      Nombre : ['', Validators.required],
+      Rut : ['', Validators.required],
+      NumeroTelefono : ['', Validators.required],
+      CorreoElectronico : ['', Validators.required],
+      Direccion : ['', Validators.required],
     });
     this.terseraEtapa = this._formBuilder.group({
       terserCtrl: ['', Validators.required]
@@ -31,5 +43,9 @@ export class PlantillaGeneralComponent implements OnInit {
 
   ngOnInit(): void {
   }
+   public getAlumno(): void
+   {
+     console.log(this.primeraEtapa.get('Apellidos')?.value);
+   }
 
 }
