@@ -44,21 +44,22 @@
                 </div>
 
                 <div class="form-group mt-3 item">
-                    <button id="enter" class="btn btn-block" type="submit" (click)="login()" [disabled]="loginForm.invalid">
+                    <button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="loginForm.invalid">
                         Ingresar
                       </button>
                 </div>
 
                 <div class="form-group mt-2 item">
-                    <button id="alt-enter" class="btn btn-block" type="button">
+                    <button mat-stroked-button color="primary" type="button">
                     Ingreso tutor/supervisor
                   </button>
                 </div>
                 <hr>
                 <div class="form-group mt-2 item">
-                    <button id="recover-password" class="btn btn-block" type="button">
+                    <!--<button id="recover-password" class="btn btn-block" type="button">
                       Recuperar contraseña
-                    </button>
+                    </button>-->
+                    <a href=#>Recuperar contraseña</a>
                 </div>
             </form>
         </mat-card-content>
