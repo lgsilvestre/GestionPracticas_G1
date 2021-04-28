@@ -78,6 +78,25 @@
                 </a>
             </div>
             <!-- fin links del estudiante -->
+            <!-- inicio links del encargado de carrera -->
+            <div *ngIf="soyEncargadoDeCarrera">
+                <mat-divider></mat-divider>
+                <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon mat-list-icon>visibility</mat-icon>
+                    <span>Visualizar Prácticas</span>
+                </a>
+                <mat-divider></mat-divider>
+                <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon mat-list-icon>edit</mat-icon>
+                    <span>Editar solicitud de práctica</span>
+                </a>
+                <mat-divider></mat-divider>
+                <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
+                  <mat-icon mat-list-icon>edit</mat-icon>
+                  <span>Editar proceso de práctica</span>
+                </a>
+          </div>
+            <!-- fin links del encargado de carrera -->
             <mat-divider></mat-divider>
             <a routerLink="./login" mat-list-item (click)="deslogear()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
@@ -93,6 +112,11 @@
             <a mat-list-item (click)="cambiarEstudiante()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Estudiante</span>
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="cambiarEncargadoCarrera()">
+                <mat-icon mat-list-icon>exit_to_app</mat-icon>
+                <span>Encargado de Carrera</span>
             </a>
         </mat-nav-list>
     </mat-sidenav>
