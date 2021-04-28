@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.image {
+#image {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 350px;
 }
 
-.mat-card-content .mat-list-item .mat-form-field {
-    width: 350px;
+#recover-password {
+  background-color: #a1c9f1;
+}
+
+#alt-enter {
+  background-color: #a5eea0;
+}
+
+#enter {
+  background-color: #e56121;
+}
+
+button {
+  min-width: 200px;
 }

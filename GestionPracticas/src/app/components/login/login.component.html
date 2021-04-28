@@ -35,7 +35,7 @@
 
             <form [formGroup]="loginForm">
 
-                <div class="form-group item mt-2">
+                <div class="form-group item mt-3">
                     <input name="email" id="email" type="email" class="form-control" placeholder="Correo" formControlName="correo">
                 </div>
 
@@ -44,19 +44,19 @@
                 </div>
 
                 <div class="form-group mt-3 item">
-                    <button class="btn btn-block" type="submit" style="background-color: #e56121;" (click)="login()" [disabled]="loginForm.invalid">
+                    <button id="enter" class="btn btn-block" type="submit" (click)="login()" [disabled]="loginForm.invalid">
                         Ingresar
                       </button>
                 </div>
 
                 <div class="form-group mt-2 item">
-                    <button class="btn btn-block" type="button" style="background-color: #a5eea0">
+                    <button id="alt-enter" class="btn btn-block" type="button">
                     Ingreso tutor/supervisor
                   </button>
                 </div>
-
-                <div class="form-group mt-4 item">
-                    <button class="btn btn-block" type="button" style="background-color: #a1c9f1;">
+                <hr>
+                <div class="form-group mt-2 item">
+                    <button id="recover-password" class="btn btn-block" type="button">
                       Recuperar contraseña
                     </button>
                 </div>
