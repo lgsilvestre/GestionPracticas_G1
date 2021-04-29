@@ -1,25 +1,37 @@
-.example-card {
-    max-width: 200px;
- }
-  
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+#logo {
+  background-color: aliceblue;
+  background-image: url(../../../assets/logo_practica.png);
+  background-repeat: no-repeat;
+  background-position: center !important;
+  width: 300px;
+  height: 120px;
 }
 
-.cambiar_datos
-{
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 1vh;
-    padding-right: 1vh;
-    
-    /* padding: 3vh; */
-    text-align: center;
-    /* size: 1vh; */
+#avatar-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
 
-.texto-cambiar-cuenta
-{
-    text-align: center;
+.mat-list-base {
+  padding: 0px !important;
+}
+
+mat-sidenav {
+  border: 2px #D79B00;
+  border-radius: 4px;
+  border-style: solid;
+  background-color: #FFE6CC;
+}
+
+mat-divider {
+  border: 1px #D79B00 !important;
+  border-style: solid !important;
+}
+
+mat-card {
+  max-width: 200px;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-style: none !important;
+  padding: 0 !important;
 }

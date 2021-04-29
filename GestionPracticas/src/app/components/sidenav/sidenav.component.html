@@ -1,27 +1,23 @@
 <mat-sidenav-container fullscreen>
 
-    <mat-sidenav #sidenav style="background-image: linear-gradient(180deg,rgba(255, 175, 83), white);">
+    <mat-sidenav #sidenav>
         <!-- #30a5ba borrenme -->
 
         <mat-nav-list>
-            <mat-card class="example-card" style="margin: 10px;">
-                <img mat-card-image src="../../../assets/logo_practica.png">
-            </mat-card>
-
-            <mat-card class="example-card" style="margin: 10px;">
+            <div id="logo">
+            </div>
+            <mat-divider></mat-divider>
+            <mat-card id="avatar-card">
                 <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
+                    <div mat-card-avatar id="avatar-image"></div>
                     <mat-card-title>¡Bienvenido!</mat-card-title>
                     <mat-card-subtitle>{{user.nombre}} {{user.apellido}}</mat-card-subtitle>
-                    
                 </mat-card-header>
-
                 <mat-card-actions class="cambiar_datos">
-                    <a routerLink="./editar-cuenta" mat-list-item (click)="sidenav.toggle()" class= "texto-cambiar-cuenta">
-                        Cambiar datos
-                    </a>    
+                    <a routerLink="./editar-cuenta" mat-list-item (click)="sidenav.toggle()" class="texto-cambiar-cuenta">Cambiar datos</a>
                 </mat-card-actions>
             </mat-card>
+            <mat-divider></mat-divider>
             <!-- links de administrador general -->
             <div *ngIf="soyAdminGeneral">
                 <a routerLink="./menu-admin-general" mat-list-item (click)="sidenav.toggle()">
@@ -48,12 +44,12 @@
                     <mat-icon mat-list-icon>attachment</mat-icon>
                     <span>Cargar estudiantes</span>
                 </a>
+                <mat-divider></mat-divider>
             </div>
             <!-- fin links del administrador general -->
 
             <!-- inicio links del estudiante -->
             <div *ngIf="soyEstudiante">
-                <mat-divider></mat-divider>
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <span>Inicio</span>
@@ -83,6 +79,7 @@
                     <mat-icon mat-list-icon>edit</mat-icon>
                     <span>Editar información</span>
                 </a>
+                <mat-divider></mat-divider>
             </div>
             <!-- fin links del estudiante -->
             <!-- inicio links del encargado de carrera -->
@@ -106,15 +103,15 @@
                   <mat-icon mat-list-icon>edit</mat-icon>
                   <span>Editar proceso de práctica</span>
                 </a>
+                <mat-divider></mat-divider>
           </div>
             <!-- fin links del encargado de carrera -->
-            <mat-divider></mat-divider>
             <a routerLink="./login" mat-list-item (click)="deslogear()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Salir</span>
             </a>
-            <!-- cambio de sidenav -->
             <mat-divider></mat-divider>
+            <!-- cambio de sidenav -->
             <a mat-list-item (click)="cambiarAdmin()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Administrador General</span>
@@ -129,6 +126,7 @@
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Encargado de Carrera</span>
             </a>
+            <mat-divider></mat-divider>
         </mat-nav-list>
     </mat-sidenav>
 
