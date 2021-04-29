@@ -13,7 +13,14 @@
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>¡Bienvenido!</mat-card-title>
                     <mat-card-subtitle>{{user.nombre}} {{user.apellido}}</mat-card-subtitle>
+                    
                 </mat-card-header>
+
+                <mat-card-actions class="cambiar_datos">
+                    <a routerLink="./editar-cuenta" mat-list-item (click)="sidenav.toggle()" class= "texto-cambiar-cuenta">
+                        Cambiar datos
+                    </a>    
+                </mat-card-actions>
             </mat-card>
             <!-- links de administrador general -->
             <div *ngIf="soyAdminGeneral">

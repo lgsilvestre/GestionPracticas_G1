@@ -30,6 +30,7 @@ import { SuperAdminModule } from './components/SuperAdministrador/superAdmin.mod
 import { MaterialModule } from './material/material.module';
 import { GraficosModule } from './components/Graficos/graficos.module';
 import { LoginComponent } from './components/login/login.component';
+import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { LoginComponent } from './components/login/login.component';
     AppComponent,
     SidenavComponent,
     LoginComponent,
+    EditarCuentaComponent
   ],
   imports: [
     BrowserModule,
