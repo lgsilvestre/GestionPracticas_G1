@@ -6,6 +6,7 @@ import { MenuEstudianteComponent } from './components/Estudiante/menu-estudiante
 import { PlantillaGeneralComponent } from './components/AdministradorGeneral/plantilla-general/plantilla-general.component';
 import { EditarSolicitudProcesoPracticaComponent } from './components/EncargadoCarrera/editar-solicitud-proceso-practica/editar-solicitud-proceso-practica.component';
 import { MenuEncargadoCarreraComponent } from './components/EncargadoCarrera/menu-encargado-carrera/menu-encargado-carrera.component';
+import { VisualizarComponent } from './components/EncargadoCarrera/visualizar-practica/visualizar-practica.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'plantilla-general',component: PlantillaGeneralComponent},
   {path: 'editar-solicitud-practica', component:EditarSolicitudProcesoPracticaComponent},
   {path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent},
+  {path: 'visualizar-practica', component: VisualizarComponent},
   {path: '', redirectTo: 'login',pathMatch:'full'}
 ];
 
