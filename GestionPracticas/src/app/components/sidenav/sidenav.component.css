@@ -6,3 +6,20 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
 }
+
+.cambiar_datos
+{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    
+    /* padding: 3vh; */
+    text-align: center;
+    /* size: 1vh; */
+}
+
+.texto-cambiar-cuenta
+{
+    text-align: center;
+}
