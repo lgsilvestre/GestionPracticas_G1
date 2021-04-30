@@ -7,9 +7,21 @@
   height: 120px;
 }
 
+#outer-account {
+  display: block;
+  justify-content: center;
+  text-align: center;
+}
+
 #avatar-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
+  height: 64px;
+  width: 64px;
+  border: 2px #d1b879 !important;
+  border-style: solid !important;
+  border-radius: 50px;
+  margin: 0 auto;
 }
 
 .mat-list-base {
@@ -34,4 +46,8 @@ mat-card {
   box-shadow: none !important;
   border-style: none !important;
   padding: 0 !important;
+}
+
+mat-icon {
+  margin-right: 16px !important;
 }
