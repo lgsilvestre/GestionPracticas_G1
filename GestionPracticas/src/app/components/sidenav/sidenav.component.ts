@@ -11,6 +11,7 @@ export class SidenavComponent implements OnInit
   user:any = JSON.parse(localStorage.getItem('user') || '{}');
   soyEstudiante:boolean = false;
   soyAdminGeneral:boolean = false;
+  soyEncargadoDeCarrera : boolean = false;
   constructor(public auth: AngularFireAuth){
   }
 
@@ -18,11 +19,15 @@ export class SidenavComponent implements OnInit
     console.log("ngOnInit");
     if(this.user.rol == "estudiante"){
       this.soyEstudiante = true;
-      this.soyAdminGeneral = false;
+      this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
     }
     if(this.user.rol == "administradorGeneral"){
       this.soyAdminGeneral = true;
-      this.soyEstudiante = false;
+      this.soyEstudiante = this.soyEncargadoDeCarrera = false;
+    }
+    if (this.user.rol == "encargadoCarrera") {
+      this.soyEncargadoDeCarrera = true;
+      this.soyEstudiante = this.soyAdminGeneral = false;
     }
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
@@ -30,11 +35,19 @@ export class SidenavComponent implements OnInit
   cambiarAdmin(){
     this.soyAdminGeneral = true;
     this.soyEstudiante = false;
+    this.soyEncargadoDeCarrera = false;
   }
 
   cambiarEstudiante(){
     this.soyEstudiante = true;
     this.soyAdminGeneral = false;
+    this.soyEncargadoDeCarrera = false;
+  }
+
+  cambiarEncargadoCarrera(){
+    this.soyEncargadoDeCarrera = true;
+    this.soyAdminGeneral = false;
+    this.soyEstudiante = false;
   }
 
   deslogear(){
