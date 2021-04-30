@@ -8,6 +8,15 @@
   display: block;
   justify-content: center;
 }
+
 h1, mat-card {
   text-align: center;
+}
+
+#inner > mat-card,  #inner div {
+  box-shadow: none !important;
+  border: 2px grey;
+  border-style: solid;
+  background-color: #EEEEEE;
+  border-radius: 4px;
 }
