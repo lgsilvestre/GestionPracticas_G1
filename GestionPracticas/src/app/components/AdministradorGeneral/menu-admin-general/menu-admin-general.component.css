@@ -1,3 +1,22 @@
-.graficos {
-    float: left
+#inner {
+  padding: 10vh;
+  min-width: 300px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+#outer {
+  display: block;
+  justify-content: center;
+}
+
+h1, mat-card {
+  text-align: center;
+}
+
+#inner > mat-card,  #inner div {
+  box-shadow: none !important;
+  border: 2px #B2B2B2B2;
+  border-style: solid;
+  background-color: #F5F5F5;
+  border-radius: 4px;
 }
