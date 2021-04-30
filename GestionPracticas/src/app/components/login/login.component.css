@@ -20,4 +20,18 @@
 
 button {
   min-width: 200px;
+  box-shadow: none !important;
+}
+
+mat-card {
+  box-shadow: none !important;
+  border: 2px #B2B2B2B2;
+  border-style: solid;
+  background-color: #F5F5F5;
+  border-radius: 4px;
+}
+
+
+a {
+  font-size: smaller !important;
 }
