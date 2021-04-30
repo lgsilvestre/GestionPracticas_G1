@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './editar-solicitud-proceso-practica.component.html',
   styleUrls: ['./editar-solicitud-proceso-practica.component.css']
 })
-export class EditarSolicitudProcesoPracticaComponent implements OnInit {
+export class EditarSolicitudProcesoPracticaComponent implements OnInit 
+{
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+
   }
 
 }

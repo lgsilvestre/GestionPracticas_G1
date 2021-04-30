@@ -11,7 +11,8 @@ import { VisualizarComponent } from './visualizar-practica/visualizar-practica.c
     // Aca van los modulos que se crean
     EditarSolicitudProcesoPracticaComponent,
     MenuEncargadoCarreraComponent,
-    VisualizarComponent],
+    VisualizarComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

@@ -15,6 +15,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+
 
 /**
  * Se agregan los modules en imports y exports para poder usarlos en los otros componentes
@@ -39,6 +42,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    MatSelectModule,
+    MatTableModule,
   ],
   exports: [
     MatSliderModule,
@@ -54,6 +59,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    MatSelectModule,
+    MatTableModule,
   ],
 })
 
