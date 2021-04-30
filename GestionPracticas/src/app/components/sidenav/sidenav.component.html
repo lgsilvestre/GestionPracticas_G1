@@ -9,8 +9,10 @@
 			<mat-divider></mat-divider>
 			<div id="outer-account">
 			  <div mat-card-avatar id="avatar-image" class="mt-4"></div>
-				<h3 mat-h3 class="mt-2"><b>[Nombre] [Apellido]</b></h3>
-        <a routerLink="./editar-cuenta" (click)="sidenav.toggle()"><h4>Cambiar datos</h4></a>
+        <div id="name-edit">
+          <h3 mat-h3 class="mt-2"><b>[Nombre] [Apellido]</b></h3>
+          <a routerLink="./editar-cuenta" (click)="sidenav.toggle()"><mat-icon mat-list-icon>edit</mat-icon></a>
+        </div>
 		   </div>
 			<mat-divider></mat-divider>
 			<!-- links de administrador general -->

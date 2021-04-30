@@ -9,6 +9,13 @@
 
 #outer-account {
   display: block;
+}
+
+#name-edit {
+  display: flex;
+}
+
+#outer-account, #name-edit {
   justify-content: center;
   text-align: center;
 }
@@ -46,6 +53,12 @@ mat-card {
   box-shadow: none !important;
   border-style: none !important;
   padding: 0 !important;
+}
+
+#outer-account mat-icon {
+  margin-top: 8px !important;
+  margin-left: 5px !important;
+  margin-right: 0px !important;
 }
 
 mat-icon {
