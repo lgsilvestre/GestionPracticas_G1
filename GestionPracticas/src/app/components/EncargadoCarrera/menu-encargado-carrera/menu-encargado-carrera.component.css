@@ -15,8 +15,8 @@ h1, mat-card {
 
 #inner > mat-card,  #inner div {
   box-shadow: none !important;
-  border: 2px grey;
+  border: 2px #666666;
   border-style: solid;
-  background-color: #EEEEEE;
+  background-color: #F5F5F5;
   border-radius: 4px;
 }
