@@ -25,8 +25,13 @@ button {
 
 mat-card {
   box-shadow: none !important;
-  border: 2px #C4C4C4C4;
+  border: 2px #B2B2B2B2;
   border-style: solid;
   background-color: #F5F5F5;
   border-radius: 4px;
+}
+
+
+a {
+  font-size: smaller !important;
 }
