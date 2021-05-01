@@ -257,7 +257,7 @@
       <div class="button-div">
         <label class="negrita">Concentimiento informado para el estudiante en practica.</label>
         <p class="textoEplicativo">Por subir el concentimiento lleno y firmado.</p>
-        <input type="file" placeholder="Archivo1.pdf" formControlName="cuartoCtrl" required="">
+        <input type="file" placeholder="Archivo1.pdf" formControlName="archivo" required="">
       </div>
       <div class="button-div">
         <button mat-button matStepperPrevious>Atras</button>
@@ -273,7 +273,7 @@
         <p>Formulario terminado</p>
         <div class="button-div">
           <button mat-button matStepperPrevious>Atras</button>
-          <button mat-button>Enviar</button>
+          <button mat-button (click)="enviar()">Enviar</button>
         </div>
       </div>
     </div>

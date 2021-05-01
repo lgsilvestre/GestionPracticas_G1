@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
+  login(): void {
     this.afAuth.signInWithEmailAndPassword(this.loginForm.value.correo, this.loginForm.value.password).then(() => {
       this.afStore.collection('Usuarios').get().forEach(res => {
         res.forEach(res => {
