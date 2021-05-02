@@ -1,7 +1,7 @@
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="primeraEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="primeraEtapa">
-      <ng-template matStepLabel>Datos EStudiante</ng-template>
+      <ng-template matStepLabel>Datos estudiante</ng-template>
       <div class="centrar">
         <div class="caja2">
           <div>
@@ -29,7 +29,7 @@
             </div>
             <div class="contenedorInterno">
               <mat-form-field >
-                <mat-label>N° de Matricula</mat-label>
+                <mat-label>N° de matrícula</mat-label>
                 <input matInput placeholder="2020407001" formControlName="primerCtrl" required>
               </mat-form-field>
             </div>
@@ -44,7 +44,7 @@
 
           <div>
             <mat-form-field>
-              <mat-label>Numero de Contacto</mat-label>
+              <mat-label>Número de contacto</mat-label>
               <input matInput placeholder="+569xxxxxxxx" formControlName="primerCtrl" required>
             </mat-form-field>
           </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="contenedorInterno">
               <mat-form-field>
-                <mat-label>Telefono de emergencia </mat-label>
+                <mat-label>Teléfono de emergencia </mat-label>
                 <input matInput placeholder="+569xxxxxxxx" formControlName="primerCtrl" required>
               </mat-form-field>
             </div>
@@ -83,7 +83,7 @@
 
   <mat-step [stepControl]="segundaEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="segundaEtapa">
-      <ng-template matStepLabel>Datos Empresa</ng-template>
+      <ng-template matStepLabel>Datos empresa</ng-template>
       <div class="centrar">
         <div class="caja2">
           <div>
@@ -102,28 +102,28 @@
 
           <div>
             <mat-form-field>
-              <mat-label> Telefono </mat-label>
+              <mat-label> Teléfono </mat-label>
               <input matInput placeholder="numero de telefono" formControlName="segundoCtrl" required>
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field>
-              <mat-label>Correo Electronico</mat-label>
+              <mat-label>Correo Electrónico</mat-label>
               <input matInput placeholder="Correo" formControlName="segundoCtrl" required>
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field>
-              <mat-label>Direccion</mat-label>
+              <mat-label>Dirección</mat-label>
               <input matInput placeholder="calle 1, villa 5 de mayo, curico" formControlName="segundoCtrl" required>
             </mat-form-field>
           </div>
         </div>
       </div>
       <div class="button-div">
-        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperPrevious>Atrás</button>
         <button mat-button matStepperNext>Siguente</button>
       </div>
     </form>
@@ -133,7 +133,7 @@
 
   <mat-step [stepControl]="terseraEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="terseraEtapa">
-      <ng-template matStepLabel>Datos Tutor</ng-template>
+      <ng-template matStepLabel>Datos tutor</ng-template>
       <div class="centrar">
         <div class="caja2">
           <div >
@@ -162,7 +162,7 @@
               <mat-label>Area/Departamento</mat-label>
               <input matInput placeholder="Soporte Tecnico" formControlName="terserCtrl" required>
             </mat-form-field>
-            <p class="textoEplicativo"><small>Area o departamento donde se desempeña el tutor o encargado drecto.</small></p>
+            <p class="textoEplicativo"><small>Área o departamento donde se desempeña el tutor o encargado drecto.</small></p>
           </div>
           <div>
             <mat-form-field>
@@ -174,13 +174,13 @@
           <div>
             <div class="contenedorInterno">
               <mat-form-field>
-                <mat-label>N° Contacto</mat-label>
+                <mat-label>N° contacto</mat-label>
                 <input matInput placeholder="+569xxxxxxxx" formControlName="terserCtrl" required>
               </mat-form-field>
             </div>
             <div class="contenedorInterno">
               <mat-form-field>
-                <mat-label>Correo Electronico</mat-label>
+                <mat-label>Correo electrónico</mat-label>
                 <input matInput placeholder="xxxx@xxxxx.xxxx" formControlName="terserCtrl" required>
               </mat-form-field>
             </div>
@@ -188,7 +188,7 @@
         </div>
       </div>
       <div class="button-div">
-        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperPrevious>Atrás</button>
         <button mat-button matStepperNext>Siguente</button>
       </div>
     </form>
@@ -198,17 +198,17 @@
 
   <mat-step [stepControl]="cuartaEtapa" errorMessage="Faltan campos por llenar">
     <form [formGroup]="cuartaEtapa">
-      <ng-template matStepLabel>Datos Practica</ng-template>
+      <ng-template matStepLabel>Datos práctica</ng-template>
       <div class="centrar">
         <div class="caja2">
           <div>
             <mat-radio-group aria-label="Seleccione una opcion">
-              <mat-label>Practica</mat-label><br/>
+              <mat-label>Práctica</mat-label><br/>
                 <div class="contenedorInterno">
-                  <mat-radio-button value="1">Practica 1</mat-radio-button>
+                  <mat-radio-button value="1">Práctica 1</mat-radio-button>
                 </div>
                 <div class="contenedorInterno">
-                  <mat-radio-button value="2">Practica 2</mat-radio-button>
+                  <mat-radio-button value="2">Práctica 2</mat-radio-button>
                 </div>
             </mat-radio-group>
             <!--
@@ -223,13 +223,13 @@
           <div>
             <div class="contenedorInterno">
               <mat-form-field>
-                <mat-label>Fecha Inicio</mat-label>
+                <mat-label>Fecha inicio</mat-label>
                 <input matInput type="date" placeholder=" " formControlName="cuartoCtrl" required>
               </mat-form-field>
             </div>
            <div class="contenedorInterno">
              <mat-form-field>
-               <mat-label>Fecha Termino</mat-label>
+               <mat-label>Fecha término</mat-label>
                <input matInput type="date" placeholder=" " formControlName="cuartoCtrl" required>
              </mat-form-field>
            </div>
@@ -244,7 +244,7 @@
             </div>
             <div class="contenedorInterno">
               <mat-form-field>
-                <mat-label>Hora Fin</mat-label>
+                <mat-label>Hora fin</mat-label>
                 <input matInput type="time" placeholder=" " formControlName="cuartoCtrl" required>
               </mat-form-field>
             </div>
@@ -252,7 +252,7 @@
 
           <div>
             <mat-form-field>
-              <mat-label>Duracion de la jornada</mat-label>
+              <mat-label>Duración de la jornada</mat-label>
               <input type="text" matInput placeholder="8" formControlName="cuartoCtrl" required>
             </mat-form-field>
           </div>
@@ -260,12 +260,12 @@
         </div>
       </div>
       <div class="button-div">
-        <label class="negrita">Concentimiento informado para el estudiante en practica.</label>
-        <p class="textoEplicativo">Por subir el concentimiento lleno y firmado.</p>
+        <label class="negrita">Consentimiento informado para el estudiante en práctica.</label>
+        <p class="textoEplicativo">Por subir el consentimiento lleno y firmado.</p>
         <input type="file" placeholder="Archivo1.pdf" formControlName="cuartoCtrl" required="">
       </div>
       <div class="button-div">
-        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperPrevious>Atrás</button>
         <button mat-button matStepperNext>Siguente</button>
       </div>
     </form>
@@ -277,7 +277,7 @@
       <div class="caja2">
         <p>Formulario terminado</p>
         <div class="button-div">
-          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button matStepperPrevious>Atrás</button>
           <button mat-button>Enviar</button>
         </div>
       </div>
