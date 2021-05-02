@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
-import {FirebaseEstudianteService} from "../../Servicios/firebase-estudiante.service";
+import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';
 
 @Component({
   selector: 'app-plantilla-general',
@@ -10,10 +10,11 @@ import {FirebaseEstudianteService} from "../../Servicios/firebase-estudiante.ser
 })
 export class PlantillaGeneralComponent implements OnInit {
 
-  primeraEtapa: FormGroup;
-  segundaEtapa: FormGroup;
-  terseraEtapa: FormGroup;
-  cuartaEtapa: FormGroup;
+   primeraEtapa: FormGroup;
+   segundaEtapa: FormGroup;
+   terseraEtapa: FormGroup;
+   cuartaEtapa: FormGroup;
+  private files: File [] = [];
   // tslint:disable-next-line:variable-name
   constructor(private _formBuilder: FormBuilder, private afStudent: FirebaseEstudianteService)
   {
@@ -50,7 +51,7 @@ export class PlantillaGeneralComponent implements OnInit {
       HoraInicio: ['', Validators.required],
       HoraFin: ['', Validators.required],
       Jornada: ['', Validators.required],
-      cuartoCtrl: ['', Validators.required],
+      Archivo: ['', Validators.required],
     });
     // tslint:disable-next-line:new-parens
   }
@@ -96,11 +97,23 @@ export class PlantillaGeneralComponent implements OnInit {
          // fin ( por el momento)
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
-    this.afStudent.addSolicitudPractica(plantilla);
+    this.afStudent.upSolicitud(this.files[0], plantilla);
   }
+  /*
+  upFile(): void
+  {
+      console.log(this.files);
+      this.afStudent.upLoadFile(this.files[0]);
+  }
+   */
    public getAlumno(): void
    {
-     console.log(this.primeraEtapa.get('Apellidos')?.value);
+     console.log(this.primeraEtapa.value.Archivo.name);
    }
+   onFileChange(event: any): void
+  {
+      console.log(event.target.files[0]);
+      this.files.push(event.target.files[0]);
+  }
 
 }

@@ -74,7 +74,6 @@
       </div>
       <div class="button-div">
         <button mat-button matStepperNext>Siguente</button>
-        <button (click)="getAlumno()">nombre</button>
       </div>
 
     </form>
@@ -257,7 +256,7 @@
       <div class="button-div">
         <label class="negrita">Concentimiento informado para el estudiante en practica.</label>
         <p class="textoEplicativo">Por subir el concentimiento lleno y firmado.</p>
-        <input type="file" placeholder="Archivo1.pdf" formControlName="archivo" required="">
+        <input type="file" (change)="onFileChange($event)" placeholder="Archivo1.pdf" formControlName="Archivo" required="">
       </div>
       <div class="button-div">
         <button mat-button matStepperPrevious>Atras</button>
