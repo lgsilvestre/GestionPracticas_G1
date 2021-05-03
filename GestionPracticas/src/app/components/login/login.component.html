@@ -1,21 +1,23 @@
-<mat-card>
-	<img mat-card-image src="../../../assets/logo_practica.png">
-	<mat-card-content>
-		<form [formGroup]="loginForm">
-			<mat-form-field appearance="outline">
-				<mat-label>Correo electrónico</mat-label>
-				<input matInput name="email" id="email" type="email" placeholder="usuario@utalca.cl" formControlName="email">
-			</mat-form-field>
-			<mat-form-field appearance="outline">
-				<mat-label>Contraseña</mat-label>
-				<input matInput name="password" id="password" type="password" placeholder="Contraseña" formControlName="password">
-			</mat-form-field>
-			<button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="loginForm.invalid">Ingresar</button>
-		</form>
-	</mat-card-content>
-	<mat-card-actions>
-		<button mat-stroked-button color="primary" type="button">Ingreso tutor/supervisor</button>
-	</mat-card-actions>
-	<hr>
-	<a href=#>Recuperar contraseña</a>
-</mat-card>
+<div id="login">
+	<mat-card>
+		<img mat-card-image src="../../../assets/logo_practica.png">
+		<mat-card-content>
+			<form [formGroup]="loginForm">
+				<mat-form-field appearance="outline">
+					<mat-label>Correo electrónico</mat-label>
+					<input matInput name="email" id="email" type="email" placeholder="usuario@utalca.cl" formControlName="email">
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>Contraseña</mat-label>
+					<input matInput name="password" id="password" type="password" placeholder="Contraseña" formControlName="password">
+				</mat-form-field>
+				<button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="loginForm.invalid">Ingresar</button>
+			</form>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-stroked-button color="primary" type="button">Ingreso tutor/supervisor</button>
+		</mat-card-actions>
+		<hr>
+		<a href=#>Recuperar contraseña</a>
+	</mat-card>
+</div>
