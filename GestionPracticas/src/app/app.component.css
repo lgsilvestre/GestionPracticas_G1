@@ -1,3 +1,7 @@
+#main {
+	margin: 10vh 30vh 10vh 30vh;
+}
+
 mat-form-field {
 	min-width: 25em;
 }
@@ -15,7 +19,6 @@ mat-card {
 	background-color: #F5F5F5;
 	border-radius: 5px;
 	min-width: 400px;
-	max-width: 400px;
 }
 
 mat-card,
@@ -28,7 +31,8 @@ hr {
 
 mat-label,
 a,
-button {
+button,
+mat-card-content {
 	font-size: medium !important;
 }
 
@@ -37,6 +41,7 @@ button {
 	margin-bottom: -.25em;
 }
 
-hr {
+hr,
+mat-card {
 	margin-bottom: 1.25em;
 }

@@ -1,11 +1,11 @@
-div {
-	margin-top: 10vh;
-}
-
 img {
 	min-width: 280px;
 	max-width: 280px;
 	padding: 20px;
+}
+
+mat-card {
+	max-width: 450px;
 }
 
 img,
