@@ -1,3 +1,12 @@
-.centrarPlantilla {
-    width: 100%;
+mat-horizontal-stepper {
+	min-width: 480px;
+}
+
+div {
+	margin-top: 15px;
+}
+
+mat-icon {
+	color: #FF5722;
+	font-size: xx-large;
 }
