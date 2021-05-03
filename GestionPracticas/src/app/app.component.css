@@ -1,30 +1,30 @@
 #main {
-	margin: 10vh 30vh 10vh 30vh;
+	margin: 2% 20% 2% 20%;
 }
 
 mat-form-field {
-	min-width: 25em;
+	width: 100%;
 }
 
 button {
-	min-width: 22em;
-	min-height: 2.5em;
+	min-width: 5em;
 	box-shadow: none !important;
 }
 
-mat-card {
+mat-card,
+mat-horizontal-stepper {
 	box-shadow: none !important;
 	border: 2px #B2B2B2B2;
 	border-style: solid;
 	background-color: #F5F5F5;
 	border-radius: 5px;
-	min-width: 400px;
 }
 
 mat-card,
 mat-form-field,
 button,
-hr {
+hr,
+mat-horizontal-stepper {
 	text-align: center;
 	margin: 0 auto;
 }
@@ -32,7 +32,8 @@ hr {
 mat-label,
 a,
 button,
-mat-card-content {
+mat-card-content,
+mat-card-actions {
 	font-size: medium !important;
 }
 

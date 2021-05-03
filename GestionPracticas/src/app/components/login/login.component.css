@@ -5,7 +5,12 @@ img {
 }
 
 mat-card {
-	max-width: 450px;
+	min-width: 30em;
+	width: 40%;
+}
+
+button {
+	width: 20em;
 }
 
 img,
