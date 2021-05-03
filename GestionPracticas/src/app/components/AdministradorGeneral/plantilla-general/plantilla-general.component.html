@@ -144,18 +144,24 @@
 					<mat-label>Número de horas de la jornada</mat-label>
 					<input matInput placeholder="0" formControlName="cuartoCtrl" type="number" min="0" required>
 				</mat-form-field>
-				<label class="negrita">Consentimiento informado para el estudiante en práctica.</label>
-				<p>Por subir el consentimiento lleno y firmado.</p>
-				<input type="file" placeholder="Archivo1.pdf" formControlName="cuartoCtrl" required>
-				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+				<mat-divider></mat-divider>
+				<div>
+					<h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
+					<input type="file" placeholder="consentimiento.pdf" formControlName="cuartoCtrl" required>
+				</div>
+				<div>
+					<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+					<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+				</div>
 			</form>
 		</mat-step>
 		<mat-step>
 			<ng-template matStepLabel>Resumen</ng-template>
-			<p>Formulario terminado</p>
-			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-			<button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
+			<h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
+			<div>
+				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
+			</div>
 		</mat-step>
 	</mat-horizontal-stepper>
 </div>
