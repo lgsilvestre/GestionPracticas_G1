@@ -6,12 +6,16 @@ mat-form-field {
 	width: 100%;
 }
 
+button:not(mat-sidenav-container button) {
+	min-width: 5em;
+}
+
 button {
 	box-shadow: none !important;
 }
 
-mat-card button {
-	min-width: 5em;
+form button {
+	margin: 0 20px 0 20px !important;
 }
 
 mat-card,
