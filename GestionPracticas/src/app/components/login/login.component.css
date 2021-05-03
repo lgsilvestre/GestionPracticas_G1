@@ -4,11 +4,6 @@ img {
 	padding: 20px;
 }
 
-mat-card {
-	min-width: 30em;
-	width: 40%;
-}
-
 button {
 	width: 20em;
 }
@@ -21,4 +16,9 @@ a {
 
 div {
 	margin-top: 30px;
+}
+
+mat-card {
+	min-width: 400px;
+	max-width: 400px;
 }

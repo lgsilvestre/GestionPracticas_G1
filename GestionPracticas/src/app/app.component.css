@@ -1,13 +1,14 @@
-#main {
-	margin: 2% 20vw 2% 20vw;
-}
-
 mat-form-field {
 	width: 100%;
 }
 
 button:not(mat-sidenav-container button) {
 	min-width: 5em;
+	min-height: 2.75em;
+}
+
+mat-horizontal-stepper {
+	width: 100%;
 }
 
 mat-horizontal-stepper button {
@@ -16,7 +17,6 @@ mat-horizontal-stepper button {
 
 button {
 	box-shadow: none !important;
-	min-height: 2.75em;
 }
 
 mat-horizontal-stepper button {

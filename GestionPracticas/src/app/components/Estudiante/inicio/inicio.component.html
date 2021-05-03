@@ -2,8 +2,9 @@
 	<mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
 		<form [formGroup]="firstFormGroup">
 			<ng-template matStepLabel>Formulario Practica</ng-template>
-			<hr>
-			<app-plantilla-general></app-plantilla-general>
+			<div>
+				<app-plantilla-general id="app-plantilla-general"></app-plantilla-general>
+			</div>
 		</form>
 	</mat-step>
 	<mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">

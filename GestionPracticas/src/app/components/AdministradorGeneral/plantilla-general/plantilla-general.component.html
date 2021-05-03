@@ -1,167 +1,165 @@
-<div id="main">
-	<mat-horizontal-stepper #stepper>
-		<mat-step [stepControl]="primeraEtapa" errorMessage="Completa los datos obligatorios restantes">
-			<form [formGroup]="primeraEtapa">
-				<ng-template matStepLabel>Datos estudiante</ng-template>
-				<mat-form-field appearance="outline">
-					<mat-label>Nombres</mat-label>
-					<input matInput placeholder="Primer y segundo nombre" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Apellidos</mat-label>
-					<input matInput placeholder="Apellido paterno y materno" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Carrera</mat-label>
-					<input matInput placeholder="Ingeniería Civil en..." formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Número de matrícula</mat-label>
-					<input matInput placeholder="2014407000" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>RUT</mat-label>
-					<input matInput placeholder="RUT" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Número de contacto</mat-label>
-					<input matInput placeholder="+56912345678" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Correo Electrónico</mat-label>
-					<input matInput placeholder="usuario@utalca.cl" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-divider></mat-divider>
-				<div>
-					<h3>Contacto de emergencia</h3>
-				</div>
-				<mat-form-field appearance="outline">
-					<mat-label>Nombre y apellido</mat-label>
-					<input matInput placeholder="Nombre y apellido del contacto de emergencia" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Teléfono</mat-label>
-					<input matInput placeholder="+56912345678" formControlName="primerCtrl" required>
-				</mat-form-field>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
-			</form>
-		</mat-step>
-		<mat-step [stepControl]="segundaEtapa" errorMessage="Completa los datos obligatorios restantes">
-			<form [formGroup]="segundaEtapa">
-				<ng-template matStepLabel>Datos de la empresa</ng-template>
-				<mat-form-field appearance="outline">
-					<mat-label>Nombre</mat-label>
-					<input matInput placeholder="Nombre de la empresa" formControlName="segundoCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>RUT</mat-label>
-					<input matInput placeholder="RUT de la empresa" formControlName="segundoCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Teléfono</mat-label>
-					<input matInput placeholder="Número de teléfono de la empresa" formControlName="segundoCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Correo Electrónico</mat-label>
-					<input matInput placeholder="usuario@utalca.cl" formControlName="segundoCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Dirección</mat-label>
-					<input matInput placeholder="Dirección de la empresa" formControlName="segundoCtrl" required>
-				</mat-form-field>
-				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
-			</form>
-		</mat-step>
-		<mat-step [stepControl]="terceraEtapa" errorMessage="Completa los datos obligatorios restantes">
-			<form [formGroup]="terceraEtapa">
-				<ng-template matStepLabel>Datos tutor</ng-template>
-				<mat-form-field appearance="outline">
-					<mat-label>Nombres</mat-label>
-					<input matInput placeholder="Primer y segundo nombre del tutor" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Apellidos</mat-label>
-					<input matInput placeholder="Apellido paterno y materno del tutor" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>RUT</mat-label>
-					<input matInput placeholder="RUT" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Area/Departamento</mat-label>
-					<input matInput placeholder="Departamento o área del tutor" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<mat-divider></mat-divider>
-				<div>
-					<h3>Área o departamento donde se desempeña el tutor o encargado directo</h3>
-				</div>
-				<mat-form-field appearance="outline">
-					<mat-label>Puesto</mat-label>
-					<input matInput placeholder="Puesto del tutor" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>N° contacto</mat-label>
-					<input matInput placeholder="+56912345678" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Correo electrónico</mat-label>
-					<input matInput placeholder="usuario@utalca.cl" formControlName="tercerCtrl" required>
-				</mat-form-field>
-				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
-			</form>
-		</mat-step>
-		<mat-step [stepControl]="cuartaEtapa" errorMessage="Completa los datos obligatorios restantes">
-			<form [formGroup]="cuartaEtapa">
-				<ng-template matStepLabel>Datos práctica</ng-template>
-				<mat-radio-group>
-					<mat-label>Número de la práctica</mat-label><br/>
-					<mat-radio-button value="1">Práctica número 1</mat-radio-button>
-					<mat-radio-button value="2">Práctica número 2</mat-radio-button>
-				</mat-radio-group>
-				<mat-form-field appearance="outline">
-					<mat-label>Fecha de inicio</mat-label>
-					<input matInput [matDatepicker]="startDate">
-					<mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-					<mat-datepicker #startDate></mat-datepicker>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Fecha de término</mat-label>
-					<input matInput [matDatepicker]="endDate">
-					<mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-					<mat-datepicker #endDate></mat-datepicker>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Hora de inicio de la jornada</mat-label>
-					<input matInput formControlName="cuartoCtrl" type="time" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Hora de término de la jornada</mat-label>
-					<input matInput formControlName="cuartoCtrl" type="time" required>
-				</mat-form-field>
-				<mat-form-field appearance="outline">
-					<mat-label>Número de horas de la jornada</mat-label>
-					<input matInput placeholder="0" formControlName="cuartoCtrl" type="number" min="0" required>
-				</mat-form-field>
-				<mat-divider></mat-divider>
-				<div>
-					<h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
-					<input type="file" placeholder="consentimiento.pdf" formControlName="cuartoCtrl" required>
-				</div>
-				<div>
-					<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-					<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
-				</div>
-			</form>
-		</mat-step>
-		<mat-step>
-			<ng-template matStepLabel>Resumen</ng-template>
-			<h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
+<mat-horizontal-stepper #stepper>
+	<mat-step [stepControl]="primeraEtapa" errorMessage="Completa los datos obligatorios restantes">
+		<form [formGroup]="primeraEtapa">
+			<ng-template matStepLabel>Datos estudiante</ng-template>
+			<mat-form-field appearance="outline">
+				<mat-label>Nombres</mat-label>
+				<input matInput placeholder="Primer y segundo nombre" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Apellidos</mat-label>
+				<input matInput placeholder="Apellido paterno y materno" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Carrera</mat-label>
+				<input matInput placeholder="Ingeniería Civil en..." formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Número de matrícula</mat-label>
+				<input matInput placeholder="2014407000" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>RUT</mat-label>
+				<input matInput placeholder="RUT" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Número de contacto</mat-label>
+				<input matInput placeholder="+56912345678" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Correo Electrónico</mat-label>
+				<input matInput placeholder="usuario@utalca.cl" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-divider></mat-divider>
+			<div>
+				<h3>Contacto de emergencia</h3>
+			</div>
+			<mat-form-field appearance="outline">
+				<mat-label>Nombre y apellido</mat-label>
+				<input matInput placeholder="Nombre y apellido del contacto de emergencia" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Teléfono</mat-label>
+				<input matInput placeholder="+56912345678" formControlName="primerCtrl" required>
+			</mat-form-field>
+			<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+		</form>
+	</mat-step>
+	<mat-step [stepControl]="segundaEtapa" errorMessage="Completa los datos obligatorios restantes">
+		<form [formGroup]="segundaEtapa">
+			<ng-template matStepLabel>Datos de la empresa</ng-template>
+			<mat-form-field appearance="outline">
+				<mat-label>Nombre</mat-label>
+				<input matInput placeholder="Nombre de la empresa" formControlName="segundoCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>RUT</mat-label>
+				<input matInput placeholder="RUT de la empresa" formControlName="segundoCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Teléfono</mat-label>
+				<input matInput placeholder="Número de teléfono de la empresa" formControlName="segundoCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Correo Electrónico</mat-label>
+				<input matInput placeholder="usuario@utalca.cl" formControlName="segundoCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Dirección</mat-label>
+				<input matInput placeholder="Dirección de la empresa" formControlName="segundoCtrl" required>
+			</mat-form-field>
+			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+			<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+		</form>
+	</mat-step>
+	<mat-step [stepControl]="terceraEtapa" errorMessage="Completa los datos obligatorios restantes">
+		<form [formGroup]="terceraEtapa">
+			<ng-template matStepLabel>Datos tutor</ng-template>
+			<mat-form-field appearance="outline">
+				<mat-label>Nombres</mat-label>
+				<input matInput placeholder="Primer y segundo nombre del tutor" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Apellidos</mat-label>
+				<input matInput placeholder="Apellido paterno y materno del tutor" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>RUT</mat-label>
+				<input matInput placeholder="RUT" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Area/Departamento</mat-label>
+				<input matInput placeholder="Departamento o área del tutor" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<mat-divider></mat-divider>
+			<div>
+				<h3>Área o departamento donde se desempeña el tutor o encargado directo</h3>
+			</div>
+			<mat-form-field appearance="outline">
+				<mat-label>Puesto</mat-label>
+				<input matInput placeholder="Puesto del tutor" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>N° contacto</mat-label>
+				<input matInput placeholder="+56912345678" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Correo electrónico</mat-label>
+				<input matInput placeholder="usuario@utalca.cl" formControlName="tercerCtrl" required>
+			</mat-form-field>
+			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+			<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+		</form>
+	</mat-step>
+	<mat-step [stepControl]="cuartaEtapa" errorMessage="Completa los datos obligatorios restantes">
+		<form [formGroup]="cuartaEtapa">
+			<ng-template matStepLabel>Datos práctica</ng-template>
+			<mat-radio-group>
+				<mat-label>Número de la práctica</mat-label><br/>
+				<mat-radio-button value="1">Práctica número 1</mat-radio-button>
+				<mat-radio-button value="2">Práctica número 2</mat-radio-button>
+			</mat-radio-group>
+			<mat-form-field appearance="outline">
+				<mat-label>Fecha de inicio</mat-label>
+				<input matInput [matDatepicker]="startDate">
+				<mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+				<mat-datepicker #startDate></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Fecha de término</mat-label>
+				<input matInput [matDatepicker]="endDate">
+				<mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+				<mat-datepicker #endDate></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Hora de inicio de la jornada</mat-label>
+				<input matInput formControlName="cuartoCtrl" type="time" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Hora de término de la jornada</mat-label>
+				<input matInput formControlName="cuartoCtrl" type="time" required>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Número de horas de la jornada</mat-label>
+				<input matInput placeholder="0" formControlName="cuartoCtrl" type="number" min="0" required>
+			</mat-form-field>
+			<mat-divider></mat-divider>
+			<div>
+				<h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
+				<input type="file" placeholder="consentimiento.pdf" formControlName="cuartoCtrl" required>
+			</div>
 			<div>
 				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
 			</div>
-		</mat-step>
-	</mat-horizontal-stepper>
-</div>
+		</form>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel>Resumen</ng-template>
+		<h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
+		<div>
+			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+			<button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
+		</div>
+	</mat-step>
+</mat-horizontal-stepper>
