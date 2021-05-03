@@ -1,37 +1,24 @@
-.main-div {
-    padding: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 350px;
+img {
+	min-width: 280px;
+	max-width: 280px;
+	padding: 20px;
 }
 
 button {
-  min-width: 200px;
-  box-shadow: none !important;
+	width: 20em;
+}
+
+img,
+a {
+	text-align: center;
+	margin: 0 auto;
+}
+
+div {
+	margin-top: 30px;
 }
 
 mat-card {
-  box-shadow: none !important;
-  border: 2px #B2B2B2B2;
-  border-style: solid;
-  background-color: #F5F5F5;
-  border-radius: 4px;
-}
-
-
-a {
-  font-size: smaller !important;
+	min-width: 400px;
+	max-width: 400px;
 }

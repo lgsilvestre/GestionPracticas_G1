@@ -1,0 +1,63 @@
+mat-form-field {
+	width: 100%;
+}
+
+button:not(mat-sidenav-container button) {
+	min-width: 5em;
+	min-height: 2.75em;
+}
+
+mat-horizontal-stepper {
+	width: 100%;
+}
+
+mat-horizontal-stepper button {
+	min-width: 10em;
+}
+
+button {
+	box-shadow: none !important;
+}
+
+mat-horizontal-stepper button {
+	margin: 0 20px 0 20px !important;
+}
+
+mat-card,
+mat-horizontal-stepper {
+	box-shadow: none !important;
+	border: 2px #B2B2B2B2;
+	border-style: solid;
+	background-color: #F5F5F5;
+	border-radius: 5px;
+}
+
+mat-card,
+mat-form-field,
+mat-card button,
+hr,
+mat-horizontal-stepper {
+	text-align: center;
+	margin: 0 auto;
+}
+
+mat-label,
+a,
+button,
+mat-card-content,
+mat-card-actions {
+	font-size: medium !important;
+}
+
+mat-form-field,
+mat-card button {
+	margin-bottom: -.25em;
+}
+
+mat-card {
+	margin-bottom: 1.25em;
+}
+
+.mat-radio-button~.mat-radio-button {
+	margin: 20px;
+}

@@ -1,23 +1,24 @@
 <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Formulario Practica</ng-template>
-            <hr>
-            <div class="centrarPlantilla">
-                <app-plantilla-general></app-plantilla-general>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Subir informe de practica</ng-template>
-            <label>Sube tu informe de practica a continuacion</label>
-            <hr>
-            <input type="file">
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>Haz finalizado tu practica</p>
-    </mat-step>
+	<mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
+		<form [formGroup]="firstFormGroup">
+			<ng-template matStepLabel>Formulario Practica</ng-template>
+			<div>
+				<app-plantilla-general id="app-plantilla-general"></app-plantilla-general>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
+		<form [formGroup]="secondFormGroup">
+			<ng-template matStepLabel>Subir informe de practica</ng-template>
+			<div>
+				<h3>Por favor, suba el archivo que contiene su informa de práctica</h3>
+				<input type="file" placeholder="consentimiento.pdf" required>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel>Finalización</ng-template>
+		<h3>¡Felicidades! Has completado tu práctica.</h3>
+		<mat-icon mat-list-icon>emoji_emotions</mat-icon>
+	</mat-step>
 </mat-horizontal-stepper>
