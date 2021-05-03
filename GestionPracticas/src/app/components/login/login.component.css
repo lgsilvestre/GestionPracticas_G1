@@ -1,37 +1,11 @@
-.main-div {
-    padding: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+img {
+	min-width: 280px;
+	max-width: 280px;
+	padding: 20px;
 }
 
-#image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 350px;
-}
-
-button {
-  min-width: 200px;
-  box-shadow: none !important;
-}
-
-mat-card {
-  box-shadow: none !important;
-  border: 2px #B2B2B2B2;
-  border-style: solid;
-  background-color: #F5F5F5;
-  border-radius: 4px;
-}
-
-
+img,
 a {
-  font-size: smaller !important;
+	text-align: center;
+	margin: 0 auto;
 }

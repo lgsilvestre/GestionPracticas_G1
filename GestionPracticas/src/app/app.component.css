@@ -1,0 +1,42 @@
+mat-form-field {
+	min-width: 25em;
+}
+
+button {
+	min-width: 22em;
+	min-height: 2.5em;
+	box-shadow: none !important;
+}
+
+mat-card {
+	box-shadow: none !important;
+	border: 2px #B2B2B2B2;
+	border-style: solid;
+	background-color: #F5F5F5;
+	border-radius: 5px;
+	min-width: 400px;
+	max-width: 400px;
+}
+
+mat-card,
+mat-form-field,
+button,
+hr {
+	text-align: center;
+	margin: 0 auto;
+}
+
+mat-label,
+a,
+button {
+	font-size: medium !important;
+}
+
+mat-form-field,
+button {
+	margin-bottom: -.25em;
+}
+
+hr {
+	margin-bottom: 1.25em;
+}

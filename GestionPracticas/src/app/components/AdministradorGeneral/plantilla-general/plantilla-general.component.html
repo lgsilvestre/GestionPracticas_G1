@@ -1,5 +1,5 @@
 <mat-horizontal-stepper #stepper>
-	<mat-step [stepControl]="primeraEtapa" errorMessage="Faltan campos por llenar">
+	<mat-step [stepControl]="primeraEtapa" errorMessage="Rellene los campos obligatorios faltantes">
 		<form [formGroup]="primeraEtapa">
 			<ng-template matStepLabel>Datos estudiante</ng-template>
 			<mat-form-field>
@@ -41,7 +41,7 @@
 			<button mat-button matStepperNext>Siguente</button>
 		</form>
 	</mat-step>
-	<mat-step [stepControl]="segundaEtapa" errorMessage="Faltan campos por llenar">
+	<mat-step [stepControl]="segundaEtapa" errorMessage="Rellene los campos obligatorios faltantes">
 		<form [formGroup]="segundaEtapa">
 			<ng-template matStepLabel>Datos empresa</ng-template>
 			<mat-form-field>
@@ -68,7 +68,7 @@
 			<button mat-button matStepperNext>Siguente</button>
 		</form>
 	</mat-step>
-	<mat-step [stepControl]="terseraEtapa" errorMessage="Faltan campos por llenar">
+	<mat-step [stepControl]="terseraEtapa" errorMessage="Rellene los campos obligatorios faltantes">
 		<form [formGroup]="terseraEtapa">
 			<ng-template matStepLabel>Datos tutor</ng-template>
 			<mat-form-field>
@@ -104,7 +104,7 @@
 			<button mat-button matStepperNext>Siguente</button>
 		</form>
 	</mat-step>
-	<mat-step [stepControl]="cuartaEtapa" errorMessage="Faltan campos por llenar">
+	<mat-step [stepControl]="cuartaEtapa" errorMessage="Rellene los campos obligatorios faltantes">
 		<form [formGroup]="cuartaEtapa">
 			<ng-template matStepLabel>Datos práctica</ng-template>
 			<mat-radio-group aria-label="Seleccione una opcion">
