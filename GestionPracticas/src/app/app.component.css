@@ -19,7 +19,7 @@ button {
 	box-shadow: none !important;
 }
 
-mat-horizontal-stepper button:not(mat-sidenav-container button) {
+mat-horizontal-stepper button {
 	margin: 0 20px 0 20px !important;
 }
 
