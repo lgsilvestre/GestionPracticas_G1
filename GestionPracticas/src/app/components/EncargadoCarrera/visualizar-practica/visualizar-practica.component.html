@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <mat-form-field>
-            <input matInput type="Buscar alumno" placeholder="Nombre del alumno" class="search-input">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input">
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
     </div>
