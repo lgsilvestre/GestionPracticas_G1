@@ -133,22 +133,16 @@
 					<mat-datepicker #endDate></mat-datepicker>
 				</mat-form-field>
 				<mat-form-field appearance="outline">
-					<mat-label>Choose a date</mat-label>
-					<input matInput [matDatepicker]="picker">
-					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-					<mat-datepicker #picker></mat-datepicker>
+					<mat-label>Hora de inicio de la jornada</mat-label>
+					<input matInput formControlName="cuartoCtrl" type="time" required>
 				</mat-form-field>
 				<mat-form-field appearance="outline">
-					<mat-label>Choose a date</mat-label>
-					<input matInput [matDatepicker]="picker2">
-					<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-					<mat-datepicker #picker2></mat-datepicker>
+					<mat-label>Hora de término de la jornada</mat-label>
+					<input matInput formControlName="cuartoCtrl" type="time" required>
 				</mat-form-field>
 				<mat-form-field appearance="outline">
-					<mat-label>Choose a date</mat-label>
-					<input matInput [matDatepicker]="picker3">
-					<mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-					<mat-datepicker #picker3></mat-datepicker>
+					<mat-label>Número de horas de la jornada</mat-label>
+					<input matInput placeholder="0" formControlName="cuartoCtrl" type="number" min="0" required>
 				</mat-form-field>
 				<label class="negrita">Consentimiento informado para el estudiante en práctica.</label>
 				<p>Por subir el consentimiento lleno y firmado.</p>

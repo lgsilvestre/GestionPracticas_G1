@@ -8,6 +8,7 @@ import { EditarSolicitudProcesoPracticaComponent } from './components/EncargadoC
 import { MenuEncargadoCarreraComponent } from './components/EncargadoCarrera/menu-encargado-carrera/menu-encargado-carrera.component';
 import { VisualizarComponent } from './components/EncargadoCarrera/visualizar-practica/visualizar-practica.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 const routes: Routes = [
@@ -25,5 +26,8 @@ const routes: Routes = [
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
+	providers: [
+		{ provide: MAT_DATE_LOCALE, useValue: 'es-CL' },
+	],
 })
 export class AppRoutingModule { }
