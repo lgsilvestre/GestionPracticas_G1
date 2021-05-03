@@ -11,19 +11,19 @@ import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'menu-admin-general', component: MenuAdminGeneralComponent},
-  {path: 'menu-estudiante', component: MenuEstudianteComponent},
-  {path: 'plantilla-general',component: PlantillaGeneralComponent},
-  {path: 'editar-solicitud-practica', component:EditarSolicitudProcesoPracticaComponent},
-  {path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent},
-  {path: 'visualizar-practica', component: VisualizarComponent},
-  {path: 'editar-cuenta', component: EditarCuentaComponent},
-  {path: '', redirectTo: 'login',pathMatch:'full'}
+	{ path: 'login', component: LoginComponent },
+	{ path: 'menu-admin-general', component: MenuAdminGeneralComponent },
+	{ path: 'menu-estudiante', component: MenuEstudianteComponent },
+	{ path: 'plantilla-general', component: PlantillaGeneralComponent },
+	{ path: 'editar-solicitud-practica', component: EditarSolicitudProcesoPracticaComponent },
+	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
+	{ path: 'visualizar-practica', component: VisualizarComponent },
+	{ path: 'editar-cuenta', component: EditarCuentaComponent },
+	{ path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -1,5 +1,5 @@
 #main {
-	margin: 2% 20% 2% 20%;
+	margin: 2% 20vw 2% 20vw;
 }
 
 mat-form-field {
@@ -10,11 +10,16 @@ button:not(mat-sidenav-container button) {
 	min-width: 5em;
 }
 
-button {
-	box-shadow: none !important;
+mat-horizontal-stepper button {
+	min-width: 10em;
 }
 
-form button {
+button {
+	box-shadow: none !important;
+	min-height: 3em;
+}
+
+mat-horizontal-stepper button {
 	margin: 0 20px 0 20px !important;
 }
 
@@ -51,4 +56,8 @@ mat-card button {
 
 mat-card {
 	margin-bottom: 1.25em;
+}
+
+.mat-radio-button~.mat-radio-button {
+	margin: 20px;
 }

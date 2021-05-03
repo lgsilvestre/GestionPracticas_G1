@@ -10,7 +10,7 @@ export class PlantillaGeneralComponent implements OnInit {
 
 	primeraEtapa: FormGroup;
 	segundaEtapa: FormGroup;
-	terseraEtapa: FormGroup;
+	terceraEtapa: FormGroup;
 	cuartaEtapa: FormGroup;
 
 	// tslint:disable-next-line:variable-name
@@ -21,8 +21,8 @@ export class PlantillaGeneralComponent implements OnInit {
 		this.segundaEtapa = this._formBuilder.group({
 			segundoCtrl: ['', Validators.required]
 		});
-		this.terseraEtapa = this._formBuilder.group({
-			terserCtrl: ['', Validators.required]
+		this.terceraEtapa = this._formBuilder.group({
+			tercerCtrl: ['', Validators.required]
 		});
 		this.cuartaEtapa = this._formBuilder.group({
 			cuartoCtrl: ['', Validators.required]
