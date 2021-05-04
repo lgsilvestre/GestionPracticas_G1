@@ -1,7 +1,17 @@
-mat-horizontal-stepper {
-	min-width: 480px;
+.step-button {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-end;
 }
 
-div {
-	margin-top: 15px;
+.step-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+h1 {
+	text-align: center;
 }

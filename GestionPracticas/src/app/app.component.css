@@ -32,15 +32,6 @@ mat-horizontal-stepper {
 	border-radius: 5px;
 }
 
-mat-card,
-mat-form-field,
-mat-card button,
-hr,
-mat-horizontal-stepper {
-	text-align: center;
-	margin: 0 auto;
-}
-
 mat-label,
 a,
 button,
@@ -49,15 +40,14 @@ mat-card-actions {
 	font-size: medium !important;
 }
 
-mat-form-field,
-mat-card button {
-	margin-bottom: -.25em;
+.mat-radio-button~.mat-radio-button {
+	margin: 20px;
+}
+
+.divider {
+	min-height: 20px;
 }
 
 mat-card {
-	margin-bottom: 1.25em;
-}
-
-.mat-radio-button~.mat-radio-button {
-	margin: 20px;
+	margin: 0 0 1.5em 0;
 }

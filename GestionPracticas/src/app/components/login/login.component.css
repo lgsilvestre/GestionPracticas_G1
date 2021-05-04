@@ -14,10 +14,6 @@ a {
 	margin: 0 auto;
 }
 
-div {
-	margin-top: 30px;
-}
-
 mat-card {
 	min-width: 400px;
 	max-width: 400px;

@@ -1,7 +1,7 @@
 <mat-horizontal-stepper #stepper>
 	<mat-step [stepControl]="primeraEtapa" errorMessage="Completa los datos obligatorios restantes">
 		<form [formGroup]="primeraEtapa">
-			<ng-template matStepLabel>Datos estudiante</ng-template>
+			<ng-template matStepLabel>Datos del estudiante</ng-template>
 			<mat-form-field appearance="outline">
 				<mat-label>Nombres</mat-label>
 				<input matInput placeholder="Primer y segundo nombre" formControlName="primerCtrl" required>
@@ -30,10 +30,7 @@
 				<mat-label>Correo Electrónico</mat-label>
 				<input matInput placeholder="usuario@utalca.cl" formControlName="primerCtrl" required>
 			</mat-form-field>
-			<mat-divider></mat-divider>
-			<div>
-				<h3>Contacto de emergencia</h3>
-			</div>
+			<h3>Contacto de emergencia</h3>
 			<mat-form-field appearance="outline">
 				<mat-label>Nombre y apellido</mat-label>
 				<input matInput placeholder="Nombre y apellido del contacto de emergencia" formControlName="primerCtrl" required>
@@ -42,7 +39,12 @@
 				<mat-label>Teléfono</mat-label>
 				<input matInput placeholder="+56912345678" formControlName="primerCtrl" required>
 			</mat-form-field>
-			<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+			<div class="divider">
+				<mat-divider></mat-divider>
+			</div>
+			<div class="step-button">
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+			</div>
 		</form>
 	</mat-step>
 	<mat-step [stepControl]="segundaEtapa" errorMessage="Completa los datos obligatorios restantes">
@@ -68,13 +70,18 @@
 				<mat-label>Dirección</mat-label>
 				<input matInput placeholder="Dirección de la empresa" formControlName="segundoCtrl" required>
 			</mat-form-field>
-			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-			<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+			<div class="divider">
+				<mat-divider></mat-divider>
+			</div>
+			<div class="step-buttons">
+				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+			</div>
 		</form>
 	</mat-step>
 	<mat-step [stepControl]="terceraEtapa" errorMessage="Completa los datos obligatorios restantes">
 		<form [formGroup]="terceraEtapa">
-			<ng-template matStepLabel>Datos tutor</ng-template>
+			<ng-template matStepLabel>Datos del tutor</ng-template>
 			<mat-form-field appearance="outline">
 				<mat-label>Nombres</mat-label>
 				<input matInput placeholder="Primer y segundo nombre del tutor" formControlName="tercerCtrl" required>
@@ -91,10 +98,7 @@
 				<mat-label>Area/Departamento</mat-label>
 				<input matInput placeholder="Departamento o área del tutor" formControlName="tercerCtrl" required>
 			</mat-form-field>
-			<mat-divider></mat-divider>
-			<div>
-				<h3>Área o departamento donde se desempeña el tutor o encargado directo</h3>
-			</div>
+			<h3>Área o departamento donde se desempeña el tutor o encargado directo</h3>
 			<mat-form-field appearance="outline">
 				<mat-label>Puesto</mat-label>
 				<input matInput placeholder="Puesto del tutor" formControlName="tercerCtrl" required>
@@ -107,13 +111,18 @@
 				<mat-label>Correo electrónico</mat-label>
 				<input matInput placeholder="usuario@utalca.cl" formControlName="tercerCtrl" required>
 			</mat-form-field>
-			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-			<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+			<div class="divider">
+				<mat-divider></mat-divider>
+			</div>
+			<div class="step-buttons">
+				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+			</div>
 		</form>
 	</mat-step>
 	<mat-step [stepControl]="cuartaEtapa" errorMessage="Completa los datos obligatorios restantes">
 		<form [formGroup]="cuartaEtapa">
-			<ng-template matStepLabel>Datos práctica</ng-template>
+			<ng-template matStepLabel>Datos de la práctica</ng-template>
 			<mat-radio-group>
 				<mat-label>Número de la práctica</mat-label><br/>
 				<mat-radio-button value="1">Práctica número 1</mat-radio-button>
@@ -143,12 +152,12 @@
 				<mat-label>Número de horas de la jornada</mat-label>
 				<input matInput placeholder="0" formControlName="cuartoCtrl" type="number" min="0" required>
 			</mat-form-field>
-			<mat-divider></mat-divider>
-			<div>
-				<h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
-				<input type="file" placeholder="consentimiento.pdf" formControlName="cuartoCtrl" required>
+			<h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
+			<input type="file" placeholder="consentimiento.pdf" formControlName="cuartoCtrl" required>
+			<div class="divider">
+				<mat-divider></mat-divider>
 			</div>
-			<div>
+			<div class="step-buttons">
 				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
 				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
 			</div>
@@ -157,7 +166,7 @@
 	<mat-step>
 		<ng-template matStepLabel>Resumen</ng-template>
 		<h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
-		<div>
+		<div class="step-buttons">
 			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
 			<button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
 		</div>
