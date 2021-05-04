@@ -1,4 +1,9 @@
+.final-info {
+	text-align: center;
+}
+
 mat-icon {
 	color: #FF5722;
-	font-size: xx-large;
+	font-size: 100px;
+	margin-left: -100px;
 }
