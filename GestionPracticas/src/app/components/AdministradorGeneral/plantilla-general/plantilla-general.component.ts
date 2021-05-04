@@ -3,13 +3,13 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
 import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';
 
+
 @Component({
-  selector: 'app-plantilla-general',
-  templateUrl: './plantilla-general.component.html',
-  styleUrls: ['./plantilla-general.component.css']
+	selector: 'app-plantilla-general',
+	templateUrl: './plantilla-general.component.html',
+	styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
 })
 export class PlantillaGeneralComponent implements OnInit {
-
    primeraEtapa: FormGroup;
    segundaEtapa: FormGroup;
    terseraEtapa: FormGroup;

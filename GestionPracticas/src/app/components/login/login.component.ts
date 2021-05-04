@@ -5,61 +5,60 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.css', '../../app.component.css']
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+	hide = true;
 
-  datosUsuario: any;
-  constructor(
-    private afStore: AngularFirestore,
-    private afAuth: AngularFireAuth,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private ngZone: NgZone,
-  ) {
-  }
+	datosUsuario: any;
+	constructor(
+		private afStore: AngularFirestore,
+		private afAuth: AngularFireAuth,
+		private router: Router,
+		private formBuilder: FormBuilder,
+		private ngZone: NgZone,
+	) {
+	}
 
-  loginForm = this.formBuilder.group({
-    correo: ['', Validators.required],
-    password: ['', Validators.required]
-  });
+	loginForm = this.formBuilder.group({
+		email: ['', Validators.required],
+		password: ['', Validators.required]
+	})
 
-  ngOnInit(): void {
-    this.afAuth.user.subscribe(user => {
-      if (user) {
-        this.ngZone.run(() => {
-          this.router.navigate(['./login']);
-        });
-      }
-    });
-  }
+	ngOnInit(): void {
+		this.afAuth.user.subscribe(user => {
+			if (user) {
+				this.ngZone.run(() => {
+					this.router.navigate(['./login']);
+				})
+			}
+		})
+	}
 
-  login(): void {
-    this.afAuth.signInWithEmailAndPassword(this.loginForm.value.correo, this.loginForm.value.password).then(() => {
-      this.afStore.collection('Usuarios').get().forEach(res => {
-        res.forEach(res => {
-          console.log(this.loginForm.value.correo);
-          const usuario: any = res.data();
-          console.log(usuario.correo);
-          if (usuario.correo == this.loginForm.value.correo) {
+	login() {
+		this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(() => {
+			this.afStore.collection('Usuarios').get().forEach(res => {
+				res.forEach(res => {
+					console.log(this.loginForm.value.email);
+					let usuario: any = res.data();
+					console.log(usuario.email);
+					if (usuario.email == this.loginForm.value.email) {
 
-            localStorage.setItem('user', JSON.stringify(usuario));
+						localStorage.setItem('user', JSON.stringify(usuario));
 
-            if (usuario.rol == 'administradorGeneral') {
-              this.router.navigate(['./menu-admin-general']);
-            }
-            if (usuario.rol == 'estudiante') {
-              this.router.navigate(['./menu-estudiante']);
-            }
-          }else{
-            console.log('no existe!');
-          }
-        });
-      });
-    });
-  }
-
+						if (usuario.rol == "administradorGeneral") {
+							this.router.navigate(['./menu-admin-general']);
+						}
+						if (usuario.rol == "estudiante") {
+							this.router.navigate(['./menu-estudiante']);
+						}
+					} else {
+						console.log("no existe!");
+					}
+				});
+			})
+		})
+	}
 }

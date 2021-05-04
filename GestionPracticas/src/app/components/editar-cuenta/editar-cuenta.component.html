@@ -1,17 +1,19 @@
 <div class= "general">
     <div class= "hijo">
         <h1 class= "titulo"> Datos personales</h1>
-    </div>
-
-    <div class= hijo>
-
-        <h2> Correo personal</h2>
 
         <br>
 
-        <label></label>
-
+        <h2 class= "subtitulo"> Correo personal</h2>
+        
+        
         <form class="example-form">
+        
+            <mat-form-field class="example-full-width">
+                <mat-label>Correo personal</mat-label>
+                <input matInput disabled value="juanPerez@example.com">
+            </mat-form-field>
+        
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
                 <input type="email" matInput [formControl]="emailFormControl" value="Ejemplo: juan@example.com">
@@ -19,14 +21,51 @@
                     Please enter a valid email address
                 </mat-error>
                 <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-                    Email is <strong>required</strong>
-                </mat-error> -->
+                            Email is <strong>required</strong>
+                        </mat-error> -->
             </mat-form-field>
         </form>
-
         
-        <button mat-raised-button class="boton-aceptar">Ingresar correo personal</button>
-        <button mat-raised-button class= "boton-cancelar">Cancelar</button>
+        
+        <button mat-raised-button class="boton-aceptar">Modificar correo personal</button>
+        <button mat-raised-button class="boton-cancelar">Cancelar</button>
 
+
+        <br>
+        <br>
+        <br>
+        <hr>
+
+        <h2> Cambiar contraseña</h2>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput [formControl]="contrasena">
+                <!-- <mat-error *ngIf="contrasena.hasError('minLength')  && !contrasena.hasError('required')
+                && !contrasena.hasError('pattern')">
+                    Por favor ingrese una contraseña de, al menos, 5 caracteres
+                </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width"> 
+                <mat-label> Repita su contraseña</mat-label>
+                <input type="password" matInput [formControl]="contrasena">
+            </mat-form-field>
+            
+
+            <!-- <form method="post" [formGroup]="newPasswordForm">
+                <input type="password" formControlName="newPassword" />
+                <input type="password" formControlName="newPasswordConfirm" />
+                <div class="err-msg"
+                    *ngIf="newPasswordForm.errors?.passwordMismatch && (newPasswordForm.touched || newPasswordForm.dirty)">
+                    confirm-password does not match password
+                </div>
+            </form> -->
+
+            
+
+        <button mat-raised-button class="boton-aceptar">Ingresar nueva contraseña</button>
+        <button mat-raised-button class="boton-cancelar">Cancelar</button>
     </div>
+
 </div>
