@@ -66,6 +66,13 @@ export class VisualizarComponent implements OnInit {
         ver: ''
     }
 
+    clearFilters(){
+        this.nombreFilter.setValue('');
+        this.empresaFilter.setValue('');
+        this.semestreFilter.setValue('');
+        this.situacionFilter.setValue('');
+    }
+
     ngOnInit(): void {
         this.nombreFilter.valueChanges
             .subscribe(
@@ -118,7 +125,7 @@ export class VisualizarComponent implements OnInit {
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = true;
         }
-        
+
         if (filtroElegido == 'empresa') {
             this.filtroSemestreSeleccionado = false;
             this.filtroEmpresaSeleccionado = true;
@@ -128,6 +135,7 @@ export class VisualizarComponent implements OnInit {
             this.filtroSemestreSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
+            this.clearFilters();
         }
     }
 
