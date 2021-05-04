@@ -17,8 +17,8 @@
             <mat-label>Elige un filtro de práctica</mat-label>
             <mat-select (selectionChange)="filtroSelectChange($event.value)">
               <mat-option value="semestre">Semestre</mat-option>
-              <mat-option value="aprobadas">Aprobadas</mat-option>
-              <mat-option value="reprobadas">Reprobadas</mat-option>
+              <mat-option value="situacion">Situación</mat-option>
+              <!-- <mat-option value="reprobadas">Reprobadas</mat-option> -->
               <mat-option value="empresa">Empresa</mat-option>
               <mat-option value="sin_filtros">Sin filtros</mat-option>
             </mat-select>
@@ -30,6 +30,15 @@
           <mat-select [formControl]="semestreFilter" (selectionChange)="semestreSelectChange($event.value)">
             <mat-option value="1">1</mat-option>
             <mat-option value="2">2</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col" *ngIf="filtroSituacionSeleccionado">
+        <mat-form-field appearance="fill">
+          <mat-label>Elige la situación</mat-label>
+          <mat-select [formControl]="situacionFilter">
+            <mat-option value="aprobada">Aprobada</mat-option>
+            <mat-option value="reprobada">Reprobada</mat-option>
           </mat-select>
         </mat-form-field>
       </div>        

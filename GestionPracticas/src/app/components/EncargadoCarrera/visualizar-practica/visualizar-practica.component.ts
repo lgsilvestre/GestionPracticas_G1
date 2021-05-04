@@ -36,6 +36,7 @@ const ELEMENT_DATA: ITablaVisualizarPractica[] = [
 export class VisualizarComponent implements OnInit {
     filtroSemestreSeleccionado: boolean = false;
     filtroEmpresaSeleccionado: boolean = false;
+    filtroSituacionSeleccionado: boolean = false;
 
     nombreFilter = new FormControl('');
     empresaFilter = new FormControl('');
@@ -109,23 +110,24 @@ export class VisualizarComponent implements OnInit {
         if (filtroElegido == 'semestre') {
             this.filtroSemestreSeleccionado = true;
             this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = false;
         }
 
-        if (filtroElegido == 'aprobadas') {
+        if (filtroElegido == 'situacion') {
             this.filtroSemestreSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = true;
         }
-        if (filtroElegido == 'reprobadas') {
-            this.filtroSemestreSeleccionado = false;
-            this.filtroEmpresaSeleccionado = false;
-        }
+        
         if (filtroElegido == 'empresa') {
             this.filtroSemestreSeleccionado = false;
             this.filtroEmpresaSeleccionado = true;
+            this.filtroSituacionSeleccionado = false;
         }
         if (filtroElegido == 'sin_filtros') {
             this.filtroSemestreSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = false;
         }
     }
 
