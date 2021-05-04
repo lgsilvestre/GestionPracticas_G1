@@ -9,9 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
  * Firebase
  */
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { AngularFireStorageModule } from "@angular/fire/storage";
-import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireModule } from '@angular/fire'
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 /**
@@ -48,7 +48,7 @@ import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.
     MaterialModule,
     ReactiveFormsModule,
 
-    //Modulos de firebase
+    // Modulos de firebase
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,

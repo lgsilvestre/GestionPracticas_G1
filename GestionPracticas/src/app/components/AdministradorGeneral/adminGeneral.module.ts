@@ -5,6 +5,9 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraficosModule } from '../Graficos/graficos.module';
 import { PlantillaGeneralComponent } from './plantilla-general/plantilla-general.component';
+import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.service';
+
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { PlantillaGeneralComponent } from './plantilla-general/plantilla-general
   exports: [
     // Aca van los modulos que se crean
     PlantillaGeneralComponent,
+  ],
+  providers: [
+    FirebaseEstudianteService,
   ]
 })
 export class AdminGeneralModule{}
