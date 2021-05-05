@@ -82,3 +82,7 @@ mat-card {
 	margin-left: 4px;
 	margin-bottom: 4px;
 }
+
+::ng-deep .mat-form-field-outline {
+	background-color: white;
+}
