@@ -33,3 +33,12 @@ h1 {
 #parent-stepper {
 	background-color: #FAFAFA !important;
 }
+
+.delete-item {
+	color: red;
+	margin-left: 20px;
+}
+
+::ng-deep .mat-form-field {
+	max-width: 95%;
+}

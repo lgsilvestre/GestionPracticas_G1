@@ -53,7 +53,7 @@ mat-card {
 }
 
 ::ng-deep mat-horizontal-stepper .mat-step-header:hover,
-::ng-deep mat-horizontal-stepper .mat-focus-indicator:hover,
+::ng-deep mat-horizontal-stepper .mat-focus-indicator:hover:not(button),
 ::ng-deep mat-horizontal-stepper .mat-horizontal-stepper-header:hover {
 	background-color: #DAE8FC;
 	width: 2000px;
