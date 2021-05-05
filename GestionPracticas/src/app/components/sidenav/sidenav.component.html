@@ -1,21 +1,19 @@
 <mat-sidenav-container fullscreen>
-
 	<mat-sidenav #sidenav>
-		<!-- #30a5ba borrenme -->
-
 		<mat-nav-list>
 			<div id="logo">
 			</div>
 			<mat-divider></mat-divider>
 			<div id="outer-account">
-			  <div mat-card-avatar id="avatar-image" class="mt-4"></div>
-        <div id="name-edit">
-          <h3 mat-h3 class="mt-2"><b>[Nombre] [Apellido]</b></h3>
-          <a routerLink="./editar-cuenta" (click)="sidenav.toggle()"><mat-icon mat-list-icon>edit</mat-icon></a>
-        </div>
-		   </div>
+				<div mat-card-avatar id="avatar-image" class="mt-4"></div>
+				<div id="name-edit">
+					<h3 mat-h3 class="mt-2"><b>[Nombre] [Apellido]</b></h3>
+					<a routerLink="./editar-cuenta" (click)="sidenav.toggle()">
+						<mat-icon mat-list-icon>edit</mat-icon>
+					</a>
+				</div>
+			</div>
 			<mat-divider></mat-divider>
-			<!-- links de administrador general -->
 			<div *ngIf="soyAdminGeneral">
 				<a routerLink="./menu-admin-general" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>home</mat-icon>
@@ -43,9 +41,6 @@
 				</a>
 				<mat-divider></mat-divider>
 			</div>
-			<!-- fin links del administrador general -->
-
-			<!-- inicio links del estudiante -->
 			<div *ngIf="soyEstudiante">
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>home</mat-icon>
@@ -78,12 +73,10 @@
 				</a>
 				<mat-divider></mat-divider>
 			</div>
-			<!-- fin links del estudiante -->
-			<!-- inicio links del encargado de carrera -->
 			<div *ngIf="soyEncargadoDeCarrera">
 				<a routerLink="./menu-encargado-carrera" mat-list-item (click)="sidenav.toggle()">
-				  <mat-icon mat-list-icon>home</mat-icon>
-				  <span>Inicio</span>
+					<mat-icon mat-list-icon>home</mat-icon>
+					<span>Inicio</span>
 				</a>
 				<mat-divider></mat-divider>
 				<a routerLink="./visualizar-practica" mat-list-item (click)="sidenav.toggle()">
@@ -97,18 +90,16 @@
 				</a>
 				<mat-divider></mat-divider>
 				<a routerLink="./menu-encargado-carrera" mat-list-item (click)="sidenav.toggle()">
-				  <mat-icon mat-list-icon>edit</mat-icon>
-				  <span>Editar proceso de práctica</span>
+					<mat-icon mat-list-icon>edit</mat-icon>
+					<span>Editar proceso de práctica</span>
 				</a>
 				<mat-divider></mat-divider>
-		  </div>
-			<!-- fin links del encargado de carrera -->
+			</div>
 			<a routerLink="./login" mat-list-item (click)="deslogear()">
 				<mat-icon mat-list-icon>exit_to_app</mat-icon>
 				<span>Salir</span>
 			</a>
 			<mat-divider></mat-divider>
-			<!-- cambio de sidenav -->
 			<a mat-list-item (click)="cambiarAdmin()">
 				<mat-icon mat-list-icon>exit_to_app</mat-icon>
 				<span>Administrador General</span>
@@ -126,11 +117,12 @@
 			<mat-divider></mat-divider>
 		</mat-nav-list>
 	</mat-sidenav>
-
 	<mat-toolbar>
 		<button mat-icon-button (click)="sidenav.toggle()">
-	  <mat-icon>menu</mat-icon>
-	</button>
+			<mat-icon>menu</mat-icon>
+		</button>
 	</mat-toolbar>
-	<router-outlet></router-outlet>
+	<div id="main">
+		<router-outlet></router-outlet>
+	</div>
 </mat-sidenav-container>

@@ -1,5 +1,5 @@
 export interface PlantillaGeneral{
-  //Estudiante
+  // Estudiante
   nombreEstudiante:string;
   apellidoEstudiante:string;
   carreraEstudiante:string;
@@ -9,13 +9,13 @@ export interface PlantillaGeneral{
   correoEstudiante:string;
   contactoEmergencia:string;
   telefonoEmergencia:string;
-  //Empresa
+  // Empresa
   nombreEmpresa:string;
   rutEmpresa:string;
   telefonoEmpresa:string;
   correoEmpresa:string;
   direccionEmpresa:string;
-  //Tutor
+  // Tutor
   nombreTutor:string;
   apellidoTutor:string;
   runTutor:string;
@@ -23,14 +23,14 @@ export interface PlantillaGeneral{
   puestoTutor:string;
   contactoTutor:string;
   correoTutor:string;
-  //Practica
+  // Practica
   numeroPractica:string;
   fechaInicio:Date;
   fechaTermino:Date;
   horaInicio:string;
   horaTermino:string;
   duracionJorada:number;
-  archivoConsentimiento:string; // revisar bien.
-  //fin ( por el momento)
-  estado:string; // aprobado,rechazado,en revision
+  archivoConsentimiento: any; // revisar bien.
+  // fin ( por el momento)
+  estado: string; // aprobado,rechazado,en revision
 }

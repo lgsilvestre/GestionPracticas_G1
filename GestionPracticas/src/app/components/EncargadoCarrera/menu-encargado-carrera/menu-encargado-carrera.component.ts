@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-encargado-carrera',
-  templateUrl: './menu-encargado-carrera.component.html',
-  styleUrls: ['./menu-encargado-carrera.component.css']
+	selector: 'app-menu-encargado-carrera',
+	templateUrl: './menu-encargado-carrera.component.html',
+	styleUrls: ['./menu-encargado-carrera.component.css', '../../../app.component.css']
 })
 export class MenuEncargadoCarreraComponent implements OnInit {
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+	}
 
 }
