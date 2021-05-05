@@ -44,8 +44,8 @@ mat-card-actions {
 	margin: 20px;
 }
 
-.divider {
-	min-height: 20px;
+::ng-deep mat-divider {
+	margin: 20px 0 20px 0 !important;
 }
 
 mat-card {
@@ -55,13 +55,30 @@ mat-card {
 ::ng-deep mat-horizontal-stepper .mat-step-header:hover,
 ::ng-deep mat-horizontal-stepper .mat-focus-indicator:hover,
 ::ng-deep mat-horizontal-stepper .mat-horizontal-stepper-header:hover {
-	background-color: #FFE6CC;
+	background-color: #DAE8FC;
 	width: 2000px;
-	border: 2px #d1b879 !important;
+	border: 2px #6C8EBF !important;
 	border-style: solid !important;
 	border-radius: 5px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
+}
+
+::ng-deep .step-edit {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+}
+
+::ng-deep .step-edit p {
+	margin-top: 10px;
+}
+
+::ng-deep .step-edit mat-icon {
+	margin-left: 4px;
+	margin-bottom: 4px;
 }
