@@ -67,19 +67,20 @@ mat-card {
 	width: 100%;
 }
 
-::ng-deep .step-edit {
+.edit {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: left;
 }
 
-::ng-deep .step-edit p {
+.edit p,
+.edit h3 {
 	margin-top: 10px;
 }
 
-::ng-deep .step-edit mat-icon {
-	margin-left: 4px;
+.edit mat-icon {
+	margin-left: 8px;
 	margin-bottom: 4px;
 }
 

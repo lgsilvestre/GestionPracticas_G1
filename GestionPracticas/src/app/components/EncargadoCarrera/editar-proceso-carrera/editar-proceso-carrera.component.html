@@ -1,7 +1,7 @@
 <mat-horizontal-stepper #stepper id="parent-stepper">
 	<mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
 		<ng-template matStepLabel>
-			<div class="step-edit">
+			<div class="edit">
 				<p>Solicitud de la práctica</p>
 				<mat-icon class="delete">highlight_off</mat-icon>
 			</div>
@@ -11,7 +11,7 @@
 				<mat-horizontal-stepper #stepper>
 					<mat-step [stepControl]="primeraEtapa" errorMessage="Completa los datos obligatorios restantes">
 						<ng-template matStepLabel>
-							<div class="step-edit">
+							<div class="edit">
 								<p>Datos del estudiante</p>
 								<mat-icon class="delete">highlight_off</mat-icon>
 							</div>
@@ -52,7 +52,10 @@
 								<input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronico">
 							</mat-form-field>
 							<mat-icon class="delete-item">highlight_off</mat-icon>
-							<h3>Contacto de emergencia</h3>
+							<div class="edit">
+								<h3>Contacto de emergencia</h3>
+								<mat-icon class="delete-item">highlight_off</mat-icon>
+							</div>
 							<mat-form-field appearance="outline">
 								<mat-label>Nombre y apellido</mat-label>
 								<input matInput placeholder="Nombre y apellido del contacto de emergencia" formControlName="ContactoEmergencia">
@@ -71,7 +74,7 @@
 					</mat-step>
 					<mat-step [stepControl]="segundaEtapa" errorMessage="Completa los datos obligatorios restantes">
 						<ng-template matStepLabel>
-							<div class="step-edit">
+							<div class="edit">
 								<p>Datos de la empresa</p>
 								<mat-icon class="delete">highlight_off</mat-icon>
 							</div>
@@ -111,7 +114,7 @@
 					</mat-step>
 					<mat-step [stepControl]="terseraEtapa" errorMessage="Completa los datos obligatorios restantes">
 						<ng-template matStepLabel>
-							<div class="step-edit">
+							<div class="edit">
 								<p>Datos del tutor</p>
 								<mat-icon class="delete">highlight_off</mat-icon>
 							</div>
@@ -137,7 +140,10 @@
 								<input matInput placeholder="Departamento o área del tutor" formControlName="AreaDepto">
 							</mat-form-field>
 							<mat-icon class="delete-item">highlight_off</mat-icon>
-							<h3>Área o departamento donde se desempeña el tutor o encargado directo</h3>
+							<div class="edit">
+								<h3>Área o departamento donde se desempeña el tutor o encargado directo</h3>
+								<mat-icon class="delete-item">highlight_off</mat-icon>
+							</div>
 							<mat-form-field appearance="outline">
 								<mat-label>Puesto</mat-label>
 								<input matInput placeholder="Puesto del tutor" formControlName="Puesto">
@@ -162,7 +168,7 @@
 					</mat-step>
 					<mat-step [stepControl]="cuartaEtapa" errorMessage="Completa los datos obligatorios restantes">
 						<ng-template matStepLabel>
-							<div class="step-edit">
+							<div class="edit">
 								<p>Datos de la práctica</p>
 								<mat-icon class="delete">highlight_off</mat-icon>
 							</div>
@@ -215,13 +221,15 @@
 					</mat-step>
 					<mat-step>
 						<ng-template matStepLabel>
-							<div class="step-edit">
+							<div class="edit">
 								<p>Resumen</p>
 								<mat-icon class="delete">highlight_off</mat-icon>
 							</div>
 						</ng-template>
-						<h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
-						<mat-icon class="delete-item">highlight_off</mat-icon>
+						<div class="edit">
+							<h3>Haga click en el botón <i>Enviar</i> para enviar su formulario</h3>
+							<mat-icon class="delete-item">highlight_off</mat-icon>
+						</div>
 						<div class="step-buttons">
 							<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
 							<button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
@@ -233,7 +241,7 @@
 	</mat-step>
 	<mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
 		<ng-template matStepLabel>
-			<div class="step-edit">
+			<div class="edit">
 				<p>Subir informe de práctica</p>
 				<mat-icon class="delete">highlight_off</mat-icon>
 			</div>
@@ -248,7 +256,7 @@
 	</mat-step>
 	<mat-step>
 		<ng-template matStepLabel>
-			<div class="step-edit">
+			<div class="edit">
 				<p>Finalización</p>
 				<mat-icon class="delete">highlight_off</mat-icon>
 			</div>
