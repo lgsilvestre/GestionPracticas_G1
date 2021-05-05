@@ -5,6 +5,7 @@ import { EditarSolicitudProcesoPracticaComponent } from './editar-solicitud-proc
 import { MenuEncargadoCarreraComponent } from './menu-encargado-carrera/menu-encargado-carrera.component';
 import { GraficosModule } from '../Graficos/graficos.module';
 import { VisualizarComponent } from './visualizar-practica/visualizar-practica.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { VisualizarComponent } from './visualizar-practica/visualizar-practica.c
   imports: [
     CommonModule,
     MaterialModule,
-    GraficosModule
+    GraficosModule,
+    ReactiveFormsModule
   ],
   exports: [
     // Aca van los modulos que se crean

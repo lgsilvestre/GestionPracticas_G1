@@ -23,7 +23,7 @@ describe('AppComponent', () => {
 		const app = fixture.componentInstance;
 		expect(app.title).toEqual('Sistema de Gestión de Prácticas de la Universidad de Talca');
 	});
-	it('should render title', () => {
+	it('should render title', () => {// tslint:disable-next-line:indent
 		const fixture = TestBed.createComponent(AppComponent);
 		fixture.detectChanges();
 		const compiled = fixture.nativeElement;

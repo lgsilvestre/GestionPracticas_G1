@@ -5,9 +5,9 @@ import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.ser
 
 
 @Component({
-	selector: 'app-plantilla-general',
-	templateUrl: './plantilla-general.component.html',
-	styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
+  selector: 'app-plantilla-general',
+  templateUrl: './plantilla-general.component.html',
+  styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
 })
 export class PlantillaGeneralComponent implements OnInit {
    primeraEtapa: FormGroup;
@@ -46,12 +46,12 @@ export class PlantillaGeneralComponent implements OnInit {
       CorreoElectronico: ['', Validators.required],
     });
     this.cuartaEtapa = this._formBuilder.group({
-      FechaInicio: ['', Validators.required],
-      FechaFin: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
       HoraInicio: ['', Validators.required],
       HoraFin: ['', Validators.required],
       Jornada: ['', Validators.required],
-      Archivo: ['', Validators.required],
+      Archivo: [],
     });
     // tslint:disable-next-line:new-parens
   }
@@ -88,8 +88,8 @@ export class PlantillaGeneralComponent implements OnInit {
          correoTutor: this.terseraEtapa.value.CorreoElectronico,
          // Practica
          numeroPractica: '1',
-         fechaInicio: this.cuartaEtapa.value.FechaInicio,
-         fechaTermino: this.cuartaEtapa.value.FechaFin,
+         fechaInicio: this.cuartaEtapa.value.startDate,
+         fechaTermino: this.cuartaEtapa.value.endDate,
          horaInicio: this.cuartaEtapa.value.HoraInicio,
          horaTermino: this.cuartaEtapa.value.HoraFin,
          duracionJorada: this.cuartaEtapa.value.Jornada,
@@ -97,6 +97,7 @@ export class PlantillaGeneralComponent implements OnInit {
          // fin ( por el momento)
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
+    console.log(plantilla);
     this.afStudent.upSolicitud(this.files[0], plantilla);
   }
   /*
@@ -114,6 +115,17 @@ export class PlantillaGeneralComponent implements OnInit {
   {
       console.log(event.target.files[0]);
       this.files.push(event.target.files[0]);
+  }
+  onDataChange(event: any, option: number): void
+  {
+    const ddate: string = event.value;
+    if ( option === 0 )
+    {
+      this.cuartaEtapa.patchValue({ startDate: ddate});
+    }else
+    {
+      this.cuartaEtapa.patchValue({endDate: ddate});
+    }
   }
 
 }
