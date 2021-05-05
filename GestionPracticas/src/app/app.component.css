@@ -67,11 +67,32 @@ mat-card {
 	width: 100%;
 }
 
-.edit {
+.delete-item {
+	color: red;
+	margin-left: 20px;
+}
+
+.add-item {
+	color: green;
+	margin-left: 20px;
+}
+
+.add-container {
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.edit,
+.item-edit {
+	justify-content: left;
+}
+
+.edit,
+.item-edit,
+.add-container {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: left;
 }
 
 .edit p,
@@ -82,6 +103,10 @@ mat-card {
 .edit mat-icon {
 	margin-left: 8px;
 	margin-bottom: 4px;
+}
+
+.item-edit mat-icon {
+	margin-bottom: 20px;
 }
 
 ::ng-deep .mat-form-field-outline {
