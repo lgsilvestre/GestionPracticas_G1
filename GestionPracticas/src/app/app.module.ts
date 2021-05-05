@@ -31,6 +31,7 @@ import { MaterialModule } from './material/material.module';
 import { GraficosModule } from './components/Graficos/graficos.module';
 import { LoginComponent } from './components/login/login.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.
     AppComponent,
     SidenavComponent,
     LoginComponent,
-    EditarCuentaComponent
+    EditarCuentaComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { MenuEncargadoCarreraComponent } from './components/EncargadoCarrera/men
 import { VisualizarComponent } from './components/EncargadoCarrera/visualizar-practica/visualizar-practica.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
   { path: 'visualizar-practica', component: VisualizarComponent },
   { path: 'editar-cuenta', component: EditarCuentaComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
