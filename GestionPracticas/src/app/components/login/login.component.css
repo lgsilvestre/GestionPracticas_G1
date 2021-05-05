@@ -15,8 +15,7 @@ button {
 	width: 20em;
 }
 
-img,
-a {
+img, a {
 	text-align: center;
 	margin: 0 auto;
 }
@@ -32,4 +31,8 @@ mat-card {
 
 form {
 	text-align: center;
+}
+
+#forgotPass {
+	font-size: 12px !important;
 }
