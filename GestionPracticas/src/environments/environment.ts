@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyCc-a5eOLLnoCMdozQmXtQgig_bvNNoJc8",
-    authDomain: "gestionpracticas-1a6cf.firebaseapp.com",
-    projectId: "gestionpracticas-1a6cf",
-    storageBucket: "gestionpracticas-1a6cf.appspot.com",
-    messagingSenderId: "104538224550",
-    appId: "1:104538224550:web:34e8d0ad2b70ebe49e0167",
-    measurementId: "G-GW4J9R14J7"
+    apiKey: 'AIzaSyCc-a5eOLLnoCMdozQmXtQgig_bvNNoJc8',
+    authDomain: 'gestionpracticas-1a6cf.firebaseapp.com',
+    projectId: 'gestionpracticas-1a6cf',
+    storageBucket: 'gestionpracticas-1a6cf.appspot.com',
+    messagingSenderId: '104538224550',
+    appId: '1:104538224550:web:34e8d0ad2b70ebe49e0167',
+    measurementId: 'G-GW4J9R14J7'
   }
 };
 
