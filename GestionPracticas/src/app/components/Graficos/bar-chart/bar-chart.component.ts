@@ -20,15 +20,19 @@ export class BarChartComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = ['2014', '2015', '2016', '2017', '2018', '2019', '2020'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
 
+
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+    { data: [38, 40, 41, 52, 56, 55, 49], label: 'Aprobadas', backgroundColor: 'rgba(0,255,0,0.3)', borderColor: 'rgba(0,255,0,0.9)' },
+    { data: [2, 5, 4, 0, 1, 3, 5], label: 'Reprobadas', backgroundColor: 'rgba(255,0,0,0.3)', borderColor: 'rgba(255,0,0,0.9)' },
+    { data: [0, 2, 3, 0, 0, 1, 1], label: 'No completadas', backgroundColor: 'rgba(0,0,255,0.3)', borderColor: 'rgba(0,0,255,0.9)' }
   ];
+
+
 
   constructor() { }
 
