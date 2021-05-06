@@ -1,0 +1,94 @@
+.step-button {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.add-steps {
+	align-items: stretch;
+	margin-right: 22px;
+}
+
+.step-buttons {
+	align-items: center;
+}
+
+.step-buttons,
+.add-steps {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+h1 {
+	text-align: center;
+}
+
+.final-info {
+	text-align: center;
+}
+
+#smiley {
+	color: #FF5722;
+	font-size: 100px;
+	margin-left: -100px;
+}
+
+.delete {
+	color: red;
+}
+
+#parent-stepper {
+	background-color: #FAFAFA !important;
+}
+
+.delete-item {
+	color: red;
+	margin-left: 20px;
+}
+
+.add-step {
+	font-size: 50px;
+}
+
+.add-item {
+	margin-left: 20px;
+}
+
+.add-item,
+.add-step {
+	color: green;
+}
+
+.add-container {
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.edit,
+.item-edit {
+	justify-content: left;
+}
+
+.edit,
+.item-edit,
+.add-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.edit p,
+.edit h3 {
+	margin-top: 10px;
+}
+
+.edit mat-icon {
+	margin-left: 8px;
+	margin-bottom: 4px;
+}
+
+.item-edit mat-icon {
+	margin-bottom: 20px;
+}
