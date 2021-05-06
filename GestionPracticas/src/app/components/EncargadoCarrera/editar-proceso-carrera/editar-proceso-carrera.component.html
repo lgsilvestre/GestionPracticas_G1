@@ -1,3 +1,8 @@
+<div class="add-steps">
+	<mat-icon class="add-step">add_circle_outline</mat-icon>
+	<h1>Agregar etapas</h1>
+	<mat-icon class="add-step">add_circle_outline</mat-icon>
+</div>
 <mat-horizontal-stepper #stepper id="parent-stepper">
 	<mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
 		<ng-template matStepLabel>
@@ -425,10 +430,12 @@
 				<mat-icon class="delete">highlight_off</mat-icon>
 			</div>
 		</ng-template>
-		<div class="final-info">
+		<div class="edit">
 			<h1>¡Felicidades! Has completado tu práctica.</h1>
 			<mat-icon class="delete-item">highlight_off</mat-icon>
-			<mat-icon mat-list-icon id="smiley">emoji_emotions</mat-icon>
+		</div>
+		<div class="edit">
+			<mat-icon mat-list-icon>emoji_emotions</mat-icon>
 			<mat-icon class="delete-item">highlight_off</mat-icon>
 		</div>
 	</mat-step>
