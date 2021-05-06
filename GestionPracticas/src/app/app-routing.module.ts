@@ -24,9 +24,9 @@ const routes: Routes = [
   { path: 'visualizar-practica', component: VisualizarComponent },
   { path: 'editar-cuenta', component: EditarCuentaComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent}
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
+  { path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
