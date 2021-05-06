@@ -15,7 +15,8 @@ button {
 	width: 20em;
 }
 
-img, a {
+img,
+a {
 	text-align: center;
 	margin: 0 auto;
 }
@@ -34,5 +35,6 @@ form {
 }
 
 #forgotPass {
+	margin-top: 10px;
 	font-size: 12px !important;
 }
