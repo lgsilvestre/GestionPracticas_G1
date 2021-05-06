@@ -30,16 +30,23 @@
 					<span>Proceso de práctica</span>
 				</a>
 				<mat-divider></mat-divider>
-				<a routerLink="./gestion-usuarios-admin-general" mat-list-item (click)="sidenav.toggle()">
-					<mat-icon mat-list-icon>supervisor_account</mat-icon>
-					<span>Gestionar usuarios</span>
-				</a>
-				<mat-divider></mat-divider>
 				<a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>attachment</mat-icon>
 					<span>Cargar estudiantes</span>
 				</a>
 				<mat-divider></mat-divider>
+
+				<a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>visibility</mat-icon>
+					<span>Visualizar prácticas</span>
+				</a>
+				<mat-divider></mat-divider>
+				<a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>visibility</mat-icon>
+					<span>Visualizar solicit. prácticas</span>
+				</a>
+				<mat-divider></mat-divider>
+
 			</div>
 			<div *ngIf="soyEstudiante">
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
