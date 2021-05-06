@@ -30,16 +30,23 @@
 					<span>Proceso de práctica</span>
 				</a>
 				<mat-divider></mat-divider>
-				<a routerLink="./gestion-usuarios-admin-general" mat-list-item (click)="sidenav.toggle()">
-					<mat-icon mat-list-icon>supervisor_account</mat-icon>
-					<span>Gestionar usuarios</span>
-				</a>
-				<mat-divider></mat-divider>
 				<a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>attachment</mat-icon>
 					<span>Cargar estudiantes</span>
 				</a>
 				<mat-divider></mat-divider>
+
+				<a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>visibility</mat-icon>
+					<span>Visualizar prácticas</span>
+				</a>
+				<mat-divider></mat-divider>
+				<a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>visibility</mat-icon>
+					<span>Visualizar solicit. prácticas</span>
+				</a>
+				<mat-divider></mat-divider>
+
 			</div>
 			<div *ngIf="soyEstudiante">
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
@@ -49,17 +56,17 @@
 				<mat-divider></mat-divider>
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>assignment</mat-icon>
-					<span>Solicitar Practica</span>
+					<span>Solicitar práctica</span>
 				</a>
 				<mat-divider></mat-divider>
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>visibility</mat-icon>
-					<span>Ver proceso de practica</span>
+					<span>Ver proceso de práctica</span>
 				</a>
 				<mat-divider></mat-divider>
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>contact_support</mat-icon>
-					<span>Resumen de practicas</span>
+					<span>Resumen de prácticas</span>
 				</a>
 				<mat-divider></mat-divider>
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
@@ -89,7 +96,7 @@
 					<span>Editar solicitud de práctica</span>
 				</a>
 				<mat-divider></mat-divider>
-				<a routerLink="./menu-encargado-carrera" mat-list-item (click)="sidenav.toggle()">
+				<a routerLink="./editar-proceso-carrera" mat-list-item (click)="sidenav.toggle()">
 					<mat-icon mat-list-icon>edit</mat-icon>
 					<span>Editar proceso de práctica</span>
 				</a>

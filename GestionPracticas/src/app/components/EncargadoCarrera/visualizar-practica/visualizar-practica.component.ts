@@ -111,7 +111,7 @@ export class VisualizarComponent implements OnInit {
     }
 
 
-    filtroSelectChange(filtroElegido: any) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
+    filtroSelectChange(filtroElegido: String) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
     {
 
         if (filtroElegido == 'semestre') {
