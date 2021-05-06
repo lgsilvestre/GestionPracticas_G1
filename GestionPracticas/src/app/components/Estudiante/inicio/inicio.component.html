@@ -1,7 +1,7 @@
 <mat-horizontal-stepper #stepper>
 	<mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
 		<form [formGroup]="firstFormGroup">
-			<ng-template matStepLabel>Solicitud de la practica</ng-template>
+			<ng-template matStepLabel>Solicitud de la práctica</ng-template>
 			<div>
 				<app-plantilla-general id="app-plantilla-general"></app-plantilla-general>
 			</div>
@@ -9,7 +9,7 @@
 	</mat-step>
 	<mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
 		<form [formGroup]="secondFormGroup">
-			<ng-template matStepLabel>Subir informe de practica</ng-template>
+			<ng-template matStepLabel>Subir informe de práctica</ng-template>
 			<div>
 				<h3>Por favor, suba el archivo que contiene su informa de práctica</h3>
 				<input type="file" placeholder="consentimiento.pdf" required>
