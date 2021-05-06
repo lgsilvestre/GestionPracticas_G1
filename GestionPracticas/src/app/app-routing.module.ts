@@ -8,22 +8,25 @@ import { EditarSolicitudProcesoPracticaComponent } from './components/EncargadoC
 import { MenuEncargadoCarreraComponent } from './components/EncargadoCarrera/menu-encargado-carrera/menu-encargado-carrera.component';
 import { VisualizarComponent } from './components/EncargadoCarrera/visualizar-practica/visualizar-practica.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { EditarProcesoCarreraComponent } from './components/EncargadoCarrera/editar-proceso-carrera/editar-proceso-carrera.component';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 
 
 const routes: Routes = [
-	{ path: 'login', component: LoginComponent },
-	{ path: 'menu-admin-general', component: MenuAdminGeneralComponent },
-	{ path: 'menu-estudiante', component: MenuEstudianteComponent },
-	{ path: 'plantilla-general', component: PlantillaGeneralComponent },
-	{ path: 'editar-solicitud-practica', component: EditarSolicitudProcesoPracticaComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'menu-admin-general', component: MenuAdminGeneralComponent },
+  { path: 'menu-estudiante', component: MenuEstudianteComponent },
+  { path: 'plantilla-general', component: PlantillaGeneralComponent },
+  { path: 'editar-solicitud-practica', component: EditarSolicitudProcesoPracticaComponent },
+  { path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
+  { path: 'visualizar-practica', component: VisualizarComponent },
+  { path: 'editar-cuenta', component: EditarCuentaComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
-	{ path: 'visualizar-practica', component: VisualizarComponent },
-	{ path: 'editar-cuenta', component: EditarCuentaComponent },
 	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
-	{ path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
