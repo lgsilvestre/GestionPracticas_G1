@@ -98,7 +98,7 @@ export class PlantillaGeneralComponent implements OnInit {
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
     console.log(plantilla);
-    // this.afStudent.upSolicitud(this.files[0], plantilla);
+    this.afStudent.upSolicitud(this.files[0], plantilla);
   }
   /*
   upFile(): void
