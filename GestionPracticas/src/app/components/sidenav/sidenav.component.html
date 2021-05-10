@@ -108,6 +108,15 @@
 				</a>
 				<mat-divider></mat-divider>
 			</div>
+
+			<div *ngIf="soySuperAdmin">
+				<a routerLink="./ver-cuentas" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>edit</mat-icon>
+					<span>Ver cuentas</span>
+				</a>
+				<mat-divider></mat-divider>
+			</div>
+
 			<a routerLink="./login" mat-list-item (click)="deslogear()">
 				<mat-icon mat-list-icon>exit_to_app</mat-icon>
 				<span>Salir</span>
@@ -126,6 +135,11 @@
 			<a mat-list-item (click)="cambiarEncargadoCarrera()">
 				<mat-icon mat-list-icon>exit_to_app</mat-icon>
 				<span>Encargado de Carrera</span>
+			</a>
+
+			<a mat-list-item (click)="cambiarSuperAdmin()">
+				<mat-icon mat-list-icon>exit_to_app</mat-icon>
+				<span>Super administrador</span>
 			</a>
 			<mat-divider></mat-divider>
 		</mat-nav-list>

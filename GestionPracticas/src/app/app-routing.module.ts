@@ -12,6 +12,7 @@ import { EditarProcesoCarreraComponent } from './components/EncargadoCarrera/edi
 import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { crearCuentaEncargadoComponent } from './components/AdministradorGeneral/crear-cuenta-encargado/crear-cuenta-encargado.component';
+import { VerCuentasComponent } from './components/SuperAdministrador/ver-cuentas/ver-cuentas.component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
   { path: 'crear-cuenta-encargado', component: crearCuentaEncargadoComponent },
+  { path: 'ver-cuentas', component: VerCuentasComponent},
   { path: '**', component: PageNotFoundComponent},
 ];
 
