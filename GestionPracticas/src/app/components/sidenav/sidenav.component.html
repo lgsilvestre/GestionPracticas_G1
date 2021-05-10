@@ -47,6 +47,12 @@
 				</a>
 				<mat-divider></mat-divider>
 
+				<mat-divider></mat-divider>
+				<a routerLink="./crear-cuenta-encargado" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>assignment</mat-icon>
+					<span>Crear cuenta encargado de carrera</span>
+				</a>
+				<mat-divider></mat-divider>
 			</div>
 			<div *ngIf="soyEstudiante">
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">

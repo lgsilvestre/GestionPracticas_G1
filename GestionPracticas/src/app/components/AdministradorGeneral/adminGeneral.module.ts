@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GraficosModule } from '../Graficos/graficos.module';
 import { PlantillaGeneralComponent } from './plantilla-general/plantilla-general.component';
 import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.service';
+import { crearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cuenta-encargado.component';
 
 
 
@@ -14,6 +15,7 @@ import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.servic
     // Aca van los modulos que se crean
     MenuAdminGeneralComponent,
     PlantillaGeneralComponent,
+    crearCuentaEncargadoComponent
 
   ],
   imports: [
@@ -25,6 +27,7 @@ import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.servic
   exports: [
     // Aca van los modulos que se crean
     PlantillaGeneralComponent,
+    crearCuentaEncargadoComponent
   ],
   providers: [
     FirebaseEstudianteService,
