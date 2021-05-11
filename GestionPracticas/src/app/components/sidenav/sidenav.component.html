@@ -115,6 +115,11 @@
 					<span>Ver cuentas</span>
 				</a>
 				<mat-divider></mat-divider>
+				<a routerLink="./crear-cuentas-sa" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>person_add</mat-icon>
+					<span>Crear cuenta</span>
+				</a>
+				<mat-divider></mat-divider>
 			</div>
 
 			<a routerLink="./login" mat-list-item (click)="deslogear()">

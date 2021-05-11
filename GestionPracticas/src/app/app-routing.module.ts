@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { crearCuentaEncargadoComponent } from './components/AdministradorGeneral/crear-cuenta-encargado/crear-cuenta-encargado.component';
 import { VerCuentasComponent } from './components/SuperAdministrador/ver-cuentas/ver-cuentas.component';
+import { CrearCuentasSaComponent } from './components/SuperAdministrador/crear-cuentas-sa/crear-cuentas-sa.component';
 
 
 
@@ -25,11 +26,12 @@ const routes: Routes = [
   { path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
   { path: 'visualizar-practica', component: VisualizarComponent },
   { path: 'editar-cuenta', component: EditarCuentaComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
   { path: 'crear-cuenta-encargado', component: crearCuentaEncargadoComponent },
   { path: 'ver-cuentas', component: VerCuentasComponent},
+  { path: 'crear-cuentas-sa', component: CrearCuentasSaComponent},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
 ];
 
