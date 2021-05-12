@@ -72,5 +72,4 @@ export class SidenavComponent implements OnInit {
 		localStorage.setItem('user', JSON.stringify(this.user));
 		this.auth.signOut();
 	}
-
 }
