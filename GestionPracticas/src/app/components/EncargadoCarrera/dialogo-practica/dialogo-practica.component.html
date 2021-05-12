@@ -2,7 +2,8 @@
 <p>Aquí se debe mostrar la información resumen de la práctica seleccionada :P</p>
 
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
-    <button mat-button [mat-dialog-close]="false">Rechazar</button>
+    <!-- <button mat-raised-button mat-dialog-close>Cancelar</button> -->
+    <button mat-raised-button [mat-dialog-close]="false">Rechazar</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+    
 </mat-dialog-actions>
