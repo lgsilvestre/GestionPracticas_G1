@@ -30,8 +30,7 @@ export class SidenavComponent implements OnInit {
 			this.soyEstudiante = this.soyAdminGeneral = this.soySuperAdmin = false;
 		}
 
-		if (this.user.rol == "superadmiin") 
-		{
+		if (this.user.rol == "superadmiin") {
 			this.soySuperAdmin = true;
 			this.soyEstudiante = this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
 		}
@@ -59,15 +58,14 @@ export class SidenavComponent implements OnInit {
 		this.soySuperAdmin = false;
 	}
 
-	cambiarSuperAdmin()
-	{
+	cambiarSuperAdmin() {
 		this.soySuperAdmin = true;
 		this.soyEncargadoDeCarrera = false;
 		this.soyAdminGeneral = false;
 		this.soyEstudiante = false;
 	}
 
-	deslogear() {
+	desloguear() {
 		this.user = '';
 		localStorage.setItem('user', JSON.stringify(this.user));
 		this.auth.signOut();
