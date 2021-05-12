@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from "@angular/material/table";
+import { MatDialog } from '@angular/material/dialog';
+import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
 
 export interface ITablaVisualizarPractica {
     rut: string;
@@ -24,6 +26,8 @@ const ELEMENT_DATA: ITablaVisualizarPractica[] = [
     { position: 9, rut: '9999999', nombre: 'Ignacia Marambio B.', empresa: 'Haulmer Spa.', situacion: 'En proceso', semestre: '1', ver: '' },
     { position: 10, rut: '0000000', nombre: 'Francisco Duque Q.', empresa: 'Agrosuper', situacion: 'En proceso', semestre: '1', ver: '' },
 ];
+
+//lo anterior debe ser cargado desde FireBase, hay que eliminar esto anterior.
 
 
 @Component({
@@ -66,14 +70,14 @@ export class VisualizarComponent implements OnInit {
         ver: ''
     }
 
-    clearFilters(){
+    clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
         this.nombreFilter.setValue('');
         this.empresaFilter.setValue('');
         this.semestreFilter.setValue('');
         this.situacionFilter.setValue('');
     }
 
-    ngOnInit(): void {
+    ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
         this.nombreFilter.valueChanges
             .subscribe(
                 nombre => {
@@ -106,8 +110,16 @@ export class VisualizarComponent implements OnInit {
             )
     }
 
-    constructor() {
+    constructor(public dialog: MatDialog) {
         this.dataSource.filterPredicate = this.createFilter();
+    }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(DialogoPracticaComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 
 
