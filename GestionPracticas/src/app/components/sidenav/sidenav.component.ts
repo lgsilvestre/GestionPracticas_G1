@@ -67,7 +67,7 @@ export class SidenavComponent implements OnInit {
 		this.soyEstudiante = false;
 	}
 
-	deslogear() {
+	desloguear() {
 		this.user = '';
 		localStorage.setItem('user', JSON.stringify(this.user));
 		this.auth.signOut();
