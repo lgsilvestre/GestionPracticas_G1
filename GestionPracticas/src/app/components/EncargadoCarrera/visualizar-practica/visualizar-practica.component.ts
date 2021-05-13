@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from "@angular/material/table";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
 
 export interface ITablaVisualizarPractica {
@@ -114,11 +114,14 @@ export class VisualizarComponent implements OnInit {
         this.dataSource.filterPredicate = this.createFilter();
     }
 
-    openDialog() {
-        const dialogRef = this.dialog.open(DialogoPracticaComponent);
+    openDialog(nombre: string) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {nombre: nombre};
+
+        const dialogRef = this.dialog.open(DialogoPracticaComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
+            console.log(`Dialog result: ${result}`); // retorna lo que se seleccionó en cuadro diálogo.
         });
     }
 
