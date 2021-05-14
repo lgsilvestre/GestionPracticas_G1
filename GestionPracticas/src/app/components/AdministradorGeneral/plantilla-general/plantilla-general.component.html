@@ -41,7 +41,8 @@
 			</mat-form-field>
 			<mat-divider></mat-divider>
 			<div class="step-button">
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente <mat-icon>navigate_next</mat-icon>
+				</button>
 			</div>
 		</form>
 	</mat-step>
@@ -70,8 +71,9 @@
 			</mat-form-field>
 			<mat-divider></mat-divider>
 			<div class="step-buttons">
-				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+				<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
+				</button>
 			</div>
 		</form>
 	</mat-step>
@@ -109,8 +111,9 @@
 			</mat-form-field>
 			<mat-divider></mat-divider>
 			<div class="step-buttons">
-				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+				<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
+				</button>
 			</div>
 		</form>
 	</mat-step>
@@ -150,8 +153,9 @@
 			<input type="file" (change)="onFileChange($event)" placeholder="consentimiento.pdf" formControlName="Archivo" required>
 			<mat-divider></mat-divider>
 			<div class="step-buttons">
-				<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-				<button mat-raised-button matStepperNext color="primary" type="button">Siguente</button>
+				<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
+				<button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
+				</button>
 			</div>
 		</form>
 	</mat-step>
@@ -159,8 +163,8 @@
 		<ng-template matStepLabel>Resumen</ng-template>
 		<h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
 		<div class="step-buttons">
-			<button mat-raised-button matStepperPrevious color="primary" type="button">Atrás</button>
-			<button mat-raised-button matStepperNext color="primary" (click)="enviar()" type="button">Enviar</button>
+			<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
+			<button mat-raised-button matStepperNext color="primary" (click)="enviar()" type="button">Enviar <mat-icon> send </mat-icon> </button>
 		</div>
 	</mat-step>
 </mat-horizontal-stepper>

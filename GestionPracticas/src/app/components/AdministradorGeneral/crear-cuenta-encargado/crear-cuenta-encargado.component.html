@@ -1,0 +1,49 @@
+<h1>Crear cuenta de encargado de carrera</h1>
+
+<div>
+    <form [formGroup]="primeraEtapa">
+        <ng-template matStepLabel>Datos del encargado</ng-template>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Nombres</mat-label>
+            <input matInput placeholder="Primer y segundo nombre" formControlName="Nombres" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Apellidos</mat-label>
+            <input matInput placeholder="Apellido paterno y materno" formControlName="Apellidos" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>RUT</mat-label>
+            <input matInput placeholder="RUT" formControlName="Run" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Carrera</mat-label>
+            <input matInput placeholder="Ingeniería Civil en..." formControlName="Carrera" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Número de contacto</mat-label>
+            <input matInput placeholder="+56912345678" formControlName="NumeroContacto" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Correo Electrónico (institucional)</mat-label>
+            <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronico" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Rol</mat-label>
+            <input matInput formControlName="rol">
+        </mat-form-field>
+
+        <div class="submit-button">
+            <button mat-raised-button color="primary" type="button">Crear cuenta de encargado</button>
+        </div>
+        
+        
+    </form>
+
+</div>

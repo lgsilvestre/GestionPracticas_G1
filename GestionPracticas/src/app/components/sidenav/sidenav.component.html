@@ -47,6 +47,12 @@
 				</a>
 				<mat-divider></mat-divider>
 
+				<mat-divider></mat-divider>
+				<a routerLink="./crear-cuenta-encargado" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>assignment</mat-icon>
+					<span>Crear cuenta encargado de carrera</span>
+				</a>
+				<mat-divider></mat-divider>
 			</div>
 			<div *ngIf="soyEstudiante">
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
@@ -102,7 +108,21 @@
 				</a>
 				<mat-divider></mat-divider>
 			</div>
-			<a routerLink="./login" mat-list-item (click)="deslogear()">
+
+			<div *ngIf="soySuperAdmin">
+				<a routerLink="./ver-cuentas" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>edit</mat-icon>
+					<span>Ver cuentas</span>
+				</a>
+				<mat-divider></mat-divider>
+				<a routerLink="./crear-cuentas-sa" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>person_add</mat-icon>
+					<span>Crear cuenta</span>
+				</a>
+				<mat-divider></mat-divider>
+			</div>
+
+			<a routerLink="./login" mat-list-item (click)="desloguear()">
 				<mat-icon mat-list-icon>exit_to_app</mat-icon>
 				<span>Salir</span>
 			</a>
@@ -120,6 +140,11 @@
 			<a mat-list-item (click)="cambiarEncargadoCarrera()">
 				<mat-icon mat-list-icon>exit_to_app</mat-icon>
 				<span>Encargado de Carrera</span>
+			</a>
+			<mat-divider></mat-divider>
+			<a mat-list-item (click)="cambiarSuperAdmin()">
+				<mat-icon mat-list-icon>exit_to_app</mat-icon>
+				<span>Super administrador</span>
 			</a>
 			<mat-divider></mat-divider>
 		</mat-nav-list>

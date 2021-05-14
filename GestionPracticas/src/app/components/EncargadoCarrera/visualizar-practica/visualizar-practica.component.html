@@ -1,7 +1,7 @@
 <div class="container p-4">
   <div class="row text-center">
       <h1>
-          Práctica Ing. civil en computación
+          Visualizar prácticas
       </h1>
   </div>
   <div class="row">
@@ -37,8 +37,9 @@
       <mat-form-field appearance="fill">
         <mat-label>Elige la situación</mat-label>
         <mat-select [formControl]="situacionFilter">
-          <mat-option value="aprobada">Aprobada</mat-option>
-          <mat-option value="reprobada">Reprobada</mat-option>
+          <mat-option value="pendiente">Pendiente</mat-option>
+          <mat-option value="en proceso">En proceso</mat-option>
+          <mat-option value="terminada">Terminada</mat-option>
         </mat-select>
       </mat-form-field>
     </div>        
@@ -92,11 +93,17 @@
       <!--  Column -->
       <ng-container matColumnDef="ver">
         <th mat-header-cell *matHeaderCellDef> Visualizar </th>
-        <td mat-cell *matCellDef="let element"> <a href="#"> Ver </a> </td>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="openDialog(element.nombre)"> Ver </button> </td>
       </ng-container> 
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No se encontraron resultados.</td>
+      </tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>
   </div>
 </div>
