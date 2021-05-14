@@ -30,6 +30,21 @@ const ELEMENT_DATA: ITablaVisualizarPractica[] = [
 
 //lo anterior debe ser cargado desde FireBase, hay que eliminar esto anterior.
 
+const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
+    if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
+    
+    length = Math.max(length, 0);
+  
+    const startIndex = page * pageSize;
+  
+    // If the start index exceeds the list length, do not try and fix the end index to the end.
+    const endIndex = startIndex < length ?
+        Math.min(startIndex + pageSize, length) :
+        startIndex + pageSize;
+  
+    return `${startIndex + 1} - ${endIndex} de ${length}`;
+  }
+
 
 @Component({
     selector: 'app-visualizar-practicas',
@@ -54,18 +69,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-    
-    
-
-
-
-    // applyFilter(event: Event) {
-    // //     const filterValue = (event.target as HTMLInputElement).value;
-    // //     // this.dataSource.filter = filterValue.trim().toLowerCase();
-    // //     this.dataSource.filterPredicate = (data: ITablaVisualizarPractica) => {
-    // //         return data.nombre == filterValue;
-    // //     };
-    // }
 
     filterValues = {
         rut: '',
@@ -88,7 +91,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
         this.nombreFilter.valueChanges
             .subscribe(
                 nombre => {
-                    console.log(nombre);
                     this.filterValues.nombre = nombre;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
@@ -103,7 +105,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
         this.semestreFilter.valueChanges
             .subscribe(
                 semestre => {
-                    console.log(semestre);
                     this.filterValues.semestre = semestre;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
@@ -122,6 +123,12 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
         this.dataSource.filterPredicate = this.createFilter();
     }
     ngAfterViewInit(): void {
+        this.paginator._intl.itemsPerPageLabel = "Resultados por página";
+        this.paginator._intl.nextPageLabel = "Página siguiente";
+        this.paginator._intl.firstPageLabel = "Primera página";
+        this.paginator._intl.lastPageLabel = "Última página";
+        this.paginator._intl.previousPageLabel = "Página anterior";
+        this.paginator._intl.getRangeLabel = spanishRangeLabel;
         this.dataSource.paginator = this.paginator;
     }
 
