@@ -8,7 +8,6 @@ import { VisualizarComponent } from './visualizar-practica/visualizar-practica.c
 import { ReactiveFormsModule } from "@angular/forms";
 import { EditarProcesoCarreraComponent } from './editar-proceso-carrera/editar-proceso-carrera.component';
 import { DialogoPracticaComponent } from './dialogo-practica/dialogo-practica.component';
-
 @NgModule({
   declarations: [
     // Aca van los modulos que se crean

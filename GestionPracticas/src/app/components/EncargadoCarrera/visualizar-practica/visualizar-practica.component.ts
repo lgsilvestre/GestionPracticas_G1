@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
+import { MatPaginator } from "@angular/material/paginator";
 
 export interface ITablaVisualizarPractica {
     rut: string;
@@ -37,7 +38,7 @@ const ELEMENT_DATA: ITablaVisualizarPractica[] = [
 })
 
 
-export class VisualizarComponent implements OnInit {
+export class VisualizarComponent implements OnInit, AfterViewInit{
     filtroSemestreSeleccionado: boolean = false;
     filtroEmpresaSeleccionado: boolean = false;
     filtroSituacionSeleccionado: boolean = false;
@@ -50,6 +51,12 @@ export class VisualizarComponent implements OnInit {
     displayedColumns: string[] = ['position', 'rut', 'nombre', 'empresa', 'situacion', 'semestre', 'ver'];
 
     dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+    
+    
+
 
 
     // applyFilter(event: Event) {
@@ -108,10 +115,14 @@ export class VisualizarComponent implements OnInit {
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
+
     }
 
     constructor(public dialog: MatDialog) {
         this.dataSource.filterPredicate = this.createFilter();
+    }
+    ngAfterViewInit(): void {
+        this.dataSource.paginator = this.paginator;
     }
 
     openDialog(nombre: string) {

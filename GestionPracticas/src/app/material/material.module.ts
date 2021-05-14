@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 /**
  * Se agregan los modules en imports y exports para poder usarlos en los otros componentes
@@ -49,6 +50,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 		MatDatepickerModule,
 		MatNativeDateModule,
 		MatDialogModule,
+		MatPaginatorModule,
 	],
 	exports: [
 		MatSliderModule,
@@ -69,6 +71,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 		MatDatepickerModule,
 		MatNativeDateModule,
 		MatDialogModule,
+		MatPaginatorModule,
 	],
 })
 
