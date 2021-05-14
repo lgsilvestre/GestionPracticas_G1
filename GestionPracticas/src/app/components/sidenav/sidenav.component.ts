@@ -11,6 +11,7 @@ export class SidenavComponent implements OnInit {
 	soyEstudiante: boolean = false;
 	soyAdminGeneral: boolean = false;
 	soyEncargadoDeCarrera: boolean = false;
+	soySuperAdmin: boolean = false;
 	constructor(public auth: AngularFireAuth) {
 	}
 
@@ -18,15 +19,20 @@ export class SidenavComponent implements OnInit {
 		console.log("ngOnInit");
 		if (this.user.rol == "estudiante") {
 			this.soyEstudiante = true;
-			this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
+			this.soyAdminGeneral = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
 		}
 		if (this.user.rol == "administradorGeneral") {
 			this.soyAdminGeneral = true;
-			this.soyEstudiante = this.soyEncargadoDeCarrera = false;
+			this.soyEstudiante = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
 		}
 		if (this.user.rol == "encargadoCarrera") {
 			this.soyEncargadoDeCarrera = true;
-			this.soyEstudiante = this.soyAdminGeneral = false;
+			this.soyEstudiante = this.soyAdminGeneral = this.soySuperAdmin = false;
+		}
+
+		if (this.user.rol == "superadmiin") {
+			this.soySuperAdmin = true;
+			this.soyEstudiante = this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
 		}
 		this.user = JSON.parse(localStorage.getItem('user') || '{}');
 	}
@@ -35,24 +41,33 @@ export class SidenavComponent implements OnInit {
 		this.soyAdminGeneral = true;
 		this.soyEstudiante = false;
 		this.soyEncargadoDeCarrera = false;
+		this.soySuperAdmin = false;
 	}
 
 	cambiarEstudiante() {
 		this.soyEstudiante = true;
 		this.soyAdminGeneral = false;
 		this.soyEncargadoDeCarrera = false;
+		this.soySuperAdmin = false;
 	}
 
 	cambiarEncargadoCarrera() {
 		this.soyEncargadoDeCarrera = true;
 		this.soyAdminGeneral = false;
 		this.soyEstudiante = false;
+		this.soySuperAdmin = false;
 	}
 
-	deslogear() {
+	cambiarSuperAdmin() {
+		this.soySuperAdmin = true;
+		this.soyEncargadoDeCarrera = false;
+		this.soyAdminGeneral = false;
+		this.soyEstudiante = false;
+	}
+
+	desloguear() {
 		this.user = '';
 		localStorage.setItem('user', JSON.stringify(this.user));
 		this.auth.signOut();
 	}
-
 }
