@@ -26,12 +26,14 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { EstudianteModule } from './components/Estudiante/estudiante.module';
 import { AdminGeneralModule } from './components/AdministradorGeneral/adminGeneral.module';
 import { EncargadoCarreraModule } from './components/EncargadoCarrera/encargadoCarrera.module';
-import { SuperAdminModule } from './components/SuperAdministrador/superAdmin.module';
+
 import { MaterialModule } from './material/material.module';
 import { GraficosModule } from './components/Graficos/graficos.module';
 import { LoginComponent } from './components/login/login.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
 import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
+import { SuperAdminModule } from './components/SuperAdministrador/superadministrador.module';
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/
     SidenavComponent,
     LoginComponent,
     EditarCuentaComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+
   ],
   imports: [
     BrowserModule,
