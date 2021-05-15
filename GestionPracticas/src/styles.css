@@ -1,1 +1,9 @@
 /* Dummy file, DO NOT DELETE OR THE APP WON'T WORK! */
+
+.imagen-fondo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url('http://comunicaciones.utalca.cl/galeria/fotos_gr/20.jpg');
+}

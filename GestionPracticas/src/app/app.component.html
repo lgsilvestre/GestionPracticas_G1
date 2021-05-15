@@ -1,1 +1,13 @@
-<app-sidenav></app-sidenav>
+<ng-container *ngIf="fullscreenRoute; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+    <div class="wrapper">
+        <router-outlet></router-outlet>
+    </div>
+</ng-template>
+<ng-template #elseTemplate>
+    <div class="wrapper">
+        <div class="main-panel">
+            <app-sidenav></app-sidenav>
+        </div>
+    </div>
+</ng-template>
