@@ -44,21 +44,6 @@ mat-card {
 	margin: 0 0 1.5rem 0;
 }
 
-::ng-deep mat-horizontal-stepper .mat-step-header:hover,
-::ng-deep mat-horizontal-stepper .mat-focus-indicator:hover:not(button),
-::ng-deep mat-horizontal-stepper .mat-horizontal-stepper-header:hover {
-	background-color: #DAE8FC;
-	width: 2000rem;
-	border: 2px #6C8EBF !important;
-	border-style: solid !important;
-	border-radius: 5px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-}
-
 ::ng-deep .mat-form-field-outline {
 	background-color: white;
 }
