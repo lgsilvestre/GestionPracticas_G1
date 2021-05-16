@@ -1,7 +1,7 @@
 <div class="mt-5">
     <div id="main">
         <mat-card>
-            <img mat-card-image src="../../../assets/logo_practica.png">
+            <img class="img-logo" mat-card-image src="../../../assets/logo_practica.png">
             <mat-card-content>
                 <form [formGroup]="loginForm">
                     <mat-form-field appearance="outline">
@@ -15,6 +15,7 @@
                     <button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="loginForm.invalid">Ingresar</button>
                 </form>
             </mat-card-content>
+            <img *ngIf="cargando" src="https://hiker11.com/plantilla/images/pre-loader.gif" style="width: 30px !important;">
             <mat-card-content *ngIf="mostrarAlert==true">
                 <div class="row">
                     <div class="col">
@@ -32,3 +33,18 @@
         </mat-card>
     </div>
 </div>
+
+<ng-template #loading>
+    <div class="container text-center">
+        <div class="row mb-3">
+            <div class="col">
+                <strong>Cargando planes disponibles...</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c110454-5b33-4416-bf9b-72992c7cb56f/d60eb1v-79212624-e842-4e55-8d58-4ac7514ca8e4.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMmMxMTA0NTQtNWIzMy00NDE2LWJmOWItNzI5OTJjN2NiNTZmXC9kNjBlYjF2LTc5MjEyNjI0LWU4NDItNGU1NS04ZDU4LTRhYzc1MTRjYThlNC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.P1AQAZ6H1E-Xwu69xiwDXqfZ5h47ZZlXS4u86T6l8nk" style="width: 80px;">
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -5,7 +5,7 @@
     justify-content: space-between;
 }
 
-img {
+.img-logo {
     min-width: 280px;
     max-width: 280px;
     padding: 20px;

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 	hide         = true;
 	mostrarAlert = false;
 	datosUsuario: any;
+	cargando     = false; //cuando hace la consulta a la base de datos
 
 	constructor(
 		private afStore: AngularFirestore,
@@ -37,11 +38,12 @@ export class LoginComponent implements OnInit {
 			}
 		});
 	}
+
 	login() {
+		this.cargando = true;
 		this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(() => {
 			this.afStore.collection('Usuarios').get().forEach(res => {
 				res.forEach(res => {
-					this.mostrarAlert = false;
 					const usuario: any = res.data();
 					if (usuario.correo == this.loginForm.value.email) {
 
@@ -61,9 +63,12 @@ export class LoginComponent implements OnInit {
 			});
 		})
 		.catch((err) => {
+			this.cargando     = false;
 			this.mostrarAlert = true;
 			setTimeout(() => {this.setMostrarAlertToFalse()}, 3000);
-
+		})
+		.finally(() => {
+			//this.cargando = false;
 		});
 	}
 
