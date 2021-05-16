@@ -8,6 +8,7 @@ import { VisualizarComponent } from './visualizar-practica/visualizar-practica.c
 import { ReactiveFormsModule } from "@angular/forms";
 import { EditarProcesoCarreraComponent } from './editar-proceso-carrera/editar-proceso-carrera.component';
 import { DialogoPracticaComponent } from './dialogo-practica/dialogo-practica.component';
+import { InicioEncargadoCarreraComponent } from './inicio-encargado-carrera/inicio-encargado-carrera.component';
 @NgModule({
   declarations: [
     // Aca van los modulos que se crean
@@ -15,7 +16,8 @@ import { DialogoPracticaComponent } from './dialogo-practica/dialogo-practica.co
     MenuEncargadoCarreraComponent,
     VisualizarComponent,
     EditarProcesoCarreraComponent,
-    DialogoPracticaComponent
+    DialogoPracticaComponent,
+    InicioEncargadoCarreraComponent
   ],
   imports: [
     CommonModule,

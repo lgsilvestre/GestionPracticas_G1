@@ -40,4 +40,14 @@ export class AutenticacionService
   {
     this.afStore.collection('Usuarios').add(nuevoUsuario);
   }
+
+  login(correo: string, password: string)
+  {
+    //return promesa
+  }
+
+  logout()
+  {
+    // Code...
+  }
 }
