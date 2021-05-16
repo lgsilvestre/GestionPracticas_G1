@@ -12,7 +12,7 @@ import { DialogElementsExampleDialogComponent } from '../dialog/dialog-elements-
 })
 export class CrearCuentasSaComponent implements OnInit {
 	nuevaCuenta: FormGroup;
-	carreras: string[] = ['Ing. civil en computación', 'Ing. civil industrial', 'Ing. civil en obras civiles', 'Ing. civil mecatrónica'];
+	carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
 	roles: string[] = ['Encargado de Carrera', 'Estudiante', 'Administrador General'];
 	carreraActual: string = 'None';
 	rolActual: string = 'None';
