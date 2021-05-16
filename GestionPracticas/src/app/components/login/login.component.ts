@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
 	styleUrls: ['./login.component.css', '../../app.component.css']
 })
 export class LoginComponent implements OnInit {
-	hide = true;
-
+	hide         = true;
+	mostrarAlert = false;
 	datosUsuario: any;
+
 	constructor(
 		private afStore: AngularFirestore,
 		private afAuth: AngularFireAuth,
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
 		this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(() => {
 			this.afStore.collection('Usuarios').get().forEach(res => {
 				res.forEach(res => {
+					this.mostrarAlert = false;
 					const usuario: any = res.data();
 					if (usuario.correo == this.loginForm.value.email) {
 
@@ -57,6 +59,16 @@ export class LoginComponent implements OnInit {
 					}
 				});
 			});
+		})
+		.catch((err) => {
+			this.mostrarAlert = true;
+			setTimeout(() => {this.setMostrarAlertToFalse()}, 3000);
+
 		});
+	}
+
+	private setMostrarAlertToFalse()
+	{
+		this.mostrarAlert = false;
 	}
 }
