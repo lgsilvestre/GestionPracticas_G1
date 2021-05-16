@@ -5,6 +5,7 @@ import { VerCuentasComponent } from './ver-cuentas/ver-cuentas.component';
 import { CrearCuentasSaComponent } from './crear-cuentas-sa/crear-cuentas-sa.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DialogElementsExampleDialogComponent } from './dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
+import {AutenticacionService} from '../Servicios/autenticacion.service';
 
 
 @NgModule({
@@ -21,6 +22,9 @@ import { DialogElementsExampleDialogComponent } from './dialog/dialog-elements-e
     ],
     exports: [
         // Aca van los modulos que se crean
-    ]
+    ],
+  providers: [
+    AutenticacionService,
+  ]
 })
 export class SuperAdminModule { }
