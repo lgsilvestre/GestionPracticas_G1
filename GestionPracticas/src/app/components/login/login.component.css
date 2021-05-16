@@ -1,3 +1,4 @@
+mat-card,
 #main {
 	display: flex;
 	flex-direction: column;
@@ -12,7 +13,7 @@ img {
 }
 
 button {
-	width: 20em;
+	width: 20rem;
 }
 
 img,
@@ -21,20 +22,26 @@ a {
 	margin: 0 auto;
 }
 
-mat-card {
-	min-width: 400px;
-	max-width: 400px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+@media only screen and (min-width: 768px) {
+	mat-card {
+		margin: 0 32vh 0 32vh;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	mat-card {
+		margin: 0 16vh 0 16vh;
+	}
 }
 
 form {
 	text-align: center;
 }
 
-#forgotPass {
-	margin-top: 10px;
-	font-size: 12px !important;
+.buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 5.5rem;
 }

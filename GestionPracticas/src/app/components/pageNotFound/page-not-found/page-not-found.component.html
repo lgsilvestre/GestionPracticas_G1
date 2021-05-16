@@ -1,26 +1,9 @@
-<div class="container-fluid border p-4">
-    
-    <div class="row text-center mb-3">
-        <div class="col">
-            <img id="img-pageNotFounded" class="img-fluid" src="../../../../assets/PageNotFound.png">
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="row text-center">
-        <h1 class="text-primary"> <strong> Error 404 </strong> </h1>
-    </div>
-    <div class="row text-center mb-4">
-        <label class="text-primary"> La ruta <strong>{{rutaActual}}</strong> no existe! </label>
-    </div>
-    
-    <div class="row text-center text-primary">
-        <div class="col">
-            <button mat-raised-button color="primary" (click)="back_page()" type="button">
-                <mat-icon>keyboard_arrow_left</mat-icon>
-                Volver
-            </button>
-        </div>
-    </div>
-</div>
+<mat-card>
+	<mat-card-content>
+		<mat-icon id="alert" mat-list-icon>error_outline</mat-icon>
+		<hr>
+		<h1><strong>Error 404</strong></h1>
+		<h3>La ruta <strong>{{rutaActual}}</strong> no existe!</h3>
+		<button mat-raised-button color="primary" (click)="back_page()" type="button"><mat-icon>keyboard_arrow_left</mat-icon>Volver</button>
+	</mat-card-content>
+</mat-card>
