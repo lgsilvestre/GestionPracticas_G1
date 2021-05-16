@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'crear-cuenta-encargado', component: crearCuentaEncargadoComponent },
   { path: 'ver-cuentas', component: VerCuentasComponent},
   { path: 'crear-cuentas-sa', component: CrearCuentasSaComponent},
-  { path: 'inicio-encargaado-carrera', component: InicioEncargadoCarreraComponent},
+  { path: 'inicio-encargado-carrera', component: InicioEncargadoCarreraComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
 ];

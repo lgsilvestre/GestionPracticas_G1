@@ -33,8 +33,6 @@ import { LoginComponent } from './components/login/login.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
 import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
 import { SuperAdminModule } from './components/SuperAdministrador/superadministrador.module';
-import { InicioEncargadoCarreraComponent } from './components/inicio-encargado-carrera/inicio-encargado-carrera.component';
-
 
 
 @NgModule({
@@ -44,8 +42,6 @@ import { InicioEncargadoCarreraComponent } from './components/inicio-encargado-c
     LoginComponent,
     EditarCuentaComponent,
     PageNotFoundComponent,
-    InicioEncargadoCarreraComponent,
-
   ],
   imports: [
     BrowserModule,
