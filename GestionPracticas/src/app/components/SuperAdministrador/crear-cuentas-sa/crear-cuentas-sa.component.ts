@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncargadoCarrera } from '../../../model/encargadoCarrera.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogElementsExampleDialogComponent } from '../dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
-import {AutenticacionService} from '../../Servicios/autenticacion.service';
+import {GestionEncargadosService} from '../../Servicios/encargado/gestion-encargados.service';
 
 @Component({
   selector: 'app-crear-cuentas-sa',
@@ -17,7 +17,7 @@ export class CrearCuentasSaComponent implements OnInit {
   roles: string[] = ['Encargado de Carrera', 'Estudiante', 'Administrador General'];
   carreraActual: string = 'None';
   rolActual: string = 'None';
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private aFs: AutenticacionService)
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private gestionEncargados: GestionEncargadosService)
   {
     this.nuevaCuenta = this.formBuilder.
     group({
@@ -57,12 +57,11 @@ export class CrearCuentasSaComponent implements OnInit {
           apellidos: this.nuevaCuenta.value.Apellidos,
           run: this.nuevaCuenta.value.Run,
           carrera: this.nuevaCuenta.value.Carrera,
-          correInstitucional: this.nuevaCuenta.value.CorreInstitucional,
+          correoInstitucional: this.nuevaCuenta.value.CorreInstitucional,
           correoPersonal: this.nuevaCuenta.value.CorreoPersonal
         };
       console.log(nuevoUsuario);
-      this.aFs.crearNuevoUsuario(nuevoUsuario, this.nuevaCuenta.value.Contrasenna1);
-      // this.aFs.addUsuario(nuevoUsuario);
+      this.gestionEncargados.crearNuevoEncargado(nuevoUsuario, this.nuevaCuenta.value.Contrasenna1);
     }
     else
     {
