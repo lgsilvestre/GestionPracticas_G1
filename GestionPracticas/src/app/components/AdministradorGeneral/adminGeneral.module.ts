@@ -9,6 +9,7 @@ import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.servic
 import { crearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cuenta-encargado.component';
 import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
+import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 
 
 
@@ -19,7 +20,8 @@ import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-
     PlantillaGeneralComponent,
     crearCuentaEncargadoComponent,
     CrearCuentaAdministradorGeneralComponent,
-    CrearCuentaEstudianteComponent
+    CrearCuentaEstudianteComponent,
+    CrearCuentaComponent
 
   ],
   imports: [

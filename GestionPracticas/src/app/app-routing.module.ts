@@ -16,6 +16,7 @@ import { VerCuentasComponent } from './components/SuperAdministrador/ver-cuentas
 import { CrearCuentasSaComponent } from './components/SuperAdministrador/crear-cuentas-sa/crear-cuentas-sa.component';
 import { CrearCuentaAdministradorGeneralComponent } from './components/AdministradorGeneral/crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './components/AdministradorGeneral/crear-cuenta-estudiante/crear-cuenta-estudiante.component';
+import { CrearCuentaComponent } from './components/AdministradorGeneral/crear-cuenta/crear-cuenta.component';
 
 
 
@@ -36,6 +37,7 @@ const routes: Routes = [
 	{ path: 'admin-general/crear-cuenta/encargado-carrera', component: crearCuentaEncargadoComponent },
 	{ path: 'admin-general/crear-cuenta/admin-general', component: CrearCuentaAdministradorGeneralComponent },
 	{ path: 'admin-general/crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
+	{ path: 'admin-general/crear-cuenta', component: CrearCuentaComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];

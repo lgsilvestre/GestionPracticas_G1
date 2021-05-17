@@ -1,0 +1,21 @@
+mat-icon {
+	color: #FF5722;
+	font-size: 10rem;
+	margin-left: -8.5rem;
+}
+
+mat-card,
+h1 {
+	text-align: center;
+}
+
+mat-card {
+	min-width: 20rem;
+}
+
+div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
