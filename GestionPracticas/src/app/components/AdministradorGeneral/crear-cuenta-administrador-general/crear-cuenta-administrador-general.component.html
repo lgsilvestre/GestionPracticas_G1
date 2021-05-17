@@ -20,19 +20,18 @@
 		</mat-form-field>
 
 		<mat-form-field appearance="outline">
-			<mat-label>Carrera</mat-label>
-			<input matInput placeholder="Ingeniería Civil en..." formControlName="Carrera" required>
-		</mat-form-field>
-
-
-		<mat-form-field appearance="outline">
 			<mat-label>Correo Electrónico (institucional)</mat-label>
 			<input matInput placeholder="usuario@utalca.cl" formControlName="CorreoInstitucional" required>
 		</mat-form-field>
 
 		<mat-form-field appearance="outline">
-			<mat-label>Correo Electrónico (institucional)</mat-label>
-			<input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronico" required>
+			<mat-label>Correo Electrónico (personal)</mat-label>
+			<input matInput placeholder="usuario@dominio.cl" formControlName="CorreoElectronico">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Teléfono</mat-label>
+			<input matInput placeholder="+5601234567" formControlName="Telefono" required>
 		</mat-form-field>
 
 		<mat-form-field appearance="outline">
@@ -41,7 +40,7 @@
 		</mat-form-field>
 
 		<div class="submit-button">
-			<button mat-raised-button color="primary" type="button">Crear cuenta de encargado</button>
+			<button mat-raised-button color="primary" type="button">Crear cuenta</button>
 		</div>
 
 

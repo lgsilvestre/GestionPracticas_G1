@@ -17,6 +17,7 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
 			CorreoElectronico: new FormControl('', Validators.required),
 			CorreoInstitucional: new FormControl('', Validators.required),
 			rol: [{ value: 'Encargado de carrera', disabled: true }],
+			Telefono: new FormControl('', Validators.required),
 		});
 	}
 	ngOnInit(): void {
