@@ -14,12 +14,15 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { crearCuentaEncargadoComponent } from './components/AdministradorGeneral/crear-cuenta-encargado/crear-cuenta-encargado.component';
 import { VerCuentasComponent } from './components/SuperAdministrador/ver-cuentas/ver-cuentas.component';
 import { CrearCuentasSaComponent } from './components/SuperAdministrador/crear-cuentas-sa/crear-cuentas-sa.component';
+import { SolicitarPracticaComponent } from './components/Estudiante/solicitar-practica/solicitar-practica.component';
+import { InicioComponent } from './components/Estudiante/inicio/inicio.component';
 
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'menu-admin-general', component: MenuAdminGeneralComponent },
+  { path: 'inicio-estudiante', component: InicioComponent },
   { path: 'menu-estudiante', component: MenuEstudianteComponent },
   { path: 'plantilla-general', component: PlantillaGeneralComponent },
   { path: 'editar-solicitud-practica', component: EditarSolicitudProcesoPracticaComponent },
@@ -31,6 +34,7 @@ const routes: Routes = [
   { path: 'crear-cuenta-encargado', component: crearCuentaEncargadoComponent },
   { path: 'ver-cuentas', component: VerCuentasComponent},
   { path: 'crear-cuentas-sa', component: CrearCuentasSaComponent},
+  { path: 'solicitar-practica', component: SolicitarPracticaComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
 ];

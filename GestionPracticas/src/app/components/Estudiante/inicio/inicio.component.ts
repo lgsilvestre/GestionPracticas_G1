@@ -13,17 +13,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InicioComponent implements OnInit {
 
 
-	firstFormGroup: FormGroup;
-	secondFormGroup: FormGroup;
+	// firstFormGroup: FormGroup;
+	// secondFormGroup: FormGroup;
 
-	constructor(private _formBuilder: FormBuilder) {
-		this.firstFormGroup = this._formBuilder.group({
-			firstCtrl: ['', Validators.required]
-		});
-		this.secondFormGroup = this._formBuilder.group({
-			secondCtrl: ['', Validators.required]
-		});
-	}
+	// constructor(private _formBuilder: FormBuilder) {
+	// 	this.firstFormGroup = this._formBuilder.group({
+	// 		firstCtrl: ['', Validators.required]
+	// 	});
+	// 	this.secondFormGroup = this._formBuilder.group({
+	// 		secondCtrl: ['', Validators.required]
+	// 	});
+	// }
 
 	ngOnInit(): void {
 	}

@@ -1,7 +1,44 @@
-.final-info {
+.title {
 	text-align: center;
 }
 
+.separador
+{
+	margin-top: 10vh;
+}
+
+.separador2
+{
+	margin-top: 7vh;
+}
+
+.preguntas
+{
+	display: block;
+	margin-right: 2vh;
+	
+}
+
+.mitad-pantalla
+{
+	/* display: flex; */
+	width: 50%;
+	display: inline-table;
+	padding: 3vh;
+}
+
+.titulo-material
+{
+	padding: 2vh
+}
+
+.inicio
+{
+	width: 50%;
+	display: inline-table;
+	padding: 3vh;
+}
+/*
 mat-icon {
 	color: #FF5722;
 	font-size: 100px;
@@ -10,4 +47,4 @@ mat-icon {
 
 mat-horizontal-stepper {
 	background-color: #FAFAFA !important;
-}
+} */

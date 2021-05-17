@@ -1,26 +1,71 @@
-<mat-horizontal-stepper #stepper>
-	<mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
-		<form [formGroup]="firstFormGroup">
-			<ng-template matStepLabel>Solicitud de la práctica</ng-template>
-			<div>
-				<app-plantilla-general id="app-plantilla-general"></app-plantilla-general>
-			</div>
-		</form>
-	</mat-step>
-	<mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
-		<form [formGroup]="secondFormGroup">
-			<ng-template matStepLabel>Subir informe de práctica</ng-template>
-			<div>
-				<h3>Por favor, suba el archivo que contiene su informa de práctica</h3>
-				<input type="file" placeholder="consentimiento.pdf" required>
-			</div>
-		</form>
-	</mat-step>
-	<mat-step>
-		<div class="final-info">
-			<ng-template matStepLabel>Finalización</ng-template>
-			<h1>¡Felicidades! Has completado tu práctica.</h1>
-			<mat-icon mat-list-icon>emoji_emotions</mat-icon>
-		</div>
-	</mat-step>
-</mat-horizontal-stepper>
+<h1 class="title">Bienvenido Juan Pérez </h1>
+
+<div class="separador">
+	
+	<div class="inicio">
+		<mat-card-title class="titulo-material">¿Deseas empezar un nuevo proceso de práctica?</mat-card-title>
+		
+		<button mat-raised-button color="primary" type="submit" class="boton-aceptar">Comenzar proceso</button>
+	</div>
+
+	<div class="inicio">
+		<mat-card-title class="titulo-material">Fechas importantes</mat-card-title>
+		<br>
+		<mat-card>
+			<mat-card-content>
+				28/12: Fin proceso solicitudes
+			</mat-card-content>
+			<mat-card-content>
+				29/01: Fin plazo de extensión de práctica
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
+
+<div class="separador2">
+	<div class="mitad-pantalla">
+		<mat-card-title class="titulo-material">Últimas actividades</mat-card-title>
+		<br>
+		<mat-card>
+			<mat-card-content>
+				Ha enviado satisfactoriamente una solicitud para comenzar ha solicitar su práctica profesional
+			</mat-card-content>
+
+			<mat-card-content>
+				Se está procesando tu solicitud de:
+			</mat-card-content>
+
+			<mat-card-content>
+				Tú solicitud ha sido aprobada, puedes continuar con el siguiente paso.
+				<button mat-raised-button color="primary" type="submit" class="boton-aceptar">Ir a etapa</button>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="mitad-pantalla">
+		<mat-card-title class="titulo-material">Recordatorios</mat-card-title>
+		<br>
+		<mat-card>
+			<mat-card-content>
+				¿Requisitos para hacer la práctica?
+			</mat-card-content>
+			<mat-card-content>
+				1.- Aprobar curso 1
+			</mat-card-content>
+	
+			<mat-card-content>
+				1.- Aprobar curso 2
+			</mat-card-content>
+			
+			<mat-card-content>
+				Recuerda que a la empresa que postules, La persona que será tu tutor(a) debe ser de tu formación académica
+			</mat-card-content>
+	
+			<mat-card-content>
+				Espera a que el encargado de tu carrera acepte el paso 1 que rellenaste con tus datos personales para hablar con
+				empresas
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	
+</div>
