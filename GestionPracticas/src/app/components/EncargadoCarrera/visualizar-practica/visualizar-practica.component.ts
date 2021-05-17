@@ -4,6 +4,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
 import { MatPaginator } from "@angular/material/paginator";
+import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 
 export interface ITablaVisualizarPractica {
     rut: string;
@@ -88,6 +89,14 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
     }
 
     ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
+
+        this.EC_service.load_data_visualizar_practica().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              console.log(doc.data())
+            });
+        });
+
+
         this.nombreFilter.valueChanges
             .subscribe(
                 nombre => {
@@ -119,7 +128,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
 
     }
 
-    constructor(public dialog: MatDialog) {
+    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService) {
         this.dataSource.filterPredicate = this.createFilter();
     }
     ngAfterViewInit(): void {
