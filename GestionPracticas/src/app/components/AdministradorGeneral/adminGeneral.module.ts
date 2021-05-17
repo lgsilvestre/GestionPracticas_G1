@@ -7,6 +7,7 @@ import { GraficosModule } from '../Graficos/graficos.module';
 import { PlantillaGeneralComponent } from './plantilla-general/plantilla-general.component';
 import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.service';
 import { crearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cuenta-encargado.component';
+import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 
 
 
@@ -15,7 +16,8 @@ import { crearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cu
     // Aca van los modulos que se crean
     MenuAdminGeneralComponent,
     PlantillaGeneralComponent,
-    crearCuentaEncargadoComponent
+    crearCuentaEncargadoComponent,
+    CrearCuentaAdministradorGeneralComponent
 
   ],
   imports: [
