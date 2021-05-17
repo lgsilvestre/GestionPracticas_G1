@@ -22,7 +22,7 @@ export class CrearCuentaEstudianteComponent implements OnInit {
 			AnnoIngreso: new FormControl(''),
 			CorreoElectronico: new FormControl('', Validators.required),
 			Telefono: new FormControl('', Validators.required),
-			rol: [{ value: 'Encargado de carrera', disabled: true }],
+			rol: [{ value: 'Estudiante', disabled: true }],
 			FechaNacimiento: new FormControl(''),
 			Comuna: new FormControl(''),
 			Direccion: new FormControl(''),
@@ -30,6 +30,5 @@ export class CrearCuentaEstudianteComponent implements OnInit {
 		});
 	}
 	ngOnInit(): void {
-		throw new Error('Method not implemented.');
 	}
 }

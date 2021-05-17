@@ -16,11 +16,10 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
 			Run: new FormControl('', Validators.required),
 			CorreoInstitucional: new FormControl('', Validators.required),
 			CorreoElectronico: new FormControl(''),
-			rol: [{ value: 'Encargado de carrera', disabled: true }],
+			rol: [{ value: 'Administrador general', disabled: true }],
 			Telefono: new FormControl('', Validators.required),
 		});
 	}
 	ngOnInit(): void {
-		throw new Error('Method not implemented.');
 	}
 }

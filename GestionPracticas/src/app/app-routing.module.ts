@@ -33,9 +33,9 @@ const routes: Routes = [
 	{ path: 'crear-cuenta-encargado', component: crearCuentaEncargadoComponent },
 	{ path: 'ver-cuentas', component: VerCuentasComponent },
 	{ path: 'crear-cuentas-sa', component: CrearCuentasSaComponent },
-	{ path: 'admin-general/crear-cuenta-encargado-carrera', component: crearCuentaEncargadoComponent },
-	{ path: 'admin-general/crear-cuenta-admin-general', component: CrearCuentaAdministradorGeneralComponent },
-	{ path: 'admin-general/crear-cuenta-estudiante', component: CrearCuentaEstudianteComponent },
+	{ path: 'admin-general/crear-cuenta/encargado-carrera', component: crearCuentaEncargadoComponent },
+	{ path: 'admin-general/crear-cuenta/admin-general', component: CrearCuentaAdministradorGeneralComponent },
+	{ path: 'admin-general/crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];

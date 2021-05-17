@@ -1,6 +1,6 @@
 <h1>Crear cuenta de encargado de carrera</h1>
 
-<div>
+<mat-card>
 	<form [formGroup]="primeraEtapa">
 		<ng-template matStepLabel>Datos</ng-template>
 
@@ -40,11 +40,10 @@
 			<input matInput formControlName="rol">
 		</mat-form-field>
 
-		<div class="submit-button">
-			<button mat-raised-button color="primary" type="button">Crear cuenta</button>
-		</div>
+		<hr>
 
+		<button mat-raised-button color="primary" type="button">Crear cuenta</button>
 
 	</form>
 
-</div>
+</mat-card>
