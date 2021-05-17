@@ -1,8 +1,9 @@
-export interface EncargadoCarrera {
+export interface AdministradorGeneral
+{
   nombres: string;
   apellidos: string;
   run: string;
-  carrera: string;
   correoInstitucional: string;
   correoPersonal?: string;
+  telefono: number;
 }
