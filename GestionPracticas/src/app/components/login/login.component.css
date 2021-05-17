@@ -1,3 +1,4 @@
+mat-card,
 #main {
     display: flex;
     flex-direction: column;
@@ -21,6 +22,17 @@ a {
     margin: 0 auto;
 }
 
+@media only screen and (min-width: 768px) {
+	mat-card {
+		margin: 0 32vh 0 32vh;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	mat-card {
+		margin: 0 16vh 0 16vh;
+	}
+
 mat-card {
     min-width: 400px;
     max-width: 400px;
@@ -33,8 +45,11 @@ mat-card {
 form {
     text-align: center;
 }
-
-#forgotPass {
-    margin-top: 10px;
-    font-size: 12px !important;
+  
+.buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 5.5rem;
 }

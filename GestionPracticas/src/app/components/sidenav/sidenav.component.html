@@ -35,7 +35,6 @@
                     <span>Cargar estudiantes</span>
                 </a>
                 <mat-divider></mat-divider>
-
                 <a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Visualizar prácticas</span>
@@ -108,7 +107,6 @@
                 </a>
                 <mat-divider></mat-divider>
             </div>
-
             <div *ngIf="soySuperAdmin">
                 <a routerLink="./ver-cuentas" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>edit</mat-icon>
@@ -121,7 +119,6 @@
                 </a>
                 <mat-divider></mat-divider>
             </div>
-
             <a routerLink="./login" mat-list-item (click)="desloguear()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Salir</span>
