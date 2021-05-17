@@ -21,12 +21,12 @@
                         <mat-card-content>
                             <div class="row mb-1">
                                 <div class="col">
-                                    - Proceso de solicitudes termina el 01/01/2022
+                                    - Proceso de solicitudes termina el <strong>01/01/2022</strong>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    - Periodo de extensión de práctica empieza el 10/01/2020
+                                    - Periodo de extensión de práctica empieza el <strong>10/01/2020</strong> 
                                 </div>
                             </div>
                         </mat-card-content>
@@ -61,7 +61,7 @@
 
     </div>
     <hr>
-    <div class="row text-center">
+    <div class="row mb-3">
         <div class="col">
             <strong>¿Desea ver información asociada a semestres anteriores?</strong>
         </div>
@@ -69,26 +69,38 @@
     <div class="row">
         <div class="col">
             <mat-form-field appearance="fill">
-                <mat-label>Favorite food</mat-label>
+                <mat-label>Semestre</mat-label>
                 <mat-select>
                   <mat-option [value]="123">
-                    asd
+                    1º
+                  </mat-option>
+                  <mat-option [value]="456">
+                    2º
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill">
-                <mat-label>Favorite food</mat-label>
+                <mat-label>Año</mat-label>
                 <mat-select>
+                <mat-option [value]="456">
+                    2018
+                    </mat-option>
+                    <mat-option [value]="456">
+                    2019
+                    </mat-option>
                   <mat-option [value]="456">
-                    zxc
+                    2020
+                  </mat-option>
+                  <mat-option [value]="456">
+                    2021
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
         </div>
-        <div class="col">
-            <button mat-raised-button matStepperNext color="primary" type="button">Enviar</button>
+        <div class="col pt-2">
+            <button mat-raised-button color="primary" style="width: 100%;">Ver</button>
         </div>
     </div>
 </div>
