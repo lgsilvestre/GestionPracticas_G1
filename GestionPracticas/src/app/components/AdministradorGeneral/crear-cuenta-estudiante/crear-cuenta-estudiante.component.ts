@@ -27,7 +27,7 @@ export class CrearCuentaEstudianteComponent implements OnInit {
 			Comuna: new FormControl(''),
 			Direccion: new FormControl(''),
 			Nacionalidad: new FormControl(''),
-		}
+		});
 	}
 	ngOnInit(): void {
 		throw new Error('Method not implemented.');
