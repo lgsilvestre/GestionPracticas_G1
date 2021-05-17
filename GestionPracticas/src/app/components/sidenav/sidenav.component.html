@@ -149,10 +149,19 @@
 			<mat-divider></mat-divider>
 		</mat-nav-list>
 	</mat-sidenav>
-	<mat-toolbar>
-		<button mat-icon-button (click)="sidenav.toggle()">
-			<mat-icon>menu</mat-icon>
-		</button>
+	<mat-toolbar color="primary">
+		<div class="col">
+			<button mat-icon-button (click)="sidenav.toggle()">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span>Centro de prácticas Utalca</span>	
+		</div>
+		<div class="col text-end" style="padding-right: 20px;">
+			<button mat-icon-button>
+				<span>Salir</span>
+				<mat-icon>exit_to_app</mat-icon>
+			</button>
+		</div>
 	</mat-toolbar>
 	<div id="main">
 		<router-outlet></router-outlet>
