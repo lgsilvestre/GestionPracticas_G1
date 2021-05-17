@@ -14,8 +14,8 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
 			Nombres: new FormControl('', Validators.required),
 			Apellidos: new FormControl('', Validators.required),
 			Run: new FormControl('', Validators.required),
-			CorreoElectronico: new FormControl('', Validators.required),
 			CorreoInstitucional: new FormControl('', Validators.required),
+			CorreoElectronico: new FormControl(''),
 			rol: [{ value: 'Encargado de carrera', disabled: true }],
 			Telefono: new FormControl('', Validators.required),
 		});
