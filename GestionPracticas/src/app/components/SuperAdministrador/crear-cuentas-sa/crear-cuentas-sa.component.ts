@@ -49,6 +49,21 @@ export class CrearCuentasSaComponent implements OnInit {
   crear(): void
   {
     console.log(this.rolActual + ' ' + this.carreraActual);
+    let rolFinal: string = 'None';
+    switch (this.rolActual)
+    {
+      case 'Estudiante':
+        rolFinal = 'estudiante';
+        break;
+      case 'Administrador General':
+        rolFinal = 'administradorGeneral';
+        break;
+      case 'Encargado de Carrera':
+        rolFinal = 'encargadoCarrera';
+        break;
+      default:
+        rolFinal = 'error';
+    }
     if (this.nuevaCuenta.value.Contrasenna1 === this.nuevaCuenta.value.Contrasenna2)
     {
       const nuevoUsuario: EncargadoCarrera =
@@ -58,7 +73,8 @@ export class CrearCuentasSaComponent implements OnInit {
           run: this.nuevaCuenta.value.Run,
           carrera: this.nuevaCuenta.value.Carrera,
           correoInstitucional: this.nuevaCuenta.value.CorreInstitucional,
-          correoPersonal: this.nuevaCuenta.value.CorreoPersonal
+          correoPersonal: this.nuevaCuenta.value.CorreoPersonal,
+          rol : rolFinal
         };
       console.log(nuevoUsuario);
       this.gestionEncargados.crearNuevoEncargado(nuevoUsuario, this.nuevaCuenta.value.Contrasenna1);

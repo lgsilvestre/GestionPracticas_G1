@@ -5,4 +5,5 @@ export interface EncargadoCarrera {
   carrera: string;
   correoInstitucional: string;
   correoPersonal?: string;
+  rol: string;
 }

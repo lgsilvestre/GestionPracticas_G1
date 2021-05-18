@@ -14,4 +14,5 @@ export interface Estudiante{
   añoIngreso?: string;
   correoInstitucional: string;
   correoPersonal ?: string;
+  rol: string;
 }
