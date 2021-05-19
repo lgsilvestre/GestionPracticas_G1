@@ -1,4 +1,5 @@
-mat-form-field {
+mat-form-field,
+mat-horizontal-stepper {
 	width: 100%;
 }
 
@@ -7,15 +8,12 @@ button:not(mat-sidenav-container button) {
 	min-height: 2.75rem;
 }
 
-mat-horizontal-stepper {
-	width: 100%;
-}
-
 mat-horizontal-stepper button {
 	min-width: 10rem;
 }
 
-button:not(::ng-deep .mat-toolbar button) {
+button:not(::ng-deep .mat-toolbar button),
+ ::ng-deep .mat-dialog-container button {
 	box-shadow: none !important;
 	min-width: 20rem;
 }
@@ -26,12 +24,21 @@ mat-card button {
 }
 
 mat-card,
-mat-horizontal-stepper {
+mat-horizontal-stepper,
+mat-paginator,
+::ng-deep .mat-dialog-container,
+table {
 	box-shadow: none !important;
-	border: 2px #B2B2B2B2;
-	border-style: solid;
 	background-color: #F5F5F5;
+}
+
+mat-card,
+mat-horizontal-stepper,
+::ng-deep .mat-dialog-container {
+	border-style: solid;
+	border: 2px #B2B2B2B2;
 	border-radius: 5px;
+	border-style: solid;
 }
 
 mat-label,
