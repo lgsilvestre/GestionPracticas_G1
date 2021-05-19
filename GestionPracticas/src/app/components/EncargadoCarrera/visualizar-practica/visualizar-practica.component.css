@@ -5,3 +5,7 @@ h1 {
 h4 {
 	margin: .5rem;
 }
+
+#table {
+	min-width: 1080px !important;
+}
