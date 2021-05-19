@@ -67,12 +67,12 @@ mat-card {
 
 @media only screen and (min-width: 992px) {
 	#main {
-		margin: 2rem 16vh 2rem 16vh;
+		margin: 2rem 16vw 2rem 16vw;
 	}
 }
 
 @media only screen and (min-width: 768px) {
 	#main {
-		margin: 2rem 8vh 2rem 8vh;
+		margin: 2rem 8vw 2rem 8vw;
 	}
 }
