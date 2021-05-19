@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(() => {
       let ruta: string = 'error';
       let goTo: string = 'error';
+      console.log(this.rolActual + 'rol actual');
       switch (this.rolActual)
       {
         case 'Estudiante':
@@ -64,7 +65,7 @@ export class LoginComponent implements OnInit {
       this.afStore.collection(ruta).get().forEach(res => {
         res.forEach(res => {
           const usuario: any = res.data();
-          if (usuario.correo == this.loginForm.value.email) {
+          if (usuario.correoInstitucional == this.loginForm.value.email) {
             localStorage.setItem('user', JSON.stringify(usuario));
             this.router.navigate([goTo]);
             console.log('hola');
