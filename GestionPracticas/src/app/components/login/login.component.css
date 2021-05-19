@@ -1,3 +1,13 @@
+#main {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url('http://comunicaciones.utalca.cl/galeria/fotos_gr/20.jpg');
+	min-height: 120vh;
+	min-width: 408px;
+}
+
 #main,
 mat-card {
 	display: flex;
