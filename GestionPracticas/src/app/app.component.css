@@ -20,7 +20,7 @@ button:not(::ng-deep .mat-toolbar button),
 
 mat-horizontal-stepper button,
 mat-card button {
-	margin: 0 20px 0 20px !important;
+	margin: 0 1rem 0 1rem !important;
 }
 
 mat-card,
@@ -30,6 +30,10 @@ mat-paginator,
 table {
 	box-shadow: none !important;
 	background-color: #F5F5F5;
+}
+
+table {
+	width: 100%;
 }
 
 mat-card,
@@ -55,4 +59,20 @@ mat-card {
 
 ::ng-deep .mat-form-field-outline {
 	background-color: white;
+}
+
+#main {
+	margin: 2rem 0 2rem 0;
+}
+
+@media only screen and (min-width: 992px) {
+	#main {
+		margin: 2rem 16vh 2rem 16vh;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#main {
+		margin: 2rem 8vh 2rem 8vh;
+	}
 }
