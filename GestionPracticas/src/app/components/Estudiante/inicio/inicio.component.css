@@ -11,3 +11,7 @@ mat-icon {
 mat-horizontal-stepper {
 	background-color: #FAFAFA !important;
 }
+
+h1 {
+	text-align: center;
+}

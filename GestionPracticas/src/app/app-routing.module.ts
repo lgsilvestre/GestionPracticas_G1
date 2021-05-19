@@ -31,7 +31,6 @@ const routes: Routes = [
 	{ path: 'editar-cuenta', component: EditarCuentaComponent },
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
-	{ path: 'crear-cuenta-encargado', component: crearCuentaEncargadoComponent },
 	{ path: 'ver-cuentas', component: VerCuentasComponent },
 	{ path: 'crear-cuentas-sa', component: CrearCuentasSaComponent },
 	{ path: 'admin-general/crear-cuenta/encargado-carrera', component: crearCuentaEncargadoComponent },
