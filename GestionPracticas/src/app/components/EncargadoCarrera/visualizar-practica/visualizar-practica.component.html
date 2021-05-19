@@ -1,109 +1,103 @@
-<div class="container p-4">
-  <div class="row text-center">
-      <h1>
-          Visualizar prácticas
-      </h1>
-  </div>
-  <div class="row">
-      <mat-form-field>
-          <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input"> -->
-          <input matInput [formControl]="nombreFilter" placeholder="Nombre del alumno" class="search-input">
-          <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
-  </div>
-  <div class="row">
-    <div class="col">
-        <mat-form-field appearance="fill">
-          <mat-label>Elige un filtro de práctica</mat-label>
-          <mat-select (selectionChange)="filtroSelectChange($event.value)">
-            <mat-option value="semestre">Semestre</mat-option>
-            <mat-option value="situacion">Situación</mat-option>
-            <!-- <mat-option value="reprobadas">Reprobadas</mat-option> -->
-            <mat-option value="empresa">Empresa</mat-option>
-            <mat-option value="sin_filtros">Sin filtros</mat-option>
-          </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="col" *ngIf="filtroSemestreSeleccionado">
-      <mat-form-field appearance="fill">
-        <mat-label>Elige el semestre</mat-label>
-        <mat-select [formControl]="semestreFilter" (selectionChange)="semestreSelectChange($event.value)">
-          <mat-option value="1">1</mat-option>
-          <mat-option value="2">2</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col" *ngIf="filtroSituacionSeleccionado">
-      <mat-form-field appearance="fill">
-        <mat-label>Elige la situación</mat-label>
-        <mat-select [formControl]="situacionFilter">
-          <mat-option value="pendiente">Pendiente</mat-option>
-          <mat-option value="en proceso">En proceso</mat-option>
-          <mat-option value="terminada">Terminada</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>        
-    <div class="col" *ngIf="filtroEmpresaSeleccionado">
-      <mat-form-field>
-        <input matInput [formControl]="empresaFilter" placeholder="Nombre de la empresa" class="search-input">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row pb-4">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<h1>Visualizar prácticas</h1>
+<mat-card>
+	<form>
+		<mat-form-field appearance="outline">
+			<!-- <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input"> -->
+			<input matInput [formControl]="nombreFilter" placeholder="John Doe" class="search-input">
+			<mat-icon matSuffix>search</mat-icon>
+			<mat-label>Nombre del alumno</mat-label>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Elige un filtro de práctica</mat-label>
+			<mat-select (selectionChange)="filtroSelectChange($event.value)">
+				<mat-option value="semestre">Semestre</mat-option>
+				<mat-option value="situacion">Situación</mat-option>
+				<!-- <mat-option value="reprobadas">Reprobadas</mat-option> -->
+				<mat-option value="empresa">Empresa</mat-option>
+				<mat-option value="sin_filtros">Sin filtros</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<div *ngIf="filtroSemestreSeleccionado">
+			<mat-form-field appearance="outline">
+				<mat-label>Semestre</mat-label>
+				<mat-select [formControl]="semestreFilter" (selectionChange)="semestreSelectChange($event.value)">
+					<mat-option value="1">1</mat-option>
+					<mat-option value="2">2</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div *ngIf="filtroSituacionSeleccionado">
+			<mat-form-field appearance="outline">
+				<mat-label>Estado de la práctica</mat-label>
+				<mat-select [formControl]="situacionFilter">
+					<mat-option value="pendiente">Pendiente</mat-option>
+					<mat-option value="en proceso">En proceso</mat-option>
+					<mat-option value="terminada">Terminada</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div *ngIf="filtroEmpresaSeleccionado">
+			<mat-form-field appearance="outline">
+				<input matInput [formControl]="empresaFilter" placeholder="Nombre de la empresa" class="search-input">
+				<mat-icon matSuffix>search</mat-icon>
+				<mat-label>Empresa</mat-label>
+			</mat-form-field>
+		</div>
+	</form>
+</mat-card>
+<div class="row pb-4">
+	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-      <!--- Note that these columns can be defined in any order.
+		<!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
-    
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-    
-      <!-- rut Column -->
-      <ng-container matColumnDef="rut">
-        <th mat-header-cell *matHeaderCellDef> Rut </th>
-        <td mat-cell *matCellDef="let element"> {{element.rut}} </td>
-      </ng-container>
-    
-      <!-- nombre Column -->
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-      </ng-container>
-    
-      <!-- empresa name Column -->
-      <ng-container matColumnDef="empresa">
-        <th mat-header-cell *matHeaderCellDef> Empresa </th>
-        <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
-      </ng-container>
 
-      <ng-container matColumnDef="situacion">
-        <th mat-header-cell *matHeaderCellDef> Situación </th>
-        <td mat-cell *matCellDef="let element"> {{element.situacion}} </td>
-      </ng-container>
+		<!-- Position Column -->
+		<ng-container matColumnDef="position">
+			<th mat-header-cell *matHeaderCellDef> No. </th>
+			<td mat-cell *matCellDef="let element"> {{element.position}} </td>
+		</ng-container>
 
-      <ng-container matColumnDef="semestre">
-        <th mat-header-cell *matHeaderCellDef> Semestre </th>
-        <td mat-cell *matCellDef="let element"> {{element.semestre}} </td>
-      </ng-container>
+		<!-- rut Column -->
+		<ng-container matColumnDef="rut">
+			<th mat-header-cell *matHeaderCellDef> Rut </th>
+			<td mat-cell *matCellDef="let element"> {{element.rut}} </td>
+		</ng-container>
 
-      <!--  Column -->
-      <ng-container matColumnDef="ver">
-        <th mat-header-cell *matHeaderCellDef> Visualizar </th>
-        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="openDialog(element.nombre)"> Ver </button> </td>
-      </ng-container> 
+		<!-- nombre Column -->
+		<ng-container matColumnDef="nombre">
+			<th mat-header-cell *matHeaderCellDef> Nombre </th>
+			<td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+		</ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		<!-- empresa name Column -->
+		<ng-container matColumnDef="empresa">
+			<th mat-header-cell *matHeaderCellDef> Empresa </th>
+			<td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
+		</ng-container>
 
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No se encontraron resultados.</td>
-      </tr>
-    </table>
+		<ng-container matColumnDef="situacion">
+			<th mat-header-cell *matHeaderCellDef> Situación </th>
+			<td mat-cell *matCellDef="let element"> {{element.situacion}} </td>
+		</ng-container>
 
-    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>
-  </div>
+		<ng-container matColumnDef="semestre">
+			<th mat-header-cell *matHeaderCellDef> Semestre </th>
+			<td mat-cell *matCellDef="let element"> {{element.semestre}} </td>
+		</ng-container>
+
+		<!--  Column -->
+		<ng-container matColumnDef="ver">
+			<th mat-header-cell *matHeaderCellDef> Visualizar </th>
+			<td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="openDialog(element.nombre)"> Ver </button> </td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+		<tr class="mat-row" *matNoDataRow>
+			<td class="mat-cell" colspan="4">No se encontraron resultados.</td>
+		</tr>
+	</table>
+
+	<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>
 </div>
