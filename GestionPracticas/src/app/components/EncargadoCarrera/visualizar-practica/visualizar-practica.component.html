@@ -1,4 +1,4 @@
-<div class="container p-4">
+<div class="container p-4" *ngIf ="this.solicitudes">
   <div class="row text-center">
       <h1>
           Visualizar prácticas
@@ -51,7 +51,7 @@
     </div>
   </div>
   <div class="row pb-4">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf = "this.solicitudes.length != 0">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -82,7 +82,7 @@
 
       <ng-container matColumnDef="situacion">
         <th mat-header-cell *matHeaderCellDef> Situación </th>
-        <td mat-cell *matCellDef="let element"> {{element.estadoDePractica}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
       </ng-container>
 
       <ng-container matColumnDef="semestre">
@@ -93,7 +93,7 @@
       <!--  Column -->
       <ng-container matColumnDef="ver">
         <th mat-header-cell *matHeaderCellDef> Visualizar </th>
-        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="openDialog(element.nombreEstudiante)"> Ver </button> </td>
+        <td mat-cell *matCellDef="let element"> <mat-icon (click) = "openDialog(element.nombreEstudiante)" type="button"> visibility </mat-icon> </td>
       </ng-container> 
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -108,19 +108,4 @@
     <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>
 
   </div>
-  <button (click)="mostrar_Cantidad()">Hola</button>
-  <table *ngIf="this.solicitudes.length != 0">
-    <thead>
-      <tr>
-        <th>Matrícula</th>
-        <th>Nombre</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let practica of solicitudes">
-        <td>{{practica.numeroMatricula}}</td>
-        <td> {{practica.nombreEstudiante}} </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
