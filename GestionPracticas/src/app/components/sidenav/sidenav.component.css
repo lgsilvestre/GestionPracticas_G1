@@ -40,7 +40,7 @@ mat-sidenav {
 	border: 3px #d1b879;
 	border-radius: 4px;
 	border-style: solid;
-	background-color: #FFE6CC;
+	background-color: rgba(255, 210, 137, 0.87);
 }
 
 ::ng-deep mat-sidenav mat-divider {
