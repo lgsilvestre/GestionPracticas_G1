@@ -10,23 +10,34 @@ export class GestionEstudianteService {
 
   constructor(private afAutenticacion: AngularFireAuth, private afStore: AngularFirestore)
   {}
-  private registrarUsuario(correoInstitucional: string, password: string): Promise<any>
+  private registrarUsuario(nuevoEstudiante: Estudiante, password: string): Promise<any>
   {
     return new Promise((resolve, reject ) =>
     {
-      this.afAutenticacion.createUserWithEmailAndPassword(correoInstitucional , password)
-        .then(userData => resolve(userData), err => reject(err));
+      this.afAutenticacion.createUserWithEmailAndPassword(nuevoEstudiante.correoInstitucional , password)
+        .then(userData => {
+          resolve(userData),
+            this.addEstuadiante(userData.user?.uid , nuevoEstudiante );
+        }).catch(err => console.log(reject(err)));
     });
   }
-  private addEstudiante(nuevoEstudiante: Estudiante): void
+  private addEstuadiante(uID: string | undefined, nuevoEstudiante: Estudiante): void
   {
-    this.afStore.collection('/Usuarios/estudiante/estudiantes').add(nuevoEstudiante);
+    console.log(uID + ' addEn \n');
+    if (typeof(uID) === undefined)
+    {
+      console.log('error uid is undefined');
+    }
+    else
+    {
+      const  reff = this.afStore.doc('/Usuarios/estudiante/estudiantes/' + uID);
+      console.log( 'reff' + reff.ref);
+      reff.set(nuevoEstudiante, {merge: true});
+    }
   }
   public crearNuevoEstudiante(nuevoEstudiante: Estudiante, password: string): void
   {
-    this.registrarUsuario(nuevoEstudiante.correoInstitucional, password).then((res) =>
-    {
-      this.addEstudiante(nuevoEstudiante);
-    }).catch( err => console.log('err', err.message));
+    this.registrarUsuario(nuevoEstudiante, password).then((res) =>
+    {}).catch( err => console.log('err', err.message));
   }
 }
