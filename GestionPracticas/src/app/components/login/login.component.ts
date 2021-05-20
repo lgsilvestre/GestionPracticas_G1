@@ -41,10 +41,11 @@ export class LoginComponent implements OnInit {
     this.rolActual = event;
   }
   login(): void {
-    this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(() => {
+    this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(( userCredential ) => {
+      const user = userCredential.user?.uid;
+      console.log('useer id: ' + user );
       let ruta: string = 'error';
       let goTo: string = 'error';
-      console.log(this.rolActual + 'rol actual');
       switch (this.rolActual)
       {
         case 'Estudiante':
