@@ -11,23 +11,34 @@ export class GestionAdminGeneralService {
 
   constructor(private afAutenticacion: AngularFireAuth, private afStore: AngularFirestore)
   {}
-  private registrarUsuario(correoInstitucional: string, password: string): Promise<any>
+  private registrarUsuario(nuevoAdminGeneral: AdministradorGeneral, password: string): Promise<any>
   {
     return new Promise((resolve, reject ) =>
     {
-      this.afAutenticacion.createUserWithEmailAndPassword(correoInstitucional , password)
-        .then(userData => resolve(userData), err => reject(err));
+      this.afAutenticacion.createUserWithEmailAndPassword(nuevoAdminGeneral.correoInstitucional , password)
+        .then(userData => {
+          resolve(userData),
+            this.addAddAdminGeneral(userData.user?.uid , nuevoAdminGeneral );
+        }).catch(err => console.log(reject(err)));
     });
   }
-  private addAdministradorGeneral(nuevoAdministradorGeneral: AdministradorGeneral): void
+  private addAddAdminGeneral(uID: string | undefined, nuevoAdminGeneral: AdministradorGeneral): void
   {
-    this.afStore.collection('/Usuarios/administrador/administradores').add(nuevoAdministradorGeneral);
-  }
-  public crearNuevoAdminGeneral(nuevoAdminGeneral: AdministradorGeneral, password: string): void
-  {
-    this.registrarUsuario(nuevoAdminGeneral.correoInstitucional, password).then((res) =>
+    console.log(uID + ' addEn \n');
+    if (typeof(uID) === undefined)
     {
-      this.addAdministradorGeneral(nuevoAdminGeneral);
-    }).catch( err => console.log('err', err.message));
+      console.log('error uid is undefined');
+    }
+    else
+    {
+      const  reff = this.afStore.doc('/Usuarios/administrador/administradores/' + uID);
+      console.log( 'reff' + reff.ref);
+      reff.set(nuevoAdminGeneral, {merge: true});
+    }
+  }
+  public gestionAdminGeneral(nuevoAdminGeneral: AdministradorGeneral, password: string): void
+  {
+    this.registrarUsuario(nuevoAdminGeneral, password).then((res) =>
+    {}).catch( err => console.log('err', err.message));
   }
 }

@@ -1,21 +1,21 @@
 <h1>Seleccione el tipo de cuenta a crear</h1>
 <div>
-	<button routerLink="/crear-cuenta/estudiante" (click)="goTo()">
+	<button routerLink="/crear-cuenta/estudiante" (click)="goToEstudiante()">
 		<mat-card-content>
 			<mat-icon mat-list-icon>account_circle</mat-icon>
 			<h2>Estudiante</h2>
 		</mat-card-content>
 	</button>
-	<mat-card routerLink="./admin-general/crear-cuenta/encargado-carrera">
+	<button routerLink="/crear-cuenta/encargado-carrera" (click)="goToEncargado()">
 		<mat-card-content>
 			<mat-icon mat-list-icon>account_circle</mat-icon>
 			<h2>Encargado de carrera</h2>
 		</mat-card-content>
-	</mat-card>
-	<mat-card routerLink="./admin-general/crear-cuenta/admin-general">
+	</button>
+	<button routerLink="/crear-cuenta/admin-general" (click)="goToAdminGeneral()">
 		<mat-card-content>
 			<mat-icon mat-list-icon>account_circle</mat-icon>
 			<h2>Administrador general</h2>
 		</mat-card-content>
-	</mat-card>
+	</button>
 </div>
