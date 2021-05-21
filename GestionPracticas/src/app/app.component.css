@@ -36,8 +36,8 @@ mat-card,
 mat-horizontal-stepper,
 ::ng-deep .mat-dialog-container {
 	border-style: solid;
-	border: 2px #B2B2B2B2;
-	border-radius: 5px;
+	border: 1.5px #B2B2B2B2;
+	border-radius: 10px;
 	border-style: solid;
 }
 

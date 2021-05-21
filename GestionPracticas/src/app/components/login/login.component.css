@@ -1,11 +1,12 @@
 #main {
+	background: radial-gradient(circle, rgba(255, 204, 128, 0.25) 0%, rgba(255, 204, 128, .5) 100%), url('../../../assets/background1.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-image: url('http://comunicaciones.utalca.cl/galeria/fotos_gr/20.jpg');
-	min-height: 120vh;
-	min-width: 408px;
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
 }
 
 #main,

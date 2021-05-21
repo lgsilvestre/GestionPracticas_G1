@@ -26,7 +26,7 @@
 	background-size: cover;
 	height: 64px;
 	width: 64px;
-	border: 2px #d1b879 !important;
+	border: 2px #ffcc80 !important;
 	border-style: solid !important;
 	border-radius: 50px;
 	margin: 0 auto;
@@ -37,17 +37,11 @@
 }
 
 mat-sidenav {
-	border: 3px #d1b879;
-	border-radius: 4px;
-	border-style: solid;
-	background-color: #FFE6CC;
+	border-radius: 16px;
+	background-color: #ffcc80;
 	min-width: 25rem;
-}
-
-::ng-deep mat-sidenav mat-divider {
-	margin: 0 !important;
-	border: 1px #d1b879;
-	border-style: solid;
+	margin: 2rem;
+	box-shadow: none !important;
 }
 
 #outer-account ::ng-deep mat-icon {
