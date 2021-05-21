@@ -6,6 +6,7 @@ import { InicioComponent } from "./inicio/inicio.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdminGeneralModule } from '../AdministradorGeneral/adminGeneral.module';
 import { SolicitarPracticaComponent } from './solicitar-practica/solicitar-practica.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { SolicitarPracticaComponent } from './solicitar-practica/solicitar-pract
     MenuEstudianteComponent,
     InicioComponent,
     SolicitarPracticaComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { SolicitarPracticaComponent } from './solicitar-practica/solicitar-pract
   ],
   exports: [
     // Aca van los modulos que se crea.
+      FooterComponent
   ]
 })
 export class EstudianteModule{}
