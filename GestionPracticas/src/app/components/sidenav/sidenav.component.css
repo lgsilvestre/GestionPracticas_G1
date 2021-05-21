@@ -1,5 +1,5 @@
 #logo {
-	background-color: white;
+	background-color: rgba(255, 255, 255, .85);
 	background-image: url(../../../assets/logo_practica.png);
 	background-repeat: no-repeat;
 	background-position: center !important;
@@ -26,8 +26,6 @@
 	background-size: cover;
 	height: 64px;
 	width: 64px;
-	border: 2px #ffcc80 !important;
-	border-style: solid !important;
 	border-radius: 50px;
 	margin: 0 auto;
 }
@@ -38,10 +36,18 @@
 
 mat-sidenav {
 	border-radius: 16px;
-	background-color: #ffcc80;
-	min-width: 25rem;
-	margin: 2rem;
-	box-shadow: none !important;
+	box-shadow: 0 0 1px 1px #bdbdbd !important;
+	background: rgb(245, 245, 245);
+	background: radial-gradient(circle, rgba(245, 245, 245, .85) 50%, rgba(245, 245, 245, .8) 100%);
+	min-width: 360px;
+	max-width: 360px;
+	margin-top: 10vh;
+}
+
+@media only screen and (min-width: 576px) {
+	mat-sidenav {
+		margin: 2rem 2rem 2rem 2rem;
+	}
 }
 
 #outer-account ::ng-deep mat-icon {
@@ -52,4 +58,9 @@ mat-sidenav {
 
 a ::ng-deep mat-icon {
 	margin-right: 16px;
+}
+
+::ng-deep .mat-sidenav-content {
+	background: rgb(255, 209, 128);
+	background: radial-gradient(circle, rgba(255, 209, 128, .75) 50%, rgba(255, 171, 64, .5) 100%);
 }
