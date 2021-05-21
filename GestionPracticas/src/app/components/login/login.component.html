@@ -4,13 +4,6 @@
             <img mat-card-image src="../../../assets/logo_practica.png">
             <mat-card-content>
                 <form [formGroup]="loginForm">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Rol</mat-label>
-                    <mat-select formControlName="rol" [ngModel]="rolActual" (ngModelChange)="onChangeRol($event)">
-                      <mat-option>None</mat-option>
-                      <mat-option *ngFor="let rol of roles" [value]="rol">{{rol}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Correo electrónico</mat-label>
                         <input matInput name="email" id="email" type="email" placeholder="usuario@utalca.cl" formControlName="email">

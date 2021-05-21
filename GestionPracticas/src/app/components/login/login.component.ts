@@ -4,6 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {Estudiante} from '../../model/estudiante.model';
+
 
 @Component({
   selector: 'app-login',
@@ -12,8 +14,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  roles: string[] = ['Estudiante', 'Encargado de Carrera', 'Administrador General'];
-  rolActual: string = 'None';
   datosUsuario: any;
   constructor(
     private afStore: AngularFirestore,
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     private ngZone: NgZone,
     ) {}
   loginForm = this.formBuilder.group({
-    rol: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', Validators.required]
   });
@@ -36,45 +35,50 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  onChangeRol(event: any): void
-  {
-    this.rolActual = event;
-  }
   login(): void {
     this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(( userCredential ) => {
-      const user = userCredential.user?.uid;
-      console.log('useer id: ' + user );
-      let ruta: string = 'error';
-      let goTo: string = 'error';
-      switch (this.rolActual)
-      {
-        case 'Estudiante':
-          ruta = '/Usuarios/estudiante/estudiantes';
-          goTo = './menu-estudiante';
-          break;
-        case 'Encargado de Carrera':
-          ruta = '/Usuarios/encargadoCarrera/encargadoCarrera';
-          goTo = './menu-encargado-carrera';
-          break;
-        case 'Administrador General':
-          ruta = '/Usuarios/administrador/administradores';
-          goTo = './menu-admin-general';
-          break;
-        default:
-          console.log(ruta);
-      }
-      this.afStore.collection(ruta).get().forEach(res => {
-        res.forEach(res => {
-          const usuario: any = res.data();
-          if (usuario.correoInstitucional == this.loginForm.value.email) {
-            localStorage.setItem('user', JSON.stringify(usuario));
-            this.router.navigate([goTo]);
-            console.log('hola');
-          } else {
-            console.log('no existe!');
+      const userUID = userCredential.user?.uid;
+      const isStudent = this.afStore.collection<Estudiante>('/Usuarios/estudiante/estudiantes').doc(userUID);
+      const isEncargado = this.afStore.collection('/Usuarios/encargadoCarrera/encargadoCarrera').doc(userUID);
+      const isAdminGeneral = this.afStore.collection('/Usuarios/administrador/administradores').doc(userUID);
+      let encontrado: boolean = false;
+      isStudent.ref.get().then(
+        (doc) =>
+        {
+          if (doc.exists)
+          {
+            const userData: any = doc.data();
+            localStorage.setItem('user', JSON.stringify(userData));
+            this.router.navigate(['./menu-estudiante']);
+            console.log(userData?.rol);
+            encontrado = true;
           }
-        });
-      });
+        }
+      );
+      isEncargado.ref.get().then(
+        (doc) =>
+        {
+          if (doc.exists)
+          {
+            const userData: any = doc.data();
+            localStorage.setItem('user', JSON.stringify(userData));
+            this.router.navigate(['./menu-encargado-carrera']);
+            console.log(userData?.rol);
+            encontrado = true;
+          }
+        }
+      );
+      isAdminGeneral.ref.get().then(
+        (doc) =>
+        {
+          if (doc.exists)
+          {
+            const userData: any = doc.data();
+            localStorage.setItem('user', JSON.stringify(userData));
+            this.router.navigate(['./menu-admin-general']);
+          }
+        }
+      );
     });
   }
 }
