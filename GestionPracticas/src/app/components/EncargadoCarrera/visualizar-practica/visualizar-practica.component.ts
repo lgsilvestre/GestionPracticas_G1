@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
 import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
+import { Practica } from "src/app/model/practica.model";
 
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
@@ -35,35 +36,71 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     filtroEmpresaSeleccionado: boolean = false;
     filtroSituacionSeleccionado: boolean = false;
 
-    nombreFilter = new FormControl('');
-    empresaFilter = new FormControl('');
-    semestreFilter = new FormControl('');
-    situacionFilter = new FormControl('');
+    filtroNombre = new FormControl('');
+    filtroEmpresa = new FormControl('');
+    filtroSemestre = new FormControl('');
+    filtroSituacion = new FormControl('');
 
 
     displayedColumns: string[] = ['position', 'rut', 'nombre', 'empresa', 'situacion', 'semestre', 'ver'];
 
 
-    solicitudes: any [];
+    solicitudes: Practica [];
 
-    dataSource: MatTableDataSource<any>;
+    dataSource = new MatTableDataSource();
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+    filterValues = {
+        rut: '',
+        position: '',
+        nombreEstudiante: '',
+        nombreEmpresa: '',
+        estado: '',
+        numeroPractica: '',
+    }
 
 
     ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
 
         this.cargarDatos();
+
+        this.filtroNombre.valueChanges
+            .subscribe(
+                nombreEstudiante => {
+                    this.filterValues.nombreEstudiante = nombreEstudiante;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
+        this.filtroEmpresa.valueChanges
+            .subscribe(
+                nombreEmpresa => {
+                    this.filterValues.nombreEmpresa = nombreEmpresa;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
+        this.filtroSemestre.valueChanges
+            .subscribe(
+                numeroPractica => {
+                    this.filterValues.numeroPractica = numeroPractica;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
+        this.filtroSituacion.valueChanges
+            .subscribe(
+                estado => {
+                    this.filterValues.estado = estado;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
         
 
     }
 
     constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService) {
         this.solicitudes = [];
-        this.dataSource = new MatTableDataSource<any>(this.solicitudes);
-        
-        // var prueba: any = { numeroMatricula: '1', runEstudiante: '1111111', nombreEstudiante: 'Juan Gonzalez R.', nombreEmpresa: 'Cencosud', estadoDePractica: 'Pendiente', numeroPractica: '1', runEmpresa: '78.988.888-k'};
-        // this.solicitudes.push(prueba);
+        this.dataSource.data = this.solicitudes;
+        this.dataSource.filterPredicate = this.createFilter();
     }
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Resultados por página";
@@ -73,6 +110,13 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         this.paginator._intl.previousPageLabel = "Página anterior";
         this.paginator._intl.getRangeLabel = spanishRangeLabel;
         this.dataSource.paginator = this.paginator;
+    }
+
+    clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
+        this.filtroNombre.setValue('');
+        this.filtroEmpresa.setValue('');
+        this.filtroSemestre.setValue('');
+        this.filtroSituacion.setValue('');
     }
 
     openDialog(nombre: string) {
@@ -137,6 +181,17 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         console.log(this.solicitudes);
         console.log(this.dataSource.data.length);
         // this.solicitudes.pop();
+    }
+
+    createFilter(): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
+        let filterFunction = function (data: any, filter: string): boolean {
+            let searchTerms = JSON.parse(filter);
+            return data.nombreEstudiante.toString().toLowerCase().indexOf(searchTerms.nombreEstudiante) !== -1
+                && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
+                && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1
+                && data.numeroPractica.toString().toLowerCase().indexOf(searchTerms.numeroPractica) !== -1;
+        }
+        return filterFunction;
     }
 
 }
