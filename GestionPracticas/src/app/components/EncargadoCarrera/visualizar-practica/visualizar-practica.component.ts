@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { MatTable, MatTableDataSource } from "@angular/material/table";
+import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
 import { MatPaginator } from "@angular/material/paginator";
@@ -119,9 +119,9 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         this.filtroSituacion.setValue('');
     }
 
-    openDialog(nombre: string) {
+    openDialog(elemento: any) {
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = { nombre: nombre };
+        dialogConfig.data = elemento;
 
         const dialogRef = this.dialog.open(DialogoPracticaComponent, dialogConfig);
 
