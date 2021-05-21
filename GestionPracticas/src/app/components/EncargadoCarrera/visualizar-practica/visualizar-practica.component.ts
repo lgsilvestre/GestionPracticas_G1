@@ -35,17 +35,18 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     filtroSemestreSeleccionado: boolean = false;
     filtroEmpresaSeleccionado: boolean = false;
     filtroSituacionSeleccionado: boolean = false;
+    filtroNumeroMatriculaSeleccionado: boolean = false;
 
     filtroNombre = new FormControl('');
     filtroEmpresa = new FormControl('');
-    filtroSemestre = new FormControl('');
+    filtroNumeroMatricula = new FormControl('');
     filtroSituacion = new FormControl('');
 
 
-    displayedColumns: string[] = ['position', 'rut', 'nombre', 'empresa', 'situacion', 'semestre', 'ver'];
+    displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
 
 
-    solicitudes: Practica [];
+    solicitudes: Practica[];
 
     dataSource = new MatTableDataSource();
 
@@ -53,7 +54,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     filterValues = {
         rut: '',
-        position: '',
+        numeroMatricula: '',
         nombreEstudiante: '',
         nombreEmpresa: '',
         estado: '',
@@ -79,10 +80,10 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
-        this.filtroSemestre.valueChanges
+        this.filtroNumeroMatricula.valueChanges
             .subscribe(
-                numeroPractica => {
-                    this.filterValues.numeroPractica = numeroPractica;
+                numeroMatricula => {
+                    this.filterValues.numeroMatricula = numeroMatricula;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
@@ -93,7 +94,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
-        
 
     }
 
@@ -115,7 +115,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
         this.filtroNombre.setValue('');
         this.filtroEmpresa.setValue('');
-        this.filtroSemestre.setValue('');
+        this.filtroNumeroMatricula.setValue('');
         this.filtroSituacion.setValue('');
     }
 
@@ -134,53 +134,43 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     filtroSelectChange(filtroElegido: String) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
     {
 
-        if (filtroElegido == 'semestre') {
-            this.filtroSemestreSeleccionado = true;
+        if (filtroElegido == 'matricula') {
+            this.filtroNumeroMatriculaSeleccionado = true;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
         }
 
         if (filtroElegido == 'situacion') {
-            this.filtroSemestreSeleccionado = false;
+            this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = true;
         }
 
         if (filtroElegido == 'empresa') {
-            this.filtroSemestreSeleccionado = false;
+            this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = true;
             this.filtroSituacionSeleccionado = false;
         }
+
         if (filtroElegido == 'sin_filtros') {
-            this.filtroSemestreSeleccionado = false;
+            this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
         }
     }
 
-    semestreSelectChange(semestreElegido: any) {
-        //this.dataSource.filter = semestreElegido.trim().toLowerCase();
-    }
-
     cargarDatos() {
         this.EC_service.load_data_visualizar_practica().then((querySnapshot) => {
             querySnapshot.forEach(doc => {
-                console.log(doc.data().numeroMatricula);
-                
-                const nuevaPractica : any = doc.data();
+
+                const nuevaPractica: any = doc.data();
                 this.solicitudes.push(nuevaPractica);
 
             });
 
-        }).finally((  ) => { 
+        }).finally(() => {
             this.dataSource.data = this.solicitudes;
         });
-    }
-
-    mostrar_Cantidad(){
-        console.log(this.solicitudes);
-        console.log(this.dataSource.data.length);
-        // this.solicitudes.pop();
     }
 
     createFilter(): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
@@ -188,7 +178,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             let searchTerms = JSON.parse(filter);
             return data.nombreEstudiante.toString().toLowerCase().indexOf(searchTerms.nombreEstudiante) !== -1
                 && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
-                && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1
+                && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
                 && data.numeroPractica.toString().toLowerCase().indexOf(searchTerms.numeroPractica) !== -1;
         }
         return filterFunction;
