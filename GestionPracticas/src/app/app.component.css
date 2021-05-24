@@ -39,7 +39,6 @@ mat-paginator table {
 mat-card,
 mat-horizontal-stepper,
 ::ng-deep .mat-dialog-container {
-	border-style: solid;
 	border: 1px rgb(144, 164, 174);
 	border-radius: 10px;
 	border-style: solid;
