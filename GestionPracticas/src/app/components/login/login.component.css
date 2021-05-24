@@ -17,11 +17,10 @@ mat-card {
 }
 
 mat-card {
-	box-shadow: 0 0 1px 1px #bdbdbd !important;
-	background: rgb(245, 245, 245);
-	background: radial-gradient(circle, rgba(245, 245, 245, .95) 50%, rgba(224, 224, 224, .8) 100%);
+	box-shadow: 0 0 1px 1px rgb(236, 239, 241) !important;
+	background: radial-gradient(circle, rgba(236, 239, 241, 1) 55%, rgba(236, 239, 241, .9) 100%);
 	border-style: solid;
-	border: 1px #bdbdbd;
+	border: 1px rgb(236, 239, 241);
 	border-radius: 10px;
 	border-style: solid;
 	margin-top: 10vh;

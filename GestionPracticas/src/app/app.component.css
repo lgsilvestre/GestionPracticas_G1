@@ -26,18 +26,21 @@ mat-card button {
 mat-card,
 mat-horizontal-stepper,
 mat-paginator,
-::ng-deep .mat-dialog-container,
-table {
-	box-shadow: 0 0 1px 1px #bdbdbd !important;
-	background: rgb(245, 245, 245);
-	background: radial-gradient(circle, rgba(245, 245, 245, .85) 50%, rgba(245, 245, 245, .8) 100%);
+::ng-deep .mat-dialog-container {
+	box-shadow: 0 0 1px 1px rgb(236, 239, 241) !important;
+}
+
+mat-card,
+mat-horizontal-stepper,
+mat-paginator table {
+	background: radial-gradient(circle, rgba(236, 239, 241, 1) 55%, rgba(236, 239, 241, .9) 100%);
 }
 
 mat-card,
 mat-horizontal-stepper,
 ::ng-deep .mat-dialog-container {
 	border-style: solid;
-	border: 1px #bdbdbd;
+	border: 1px rgb(236, 239, 241);
 	border-radius: 10px;
 	border-style: solid;
 }

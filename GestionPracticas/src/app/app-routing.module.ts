@@ -29,7 +29,6 @@ const routes: Routes = [
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'visualizar-practica', component: VisualizarComponent },
 	{ path: 'editar-cuenta', component: EditarCuentaComponent },
-	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
 	{ path: 'ver-cuentas', component: VerCuentasComponent },
 	{ path: 'crear-cuentas-sa', component: CrearCuentasSaComponent },
