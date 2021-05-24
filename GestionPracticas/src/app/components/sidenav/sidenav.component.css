@@ -37,7 +37,7 @@
 mat-sidenav {
 	box-shadow: 0 0 1px 1px rgb(255, 209, 128) !important;
 	background: rgb(255, 209, 128);
-	background: linear-gradient(180deg, rgba(255, 224, 178, .95) 55%, rgba(255, 224, 178, .9) 100%);
+	background: linear-gradient(180deg, rgba(255, 224, 178, .95) 75%, rgba(255, 224, 178, .85) 100%);
 	border-style: solid;
 	border: 1px rgb(255, 209, 128);
 	border-radius: 10px;
