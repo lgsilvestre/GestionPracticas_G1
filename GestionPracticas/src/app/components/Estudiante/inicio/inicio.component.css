@@ -4,13 +4,13 @@
 
 .separador
 {
-	margin-top: 10vh;
+	margin-top: 2vh;
 }
 
-.separador2
+/* .separador2
 {
-	margin-top: 7vh;
-}
+	margin-top: 1vh;
+} */
 
 .preguntas
 {
@@ -37,6 +37,45 @@
 	width: 50%;
 	display: inline-table;
 	padding: 3vh;
+
+}
+
+.mat-elevation-z5
+{
+	border-color: #9b9b9b;
+}
+
+.tarjeta
+{
+	background-color: #fff;
+	margin-top: 6vh;
+}
+
+.Subtitulo
+{
+	color: #c83609
+}
+
+.justificar
+{
+	text-align: justify;
+}
+
+.calendario
+{
+	align-content: center;
+	background-color: #fff;
+	width: 80%;
+}
+
+.fechas
+{
+	font-size: 1.5em;
+	color: #c83609
+}
+
+.special-date {
+  background-color: red;
 }
 /*
 mat-icon {
