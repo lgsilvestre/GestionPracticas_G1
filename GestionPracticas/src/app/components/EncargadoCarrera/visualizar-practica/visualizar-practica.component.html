@@ -103,6 +103,6 @@
         <td class="mat-cell" colspan="7" style="text-align: center; ">No se encontraron resultados.</td>
       </tr>
     </table>
-    <mat-paginator *ngIf="solicitudes.length != 0" [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8" style="min-width: 700px;"></mat-paginator>
+    <mat-paginator [hidden]="!(solicitudes.length != 0)" [pageSizeOptions]="[2, 10, 25, 50, 100]" showFirstLastButtons class="mat-elevation-z8" style="min-width: 700px;"></mat-paginator>
   </div>
 </div>
