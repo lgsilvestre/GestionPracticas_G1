@@ -6,7 +6,7 @@ import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.c
 import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 import { Practica } from "src/app/model/practica.model";
-
+declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
     if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
@@ -184,12 +184,34 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         return filterFunction;
     }
 
-    aceptarSolicitud(solicitud: any) {
-        alert("el id de la solicitud: "+solicitud.idSolicitud);
-    }
+    cambiar_estado(solicitud: any, param_estado: string) 
+    {
+        var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud);
+        var msg_success  = "La solicitud fue ";
+        var msg_error    = "Ocurrió un error y la solicitud no se pudo ";
 
-    openDialogRechazarSolicitud(element: any) {
-        alert("chao");
+        if ( param_estado == "Aceptado" )
+        {
+            msg_success += "aceptada";
+            msg_error   += "aceptar";
+        }
+        if ( param_estado == "Rechazada" )
+        {
+            msg_success += "rechazada";
+            msg_error   += "rechazar";
+        }
+
+        return solicitudRef.update({
+            estado: param_estado
+          })
+          .then(() => {
+            this.solicitudes = [];
+            this.cargarDatos();
+            alertify.success(msg_success);
+          })
+          .catch((error) => {
+            alertify.error(msg_error);
+          });
     }
 
 }
