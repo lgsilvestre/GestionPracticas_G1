@@ -33,7 +33,7 @@ export interface Practica{
   archivoConsentimiento:string; // revisar bien.
   //fin ( por el momento)
   estadoDePractica:string; // en curso, en evaluacion, completada.
-  calificacion:string[];
-  retroalimentacion:string;
+  calificacion?:string[];
+  retroalimentacion?:string;
 
 }
