@@ -1,0 +1,32 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    background-color:#ff6600;
+    color: #fff;
+    width: 100%;
+} 
+
+.texto
+{
+    text-align: center;
+    
+}
+
+.contacto
+{
+    display: inline-flexbox;
+    padding-left: 2vh;
+}
+
+.contactoContinuacion
+{
+    display: -ms-inline-flexbox;
+    padding-left: 6vh;
+}
+
+#nombre_sistema
+{
+    margin-bottom: 0px;
+    text-align: center;
+}
