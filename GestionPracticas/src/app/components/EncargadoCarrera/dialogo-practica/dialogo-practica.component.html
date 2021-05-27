@@ -1,10 +1,12 @@
 <h2 mat-dialog-title>Solicitud de práctica</h2>
-<p>Aquí se debe mostrar la información resumen de la práctica seleccionada :P</p>
-<p>Nombre alumno: {{data.nombre}} </p>
+<p><b> Nombres alumno: </b> {{data.nombreEstudiante}} </p>
+<p><b> Apellidos alumno: </b> {{data.apellidoEstudiante}} </p>
+<p><b>RUN: </b>{{data.runEstudiante}} </p>
+<p><b>Carrera: </b> {{data.carreraEstudiante}} </p>
+<p><b>N° Matrícula: </b> {{data.numeroMatricula}} </p>
+<p><b>Correo institucional: </b>  {{data.correoEstudiante}}</p>
+<p><b>Contacto: </b> {{data.numeroContactoEstudiante}} </p>
 
 <mat-dialog-actions align="end">
-	<!-- <button mat-raised-button mat-dialog-close>Cancelar</button> -->
-	<button mat-raised-button [mat-dialog-close]="false">Rechazar</button>
-	<button mat-raised-button color="primary" [mat-dialog-close]="true">Aceptar</button>
-
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial >Ok</button>
 </mat-dialog-actions>
