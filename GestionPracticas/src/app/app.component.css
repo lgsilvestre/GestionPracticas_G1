@@ -3,8 +3,8 @@ mat-form-field {
 }
 
 button:not(mat-sidenav-container button) {
-	min-width: 5em;
-	min-height: 2.75em;
+	min-width: 5rem;
+	min-height: 2.75rem;
 }
 
 mat-horizontal-stepper {
@@ -12,14 +12,16 @@ mat-horizontal-stepper {
 }
 
 mat-horizontal-stepper button {
-	min-width: 10em;
+	min-width: 10rem;
 }
 
-button {
+button:not(::ng-deep .mat-toolbar button) {
 	box-shadow: none !important;
+	min-width: 20rem;
 }
 
-mat-horizontal-stepper button {
+mat-horizontal-stepper button,
+mat-card button {
 	margin: 0 20px 0 20px !important;
 }
 
@@ -40,31 +42,8 @@ mat-card-actions {
 	font-size: medium !important;
 }
 
-.mat-radio-button~.mat-radio-button {
-	margin: 20px;
-}
-
-::ng-deep mat-divider {
-	margin: 20px 0 20px 0 !important;
-}
-
 mat-card {
-	margin: 0 0 1.5em 0;
-}
-
-::ng-deep mat-horizontal-stepper .mat-step-header:hover,
-::ng-deep mat-horizontal-stepper .mat-focus-indicator:hover:not(button),
-::ng-deep mat-horizontal-stepper .mat-horizontal-stepper-header:hover {
-	background-color: #DAE8FC;
-	width: 2000px;
-	border: 2px #6C8EBF !important;
-	border-style: solid !important;
-	border-radius: 5px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
+	margin: 0 0 1.5rem 0;
 }
 
 ::ng-deep .mat-form-field-outline {

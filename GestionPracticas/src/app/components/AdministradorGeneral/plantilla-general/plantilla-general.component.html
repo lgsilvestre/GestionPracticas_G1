@@ -39,7 +39,7 @@
 				<mat-label>Teléfono</mat-label>
 				<input matInput placeholder="+56912345678" formControlName="TelefonoEmergencia" required>
 			</mat-form-field>
-			<mat-divider></mat-divider>
+			<hr>
 			<div class="step-button">
 				<button mat-raised-button matStepperNext color="primary" type="button">Siguente <mat-icon>navigate_next</mat-icon>
 				</button>
@@ -69,7 +69,7 @@
 				<mat-label>Dirección</mat-label>
 				<input matInput placeholder="Dirección de la empresa" formControlName="Direccion" required>
 			</mat-form-field>
-			<mat-divider></mat-divider>
+			<hr>
 			<div class="step-buttons">
 				<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
 				<button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
@@ -109,7 +109,7 @@
 				<mat-label>Correo electrónico</mat-label>
 				<input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronico" required>
 			</mat-form-field>
-			<mat-divider></mat-divider>
+			<hr>
 			<div class="step-buttons">
 				<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
 				<button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
@@ -151,7 +151,7 @@
 			</mat-form-field>
 			<h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
 			<input type="file" (change)="onFileChange($event)" placeholder="consentimiento.pdf" formControlName="Archivo" required>
-			<mat-divider></mat-divider>
+			<hr>
 			<div class="step-buttons">
 				<button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
 				<button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>

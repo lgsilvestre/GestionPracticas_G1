@@ -1,49 +1,27 @@
-import { AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
 import { MatPaginator } from "@angular/material/paginator";
-
-export interface ITablaVisualizarPractica {
-    rut: string;
-    position: number;
-    nombre: string;
-    empresa: string;
-    situacion: string;
-    semestre: string;
-    ver: string;
-}
-
-const ELEMENT_DATA: ITablaVisualizarPractica[] = [
-    { position: 1, rut: '1111111', nombre: 'Juan Gonzalez R.', empresa: 'Cencosud', situacion: 'Pendiente', semestre: '1', ver: '' },
-    { position: 2, rut: '2222222', nombre: 'Maria Ramirez G.', empresa: 'Cencosud', situacion: 'Pendiente', semestre: '1', ver: '' },
-    { position: 3, rut: '3333333', nombre: 'Roberto Donoso J.', empresa: 'Agrosuper', situacion: 'En proceso', semestre: '2', ver: '' },
-    { position: 4, rut: '4444444', nombre: 'Martina Gonzalez R.', empresa: 'Haulmer Spa.', situacion: 'Pendiente', semestre: '2', ver: '' },
-    { position: 5, rut: '5555555', nombre: 'Clodotea Marambio E.', empresa: 'Entel', situacion: 'Terminada', semestre: '2', ver: '' },
-    { position: 6, rut: '6666666', nombre: 'Ricardo Paredes G.', empresa: 'Haulmer Spa.', situacion: 'Terminada', semestre: '1', ver: '' },
-    { position: 7, rut: '7777777', nombre: 'Lucia Marszz T.', empresa: 'Solu4B', situacion: 'Pendiente', semestre: '1', ver: '' },
-    { position: 8, rut: '8888888', nombre: 'Miguel Sanhueza K.', empresa: 'Cencosud', situacion: 'En proceso', semestre: '2', ver: '' },
-    { position: 9, rut: '9999999', nombre: 'Ignacia Marambio B.', empresa: 'Haulmer Spa.', situacion: 'En proceso', semestre: '1', ver: '' },
-    { position: 10, rut: '0000000', nombre: 'Francisco Duque Q.', empresa: 'Agrosuper', situacion: 'En proceso', semestre: '1', ver: '' },
-];
-
-//lo anterior debe ser cargado desde FireBase, hay que eliminar esto anterior.
+import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
+import { Practica } from "src/app/model/practica.model";
+declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
     if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
-    
+
     length = Math.max(length, 0);
-  
+
     const startIndex = page * pageSize;
-  
+
     // If the start index exceeds the list length, do not try and fix the end index to the end.
     const endIndex = startIndex < length ?
         Math.min(startIndex + pageSize, length) :
         startIndex + pageSize;
-  
+
     return `${startIndex + 1} - ${endIndex} de ${length}`;
-  }
+}
 
 
 @Component({
@@ -53,73 +31,75 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
 })
 
 
-export class VisualizarComponent implements OnInit, AfterViewInit{
+export class VisualizarComponent implements OnInit, AfterViewInit {
     filtroSemestreSeleccionado: boolean = false;
     filtroEmpresaSeleccionado: boolean = false;
     filtroSituacionSeleccionado: boolean = false;
+    filtroNumeroMatriculaSeleccionado: boolean = false;
 
-    nombreFilter = new FormControl('');
-    empresaFilter = new FormControl('');
-    semestreFilter = new FormControl('');
-    situacionFilter = new FormControl('');
+    filtroNombre = new FormControl('');
+    filtroEmpresa = new FormControl('');
+    filtroNumeroMatricula = new FormControl('');
+    filtroSituacion = new FormControl('');
 
-    displayedColumns: string[] = ['position', 'rut', 'nombre', 'empresa', 'situacion', 'semestre', 'ver'];
 
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
+    displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
+
+
+    solicitudes: Practica[];
+
+    dataSource = new MatTableDataSource();
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-
     filterValues = {
         rut: '',
-        position: '',
-        nombre: '',
-        empresa: '',
-        situacion: '',
-        semestre: '',
-        ver: ''
+        numeroMatricula: '',
+        nombreEstudiante: '',
+        nombreEmpresa: '',
+        estado: '',
+        numeroPractica: '',
     }
 
-    clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
-        this.nombreFilter.setValue('');
-        this.empresaFilter.setValue('');
-        this.semestreFilter.setValue('');
-        this.situacionFilter.setValue('');
-    }
 
     ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
-        this.nombreFilter.valueChanges
+
+        this.cargarDatos();
+
+        this.filtroNombre.valueChanges
             .subscribe(
-                nombre => {
-                    this.filterValues.nombre = nombre;
+                nombreEstudiante => {
+                    this.filterValues.nombreEstudiante = nombreEstudiante;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
-        this.empresaFilter.valueChanges
+        this.filtroEmpresa.valueChanges
             .subscribe(
-                empresa => {
-                    this.filterValues.empresa = empresa;
+                nombreEmpresa => {
+                    this.filterValues.nombreEmpresa = nombreEmpresa;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
-        this.semestreFilter.valueChanges
+        this.filtroNumeroMatricula.valueChanges
             .subscribe(
-                semestre => {
-                    this.filterValues.semestre = semestre;
+                numeroMatricula => {
+                    this.filterValues.numeroMatricula = numeroMatricula;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
-        this.situacionFilter.valueChanges
+        this.filtroSituacion.valueChanges
             .subscribe(
-                situacion => {
-                    this.filterValues.situacion = situacion;
+                estado => {
+                    this.filterValues.estado = estado;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
 
     }
 
-    constructor(public dialog: MatDialog) {
+    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService) {
+        this.solicitudes = [];
+        this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter();
     }
     ngAfterViewInit(): void {
@@ -132,9 +112,16 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
         this.dataSource.paginator = this.paginator;
     }
 
-    openDialog(nombre: string) {
+    clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
+        this.filtroNombre.setValue('');
+        this.filtroEmpresa.setValue('');
+        this.filtroNumeroMatricula.setValue('');
+        this.filtroSituacion.setValue('');
+    }
+
+    openDialog(elemento: any) {
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = {nombre: nombre};
+        dialogConfig.data = elemento;
 
         const dialogRef = this.dialog.open(DialogoPracticaComponent, dialogConfig);
 
@@ -147,44 +134,84 @@ export class VisualizarComponent implements OnInit, AfterViewInit{
     filtroSelectChange(filtroElegido: String) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
     {
 
-        if (filtroElegido == 'semestre') {
-            this.filtroSemestreSeleccionado = true;
+        if (filtroElegido == 'matricula') {
+            this.filtroNumeroMatriculaSeleccionado = true;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
         }
 
         if (filtroElegido == 'situacion') {
-            this.filtroSemestreSeleccionado = false;
+            this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = true;
         }
 
         if (filtroElegido == 'empresa') {
-            this.filtroSemestreSeleccionado = false;
+            this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = true;
             this.filtroSituacionSeleccionado = false;
         }
+
         if (filtroElegido == 'sin_filtros') {
-            this.filtroSemestreSeleccionado = false;
+            this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
-            this.clearFilters();
         }
     }
 
-    semestreSelectChange(semestreElegido: any) {
-        //this.dataSource.filter = semestreElegido.trim().toLowerCase();
+    cargarDatos() {
+        this.EC_service.load_data_visualizar_practica().then((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+
+                const nuevaPractica: any = doc.data();
+                this.solicitudes.push(nuevaPractica);
+
+            });
+
+        }).finally(() => {
+            this.dataSource.data = this.solicitudes;
+        });
     }
 
-    createFilter(): (data: ITablaVisualizarPractica, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
-        let filterFunction = function (data: ITablaVisualizarPractica, filter: string): boolean {
+    createFilter(): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
+        let filterFunction = function (data: any, filter: string): boolean {
             let searchTerms = JSON.parse(filter);
-            return data.nombre.toLowerCase().indexOf(searchTerms.nombre) !== -1
-                && data.empresa.toLowerCase().indexOf(searchTerms.empresa) !== -1
-                && data.situacion.toLowerCase().indexOf(searchTerms.situacion) !== -1
-                && data.semestre.toString().toLowerCase().indexOf(searchTerms.semestre) !== -1;
+            return data.nombreEstudiante.toString().toLowerCase().indexOf(searchTerms.nombreEstudiante) !== -1
+                && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
+                && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
+                && data.numeroPractica.toString().toLowerCase().indexOf(searchTerms.numeroPractica) !== -1;
         }
         return filterFunction;
+    }
+
+    cambiar_estado(solicitud: any, param_estado: string) 
+    {
+        var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud);
+        var msg_success  = "La solicitud fue ";
+        var msg_error    = "Ocurrió un error y la solicitud no se pudo ";
+
+        if ( param_estado == "Aceptado" )
+        {
+            msg_success += "aceptada";
+            msg_error   += "aceptar";
+        }
+        if ( param_estado == "Rechazada" )
+        {
+            msg_success += "rechazada";
+            msg_error   += "rechazar";
+        }
+
+        return solicitudRef.update({
+            estado: param_estado
+          })
+          .then(() => {
+            this.solicitudes = [];
+            this.cargarDatos();
+            alertify.success(msg_success);
+          })
+          .catch((error) => {
+            alertify.error(msg_error);
+          });
     }
 
 }

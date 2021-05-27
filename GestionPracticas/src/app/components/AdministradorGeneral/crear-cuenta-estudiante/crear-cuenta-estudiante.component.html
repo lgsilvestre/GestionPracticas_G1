@@ -1,0 +1,92 @@
+<h1>Crear cuenta de estudiante</h1>
+
+<mat-card>
+	<form [formGroup]="primeraEtapa">
+		<ng-template matStepLabel>Datos</ng-template>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Nombres</mat-label>
+			<input matInput placeholder="Primer y segundo nombre" formControlName="Nombres" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Apellidos</mat-label>
+			<input matInput placeholder="Apellido paterno y materno" formControlName="Apellidos" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>RUT</mat-label>
+			<input matInput placeholder="RUT" formControlName="Run" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Número de matricula</mat-label>
+			<input matInput placeholder="2014407000" formControlName="NumeroMatricula">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Correo Electrónico (institucional)</mat-label>
+			<input matInput placeholder="usuario@utalca.cl" formControlName="CorreoInstitucional" required>
+		</mat-form-field>
+
+
+		<mat-form-field appearance="outline">
+			<mat-label>Plan</mat-label>
+			<input matInput placeholder="Plan 16" formControlName="Plan">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Situación actual</mat-label>
+			<input matInput placeholder="Regular" formControlName="CorreoElectronico" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Año de ingreso</mat-label>
+			<input matInput placeholder="2014" formControlName="AnnoIngreso">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Correo Electrónico (personal)</mat-label>
+			<input matInput placeholder="usuario@dominio.cl" formControlName="CorreoElectronico">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Teléfono</mat-label>
+			<input matInput placeholder="+5601234567" formControlName="Telefono" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Rol</mat-label>
+			<input matInput formControlName="rol">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Fecha de nacimiento</mat-label>
+			<input matInput [matDatepicker]="FechaNacimiento">
+			<mat-datepicker-toggle matSuffix [for]="FechaNacimiento"></mat-datepicker-toggle>
+			<mat-datepicker #FechaNacimiento></mat-datepicker>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Comuna</mat-label>
+			<input matInput placeholder="Curicó" formControlName="Comuna">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Dirección</mat-label>
+			<input matInput placeholder="Calle 123" formControlName="Direccion">
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Nacionalidad</mat-label>
+			<input matInput placeholder="Chile" formControlName="Nacionalidad">
+		</mat-form-field>
+
+		<div class="submit-button">
+			<button mat-raised-button color="primary" type="button">Crear cuenta</button>
+		</div>
+
+
+	</form>
+
+</mat-card>
