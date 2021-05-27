@@ -23,25 +23,25 @@
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Rol</mat-label>
-			<mat-select formControlName="Rol" [ngModel]="rolActual" (ngModelChange)="onChangeRol($event)">
+			<mat-select formControlName="Rol" [ngModel]="rolActual" (ngModelChange)="onChangeRol($event)" required>
 				<mat-option>None</mat-option>
 				<mat-option *ngFor="let rol of roles" [value]="rol">{{rol}}</mat-option>
 			</mat-select>
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Carrera</mat-label>
-			<mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)">
+			<mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)" required>
 				<mat-option>None</mat-option>
 				<mat-option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</mat-option>
 			</mat-select>
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Contraseña</mat-label>
-			<input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1">
+			<input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1" required>
 		</mat-form-field>
 		<mat-form-field appearance="outline">
 			<mat-label>Repita su contraseña</mat-label>
-			<input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2">
+			<input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2" required>
 		</mat-form-field>
 		<hr>
 		<div>

@@ -1,4 +1,5 @@
-mat-form-field {
+mat-form-field,
+mat-horizontal-stepper {
 	width: 100%;
 }
 
@@ -7,31 +8,40 @@ button:not(mat-sidenav-container button) {
 	min-height: 2.75rem;
 }
 
-mat-horizontal-stepper {
-	width: 100%;
-}
-
 mat-horizontal-stepper button {
 	min-width: 10rem;
 }
 
-button:not(::ng-deep .mat-toolbar button) {
+button:not(::ng-deep .mat-toolbar button),
+ ::ng-deep .mat-dialog-container button {
 	box-shadow: none !important;
 	min-width: 20rem;
 }
 
 mat-horizontal-stepper button,
 mat-card button {
-	margin: 0 20px 0 20px !important;
+	margin: 0 1rem 0 1rem !important;
 }
 
 mat-card,
-mat-horizontal-stepper {
-	box-shadow: none !important;
-	border: 2px #B2B2B2B2;
+mat-horizontal-stepper,
+mat-paginator,
+::ng-deep .mat-dialog-container {
+	box-shadow: 0 0 1px 1px rgba(96, 125, 139, .5) !important;
+}
+
+mat-card,
+mat-horizontal-stepper,
+mat-paginator table {
+	background: radial-gradient(circle, rgba(236, 239, 241, .95) 75%, rgba(236, 239, 241, .85) 100%);
+}
+
+mat-card,
+mat-horizontal-stepper,
+::ng-deep .mat-dialog-container {
+	border: 1px rgb(144, 164, 174);
+	border-radius: 10px;
 	border-style: solid;
-	background-color: #F5F5F5;
-	border-radius: 5px;
 }
 
 mat-label,
@@ -50,3 +60,22 @@ mat-card {
 	background-color: white;
 }
 
+table {
+	width: 100%;
+}
+
+#main {
+	margin: 2rem 0 2rem 0;
+}
+
+@media only screen and (min-width: 992px) {
+	#main {
+		margin: 2rem 16vw 2rem 16vw;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#main {
+		margin: 2rem 8vw 2rem 8vw;
+	}
+}

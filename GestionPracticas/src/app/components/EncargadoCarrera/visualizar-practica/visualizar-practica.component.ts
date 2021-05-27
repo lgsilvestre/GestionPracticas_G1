@@ -25,9 +25,9 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
 
 
 @Component({
-    selector: 'app-visualizar-practicas',
-    templateUrl: './visualizar-practica.component.html',
-    styleUrls: ['./visualizar-practica.component.css']
+	selector: 'app-visualizar-practicas',
+	templateUrl: './visualizar-practica.component.html',
+	styleUrls: ['./visualizar-practica.component.css', '../../../app.component.css']
 })
 
 

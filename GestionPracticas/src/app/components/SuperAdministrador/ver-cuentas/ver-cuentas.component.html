@@ -2,50 +2,33 @@
 
 
 
-<div class="row pb-4">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- nombre_encargado Column -->
-    <ng-container matColumnDef="nombre_encargado">
-        <th mat-header-cell *matHeaderCellDef> Nombre usuario </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre_encargado}} </td>
-    </ng-container>
-
-    <!-- carrera Column -->
-    <ng-container matColumnDef="carrera">
-        <th mat-header-cell *matHeaderCellDef> Carrera </th>
-        <td mat-cell *matCellDef="let element"> {{element.carrera}} </td>
-    </ng-container>
-
-    <!-- fecha Column -->
-    <ng-container matColumnDef="rol">
-        <th mat-header-cell *matHeaderCellDef> Rol </th>
-        <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
-    </ng-container>
-
-    <!-- estado_cuenta Column -->
-    <ng-container matColumnDef="estado_cuenta">
-        <th mat-header-cell *matHeaderCellDef> Estado cuenta</th>
-        <td mat-cell *matCellDef="let element"> {{element.estado_cuenta}} </td>
-    </ng-container>
-
-    <!-- editar_estado Column -->
-    <ng-container matColumnDef="editar_estado">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let element"> {{element.editar_estado}} </td>
-    </ng-container>
-
-    <!-- cambiar_contrasena Column -->
-    <ng-container matColumnDef="cambiar_contrasena">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let element"> {{element.cambiar_contrasena}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-</div>
+<mat-card>
+	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+		<ng-container matColumnDef="nombre_encargado">
+			<th mat-header-cell *matHeaderCellDef> Nombre usuario </th>
+			<td mat-cell *matCellDef="let element"> {{element.nombre_encargado}} </td>
+		</ng-container>
+		<ng-container matColumnDef="carrera">
+			<th mat-header-cell *matHeaderCellDef> Carrera </th>
+			<td mat-cell *matCellDef="let element"> {{element.carrera}} </td>
+		</ng-container>
+		<ng-container matColumnDef="rol">
+			<th mat-header-cell *matHeaderCellDef> Rol </th>
+			<td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+		</ng-container>
+		<ng-container matColumnDef="estado_cuenta">
+			<th mat-header-cell *matHeaderCellDef> Estado cuenta</th>
+			<td mat-cell *matCellDef="let element"> {{element.estado_cuenta}} </td>
+		</ng-container>
+		<ng-container matColumnDef="editar_estado">
+			<th mat-header-cell *matHeaderCellDef> </th>
+			<td mat-cell *matCellDef="let element"> {{element.editar_estado}} </td>
+		</ng-container>
+		<ng-container matColumnDef="cambiar_contrasena">
+			<th mat-header-cell *matHeaderCellDef> </th>
+			<td mat-cell *matCellDef="let element"> {{element.cambiar_contrasena}} </td>
+		</ng-container>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+</mat-card>
