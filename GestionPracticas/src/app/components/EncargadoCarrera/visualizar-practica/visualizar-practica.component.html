@@ -92,7 +92,9 @@
       <ng-container matColumnDef="accion">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-          <mat-icon (click)="openDialog(element)" type="button"> visibility </mat-icon>
+          <mat-icon (click)="openDialog(element)" type="button" style="margin-right: 10px;"> visibility </mat-icon>
+          <mat-icon (click)="aceptarSolicitud(element)" type="button" style="margin-right: 10px;">check</mat-icon>
+          <mat-icon (click)="openDialogRechazarSolicitud(element)" type="button">close</mat-icon>
         </td>
       </ng-container>
 

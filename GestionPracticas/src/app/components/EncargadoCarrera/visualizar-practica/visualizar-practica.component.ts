@@ -184,4 +184,12 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         return filterFunction;
     }
 
+    aceptarSolicitud(solicitud: any) {
+        alert("el id de la solicitud: "+solicitud.idSolicitud);
+    }
+
+    openDialogRechazarSolicitud(element: any) {
+        alert("chao");
+    }
+
 }

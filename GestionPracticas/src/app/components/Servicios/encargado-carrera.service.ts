@@ -16,4 +16,11 @@ export class EncargadoCarreraService {
   public load_data_visualizar_practica() {
     return this.db.firestore.collection("Solicitudes").get();
   }
+
+  public editar_estado_solicitud(idSolicitud: string) {
+    var solicitudRef = this.db.firestore.collection("Solicitudes").doc(idSolicitud);
+
+
+  }
+
 }
