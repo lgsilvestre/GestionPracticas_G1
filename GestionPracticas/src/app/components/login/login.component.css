@@ -1,8 +1,10 @@
+mat-card,
 #main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	min-height: calc(125vh - 2rem);
 }
 
 img {
@@ -21,9 +23,23 @@ a {
 	margin: 0 auto;
 }
 
+@media only screen and (min-width: 768px) {
+	mat-card {
+		margin: 0 32vh 0 32vh;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	mat-card {
+		margin: 0 16vh 0 16vh;
+	}
+}
+
 mat-card {
 	min-width: 400px;
 	max-width: 400px;
+	min-height: 100%;
+	max-height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -34,7 +50,18 @@ form {
 	text-align: center;
 }
 
-#forgotPass {
-	margin-top: 10px;
-	font-size: 12px !important;
+.buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 6.5rem;
+}
+
+.imagen-fondo {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url('http://comunicaciones.utalca.cl/galeria/fotos_gr/20.jpg');
 }

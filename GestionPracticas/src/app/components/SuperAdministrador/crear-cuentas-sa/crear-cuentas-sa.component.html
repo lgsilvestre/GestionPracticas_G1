@@ -1,69 +1,51 @@
-<div class="container-fluid">
-    <div class="row text-center">
-        <h1>Crear cuenta</h1>
-    </div>
-    <div class="row text-center border p-4">
-        <div class="col">
-            <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Nombre encargado</mat-label>
-                    <input matInput placeholder="Nombre encargado">
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Apellidos</mat-label>
-                    <input matInput placeholder="Apellidos">
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Rut</mat-label>
-                    <input matInput placeholder="Rut">
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Correo institucional</mat-label>
-                    <input matInput type="email" placeholder="correo@institucional.cl">
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field appearance="fill">
-                    <mat-label>Elige el rol</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Rol 1</mat-option>
-                      <mat-option value="option2">Rol 2</mat-option>
-                      <mat-option value="option3">Rol 3</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field appearance="fill">
-                    <mat-label>Elige la carrera</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Ing. civil en computación</mat-option>
-                      <mat-option value="option2">Ing. civil industrial</mat-option>
-                      <mat-option value="option3">Ing. civil en obras civiles</mat-option>
-                      <mat-option value="option4">Ing. civil mecatrónica</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Otro</mat-label>
-                    <input matInput placeholder="Otro">
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Contraseña preliminar</mat-label>
-                    <input type="password" matInput placeholder="Contraseña preliminar">
-                </mat-form-field>                
-            </div>
-            <div class="row px-3">
-                <button mat-raised-button color="primary">Crear</button>
-            </div>
-        </div>
-    </div>
-</div>
+<mat-card>
+	<form [formGroup]="nuevaCuenta">
+		<h1>Crear cuenta</h1>
+		<mat-form-field appearance="outline">
+			<mat-label>Nombres</mat-label>
+			<input matInput placeholder="Primer y segundo nombre" formControlName="Nombres" required>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Apellidos</mat-label>
+			<input matInput placeholder="Apellido paterno y materno" formControlName="Apellidos" required>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>RUT</mat-label>
+			<input matInput placeholder="RUT" formControlName="Run" required>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Correo institucional</mat-label>
+			<input matInput type="email" placeholder="usuario@utalca.cl" formControlName="CorreInstitucional" required>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Correo personal</mat-label>
+			<input matInput type="email" placeholder="usuario@sitio.cl" formControlName="CorreoPersonal">
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Rol</mat-label>
+			<mat-select formControlName="Rol" [ngModel]="rolActual" (ngModelChange)="onChangeRol($event)">
+				<mat-option>None</mat-option>
+				<mat-option *ngFor="let rol of roles" [value]="rol">{{rol}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Carrera</mat-label>
+			<mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)">
+				<mat-option>None</mat-option>
+				<mat-option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Contraseña</mat-label>
+			<input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1">
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Repita su contraseña</mat-label>
+			<input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2">
+		</mat-form-field>
+		<hr>
+		<div>
+			<button mat-raised-button color="primary" (click)="crear()">Crear cuenta</button>
+		</div>
+	</form>
+</mat-card>

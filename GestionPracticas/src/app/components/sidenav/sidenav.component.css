@@ -3,37 +3,37 @@
 	background-image: url(../../../assets/logo_practica.png);
 	background-repeat: no-repeat;
 	background-position: center !important;
-	width: 300px;
+	width: 100%;
 	height: 120px;
 }
 
 #outer-account {
-	display: block;
+    display: block;
 }
 
 #name-edit {
-	display: flex;
+    display: flex;
 }
 
 #outer-account,
 #name-edit {
-	justify-content: center;
-	text-align: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #avatar-image {
-	background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-	background-size: cover;
-	height: 64px;
-	width: 64px;
-	border: 2px #d1b879 !important;
-	border-style: solid !important;
-	border-radius: 50px;
-	margin: 0 auto;
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    height: 64px;
+    width: 64px;
+    border: 2px #d1b879 !important;
+    border-style: solid !important;
+    border-radius: 50px;
+    margin: 0 auto;
 }
 
 ::ng-deep .mat-list-base {
-	padding: 0px !important;
+    padding: 0px !important;
 }
 
 mat-sidenav {
@@ -44,21 +44,33 @@ mat-sidenav {
 }
 
 ::ng-deep mat-sidenav mat-divider {
-	margin: 0 !important;
-	border: 1px #d1b879;
-	border-style: solid;
+    margin: 0 !important;
+    border: 1px #d1b879;
+    border-style: solid;
 }
 
 #outer-account ::ng-deep mat-icon {
-	margin-top: 8px;
-	margin-left: 5px;
-	margin-right: 0px;
+    margin-top: 8px;
+    margin-left: 5px;
+    margin-right: 0px;
 }
 
 a ::ng-deep mat-icon {
-	margin-right: 16px;
+    margin-right: 16px;
 }
 
 #main {
-	margin: 2% 20vw 2% 20vw;
+	margin: 2rem 0 2rem 0;
+}
+
+@media only screen and (min-width: 992px) {
+	#main {
+		margin: 2rem 16vh 2rem 16vh;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#main {
+		margin: 2rem 8vh 2rem 8vh;
+	}
 }
