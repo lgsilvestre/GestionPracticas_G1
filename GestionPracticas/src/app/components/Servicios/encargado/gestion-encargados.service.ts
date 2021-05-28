@@ -10,23 +10,35 @@ export class GestionEncargadosService {
 
   constructor(private afAutenticacion: AngularFireAuth, private afStore: AngularFirestore)
   {}
-  private registrarUsuario(correoInstitucional: string, password: string): Promise<any>
+  private registrarUsuario(nuevoEncargado: EncargadoCarrera, password: string): Promise<any>
   {
     return new Promise((resolve, reject ) =>
     {
-      this.afAutenticacion.createUserWithEmailAndPassword(correoInstitucional , password)
-        .then(userData => resolve(userData), err => reject(err));
+      this.afAutenticacion.createUserWithEmailAndPassword(nuevoEncargado.correoInstitucional , password)
+        .then(userData => {
+          resolve(userData),
+          this.addEncargado(userData.user?.uid , nuevoEncargado );
+          }).catch(err => console.log(reject(err)));
     });
   }
-  public addEncargado(nuevoEncargado: EncargadoCarrera): void
+  private addEncargado(uID: string | undefined, nuevoEncargado: EncargadoCarrera): void
   {
-    this.afStore.collection('/Usuarios/encargadoCarrera/encargadoCarrera').add(nuevoEncargado);
+    console.log(uID + ' addEn \n');
+    if (typeof(uID) === undefined)
+    {
+      console.log('error uid is undefined');
+    }
+    else
+    {
+      const  reff = this.afStore.doc('/Usuarios/encargadoCarrera/encargadoCarrera/' + uID);
+      console.log( 'reff' + reff.ref);
+      reff.set(nuevoEncargado, {merge: true});
+      // this.afStore.collection('/Usuarios/encargadoCarrera/encargadoCarrera/').add(nuevoEncargado);
+    }
   }
   public crearNuevoEncargado(nuevoEncargado: EncargadoCarrera, password: string): void
   {
-    this.registrarUsuario(nuevoEncargado.correoInstitucional, password).then((res) =>
-    {
-      this.addEncargado(nuevoEncargado);
-    }).catch( err => console.log('err', err.message));
+    this.registrarUsuario(nuevoEncargado, password).then((res) =>
+    {}).catch( err => console.log('err', err.message));
   }
 }

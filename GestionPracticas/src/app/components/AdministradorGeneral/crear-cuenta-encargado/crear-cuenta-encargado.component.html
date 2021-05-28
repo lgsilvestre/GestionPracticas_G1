@@ -1,7 +1,7 @@
 <h1>Crear cuenta de encargado de carrera</h1>
 
 <mat-card>
-	<form [formGroup]="primeraEtapa">
+	<form [formGroup]="nuevaCuenta">
 		<ng-template matStepLabel>Datos</ng-template>
 
 		<mat-form-field appearance="outline">
@@ -19,10 +19,13 @@
 			<input matInput placeholder="RUT" formControlName="Run" required>
 		</mat-form-field>
 
-		<mat-form-field appearance="outline">
-			<mat-label>Carrera</mat-label>
-			<input matInput placeholder="Ingeniería Civil en..." formControlName="Carrera" required>
-		</mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Carrera</mat-label>
+      <mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
 
 		<mat-form-field appearance="outline">
@@ -34,6 +37,14 @@
 			<mat-label>Correo Electrónico (personal)</mat-label>
 			<input matInput placeholder="usuario@sitio.cl" formControlName="CorreoElectronico">
 		</mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Repita su contraseña</mat-label>
+      <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2">
+    </mat-form-field>
 
 		<mat-form-field appearance="outline">
 			<mat-label>Rol</mat-label>
@@ -43,7 +54,7 @@
 		<hr>
 
 		<div class="submit-button">
-			<button mat-raised-button color="primary" type="button">Crear cuenta</button>
+			<button mat-raised-button color="primary" type="button" (click)="crear()">Crear cuenta</button>
 		</div>
 
 	</form>

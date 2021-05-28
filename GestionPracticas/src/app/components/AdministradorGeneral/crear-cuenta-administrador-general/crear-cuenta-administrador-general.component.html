@@ -1,7 +1,7 @@
 <h1>Crear cuenta de administrador general</h1>
 
 <mat-card>
-	<form [formGroup]="primeraEtapa">
+	<form [formGroup]="nuevoAdminGenerl">
 		<ng-template matStepLabel>Datos</ng-template>
 
 		<mat-form-field appearance="outline">
@@ -34,13 +34,22 @@
 			<input matInput placeholder="+5601234567" formControlName="Telefono" required>
 		</mat-form-field>
 
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Repita su contraseña</mat-label>
+      <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2">
+    </mat-form-field>
+
 		<mat-form-field appearance="outline">
 			<mat-label>Rol</mat-label>
 			<input matInput formControlName="rol">
 		</mat-form-field>
 
 		<div class="submit-button">
-			<button mat-raised-button color="primary" type="button">Crear cuenta</button>
+			<button mat-raised-button color="primary" type="button" (click)="crear()">Crear cuenta</button>
 		</div>
 
 

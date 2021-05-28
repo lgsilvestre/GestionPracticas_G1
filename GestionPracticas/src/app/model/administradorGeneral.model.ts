@@ -5,5 +5,6 @@ export interface AdministradorGeneral
   run: string;
   correoInstitucional: string;
   correoPersonal?: string;
-  telefono: number;
+  telefono: string;
+  rol: string;
 }
