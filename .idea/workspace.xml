@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="91d8805b-011e-4943-a1a8-75d83c3db831" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/login/login.component.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1rUmfFM2echyQeyFmMmsXHXOcIP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.karma.karma_node_package_dir" value="$USER_HOME$/AppData/Roaming/npm/node_modules/@angular/cli" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="E:\repoGit\GestionPracticas_G1\GestionPracticas\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\repoGit\GestionPracticas_G1\GestionPracticas\src\app\components\Servicios" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI">
+    <configuration name="Test(gestion)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/GestionPracticas/karma.conf.js" />
+      <karma-package-dir value="" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="protractor.conf.js" type="JavaScriptTestRunnerProtractor" nameIsGenerated="true">
+      <config-file value="$PROJECT_DIR$/GestionPracticas/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-package value="$PROJECT_DIR$" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="App" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/GestionPracticas/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.App" />
+      <item itemvalue="Karma.Test(gestion)" />
+      <item itemvalue="npm.Angular CLI" />
+      <item itemvalue="Protractor.protractor.conf.js" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91d8805b-011e-4943-a1a8-75d83c3db831" name="Default Changelist" comment="" />
+      <created>1619039144542</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619039144542</updated>
+      <workItem from="1619039146427" duration="316000" />
+      <workItem from="1619039619539" duration="7472000" />
+      <workItem from="1619047856354" duration="2570000" />
+      <workItem from="1619056803422" duration="1790000" />
+      <workItem from="1619105972867" duration="167000" />
+      <workItem from="1619106868797" duration="5498000" />
+      <workItem from="1619138091268" duration="395000" />
+      <workItem from="1619138501531" duration="6992000" />
+      <workItem from="1619305668252" duration="10000" />
+      <workItem from="1619556616690" duration="6614000" />
+      <workItem from="1619643957686" duration="1593000" />
+      <workItem from="1619731552527" duration="1193000" />
+      <workItem from="1619816642140" duration="13053000" />
+      <workItem from="1619910600040" duration="11680000" />
+      <workItem from="1620047274578" duration="1542000" />
+      <workItem from="1620170876859" duration="9858000" />
+      <workItem from="1620181428114" duration="2529000" />
+      <workItem from="1620245524140" duration="544000" />
+      <workItem from="1620246081999" duration="6860000" />
+      <workItem from="1620340821593" duration="505000" />
+      <workItem from="1620341497152" duration="1856000" />
+      <workItem from="1620347036791" duration="1303000" />
+      <workItem from="1620439233902" duration="2156000" />
+      <workItem from="1620613010428" duration="114000" />
+      <workItem from="1620836654622" duration="25000" />
+      <workItem from="1620862208555" duration="637000" />
+      <workItem from="1620939585573" duration="876000" />
+      <workItem from="1621021468871" duration="2913000" />
+      <workItem from="1621038149852" duration="13065000" />
+      <workItem from="1621137911119" duration="3345000" />
+      <workItem from="1621199246948" duration="10635000" />
+      <workItem from="1621260924778" duration="964000" />
+      <workItem from="1621369669935" duration="12017000" />
+      <workItem from="1621395078906" duration="1372000" />
+      <workItem from="1621463629391" duration="6410000" />
+      <workItem from="1621483185198" duration="2858000" />
+      <workItem from="1621527271779" duration="2112000" />
+      <workItem from="1621534155118" duration="3481000" />
+      <workItem from="1621546759896" duration="14776000" />
+      <workItem from="1621822970352" duration="87000" />
+      <workItem from="1621896236657" duration="2604000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/matias-admin-general" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
