@@ -1,56 +1,72 @@
-mat-card,
 #main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+	background: radial-gradient(circle, rgba(255, 204, 128, 0.25) 0%, rgba(255, 204, 128, .5) 100%), url('../../../assets/background1.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
 }
 
-img {
-    min-width: 280px;
-    max-width: 280px;
-    padding: 20px;
-}
-
-button {
-    width: 20em;
-}
-
-img,
-a {
-    text-align: center;
-    margin: 0 auto;
-}
-
-@media only screen and (min-width: 768px) {
-	mat-card {
-		margin: 0 32vh 0 32vh;
-	}
-}
-
-@media only screen and (min-width: 576px) {
-  mat-card {
-    margin: 0 16vh 0 16vh;
-  }
+#main,
+mat-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 mat-card {
-    min-width: 400px;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+	box-shadow: 0 0 1px 1px rgba(96, 125, 139, .5) !important;
+	background: radial-gradient(circle, rgba(236, 239, 241, .95) 75%, rgba(236, 239, 241, .85) 100%);
+	border-style: solid;
+	border: 1px rgb(144, 164, 174);
+	border-radius: 10px;
+	margin-top: 10vh;
+	margin-bottom: 2rem;
+}
+
+mat-card-content,
+mat-card-actions {
+	font-size: medium !important;
+}
+
+::ng-deep .mat-form-field-outline {
+	background-color: white;
+}
+
+mat-card button {
+	min-height: 2.75rem;
+}
+
+img {
+	min-width: 280px;
+	max-width: 280px;
+	padding: 20px;
+}
+
+button,
+mat-form-field {
+	margin: 0 1rem 0 1rem !important;
+	box-shadow: none !important;
+	min-width: 340px;
 }
 
 form {
-    text-align: center;
+	text-align: center;
 }
 
-.buttons {
+#buttons {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	min-height: 5.5rem;
+	min-height: 6.5rem;
+}
+
+#fields {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
 }

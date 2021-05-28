@@ -4,12 +4,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncargadoCarrera } from '../../../model/encargadoCarrera.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogElementsExampleDialogComponent } from '../dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
-import {GestionEncargadosService} from '../../Servicios/encargado/gestion-encargados.service';
+import { GestionEncargadosService } from '../../Servicios/encargado/gestion-encargados.service';
 
 @Component({
-  selector: 'app-crear-cuentas-sa',
-  templateUrl: './crear-cuentas-sa.component.html',
-  styleUrls: ['./crear-cuentas-sa.component.css', '../../../app.component.css']
+	selector: 'app-crear-cuentas-sa',
+	templateUrl: './crear-cuentas-sa.component.html',
+	styleUrls: ['./crear-cuentas-sa.component.css', '../../../app.component.css']
 })
 export class CrearCuentasSaComponent implements OnInit {
   nuevaCuenta: FormGroup;
