@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         {
           if (doc.exists)
           {
+            /* usar ternarias y esto queda joya */
             const userData: any = doc.data();
             localStorage.setItem('user', JSON.stringify(userData));
             this.router.navigate(['./menu-estudiante']);
