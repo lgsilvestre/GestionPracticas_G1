@@ -1,8 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+/* tslint:disable:no-inferrable-types */
+import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
 import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';
+import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
+import {DinamicFileContainerComponent} from '../dinamic/dinamic-file-container/dinamic-file-container.component';
 
+export interface Documento
+{
+  titulo: string;
+  descripcion: string;
+  url: string;
+}
 
 @Component({
   selector: 'app-plantilla-general',
@@ -10,15 +19,32 @@ import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.ser
   styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
 })
 export class PlantillaGeneralComponent implements OnInit {
-   primeraEtapa: FormGroup;
-   segundaEtapa: FormGroup;
-   terseraEtapa: FormGroup;
-   cuartaEtapa: FormGroup;
+  @ViewChild(DynamicHostDirective) public dynamicHost: DynamicHostDirective | undefined;
+  carreraActual: string = 'None';
+  carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
+  private documentos: Documento[] =
+    [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: '8.8.8.8'}];
+  datosSolicitudPractica: FormGroup;
+  documentosGenerales: FormGroup;
+  datosEstudianteEtapa: FormGroup;
+  segundaEtapa: FormGroup;
+  terseraEtapa: FormGroup;
+  cuartaEtapa: FormGroup;
   private files: File [] = [];
-  // tslint:disable-next-line:variable-name
-  constructor(private _formBuilder: FormBuilder, private afStudent: FirebaseEstudianteService)
+  constructor(private _formBuilder: FormBuilder,
+              private afStudent: FirebaseEstudianteService, private comFacResol: ComponentFactoryResolver)
   {
-    this.primeraEtapa = this._formBuilder.group({
+    this.datosSolicitudPractica = this._formBuilder.group({
+      Nombres: ['', Validators.required],
+      Apellidos: ['', Validators.required],
+      Carrera: ['', Validators.required],
+      NnumeroMatricula: ['', Validators.required],
+      Run: ['', Validators.required],
+      CorreoElectronicoInstitucional: ['', Validators.required],
+      NumeroTelefono: ['', Validators.required],
+    });
+    this.documentosGenerales = this._formBuilder.group({});
+    this.datosEstudianteEtapa = this._formBuilder.group({
       Nombres: ['', Validators.required],
       Apellidos: ['', Validators.required],
       Carrera: ['', Validators.required],
@@ -53,6 +79,7 @@ export class PlantillaGeneralComponent implements OnInit {
       Jornada: ['', Validators.required],
       Archivo: [],
     });
+    this.createComponent();
     // tslint:disable-next-line:new-parens
   }
 
@@ -60,18 +87,36 @@ export class PlantillaGeneralComponent implements OnInit {
   {
     /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
+  onChangeCarrera(event: any): void
+  {
+    this.carreraActual = event;
+  }
+  public createComponent(): void {
+    this.dynamicHost?.viewContainerRef.clear();
+    console.log('holoa');
+    /* extraido de
+    https://stackoverflow.com/questions/39280057/how-do-you-use-input-with-components-created-with-a-componentfactoryresolver*/
+    let reff: ComponentRef<DinamicFileContainerComponent>[] | undefined = [];
+    this.documentos.forEach((documento: Documento) => {
+      const component = this.comFacResol.resolveComponentFactory(DinamicFileContainerComponent);
+      const contt = this.dynamicHost?.viewContainerRef.createComponent(component);
+      contt?.instance.setValues(documento.titulo, documento.descripcion, documento.url);
+      // @ts-ignore
+      reff.push(contt);
+    });
+  }
   enviar(): void
   {
     const plantilla: PlantillaGeneral =
-       { nombreEstudiante: this.primeraEtapa.value.Nombres,
-         apellidoEstudiante: this.primeraEtapa.value.Apellidos,
-         carreraEstudiante: this.primeraEtapa.value.Carrera,
-         numeroMatricula : this.primeraEtapa.value.NumeroMatricula,
-         runEstudiante: this.primeraEtapa.value.Run,
-         numeroContactoEstudiante: this.primeraEtapa.value.NumeroContacto,
-         correoEstudiante: this.primeraEtapa.value.CorreoElectronico,
-         contactoEmergencia: this.primeraEtapa.value.ContactoEmergencia,
-         telefonoEmergencia: this.primeraEtapa.value.TelefonoEmergencia,
+       { nombreEstudiante: this.datosEstudianteEtapa.value.Nombres,
+         apellidoEstudiante: this.datosEstudianteEtapa.value.Apellidos,
+         carreraEstudiante: this.datosEstudianteEtapa.value.Carrera,
+         numeroMatricula : this.datosEstudianteEtapa.value.NumeroMatricula,
+         runEstudiante: this.datosEstudianteEtapa.value.Run,
+         numeroContactoEstudiante: this.datosEstudianteEtapa.value.NumeroContacto,
+         correoEstudiante: this.datosEstudianteEtapa.value.CorreoElectronico,
+         contactoEmergencia: this.datosEstudianteEtapa.value.ContactoEmergencia,
+         telefonoEmergencia: this.datosEstudianteEtapa.value.TelefonoEmergencia,
          // Empresa
          nombreEmpresa: this.segundaEtapa.value.Nombre,
          rutEmpresa: this.segundaEtapa.value.Rut,
@@ -109,7 +154,7 @@ export class PlantillaGeneralComponent implements OnInit {
    */
    public getAlumno(): void
    {
-     console.log(this.primeraEtapa.value.Archivo.name);
+     console.log(this.datosEstudianteEtapa.value.Archivo.name);
    }
    onFileChange(event: any): void
   {

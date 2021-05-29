@@ -1,7 +1,62 @@
 <h1>Plantilla general</h1>
 <mat-horizontal-stepper #stepper>
-	<mat-step [stepControl]="primeraEtapa" errorMessage="Completa los datos obligatorios restantes">
-		<form [formGroup]="primeraEtapa">
+  <mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
+    <form [formGroup]="datosSolicitudPractica">
+      <ng-template matStepLabel>Datos Estudiante Solicitante</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder=" Nombres " formControlName="Nombres" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellidos</mat-label>
+        <input matInput placeholder=" Apellidos " formControlName="Apellidos" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>RUN</mat-label>
+        <input matInput placeholder="RUN estudiante" formControlName="Run" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Carrera</mat-label>
+        <mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Numero de Matricula</mat-label>
+        <input matInput placeholder="2021407001" formControlName="NnumeroMatricula" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Correo Electrónico Intitucional</mat-label>
+        <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronicoInstitucional" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono de Contacto</mat-label>
+        <input matInput placeholder="+569xxxxxxxx" formControlName="NumeroTelefono" required>
+      </mat-form-field>
+
+      <hr>
+      <div class="step-buttons">
+        <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
+        </button>
+      </div>
+
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="documentosGenerales" errorMessage="Completa los datos obligatorios restantes">
+    <form [formGroup]="documentosGenerales">
+      <ng-template matStepLabel>Documentos Importantes</ng-template>
+        <button (click)="createComponent()">crear</button>
+        <ng-template appDynamicHost></ng-template>
+    </form>
+  </mat-step>
+	<mat-step [stepControl]="datosEstudianteEtapa" errorMessage="Completa los datos obligatorios restantes">
+		<form [formGroup]="datosEstudianteEtapa">
 			<ng-template matStepLabel>Datos del estudiante</ng-template>
 			<mat-form-field appearance="outline">
 				<mat-label>Nombres</mat-label>

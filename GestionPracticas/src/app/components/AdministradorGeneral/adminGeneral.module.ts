@@ -10,6 +10,8 @@ import { CrearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cu
 import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
+import { DynamicHostDirective } from './directivas/dynamic-host.directive';
+import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
 
 
 
@@ -21,8 +23,13 @@ import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
     CrearCuentaEncargadoComponent,
     CrearCuentaAdministradorGeneralComponent,
     CrearCuentaEstudianteComponent,
-    CrearCuentaComponent
-
+    CrearCuentaComponent,
+    DynamicHostDirective,
+    DinamicFileContainerComponent
+  ],
+  entryComponents: [
+    // aqui van los componentes que se crean en tiempo de ejecucion
+    DinamicFileContainerComponent
   ],
   imports: [
     CommonModule,
