@@ -23,7 +23,7 @@ export class PlantillaGeneralComponent implements OnInit {
   carreraActual: string = 'None';
   carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
   private documentos: Documento[] =
-    [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: '8.8.8.8'}];
+    [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: 'https://www.google.com/'}];
   datosSolicitudPractica: FormGroup;
   documentosGenerales: FormGroup;
   datosEstudianteEtapa: FormGroup;
