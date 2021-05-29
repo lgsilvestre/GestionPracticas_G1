@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-gestionar-carreras',
   templateUrl: './gestionar-carreras.component.html',
   styleUrls: ['./gestionar-carreras.component.css', '../../../app.component.css']
 })
-export class GestionarCarrerasComponent implements OnInit {
+export class GestionarCarrerasComponent {
 
-  constructor() { }
+constructor(public dialog: MatDialog ) { }
 
-  ngOnInit(): void {
+  openDialog()
+  {
+    const dialogoEliminar= this.dialog.open(preguntaEliminar)
+
+    dialogoEliminar.afterClosed().subscribe(resultado =>
+      {
+        console.log("Esta cosa funcionó")
+      })
   }
 
 }
+
+@Component({
+  selector: 'pregunta-eliminar',
+  templateUrl: './preguntaEliminar.component.html',
+  styleUrls: ['./gestionar-carreras.component.css', '../../../app.component.css']
+})
+export class preguntaEliminar { }

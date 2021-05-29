@@ -19,7 +19,7 @@
             </span>
 
             <button mat-raised-button color="primary" type="submit">Gestionar carrera</button>
-            <button mat-raised-button class="boton-eliminar" type="submit">Eliminar carrera</button>
+            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
         </mat-card-content>
     </mat-card>
 
@@ -38,12 +38,12 @@
             </span>
     
             <button mat-raised-button color="primary" type="submit">Gestionar carrera</button>
-            <button mat-raised-button class="boton-eliminar" type="submit">Eliminar carrera</button>
+            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
         </mat-card-content>
     </mat-card>
 
-    <mat-card class='presentacion'>
-        <button mat-raised-button color="primary" class="contenido" type="submit">Agregar carrera al sistema de prácticas</button>
+    <mat-card class='presentacion padre'>
+        <button mat-raised-button color="primary" type="submit">Agregar carrera al sistema de prácticas</button>
     </mat-card>
     
 

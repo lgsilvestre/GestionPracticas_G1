@@ -10,7 +10,7 @@ import { CrearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cu
 import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
-import { GestionarCarrerasComponent } from './gestionar-carreras/gestionar-carreras.component';
+import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carreras/gestionar-carreras.component';
 
 
 
@@ -23,7 +23,8 @@ import { GestionarCarrerasComponent } from './gestionar-carreras/gestionar-carre
     CrearCuentaAdministradorGeneralComponent,
     CrearCuentaEstudianteComponent,
     CrearCuentaComponent,
-    GestionarCarrerasComponent
+    GestionarCarrerasComponent,
+    preguntaEliminar
 
   ],
   imports: [

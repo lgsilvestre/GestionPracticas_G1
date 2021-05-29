@@ -36,9 +36,19 @@ h3
     background-color:#d9ab86;
 }
 
-
+.padre
+{
+    display: flex;
+    justify-content: center;
+}
 
 .button-creacion
 {
     margin-left: 15vh;
+}
+
+.boton
+{
+    margin-inline-start: 2vh;
+    margin-inline-end: 2vh;
 }
