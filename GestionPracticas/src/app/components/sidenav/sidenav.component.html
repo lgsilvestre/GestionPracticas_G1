@@ -50,6 +50,11 @@
 					<span>Crear cuenta encargado de carrera</span>
 				</a>
 				<mat-divider></mat-divider>
+				<a routerLink="./gestion-carreras" mat-list-item (click)="sidenav.toggle()">
+					<mat-icon mat-list-icon>assignment</mat-icon>
+					<span>Gestión Carreras</span>
+				</a>
+				<mat-divider></mat-divider>
 			</div>
 			<div *ngIf="soyEstudiante">
 				<a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
@@ -139,7 +144,8 @@
 		</div>
 	</mat-toolbar>
 	<div id="main">
-		<router-outlet></router-outlet>
+		<router-outlet></router-outlet> 
+		<!-- Aquí había puesto como class a "contenido-principal por una prueba de dejar el footer estático abajo y dejó un poco la embarrá" -->
 	</div>
-	<app-footer></app-footer>
+	<app-footer class='footer'></app-footer>
 </mat-sidenav-container>

@@ -1,0 +1,44 @@
+.texto
+{
+    text-align: center;
+    color: #c83609;
+}
+
+.titulo
+{
+    color: #c83609;
+}
+
+.separador
+{
+    margin-top: 3vh;
+}
+
+.contenido
+{
+    text-align: center;
+}
+
+h3
+{
+    display: contents;
+    font-weight: bold;
+}
+
+.presentacion
+{
+    max-width: 140vh;
+    margin-left: 20vh;
+}
+
+.boton-eliminar
+{
+    background-color:#d9ab86;
+}
+
+
+
+.button-creacion
+{
+    margin-left: 15vh;
+}

@@ -19,6 +19,7 @@ import { InicioComponent } from './components/Estudiante/inicio/inicio.component
 import { CrearCuentaAdministradorGeneralComponent } from './components/AdministradorGeneral/crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './components/AdministradorGeneral/crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './components/AdministradorGeneral/crear-cuenta/crear-cuenta.component';
+import { GestionarCarrerasComponent } from './components/AdministradorGeneral/gestionar-carreras/gestionar-carreras.component';
 
 
 
@@ -38,6 +39,7 @@ const routes: Routes = [
 	{ path: 'crear-cuenta/admin-general', component: CrearCuentaAdministradorGeneralComponent },
 	{ path: 'crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
 	{ path: 'crear-cuenta', component: CrearCuentaComponent },
+	{ path: 'gestion-carreras', component: GestionarCarrerasComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];
