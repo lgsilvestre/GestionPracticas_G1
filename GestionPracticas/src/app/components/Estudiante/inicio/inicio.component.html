@@ -1,45 +1,47 @@
-<mat-card>
+<mat-card id="first">
     <mat-card-title>¿Deseas empezar un nuevo proceso de práctica?</mat-card-title>
-    <p>Asegurate de leer la sección de recordatorios antes de empezar</p>
+    <p>¡Asegúrate de leer la sección de recordatorios antes de empezar!</p>
     <button mat-raised-button color="primary" type="submit">Comenzar proceso</button>
 </mat-card>
 <mat-card>
     <mat-card-title>Recordatorios</mat-card-title>
-    <h2>
-        ¿Requisitos para hacer la práctica?
-    </h2>
     <mat-card-content>
-        1.- Aprobar curso 1
-    </mat-card-content>
-    <mat-card-content>
-        2.- Aprobar curso 2
-    </mat-card-content>
-    <h2>
-        Ten en cuenta que...
-    </h2>
-    <mat-card-content>
-        a la empresa que postules, La persona que será tu tutor(a) debe ser de tu formación académica
-    </mat-card-content>
-    <h2>
-        Espera a que...
-    </h2>
-    <mat-card-content>
-        el encargado de tu carrera acepte el paso 1 que rellenaste con tus datos personales para hablar con empresas
+        <h2>Requisitos para hacer tu práctica:</h2>
+        <ol>
+            <li>
+                <p>Aprobar curso 1</p>
+            </li>
+            <li>
+                <p>Aprobar curso 2</p>
+            </li>
+        </ol>
+        <p>
+            <strong>
+				Ten en cuenta que...
+			</strong>
+        </p>
+        <p>
+            a la empresa que postules, la persona que será tu tutor(a) debe ser de tu formación académica.
+        </p>
+        <p>
+            <strong>
+				Espera a que...
+			</strong>
+        </p>
+        <p>
+            el encargado de tu carrera acepte el paso 1 que rellenaste con tus datos personales para hablar con empresas.
+        </p>
     </mat-card-content>
 </mat-card>
 <mat-card>
     <mat-card-title>Fechas importantes</mat-card-title>
     <mat-card-content>
-        <p>{{fecha_seleccionada.getDate()}}/{{fecha_seleccionada.getMonth()+1}}/{{fecha_seleccionada.getFullYear()}}</p>
-        <p>Fin proceso</p>
-    </mat-card-content>
-    <mat-card-content>
-        <p>29/01/2022</p>
-        <p>Fin plazo de extensión de práctica</p>
-    </mat-card-content>
-    <mat-card-content>
+        <p><b>Fin del proceso de postulación:</b></p>
+        <p><strong>{{fecha_seleccionada.getDate()}}/{{fecha_seleccionada.getMonth()+1}}/{{fecha_seleccionada.getFullYear()}}</strong></p>
+        <p><b>Fin del plazo de la extensión de práctica:</b></p>
+        <p><strong>29/01/2022</strong></p>
         <mat-calendar [selected]="fecha_seleccionada" disabled></mat-calendar>
-        *Se indica el plazo más cercano a finalizar
+        <strong>*</strong>Se indica el plazo más cercano a finalizar
     </mat-card-content>
 </mat-card>
 <mat-card>
