@@ -1,7 +1,18 @@
-#first {
+#first,
+#last-activities {
     text-align: center;
 }
 
 strong {
     color: #b71c1c;
+}
+
+#dates {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+mat-card-title {
+    text-align: center;
 }
