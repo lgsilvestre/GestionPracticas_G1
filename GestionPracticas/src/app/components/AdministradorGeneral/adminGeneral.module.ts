@@ -11,6 +11,8 @@ import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-adminis
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carreras/gestionar-carreras.component';
+import { editarPlanes, VerCarreraParticularComponent, AgregarPlan } from './gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
+import { AppRoutingModule } from '../../app-routing.module';
 
 
 
@@ -24,7 +26,10 @@ import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carrer
     CrearCuentaEstudianteComponent,
     CrearCuentaComponent,
     GestionarCarrerasComponent,
-    preguntaEliminar
+    preguntaEliminar,
+    editarPlanes,
+    AgregarPlan,
+    VerCarreraParticularComponent
 
   ],
   imports: [
@@ -32,11 +37,13 @@ import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carrer
     MaterialModule,
     ReactiveFormsModule,
     GraficosModule,
+
   ],
   exports: [
     // Aca van los modulos que se crean
     PlantillaGeneralComponent,
-    CrearCuentaEncargadoComponent
+    CrearCuentaEncargadoComponent,
+    VerCarreraParticularComponent
   ],
   providers: [
     FirebaseEstudianteService,

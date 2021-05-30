@@ -18,7 +18,7 @@
                 <p>30</p>
             </span>
 
-            <button mat-raised-button color="primary" type="submit">Gestionar carrera</button>
+            <button mat-raised-button routerLink="/gestionar-carreras/ver-carrera-particular" color="primary" type="submit" (click)="goToCarrera()">Gestionar carrera</button>
             <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
         </mat-card-content>
     </mat-card>

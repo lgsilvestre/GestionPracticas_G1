@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestionar-carreras',
@@ -8,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class GestionarCarrerasComponent {
 
-constructor(public dialog: MatDialog ) { }
+  constructor(public dialog: MatDialog, private route: Router) { }
 
   openDialog()
   {
@@ -18,6 +19,10 @@ constructor(public dialog: MatDialog ) { }
       {
         console.log("Esta cosa funcionó")
       })
+  }
+
+  goToCarrera(): void {
+    this.route.navigate(['/gestionar-carreras/ver-carrera-particular']);
   }
 
 }
