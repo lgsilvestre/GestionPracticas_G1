@@ -73,11 +73,9 @@ a ::ng-deep mat-icon {
 
 mat-toolbar {
     background-color: rgba(255, 209, 128, 0.95);
-    height: 90px;
     justify-content: space-between;
 }
 
 mat-toolbar img {
-    width: 55px;
-    margin-left: 30px;
+    height: 80%;
 }
