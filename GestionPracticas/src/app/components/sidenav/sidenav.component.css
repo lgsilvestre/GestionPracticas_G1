@@ -1,72 +1,83 @@
 #logo {
-	background-color: rgba(255, 255, 255, .85);
-	background-image: url(../../../assets/logo_practica.png);
-	background-repeat: no-repeat;
-	background-position: center !important;
-	width: 100%;
-	height: 120px;
+    background-color: rgba(255, 255, 255, .85);
+    background-image: url(../../../assets/logo_practica.png);
+    background-repeat: no-repeat;
+    background-position: center !important;
+    width: 100%;
+    height: 120px;
 }
 
 #outer-account {
-	display: block;
+    display: block;
 }
 
 #name-edit {
-	display: flex;
+    display: flex;
 }
 
 #outer-account,
 #name-edit {
-	justify-content: center;
-	text-align: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #avatar-image {
-	background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-	background-size: cover;
-	height: 64px;
-	width: 64px;
-	border-radius: 50px;
-	margin: 0 auto;
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    height: 64px;
+    width: 64px;
+    border-radius: 50px;
+    margin: 0 auto;
 }
 
 ::ng-deep .mat-list-base {
-	padding: 0px !important;
+    padding: 0px !important;
 }
 
 mat-sidenav {
-	box-shadow: 0 0 1px 1px rgb(255, 209, 128) !important;
-	background: rgb(255, 209, 128);
-	background: linear-gradient(180deg, rgba(255, 224, 178, .95) 75%, rgba(255, 224, 178, .85) 100%);
-	border-style: solid;
-	border: 1px rgb(255, 209, 128);
-	border-radius: 10px;
-	min-width: 360px;
-	max-width: 360px;
-	margin-top: 10vh;
-	background-color: rgba(255, 210, 137, 0.87);
+    box-shadow: 0 0 1px 1px rgb(255, 209, 128) !important;
+    background: rgb(255, 209, 128);
+    background: linear-gradient(180deg, rgba(255, 224, 178, .95) 75%, rgba(255, 224, 178, .85) 100%);
+    border-style: solid;
+    border: 1px rgb(255, 209, 128);
+    border-radius: 10px;
+    min-width: 360px;
+    max-width: 360px;
+    margin-top: 10vh;
+    background-color: rgba(255, 210, 137, 0.87);
 }
 
 @media only screen and (min-width: 576px) {
-	mat-sidenav {
-		margin: 2rem 2rem 2rem 2rem;
-	}
+    mat-sidenav {
+        margin: 2rem 2rem 2rem 2rem;
+    }
 }
 
 #outer-account ::ng-deep mat-icon {
-	margin-top: 8px;
-	margin-left: 5px;
-	margin-right: 0px;
+    margin-top: 8px;
+    margin-left: 5px;
+    margin-right: 0px;
 }
 
 a ::ng-deep mat-icon {
-	margin-right: 16px;
+    margin-right: 16px;
 }
 
 ::ng-deep .mat-sidenav-content {
-	background: radial-gradient(circle, rgba(255, 204, 128, 0.5) 0%, rgba(255, 204, 128, .45) 100%), url('../../../assets/background2.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+    background: radial-gradient(circle, rgba(255, 204, 128, 0.5) 0%, rgba(255, 204, 128, .45) 100%), url('../../../assets/background2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+mat-toolbar {
+    background-color: rgba(255, 209, 128, 0.95);
+    height: 90px;
+    justify-content: space-between;
+}
+
+mat-toolbar img {
+    width: 55px;
+    margin-left: 30px;
 }
