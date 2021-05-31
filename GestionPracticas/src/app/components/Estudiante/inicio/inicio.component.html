@@ -1,90 +1,59 @@
-<h1 class="title">Bienvenido Juan Pérez </h1>
-
-
-<mat-card class="tarjeta">
-	<mat-card-title class="titulo-material">¿Deseas empezar un nuevo proceso de práctica?</mat-card-title>
-	<p>Asegurate de leer la sección de recordatorios antes de empezar</p>
-	<button mat-raised-button color="primary" type="submit" class="boton-aceptar">Comenzar proceso</button>
+<mat-card id="first">
+    <mat-card-title>¿Deseas empezar un nuevo proceso de práctica?</mat-card-title>
+    <p><b>¡Asegúrate de leer la sección de recordatorios antes de empezar!</b></p>
+    <button mat-raised-button color="primary" type="submit">Comenzar proceso</button>
 </mat-card>
-<div class="separador">
-
-	<div class="inicio">
-
-		<mat-card class="tarjeta">
-			<mat-card-title class="titulo-material">Recordatorios</mat-card-title>
-			<h2 class="Subtitulo">
-				¿Requisitos para hacer la práctica?
-			</h2>
-			<mat-card-content>
-				1.- Aprobar curso 1
-			</mat-card-content>
-		
-			<mat-card-content>
-				2.- Aprobar curso 2
-			</mat-card-content>
-		
-			<h2 class="Subtitulo">
+<mat-card>
+    <mat-card-title>Recordatorios</mat-card-title>
+    <mat-card-content>
+        <h2>Requisitos para hacer tu práctica:</h2>
+        <ol>
+            <li>
+                <p>Aprobar curso 1</p>
+            </li>
+            <li>
+                <p>Aprobar curso 2</p>
+            </li>
+        </ol>
+        <p>
+            <strong>
 				Ten en cuenta que...
-			</h2>
-			<mat-card-content class="justificar">
-				a la empresa que postules, La persona que será tu tutor(a) debe ser de tu formación académica
-			</mat-card-content>
-		
-			<h2 class="Subtitulo">
+			</strong>
+        </p>
+        <p>
+            a la empresa que postules, la persona que será tu tutor(a) debe ser de tu formación académica.
+        </p>
+        <p>
+            <strong>
 				Espera a que...
-			</h2>
-			<mat-card-content class="justificar">
-				el encargado de tu carrera acepte el paso 1 que rellenaste con tus datos personales para hablar con
-				empresas
-			</mat-card-content>
-		</mat-card>
-
-	</div>
-
-	<div class="inicio">
-	
-		<mat-card class="tarjeta" class="calendario">
-			<mat-card-title class="titulo-material">Fechas importantes</mat-card-title>
-			<mat-card-content>
-				<!-- <a href="#">{{fecha_seleccionada.getDay()}}/{{fecha_seleccionada.getMonth()}}/{{fecha_seleccionada.getFullYear()}}</a>: Fin proceso solicitudes -->
-				<p class="fechas">
-					{{fecha_seleccionada.getDate()}}/{{fecha_seleccionada.getMonth()+1}}/{{fecha_seleccionada.getFullYear()}}
-				</p>Fin proceso
-			</mat-card-content>
-			<mat-card-content>
-				<p class="fechas">29/01/2022</p>Fin plazo de extensión de práctica
-			</mat-card-content>
-	
-			<mat-card-content>
-	
-				<mat-calendar [selected]="fecha_seleccionada" disabled></mat-calendar>
-	
-				*Se indica el plazo más cercano a finalizar
-			</mat-card-content>
-			<!-- <mat-calendar [dateClass]="dateClass()" is</mat-calendar> -->
-	
-		</mat-card>
-	
-	</div>
-</div>
-
-<div>
-	
-	<div>
-		<mat-card class="tarjeta">
-			<mat-card-title class="titulo-material">Últimas actividades</mat-card-title>
-			<mat-card-content>
-				Ha enviado satisfactoriamente una solicitud para comenzar ha solicitar su práctica profesional
-			</mat-card-content>
-		
-			<mat-card-content>
-				Se está procesando tu solicitud de:
-			</mat-card-content>
-		
-			<mat-card-content>
-				Tú solicitud ha sido aprobada, puedes continuar con el siguiente paso.
-				<button mat-raised-button color="primary" type="submit" class="boton-aceptar">Ir a etapa</button>
-			</mat-card-content>
-		</mat-card>
-	</div>
-</div>
+			</strong>
+        </p>
+        <p>
+            el encargado de tu carrera acepte el paso 1 que rellenaste con tus datos personales para hablar con empresas.
+        </p>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-content id="dates">
+        <div>
+            <h1>Fechas importantes</h1>
+            <p><b>Fin del proceso de postulación:</b></p>
+            <p><strong>{{fecha_seleccionada.getDate()}}/{{fecha_seleccionada.getMonth()+1}}/{{fecha_seleccionada.getFullYear()}}</strong></p>
+            <p><b>Fin del plazo de la extensión de práctica:</b></p>
+            <p><strong>29/01/2022</strong></p>
+        </div>
+        <div>
+            <mat-calendar [selected]="fecha_seleccionada" disabled></mat-calendar>
+            <strong>*</strong>Se indica el plazo más cercano a finalizar
+        </div>
+    </mat-card-content>
+</mat-card>
+<mat-card id="last-activities">
+    <mat-card-title>Últimas actividades</mat-card-title>
+    <mat-card-content>
+        <p>Ha enviado satisfactoriamente una solicitud para comenzar ha solicitar su práctica profesional.</p>
+        <p>Se está procesando tu solicitud de:</p>
+        <p><b>¡Tú solicitud ha sido aprobada!, puedes continuar con el siguiente paso:</b></p>
+        <button mat-raised-button color="primary" type="submit">Ir a etapa</button>
+    </mat-card-content>
+</mat-card>

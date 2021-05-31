@@ -38,6 +38,7 @@ const routes: Routes = [
 	{ path: 'crear-cuenta/admin-general', component: CrearCuentaAdministradorGeneralComponent },
 	{ path: 'crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
 	{ path: 'crear-cuenta', component: CrearCuentaComponent },
+	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];

@@ -1,1 +1,5 @@
 /* Dummy file, DO NOT DELETE OR THE APP WON'T WORK! */
+
+*:not(mat-icon) {
+    font-family: Noto Sans, sans-serif !important;
+}

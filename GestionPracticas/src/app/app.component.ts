@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { NavigationEnd, Router } from '@angular/router';
+import * as firebase from 'firebase';
 import { filter } from 'rxjs/operators';
 declare let alertify: any;
 
@@ -11,19 +13,18 @@ declare let alertify: any;
 export class AppComponent implements OnInit {
 
 	fullscreenRoute: boolean = false;
-
 	public title: String = "Sistema de Gestión de Prácticas de la Universidad de Talca";
 
-	constructor(private router: Router) {
+	constructor(private router: Router,private afAuth: AngularFireAuth,private ngZone: NgZone) {
 	}
 
 	ngOnInit() {
+
 		this.router.events.pipe(
-			filter((event: any) => event instanceof NavigationEnd)
-		).subscribe(event => {
+			filter((event: any) => event instanceof NavigationEnd)).subscribe(event => {
 			console.log(event);
 			if (
-				event.url === "/login"
+				event.url === "/login" || event.url === "/"
 			) {
 				this.fullscreenRoute = true;
 			} else {

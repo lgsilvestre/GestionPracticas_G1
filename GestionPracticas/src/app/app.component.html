@@ -1,9 +1,8 @@
 <ng-container *ngIf="fullscreenRoute; then thenTemplate; else elseTemplate"></ng-container>
 <ng-template #thenTemplate>
-	<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </ng-template>
 <ng-template #elseTemplate>
-	<app-sidenav></app-sidenav>
     <div class="wrapper">
         <div class="main-panel">
             <app-sidenav></app-sidenav>
