@@ -1,0 +1,75 @@
+<mat-card class='presentacion justificar'>
+    <mat-card-title>Ingeniería civil Computación</mat-card-title>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<mat-card class="justificar">
+    <h1>Descripción carrera</h1>
+    
+    <div>
+        <h2>Datos de la carrera</h2>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput class='input' placeholder="Ejemplo: Ingeniería Civil">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Planes de estudio activos</mat-label>
+            <input matInput class='input' placeholder="Ejemplo: Ingeniería Civil">            
+        </mat-form-field>
+        <p> En caso de ser más de un plan de estudio, diferencielas por coma</p>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Numero de prácticas para [Carrera]</mat-label>
+            <mat-select>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <h2>
+            Datos Encargado
+        </h2>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre Encargado</mat-label>
+            <input matInput class='input' placeholder="Ejemplo: Juan Pérez">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input matInput class='input' placeholder="Ejemplo: JPerez@utalca.cl">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Número Telefónico</mat-label>
+            <input matInput class='input' placeholder="Ejemplo: 9 87654321">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <h2>Datos plantilla de presentación de estudiante</h2>
+
+        <br>
+
+        <h3>Datos de estudiante postulante</h3>
+
+        <div>
+            <p>Aquí debería ir algo</p>
+        </div>
+
+        <h3>Datos de práctica</h3>
+        <div>
+            <p>Aquí debería ir algo</p>
+        </div>
+    </div>
+
+    <button color="primary" mat-raised-button>Volver</button>
+    <button color="primary" mat-raised-button>Crear carrera</button>
+
+</mat-card>

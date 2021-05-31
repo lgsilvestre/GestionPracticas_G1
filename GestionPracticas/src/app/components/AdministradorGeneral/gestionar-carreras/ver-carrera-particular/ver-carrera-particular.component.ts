@@ -6,7 +6,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-ver-carrera-particular',
   templateUrl: './ver-carrera-particular.component.html',
-  styleUrls: ['./ver-carrera-particular.component.css', '../../../../app.component.css']
+  styleUrls: ['./ver-carrera-particular.component.css', '../gestionar-carreras.component.css', '../../../../app.component.css']
 })
 
 export class VerCarreraParticularComponent 

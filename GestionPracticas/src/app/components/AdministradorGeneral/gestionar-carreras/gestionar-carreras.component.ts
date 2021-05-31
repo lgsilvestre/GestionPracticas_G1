@@ -24,6 +24,9 @@ export class GestionarCarrerasComponent {
   goToCarrera(): void {
     this.route.navigate(['/gestionar-carreras/ver-carrera-particular']);
   }
+  goToCrearCarrera(): void {
+    this.route.navigate(['/gestionar-carreras/crear-carrera']);
+  }
 
 }
 

@@ -13,6 +13,7 @@ import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carreras/gestionar-carreras.component';
 import { editarPlanes, VerCarreraParticularComponent, AgregarPlan } from './gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
 import { AppRoutingModule } from '../../app-routing.module';
+import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
 
 
 
@@ -29,7 +30,8 @@ import { AppRoutingModule } from '../../app-routing.module';
     preguntaEliminar,
     editarPlanes,
     AgregarPlan,
-    VerCarreraParticularComponent
+    VerCarreraParticularComponent,
+    CrearCarreraComponent
 
   ],
   imports: [

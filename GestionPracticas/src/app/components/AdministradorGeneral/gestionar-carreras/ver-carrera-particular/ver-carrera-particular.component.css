@@ -1,19 +1,6 @@
-.justificar
-{
-    margin-top: 3vh;
-    justify-content: center;
-    text-align: center;
-    
-}
-
 .input
 {
     width: 100vh;
-}
-
-h2,h3
-{
-    font-weight: bolder;
 }
 
 .form-editable
@@ -40,10 +27,4 @@ button
     margin-left: 1vh;
     margin-right: 1vh;
     background-color: red;
-}
-
-div
-{
-    margin-top: 3vh;
-    margin-bottom:5vh
 }
