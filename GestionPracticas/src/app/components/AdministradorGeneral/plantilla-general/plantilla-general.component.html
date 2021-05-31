@@ -2,7 +2,7 @@
 <mat-vertical-stepper #stepper>
     <mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
         <form [formGroup]="datosSolicitudPractica">
-            <ng-template matStepLabel>Datos Estudiante Solicitante</ng-template>
+            <ng-template matStepLabel>Datos del estudiante solicitante</ng-template>
             <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
                 <input matInput placeholder=" Nombres " formControlName="Nombres" required>
@@ -23,26 +23,26 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Numero de Matricula</mat-label>
+                <mat-label>Número de Matricula</mat-label>
                 <input matInput placeholder="2021407001" formControlName="NnumeroMatricula" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Correo Electrónico Intitucional</mat-label>
+                <mat-label>Correo institucional</mat-label>
                 <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronicoInstitucional" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Teléfono de Contacto</mat-label>
+                <mat-label>Teléfono de contacto</mat-label>
                 <input matInput placeholder="+569xxxxxxxx" formControlName="NumeroTelefono" required>
             </mat-form-field>
             <hr>
             <div class="lonely-button">
-                <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon></button>
+                <button mat-raised-button matStepperNext color="primary" (click)="enviar()" type="button">Enviar solicitud <mat-icon> send </mat-icon> </button>
             </div>
         </form>
     </mat-step>
     <mat-step [stepControl]="documentosGenerales" errorMessage="Completa los datos obligatorios restantes">
         <form [formGroup]="documentosGenerales">
-            <ng-template matStepLabel>Documentos Importantes</ng-template>
+            <ng-template matStepLabel>Documentos importantes</ng-template>
             <button (click)="createComponent()">crear</button>
             <ng-template appDynamicHost></ng-template>
             <div class="step-buttons">

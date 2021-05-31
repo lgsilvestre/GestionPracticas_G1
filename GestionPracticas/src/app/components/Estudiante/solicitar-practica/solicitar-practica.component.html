@@ -1,4 +1,4 @@
-<mat-horizontal-stepper #stepper>
+<mat-vertical-stepper #stepper>
     <mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Solicitud de la práctica</ng-template>
@@ -23,4 +23,4 @@
             <mat-icon mat-list-icon>emoji_emotions</mat-icon>
         </div>
     </mat-step>
-</mat-horizontal-stepper>
+</mat-vertical-stepper>

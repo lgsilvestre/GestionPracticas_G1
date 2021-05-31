@@ -1,31 +1,29 @@
-<h1 class="titulo">Modificar datos personales</h1>
 <mat-card>
-	<mat-card-title>Correo personal</mat-card-title>
-	<form class="example-form">
-		<mat-form-field appearance="outline">
-			<mat-label>Correo personal actual</mat-label>
-			<input matInput disabled value="usuario@sitio.cl">
-		</mat-form-field>
-		<mat-form-field appearance="outline">
-			<mat-label>Nuevo correo</mat-label>
-			<input type="email" matInput [formControl]="emailFormControl" placeholder="nuevousuario@nuevositio.cl" required>
-		</mat-form-field>
-		<div>
-			<button mat-raised-button color="primary" type="submit">Modificar correo personal</button>
-		</div>
-	</form>
-</mat-card>
-<mat-card>
-	<mat-card-title>Contraseña</mat-card-title>
-	<mat-form-field appearance="outline">
-		<mat-label>Nueva contraseña</mat-label>
-		<input type="password" matInput [formControl]="contrasena" required>
-	</mat-form-field>
-	<mat-form-field appearance="outline">
-		<mat-label>Repita su nueva contraseña</mat-label>
-		<input type="password" matInput [formControl]="contrasena" required>
-	</mat-form-field>
-	<div>
-		<button mat-raised-button color="primary" type="submit">Modificar contraseña</button>
-	</div>
+    <mat-card-title>Editar información de cuenta</mat-card-title>
+    <h2>Correo personal</h2>
+    <form class="example-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Correo personal actual</mat-label>
+            <input matInput disabled value="usuario@sitio.cl">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nuevo correo</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="nuevousuario@nuevositio.cl" required>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" type="submit">Modificar correo personal</button>
+        </div>
+    </form>
+    <h2>Contraseña</h2>
+    <mat-form-field appearance="outline">
+        <mat-label>Nueva contraseña</mat-label>
+        <input type="password" matInput [formControl]="contrasena" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Repita su nueva contraseña</mat-label>
+        <input type="password" matInput [formControl]="contrasena" required>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" type="submit">Modificar contraseña</button>
+    </div>
 </mat-card>
