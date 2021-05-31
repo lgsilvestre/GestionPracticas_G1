@@ -61,8 +61,10 @@ mat-card {
     border-radius: 5px;
 }
 
-table {
+table,
+mat-paginator {
     width: 100%;
+    min-width: 720px;
 }
 
 #main {
