@@ -34,6 +34,9 @@ import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.
 import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
 import { SuperAdminModule } from './components/SuperAdministrador/superadministrador.module';
 import { InformationComponent } from './components/dialogs/information/information.component';
+import { SuccessComponent } from './components/dialogs/success/success.component';
+import { ErrorComponent } from './components/dialogs/error/error.component';
+import { AlertComponent } from './components/dialogs/alert/alert.component';
 
 
 
@@ -45,6 +48,9 @@ import { InformationComponent } from './components/dialogs/information/informati
     EditarCuentaComponent,
     PageNotFoundComponent,
     InformationComponent,
+    SuccessComponent,
+    ErrorComponent,
+    AlertComponent,
 
   ],
   imports: [
