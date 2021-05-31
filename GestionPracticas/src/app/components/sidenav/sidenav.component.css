@@ -36,7 +36,6 @@
 
 mat-sidenav {
     box-shadow: 0 0 1px 1px rgb(255, 209, 128) !important;
-    background: rgb(255, 209, 128);
     background: linear-gradient(180deg, rgba(255, 224, 178, .95) 75%, rgba(255, 224, 178, .85) 100%);
     border-style: solid;
     border: 1px rgb(255, 209, 128);
@@ -44,7 +43,6 @@ mat-sidenav {
     min-width: 360px;
     max-width: 360px;
     margin-top: 10vh;
-    background-color: rgba(255, 210, 137, 0.87);
 }
 
 @media only screen and (min-width: 576px) {
