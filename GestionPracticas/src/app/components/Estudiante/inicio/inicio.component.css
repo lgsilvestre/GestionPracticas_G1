@@ -13,7 +13,8 @@ strong {
     align-items: center;
 }
 
-mat-card-title {
+mat-card-title,
+.centered-text {
     text-align: center;
 }
 

@@ -72,6 +72,7 @@ a ::ng-deep mat-icon {
 mat-toolbar {
     background-color: rgba(255, 209, 128, 0.95);
     justify-content: space-between;
+    padding-right: 2rem;
 }
 
 mat-toolbar img {

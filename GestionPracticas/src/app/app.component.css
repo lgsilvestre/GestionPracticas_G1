@@ -15,7 +15,7 @@ mat-vertical-stepper button {
 button:not(::ng-deep .mat-toolbar button),
  ::ng-deep .mat-dialog-container button {
     box-shadow: none !important;
-    min-width: 20rem;
+    min-width: calc(20rem - 10vw);
 }
 
 mat-vertical-stepper button,
