@@ -7,8 +7,3 @@ mat-icon {
     font-size: 100px;
     margin-left: -100px;
 }
-
-mat-vertical-stepper {
-    background: transparent !important;
-    border-style: none !important;
-}
