@@ -16,3 +16,21 @@ strong {
 mat-card-title {
     text-align: center;
 }
+
+@media only screen and (min-width: 768px) {
+    mat-card {
+        margin: 2rem 16vw 2rem 16vw !important;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    mat-card {
+        margin: 2rem 14vw 2rem 14vw !important;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    mat-card {
+        margin: 2rem 12vw 2rem 12vw !important;
+    }
+}
