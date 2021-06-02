@@ -12,6 +12,7 @@ import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
+import { SolicitududPracticaComponent } from './solicitudud-practica/solicitudud-practica.component';
 
 
 
@@ -25,7 +26,8 @@ import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/
     CrearCuentaEstudianteComponent,
     CrearCuentaComponent,
     DynamicHostDirective,
-    DinamicFileContainerComponent
+    DinamicFileContainerComponent,
+    SolicitududPracticaComponent
   ],
   entryComponents: [
     // aqui van los componentes que se crean en tiempo de ejecucion
