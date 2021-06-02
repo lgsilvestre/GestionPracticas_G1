@@ -9,7 +9,7 @@ button:not(mat-sidenav-container button) {
 }
 
 mat-vertical-stepper button {
-    min-width: 10rem;
+    min-width: 5rem !important;
 }
 
 button:not(::ng-deep .mat-toolbar button),

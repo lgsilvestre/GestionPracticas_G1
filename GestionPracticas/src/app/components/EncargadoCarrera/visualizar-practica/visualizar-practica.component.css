@@ -13,3 +13,7 @@ h3 {
 div {
     overflow-x: scroll;
 }
+
+mat-icon {
+    color: #ff9800;
+}
