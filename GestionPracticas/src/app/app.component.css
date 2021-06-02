@@ -27,7 +27,7 @@ mat-card,
 mat-vertical-stepper,
 mat-paginator,
 ::ng-deep .mat-dialog-container {
-    box-shadow: 0 0 1px 1px rgba(96, 125, 139, .5);
+    box-shadow: none !important;
 }
 
 mat-card,
