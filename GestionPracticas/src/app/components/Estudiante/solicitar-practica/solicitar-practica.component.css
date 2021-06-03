@@ -1,0 +1,15 @@
+mat-vertical-stepper ::ng-deep mat-vertical-stepper {
+    background-color: transparent;
+    border-style: none;
+    box-shadow: none !important;
+    margin: -20px -30px -20px -30px;
+}
+
+@media only screen and (max-width: 768px) {
+    mat-vertical-stepper ::ng-deep mat-vertical-stepper ::ng-deep mat-step-header {
+        justify-content: center;
+    }
+     ::ng-deep .mat-stepper-vertical-line {
+        display: contents;
+    }
+}
