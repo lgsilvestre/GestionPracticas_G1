@@ -1,8 +1,0 @@
-mat-card,
-mat-vertical-stepper,
-mat-paginator,
-::ng-deep .mat-dialog-container {
-    background: transparent !important;
-    border-style: none !important;
-    box-shadow: none !important;
-}
