@@ -4,7 +4,7 @@ mat-sidenav {
     border-radius: 10px;
     min-width: 360px;
     max-width: 360px;
-    margin-top: 10vh;
+    margin: 10vh 0 10vh 0;
 }
 
 @media only screen and (min-width: 576px) {
@@ -71,9 +71,20 @@ a ::ng-deep mat-icon {
 
 button {
     position: fixed;
-    border-radius: 20px;
+    border-radius: 30px;
     z-index: 2;
-    height: 3rem;
+    height: 4rem;
     width: 1rem;
-    margin: 2rem !important;
+    margin: 2px 2px !important;
+}
+
+@media only screen and (min-width: 576px) {
+    button {
+        position: fixed;
+        border-radius: 30px;
+        z-index: 2;
+        height: 4rem;
+        width: 1rem;
+        margin: 2rem !important;
+    }
 }
