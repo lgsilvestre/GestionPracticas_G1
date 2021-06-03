@@ -1,0 +1,43 @@
+#main {
+    margin: 2rem 0 2rem 0;
+    min-height: calc(100vh - 70px);
+}
+
+@media only screen and (min-width: 768px) {
+    #main {
+        margin: 2rem 8vw 2rem 8vw;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #main {
+        margin: 2rem 16vw 2rem 16vw;
+    }
+}
+
+::ng-deep mat-card {
+    border-style: solid;
+    border-color: #546e7a;
+    border-radius: 20px;
+}
+
+::ng-deep mat-vertical-stepper {
+    border-style: solid;
+    border-color: #546e7a;
+    border-radius: 20px;
+}
+
+::ng-deep mat-form-field {
+    display: block !important;
+}
+
+::ng-deep button {
+    display: block;
+    width: 100%;
+    margin: .25rem 0 !important;
+}
+
+::ng-deep mat-divider {
+    position: unset !important;
+    margin: 1rem 0 1rem 0 !important;
+}
