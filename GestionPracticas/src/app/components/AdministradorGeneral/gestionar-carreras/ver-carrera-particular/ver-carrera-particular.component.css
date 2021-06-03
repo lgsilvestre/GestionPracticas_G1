@@ -1,0 +1,30 @@
+.input
+{
+    width: 100vh;
+}
+
+.form-editable
+{
+    padding-inline-end: 2vh;
+}
+
+button
+{
+    padding-left: 3vh;
+    padding-right: 3vh;
+
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+.listas
+{
+    display: inline-block;
+}
+
+.elementos
+{
+    margin-left: 1vh;
+    margin-right: 1vh;
+    background-color: red;
+}
