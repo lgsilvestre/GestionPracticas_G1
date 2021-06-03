@@ -1,0 +1,15 @@
+#main {
+    overflow: hidden;
+}
+
+img {
+    min-width: 280px;
+    max-width: 280px;
+    padding: 20px 20px 0px 20px;
+}
+
+mat-card {
+    text-align: center;
+    width: 360px;
+    margin: 2vh auto;
+}
