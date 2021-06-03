@@ -18,13 +18,14 @@
 ::ng-deep mat-card {
     border-style: solid;
     border-color: #546e7a;
-    border-radius: 20px;
+    border-width: .125rem;
+    margin: .5rem 0;
 }
 
 ::ng-deep mat-vertical-stepper {
     border-style: solid;
     border-color: #546e7a;
-    border-radius: 20px;
+    border-width: .125rem;
 }
 
 ::ng-deep mat-form-field {

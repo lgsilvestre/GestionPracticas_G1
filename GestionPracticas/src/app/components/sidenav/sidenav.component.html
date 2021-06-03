@@ -3,130 +3,127 @@
         <mat-nav-list>
             <div id="logo">
             </div>
-            <mat-divider></mat-divider>
             <div id="outer-account">
                 <div mat-card-avatar id="avatar-image" class="mt-4"></div>
                 <div id="name-edit">
-					          <h3 mat-h3 class="mt-2"><b>{{userName}} {{userApellidos}}</b></h3>
+                    <h3 mat-h3 class="mt-2"><b>{{userName}} {{userApellidos}} </b></h3>
                     <a routerLink="./editar-cuenta" (click)="sidenav.toggle()">
                         <mat-icon mat-list-icon>edit</mat-icon>
                     </a>
                 </div>
             </div>
-            <mat-divider></mat-divider>
             <div *ngIf="soyAdminGeneral">
                 <a routerLink="./menu-admin-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <span>Inicio</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./plantilla-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>dvr</mat-icon>
                     <span>Plantilla</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./proceso-practica-admin-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>sync</mat-icon>
                     <span>Proceso de práctica</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>attachment</mat-icon>
                     <span>Cargar estudiantes</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Visualizar prácticas</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./cargar-estudiantes-admin-general" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Visualizar solicit. prácticas</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./crear-cuenta" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>assignment</mat-icon>
                     <span>Crear cuentas </span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./gestionar-carreras" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Gestionar carreras</span>
                 </a>
-                <mat-divider></mat-divider>
+
             </div>
             <div *ngIf="soyEstudiante">
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <span>Inicio</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./solicitar-practica" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>assignment</mat-icon>
                     <span>Solicitar práctica</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Ver proceso de práctica</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>contact_support</mat-icon>
                     <span>Resumen de prácticas</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>av_timer</mat-icon>
                     <span>Petición de extensión</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>edit</mat-icon>
                     <span>Editar información</span>
                 </a>
-                <mat-divider></mat-divider>
+
             </div>
             <div *ngIf="soyEncargadoDeCarrera">
                 <a routerLink="./menu-encargado-carrera" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <span>Inicio</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./visualizar-practica" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Visualizar Prácticas</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./editar-solicitud-practica" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>edit</mat-icon>
                     <span>Editar solicitud de práctica</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./editar-proceso-carrera" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>edit</mat-icon>
                     <span>Editar proceso de práctica</span>
                 </a>
-                <mat-divider></mat-divider>
+
             </div>
             <div *ngIf="soySuperAdmin">
                 <a routerLink="./ver-cuentas" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>edit</mat-icon>
                     <span>Ver cuentas</span>
                 </a>
-                <mat-divider></mat-divider>
+
                 <a routerLink="./crear-cuentas-sa" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>person_add</mat-icon>
                     <span>Crear cuenta</span>
                 </a>
-                <mat-divider></mat-divider>
+
             </div>
             <a routerLink="./login" mat-list-item (click)="desloguear()">
                 <mat-icon mat-list-icon>exit_to_app</mat-icon>
                 <span>Salir</span>
             </a>
-            <mat-divider></mat-divider>
         </mat-nav-list>
     </mat-sidenav>
     <mat-toolbar>
