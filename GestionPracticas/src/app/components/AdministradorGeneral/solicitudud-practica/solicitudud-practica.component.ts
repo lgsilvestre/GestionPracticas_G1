@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SolicitudPracticaService} from '../../Servicios/solicitud-practica.service';
 import {SolicitudPracticaModel} from '../../../model/solicitudPractica.model';
+import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-solicitudud-practica',
@@ -13,9 +15,10 @@ export class SolicitududPracticaComponent implements OnInit {
   carreraActual = '';
   mostrar = false;
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
+  UID: any = JSON.parse(localStorage.getItem('userUID') || '{}');
   carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
   datosSolicitudPractica: FormGroup;
-  constructor(private _formBuilder: FormBuilder , private solicitudService: SolicitudPracticaService)
+  constructor(private _formBuilder: FormBuilder , private solicitudService: SolicitudPracticaService,  public dialog: MatDialog)
   {
     this.datosSolicitudPractica = this._formBuilder.group({
       Nombres: ['', Validators.required],
@@ -46,19 +49,27 @@ export class SolicitududPracticaComponent implements OnInit {
   }
   sendSolicitud(): void
   {
-    const solicitud: SolicitudPracticaModel =
-      {
-        id: '',
-        nombres: this.datosSolicitudPractica.value.Nombres,
-        apellidos: this.datosSolicitudPractica.value.Apellidos,
-        run: this.datosSolicitudPractica.value.Run,
-        carrera: this.carreraActual ,
-        numeroMatricula: this.datosSolicitudPractica.value.NumeroMatricula,
-        correoInstitucional: this.datosSolicitudPractica.value.CorreoElectronicoInstitucional,
-        telefono: this.datosSolicitudPractica.value.NumeroTelefono,
-        estado: 'Pendiente',
-        feedBack: '',
-    };
-    this.solicitudService.addSolicitudPractica(solicitud);
+    if (this.user.etapaActual === 'ninguna' && this.user.estadoEtapaActual === 'ninguno')
+    {
+      const solicitud: SolicitudPracticaModel =
+        {
+          idUser: this.UID,
+          id: '',
+          nombres: this.datosSolicitudPractica.value.Nombres,
+          apellidos: this.datosSolicitudPractica.value.Apellidos,
+          run: this.datosSolicitudPractica.value.Run,
+          carrera: this.carreraActual ,
+          numeroMatricula: this.datosSolicitudPractica.value.NumeroMatricula,
+          correoInstitucional: this.datosSolicitudPractica.value.CorreoElectronicoInstitucional,
+          telefono: this.datosSolicitudPractica.value.NumeroTelefono,
+          estado: 'Pendiente',
+          feedBack: '',
+        };
+      this.solicitudService.addSolicitudPractica(solicitud);
+    }
+    else
+    {
+      this.dialog.open(DialogElementsExampleDialogComponent);
+    }
   }
 }

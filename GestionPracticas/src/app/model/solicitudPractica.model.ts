@@ -1,5 +1,6 @@
 export interface SolicitudPracticaModel
 {
+  idUser: string;
   id: string;
   nombres: string;
   apellidos: string;

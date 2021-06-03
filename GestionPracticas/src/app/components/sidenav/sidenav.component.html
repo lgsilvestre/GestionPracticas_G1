@@ -7,7 +7,7 @@
 			<div id="outer-account">
 				<div mat-card-avatar id="avatar-image" class="mt-4"></div>
 				<div id="name-edit">
-					<h3 mat-h3 class="mt-2"><b>[Nombre] [Apellido]</b></h3>
+					<h3 mat-h3 class="mt-2"><b>{{userName}} {{userApellidos}}</b></h3>
 					<a routerLink="./editar-cuenta" (click)="sidenav.toggle()">
 						<mat-icon mat-list-icon>edit</mat-icon>
 					</a>

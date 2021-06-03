@@ -58,7 +58,12 @@ export class CrearCuentaEstudianteComponent implements OnInit
           rol: rolFinal,
           run: this.estudiante.value.Run,
           situacionActual: this.estudiante.value.SituacionActual,
-          telefono: this.estudiante.value.Telefono
+          telefono: this.estudiante.value.Telefono,
+          practicaAbilitada: true,
+          practicaActual: 1,
+          etapaActual: 'ninguna',
+          estadoEtapaActual: 'ninguno',
+          documentos: [],
         };
       console.log(nuevoUsuario);
       this.gestionEstudiante.crearNuevoEstudiante(nuevoUsuario, this.estudiante.value.Contrasenna1);

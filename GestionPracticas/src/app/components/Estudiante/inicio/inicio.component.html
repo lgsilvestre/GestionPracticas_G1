@@ -1,4 +1,4 @@
-<h1 class="title">Bienvenido Juan Pérez </h1>
+<h1 class="title">Bienvenido {{userName}} {{userApellidos}}</h1>
 
 
 <mat-card class="tarjeta">
@@ -18,18 +18,18 @@
 			<mat-card-content>
 				1.- Aprobar curso 1
 			</mat-card-content>
-		
+
 			<mat-card-content>
 				2.- Aprobar curso 2
 			</mat-card-content>
-		
+
 			<h2 class="Subtitulo">
 				Ten en cuenta que...
 			</h2>
 			<mat-card-content class="justificar">
 				a la empresa que postules, La persona que será tu tutor(a) debe ser de tu formación académica
 			</mat-card-content>
-		
+
 			<h2 class="Subtitulo">
 				Espera a que...
 			</h2>
@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="inicio">
-	
+
 		<mat-card class="tarjeta" class="calendario">
 			<mat-card-title class="titulo-material">Fechas importantes</mat-card-title>
 			<mat-card-content>
@@ -54,33 +54,33 @@
 			<mat-card-content>
 				<p class="fechas">29/01/2022</p>Fin plazo de extensión de práctica
 			</mat-card-content>
-	
+
 			<mat-card-content>
-	
+
 				<mat-calendar [selected]="fecha_seleccionada" disabled></mat-calendar>
-	
+
 				*Se indica el plazo más cercano a finalizar
 			</mat-card-content>
 			<!-- <mat-calendar [dateClass]="dateClass()" is</mat-calendar> -->
-	
+
 		</mat-card>
-	
+
 	</div>
 </div>
 
 <div>
-	
+
 	<div>
 		<mat-card class="tarjeta">
 			<mat-card-title class="titulo-material">Últimas actividades</mat-card-title>
 			<mat-card-content>
 				Ha enviado satisfactoriamente una solicitud para comenzar ha solicitar su práctica profesional
 			</mat-card-content>
-		
+
 			<mat-card-content>
 				Se está procesando tu solicitud de:
 			</mat-card-content>
-		
+
 			<mat-card-content>
 				Tú solicitud ha sido aprobada, puedes continuar con el siguiente paso.
 				<button mat-raised-button color="primary" type="submit" class="boton-aceptar">Ir a etapa</button>
