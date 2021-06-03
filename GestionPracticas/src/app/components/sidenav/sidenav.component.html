@@ -50,6 +50,11 @@
                     <span>Crear cuentas </span>
                 </a>
                 <mat-divider></mat-divider>
+                <a routerLink="./gestionar-carreras" mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon mat-list-icon>visibility</mat-icon>
+                    <span>Gestionar carreras</span>
+                </a>
+                <mat-divider></mat-divider>
             </div>
             <div *ngIf="soyEstudiante">
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
