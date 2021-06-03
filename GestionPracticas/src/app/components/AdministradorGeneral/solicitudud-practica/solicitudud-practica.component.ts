@@ -4,6 +4,8 @@ import {SolicitudPracticaService} from '../../Servicios/solicitud-practica.servi
 import {SolicitudPracticaModel} from '../../../model/solicitudPractica.model';
 import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {LocalStorageService} from '../../Servicios/local-storage.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-solicitudud-practica',
@@ -14,12 +16,21 @@ export class SolicitududPracticaComponent implements OnInit {
 
   carreraActual = '';
   mostrar = false;
-  user: any = JSON.parse(localStorage.getItem('user') || '{}');
-  UID: any = JSON.parse(localStorage.getItem('userUID') || '{}');
   carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
   datosSolicitudPractica: FormGroup;
-  constructor(private _formBuilder: FormBuilder , private solicitudService: SolicitudPracticaService,  public dialog: MatDialog)
+  private etapaActual = '';
+  private etapaActual$: Observable<string>;
+  private estadoEtapaActual = ' ';
+  private  estadoEtapaActual$: Observable<string>;
+  constructor(private _formBuilder: FormBuilder,
+              private solicitudService: SolicitudPracticaService,
+              public dialog: MatDialog,
+              private locaSTF: LocalStorageService)
   {
+    this.etapaActual$ = this.locaSTF.getEtapaActual$();
+    this.etapaActual$.subscribe(etapa => this.etapaActual = etapa);
+    this.estadoEtapaActual$ = this.locaSTF.getEstadoEtapaActual$();
+    this.estadoEtapaActual$.subscribe( estado => this.estadoEtapaActual = estado);
     this.datosSolicitudPractica = this._formBuilder.group({
       Nombres: ['', Validators.required],
       Apellidos: ['', Validators.required],
@@ -35,12 +46,12 @@ export class SolicitududPracticaComponent implements OnInit {
   {
     this.datosSolicitudPractica.patchValue(
       {
-        Nombres: this.user.nombres,
-        Apellidos: this.user.apellidos,
-        Run: this.user.run,
-        NumeroMatricula: this.user.numeroMatricula,
-        CorreoElectronicoInstitucional: this.user.correoInstitucional,
-        NumeroTelefono: this.user.telefono
+        Nombres: this.locaSTF.getNombres(),
+        Apellidos: this.locaSTF.getApellidos(),
+        Run: this.locaSTF.getRun(),
+        NumeroMatricula: this.locaSTF.getNumeroMatricula(),
+        CorreoElectronicoInstitucional: this.locaSTF.getCorreoElectronicoInstitucional(),
+        NumeroTelefono: this.locaSTF.getNumeroTelefono()
       });
   }
   onChangeCarrera(event: any): void
@@ -49,11 +60,11 @@ export class SolicitududPracticaComponent implements OnInit {
   }
   sendSolicitud(): void
   {
-    if (this.user.etapaActual === 'ninguna' && this.user.estadoEtapaActual === 'ninguno')
+    if (this.etapaActual === 'ninguna' && this.estadoEtapaActual === 'ninguno')
     {
       const solicitud: SolicitudPracticaModel =
         {
-          idUser: this.UID,
+          idUser: this.locaSTF.getUid() || '{error}',
           id: '',
           nombres: this.datosSolicitudPractica.value.Nombres,
           apellidos: this.datosSolicitudPractica.value.Apellidos,

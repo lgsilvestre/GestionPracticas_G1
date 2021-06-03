@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Estudiante} from '../../model/estudiante.model';
+import {LocalStorageService} from '../Servicios/local-storage.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private ngZone: NgZone,
+    private localStorageF: LocalStorageService,
     ) {}
   loginForm = this.formBuilder.group({
     email: ['', Validators.required],
@@ -49,8 +51,8 @@ export class LoginComponent implements OnInit {
           {
             /* usar ternarias y esto queda joya */
             const userData: any = doc.data();
-            localStorage.setItem('user', JSON.stringify(userData));
-            localStorage.setItem('userUID', JSON.stringify(userUID));
+            this.localStorageF.setUser(userData);
+            this.localStorageF.setUID(userUID);
             this.router.navigate(['./menu-estudiante']);
             console.log(userData?.rol);
             encontrado = true;

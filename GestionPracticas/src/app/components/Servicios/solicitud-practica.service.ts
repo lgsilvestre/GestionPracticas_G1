@@ -2,14 +2,14 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {SolicitudPracticaModel} from '../../model/solicitudPractica.model';
+import {LocalStorageService} from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolicitudPracticaService {
-  user: any = JSON.parse(localStorage.getItem('user') || '{}');
-  constructor(private angularFireStore: AngularFirestore)
-  { }
+  constructor(private angularFireStore: AngularFirestore, private locaSTF: LocalStorageService)
+  {}
   public addSolicitudPractica(nuevaSolicitud: SolicitudPracticaModel): void
   {
     console.log(nuevaSolicitud);
@@ -19,17 +19,17 @@ export class SolicitudPracticaService {
       let correcto: boolean = false;
       ref.set(nuevaSolicitud).then( refff =>
         {
-          this.user.etapaActual = 'solicitudePractica';
-          this.user.estadoEtapaActual = 'Pendiente' ;
-          let documentos: string[] = this.user.documentos;
-          documentos.push( referenciaSolicitud);
-          this.user.documentos = documentos;
-          localStorage.setItem('user', JSON.stringify(this.user));
+          this.locaSTF.setEtapaActual('solicitudePractica');
+          this.locaSTF.setEstadoEtapaActual('Pendiente');
+          let documentos: string[] = this.locaSTF.getDocumentos();
+          // si existiera otra referencia deberia eliminarse, por tiempo no lo programo ahora
+          documentos[0] = referenciaSolicitud;
+          this.locaSTF.setDocumentos(documentos);
           correcto = true;
         }
       );
       const  reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + nuevaSolicitud.idUser);
-      reff.set(this.user, {merge: true});
+      reff.set(this.locaSTF.getUser(), {merge: true});
     });
   }
 }
