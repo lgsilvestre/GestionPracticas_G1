@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
             /* usar ternarias y esto queda joya */
             const userData: any = doc.data();
             localStorage.setItem('user', JSON.stringify(userData));
+            localStorage.setItem('userUID', JSON.stringify(userUID));
             this.router.navigate(['./menu-estudiante']);
             console.log(userData?.rol);
             encontrado = true;

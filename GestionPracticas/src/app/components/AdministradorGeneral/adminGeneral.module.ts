@@ -16,46 +16,46 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
+import { SolicitududPracticaComponent } from './solicitudud-practica/solicitudud-practica.component';
 
 
 
 @NgModule({
-	declarations: [
-		// Aca van los modulos que se crean
-		MenuAdminGeneralComponent,
-		PlantillaGeneralComponent,
-		CrearCuentaEncargadoComponent,
-		CrearCuentaAdministradorGeneralComponent,
-		CrearCuentaEstudianteComponent,
-		CrearCuentaComponent,
-		GestionarCarrerasComponent,
+  declarations: [
+    // Aca van los modulos que se crean
+    MenuAdminGeneralComponent,
+    PlantillaGeneralComponent,
+    CrearCuentaEncargadoComponent,
+    CrearCuentaAdministradorGeneralComponent,
+    CrearCuentaEstudianteComponent,
+    CrearCuentaComponent,
+    DynamicHostDirective,
+    DinamicFileContainerComponent,
+    SolicitududPracticaComponent,
+    GestionarCarrerasComponent,
 		preguntaEliminar,
 		editarPlanes,
 		AgregarPlan,
 		VerCarreraParticularComponent,
 		CrearCarreraComponent,
-		DynamicHostDirective,
-		DinamicFileContainerComponent
-	],
-	entryComponents: [
-		// aqui van los componentes que se crean en tiempo de ejecucion
-		DinamicFileContainerComponent
-	],
-	imports: [
-		CommonModule,
-		MaterialModule,
-		ReactiveFormsModule,
-		GraficosModule,
-
-	],
-	exports: [
-		// Aca van los modulos que se crean
-		PlantillaGeneralComponent,
-		CrearCuentaEncargadoComponent,
-		VerCarreraParticularComponent
-	],
-	providers: [
-		FirebaseEstudianteService,
-	]
+  ],
+  entryComponents: [
+    // aqui van los componentes que se crean en tiempo de ejecucion
+    DinamicFileContainerComponent
+  ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    GraficosModule,
+  ],
+  exports: [
+    // Aca van los modulos que se crean
+    PlantillaGeneralComponent,
+    CrearCuentaEncargadoComponent
+  ],
+  providers: [
+    FirebaseEstudianteService,
+  ]
 })
 export class AdminGeneralModule { }

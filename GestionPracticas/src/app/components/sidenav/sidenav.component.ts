@@ -12,6 +12,8 @@ export class SidenavComponent implements OnInit {
 	soyAdminGeneral: boolean = false;
 	soyEncargadoDeCarrera: boolean = false;
 	soySuperAdmin: boolean = false;
+	userName: string = this.user.nombres;
+	userApellidos: string = this.user.apellidos;
 	constructor(public auth: AngularFireAuth) {
 	}
 

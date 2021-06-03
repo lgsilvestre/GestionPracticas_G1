@@ -21,7 +21,6 @@ export interface Documento
 export class PlantillaGeneralComponent implements OnInit {
   @ViewChild(DynamicHostDirective) public dynamicHost: DynamicHostDirective | undefined;
   carreraActual: string = 'None';
-  carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
   private documentos: Documento[] =
     [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: 'https://www.google.com/'}];
   datosSolicitudPractica: FormGroup;
@@ -34,15 +33,7 @@ export class PlantillaGeneralComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private afStudent: FirebaseEstudianteService, private comFacResol: ComponentFactoryResolver)
   {
-    this.datosSolicitudPractica = this._formBuilder.group({
-      Nombres: ['', Validators.required],
-      Apellidos: ['', Validators.required],
-      Carrera: ['', Validators.required],
-      NnumeroMatricula: ['', Validators.required],
-      Run: ['', Validators.required],
-      CorreoElectronicoInstitucional: ['', Validators.required],
-      NumeroTelefono: ['', Validators.required],
-    });
+    this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
     this.datosEstudianteEtapa = this._formBuilder.group({
       Nombres: ['', Validators.required],
@@ -87,11 +78,8 @@ export class PlantillaGeneralComponent implements OnInit {
   {
     /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
-  onChangeCarrera(event: any): void
+  public createComponent(): void
   {
-    this.carreraActual = event;
-  }
-  public createComponent(): void {
     this.dynamicHost?.viewContainerRef.clear();
     console.log('holoa');
     /* extraido de
