@@ -126,16 +126,9 @@
             </a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-toolbar>
-        <button mat-icon-button (click)="sidenav.toggle()">
-			<mat-icon>menu</mat-icon>
-		</button>
-        <img src="../../../assets/utalca_fi_color.png">
-        <button mat-icon-button>
-			<span>Salir</span>
-			<mat-icon>exit_to_app</mat-icon>
-		</button>
-    </mat-toolbar>
+    <button mat-raised-button color="primary" (click)="sidenav.toggle()">
+		<mat-icon>menu</mat-icon>
+	</button>
     <div id="main">
         <router-outlet></router-outlet>
     </div>
