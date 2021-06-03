@@ -5,7 +5,7 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraficosModule } from '../Graficos/graficos.module';
 import { PlantillaGeneralComponent } from './plantilla-general/plantilla-general.component';
-import {FirebaseEstudianteService} from '../Servicios/firebase-estudiante.service';
+import { FirebaseEstudianteService } from '../Servicios/firebase-estudiante.service';
 import { CrearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cuenta-encargado.component';
 import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
@@ -20,42 +20,42 @@ import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/
 
 
 @NgModule({
-  declarations: [
-    // Aca van los modulos que se crean
-    MenuAdminGeneralComponent,
-    PlantillaGeneralComponent,
-    CrearCuentaEncargadoComponent,
-    CrearCuentaAdministradorGeneralComponent,
-    CrearCuentaEstudianteComponent,
-    CrearCuentaComponent,
-    GestionarCarrerasComponent,
-    preguntaEliminar,
-    editarPlanes,
-    AgregarPlan,
-    VerCarreraParticularComponent,
-    CrearCarreraComponent
-    DynamicHostDirective,
-    DinamicFileContainerComponent
-  ],
-  entryComponents: [
-    // aqui van los componentes que se crean en tiempo de ejecucion
-    DinamicFileContainerComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    GraficosModule,
+	declarations: [
+		// Aca van los modulos que se crean
+		MenuAdminGeneralComponent,
+		PlantillaGeneralComponent,
+		CrearCuentaEncargadoComponent,
+		CrearCuentaAdministradorGeneralComponent,
+		CrearCuentaEstudianteComponent,
+		CrearCuentaComponent,
+		GestionarCarrerasComponent,
+		preguntaEliminar,
+		editarPlanes,
+		AgregarPlan,
+		VerCarreraParticularComponent,
+		CrearCarreraComponent,
+		DynamicHostDirective,
+		DinamicFileContainerComponent
+	],
+	entryComponents: [
+		// aqui van los componentes que se crean en tiempo de ejecucion
+		DinamicFileContainerComponent
+	],
+	imports: [
+		CommonModule,
+		MaterialModule,
+		ReactiveFormsModule,
+		GraficosModule,
 
-  ],
-  exports: [
-    // Aca van los modulos que se crean
-    PlantillaGeneralComponent,
-    CrearCuentaEncargadoComponent,
-    VerCarreraParticularComponent
-  ],
-  providers: [
-    FirebaseEstudianteService,
-  ]
+	],
+	exports: [
+		// Aca van los modulos que se crean
+		PlantillaGeneralComponent,
+		CrearCuentaEncargadoComponent,
+		VerCarreraParticularComponent
+	],
+	providers: [
+		FirebaseEstudianteService,
+	]
 })
-export class AdminGeneralModule{}
+export class AdminGeneralModule { }
