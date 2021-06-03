@@ -1,47 +1,47 @@
 mat-form-field,
-mat-horizontal-stepper {
-	width: 100%;
+mat-vertical-stepper {
+    width: 100%;
 }
 
 button:not(mat-sidenav-container button) {
-	min-width: 5rem;
-	min-height: 2.75rem;
+    min-width: 5rem;
+    min-height: 2.75rem;
 }
 
-mat-horizontal-stepper button {
-	min-width: 10rem;
+mat-vertical-stepper button {
+    min-width: 5rem !important;
 }
 
 button:not(::ng-deep .mat-toolbar button),
  ::ng-deep .mat-dialog-container button {
-	box-shadow: none !important;
-	min-width: 20rem;
+    box-shadow: none !important;
+    min-width: calc(20rem - 10vw);
 }
 
-mat-horizontal-stepper button,
+mat-vertical-stepper button,
 mat-card button {
-	margin: 0 1rem 0 1rem !important;
+    margin: 0 1rem 0 1rem !important;
 }
 
 mat-card,
-mat-horizontal-stepper,
+mat-vertical-stepper,
 mat-paginator,
 ::ng-deep .mat-dialog-container {
-	box-shadow: 0 0 1px 1px rgba(96, 125, 139, .5) !important;
+    box-shadow: none !important;
 }
 
 mat-card,
-mat-horizontal-stepper,
+mat-vertical-stepper,
 mat-paginator table {
-	background: radial-gradient(circle, rgba(236, 239, 241, .95) 75%, rgba(236, 239, 241, .85) 100%);
+    background: radial-gradient(circle, rgba(236, 239, 241, .95) 75%, rgba(236, 239, 241, .85) 100%);
 }
 
 mat-card,
-mat-horizontal-stepper,
+mat-vertical-stepper,
 ::ng-deep .mat-dialog-container {
-	border: 1px rgb(144, 164, 174);
-	border-radius: 10px;
-	border-style: solid;
+    border: 1px rgb(144, 164, 174);
+    border-radius: 10px;
+    border-style: solid;
 }
 
 mat-label,
@@ -49,33 +49,36 @@ a,
 button,
 mat-card-content,
 mat-card-actions {
-	font-size: medium !important;
+    font-size: medium !important;
 }
 
 mat-card {
-	margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 ::ng-deep .mat-form-field-outline {
-	background-color: white;
+    background-color: white;
+    border-radius: 5px;
 }
 
-table {
-	width: 100%;
+table,
+mat-paginator {
+    width: 100%;
+    min-width: 720px;
 }
 
 #main {
-	margin: 2rem 0 2rem 0;
-}
-
-@media only screen and (min-width: 992px) {
-	#main {
-		margin: 2rem 16vw 2rem 16vw;
-	}
+    margin: 2rem 0 2rem 0;
 }
 
 @media only screen and (min-width: 768px) {
-	#main {
-		margin: 2rem 8vw 2rem 8vw;
-	}
+    #main {
+        margin: 2rem 8vw 2rem 8vw;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #main {
+        margin: 2rem 16vw 2rem 16vw;
+    }
 }

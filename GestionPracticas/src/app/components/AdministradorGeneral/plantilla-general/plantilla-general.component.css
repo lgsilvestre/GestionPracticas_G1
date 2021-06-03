@@ -1,17 +1,23 @@
-.step-button {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
-	justify-content: flex-end;
+.step-buttons {
+    justify-content: space-between;
 }
 
+.lonely-button {
+    justify-content: center;
+}
+
+.lonely-button,
 .step-buttons {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 h1 {
-	text-align: center;
+    text-align: center;
+}
+
+mat-vertical-stepper {
+    background: transparent !important;
+    border-style: none !important;
 }

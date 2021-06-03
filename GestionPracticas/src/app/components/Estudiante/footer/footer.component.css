@@ -1,33 +1,6 @@
-*
-{
-    margin: 0px;
-    padding: 0px;
-    color: #fff;
-    background-color:#a45411;
-	width: 100%;
-	bottom: 0;
-} 
-
-.texto
-{
+div {
+    padding: 1.5rem 0 1.5rem 0;
+    background-color: rgba(255, 209, 128, 0.95);
     text-align: center;
-    
-}
-
-.contacto
-{
-    display: inline-flexbox;
-    padding-left: 2vh;
-}
-
-.contactoContinuacion
-{
-    display: -ms-inline-flexbox;
-    padding-left: 6vh;
-}
-
-#nombre_sistema
-{
-    margin-bottom: 0px;
-    text-align: center;
+    font-size: large;
 }

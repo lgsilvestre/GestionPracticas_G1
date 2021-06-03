@@ -33,6 +33,10 @@ import { LoginComponent } from './components/login/login.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
 import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
 import { SuperAdminModule } from './components/SuperAdministrador/superadministrador.module';
+import { InformationComponent } from './components/dialogs/information/information.component';
+import { SuccessComponent } from './components/dialogs/success/success.component';
+import { ErrorComponent } from './components/dialogs/error/error.component';
+import { AlertComponent } from './components/dialogs/alert/alert.component';
 
 
 
@@ -43,6 +47,10 @@ import { SuperAdminModule } from './components/SuperAdministrador/superadministr
     LoginComponent,
     EditarCuentaComponent,
     PageNotFoundComponent,
+    InformationComponent,
+    SuccessComponent,
+    ErrorComponent,
+    AlertComponent,
 
   ],
   imports: [

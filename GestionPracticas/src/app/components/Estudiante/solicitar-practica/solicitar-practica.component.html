@@ -1,9 +1,17 @@
-<mat-horizontal-stepper #stepper>
+<mat-card>
+    <mat-card-title>Solicitud e inscripción de práctica</mat-card-title>
+    <mat-card-content>
+        <p>A continuación, deberás incluir información personal y de la práctica que deseas hacer. El proceso se dividirá en dos partes. Inicialmente deberás incluir información personal para que el encargado pueda verificar de que puedas dar tu práctica.
+            Una vez apruebes esa solicitud, podrás continuar con la postulación a tu práctica profesional.</p>
+        <p><small>Sí en el semestre actual cumplirás los requisitos de cursos y/o créditos mínimos para postular, también puedes empezar tu postulación y, una vez terminado el semestre si cumples con los requerimientos, podrás terminar tu postulación y realizar una práctica oficialmente.</small></p>
+    </mat-card-content>
+</mat-card>
+<mat-vertical-stepper #stepper>
     <mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Solicitud de la práctica</ng-template>
-            <div>
-                <app-plantilla-general id="app-plantilla-general"></app-plantilla-general>
+            <div id="app-plantilla-general">
+                <app-plantilla-general></app-plantilla-general>
             </div>
         </form>
     </mat-step>
@@ -11,7 +19,7 @@
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Subir informe de práctica</ng-template>
             <div>
-                <h3>Por favor, suba el archivo que contiene su informa de práctica</h3>
+                <h3>Por favor, suba el archivo que contiene su informe de práctica</h3>
                 <input type="file" placeholder="consentimiento.pdf" required>
             </div>
         </form>
@@ -23,4 +31,4 @@
             <mat-icon mat-list-icon>emoji_emotions</mat-icon>
         </div>
     </mat-step>
-</mat-horizontal-stepper>
+</mat-vertical-stepper>

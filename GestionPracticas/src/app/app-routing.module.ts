@@ -44,6 +44,7 @@ const routes: Routes = [
 	{ path: 'gestionar-carreras', component: GestionarCarrerasComponent },
 	{ path: 'gestionar-carreras/ver-carrera-particular', component: VerCarreraParticularComponent },
 	{ path: 'gestionar-carreras/crear-carrera', component: CrearCarreraComponent },
+	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];

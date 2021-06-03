@@ -1,11 +1,19 @@
-h1 {
-	text-align: center;
-}
-
-h4 {
-	margin: .5rem;
+mat-card-title {
+    text-align: center;
 }
 
 #table {
-	min-width: 1080px !important;
+    min-width: 1080px !important;
+}
+
+h3 {
+    text-align: center;
+}
+
+div {
+    overflow-x: scroll;
+}
+
+mat-icon {
+    color: #ff9800;
 }

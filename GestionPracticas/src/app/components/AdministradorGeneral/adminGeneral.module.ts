@@ -14,6 +14,8 @@ import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carrer
 import { editarPlanes, VerCarreraParticularComponent, AgregarPlan } from './gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
+import { DynamicHostDirective } from './directivas/dynamic-host.directive';
+import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
 
 
 
@@ -32,7 +34,12 @@ import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-
     AgregarPlan,
     VerCarreraParticularComponent,
     CrearCarreraComponent
-
+    DynamicHostDirective,
+    DinamicFileContainerComponent
+  ],
+  entryComponents: [
+    // aqui van los componentes que se crean en tiempo de ejecucion
+    DinamicFileContainerComponent
   ],
   imports: [
     CommonModule,
