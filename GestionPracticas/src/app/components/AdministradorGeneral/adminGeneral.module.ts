@@ -10,6 +10,10 @@ import { CrearCuentaEncargadoComponent } from './crear-cuenta-encargado/crear-cu
 import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
+import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carreras/gestionar-carreras.component';
+import { editarPlanes, VerCarreraParticularComponent, AgregarPlan } from './gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
+import { AppRoutingModule } from '../../app-routing.module';
+import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
 
@@ -24,6 +28,12 @@ import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/
     CrearCuentaAdministradorGeneralComponent,
     CrearCuentaEstudianteComponent,
     CrearCuentaComponent,
+    GestionarCarrerasComponent,
+    preguntaEliminar,
+    editarPlanes,
+    AgregarPlan,
+    VerCarreraParticularComponent,
+    CrearCarreraComponent
     DynamicHostDirective,
     DinamicFileContainerComponent
   ],
@@ -36,11 +46,13 @@ import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/
     MaterialModule,
     ReactiveFormsModule,
     GraficosModule,
+
   ],
   exports: [
     // Aca van los modulos que se crean
     PlantillaGeneralComponent,
-    CrearCuentaEncargadoComponent
+    CrearCuentaEncargadoComponent,
+    VerCarreraParticularComponent
   ],
   providers: [
     FirebaseEstudianteService,

@@ -1,0 +1,50 @@
+<mat-card class='presentacion'>
+    <mat-card-title class="texto"> Carreras universitarias Universidad de Talca</mat-card-title>
+</mat-card>
+
+<div class="separador">
+    <mat-divider></mat-divider>
+    <mat-card class="presentacion">
+        <!-- <mat-card-header>Campus Curicó</mat-card-header> -->
+        <mat-card-title class='titulo'>Ingeniería civil en Computación</mat-card-title>
+        <mat-card-content class='contenido'>
+            <span class="en-linea">
+                <h3>Encargado(a) de carrera asociado:</h3>
+                <p>Juan Pérez</p>
+            </span>
+
+            <span>
+                <h3>Alumnos habilitados para rendir prácticas:</h3>
+                <p>30</p>
+            </span>
+
+            <button mat-raised-button routerLink="/gestionar-carreras/ver-carrera-particular" color="primary" type="submit" (click)="goToCarrera()">Gestionar carrera</button>
+            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="presentacion">
+        <!-- <mat-card-header>Campus Curicó</mat-card-header> -->
+        <mat-card-title class='titulo'>Ingeniería civil Industrial</mat-card-title>
+        <mat-card-content class="contenido">
+            <span class="en-linea">
+                <h3>Encargado(a) de carrera asociado:</h3>
+                <p>Maria Jimenez</p>
+            </span>
+    
+            <span>
+                <h3>Alumnos habilitados para rendir prácticas:</h3>
+                <p>45</p>
+            </span>
+    
+            <button mat-raised-button color="primary" type="submit">Gestionar carrera</button>
+            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class='presentacion padre'>
+        <button mat-raised-button routerLink="/gestionar-carreras/crear-carrera" color="primary" type="submit" (click)="goToCrearCarrera()">Agregar carrera al sistema de prácticas</button>
+    </mat-card>
+    
+
+</div>
