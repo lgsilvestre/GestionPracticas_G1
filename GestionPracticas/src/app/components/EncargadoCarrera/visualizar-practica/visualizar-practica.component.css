@@ -1,0 +1,17 @@
+h3 {
+    text-align: center;
+}
+
+div {
+    overflow-x: scroll;
+}
+
+table,
+mat-paginator {
+    width: 100%;
+    min-width: 720px;
+}
+
+mat-paginator {
+    box-shadow: none;
+}
