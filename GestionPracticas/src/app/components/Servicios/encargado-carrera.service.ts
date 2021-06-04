@@ -10,7 +10,7 @@ export class EncargadoCarreraService {
 
 
   constructor(private db: AngularFirestore) {
-    
+
   }
 
   public load_data_visualizar_practica() {
@@ -20,6 +20,17 @@ export class EncargadoCarreraService {
 
   public update_solicitud(idSolicitud: string) {
     return this.db.firestore.collection("Solicitudes").doc(idSolicitud);
+  }
+
+  // solicitud de practica.
+
+  public load_data_solicitud_practica() {
+    return this.db.firestore.collection("SolicitudesPracticas").get();
+  }
+
+
+  public update_solicitud_practica(idSolicitud: string) {
+    return this.db.firestore.collection("SolicitudesPracticas").doc(idSolicitud);
   }
 
 

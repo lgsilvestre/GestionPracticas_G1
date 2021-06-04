@@ -13,7 +13,9 @@ import { MatCalendarCellCssClasses } from '@angular/material/datepicker/calendar
 })
 export class InicioComponent implements OnInit {
 
-
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
+  userName: string = this.user.nombres;
+  userApellidos: string = this.user.apellidos;
 	// firstFormGroup: FormGroup;
 	// secondFormGroup: FormGroup;
 
@@ -31,9 +33,9 @@ export class InicioComponent implements OnInit {
 	fechas_multiple: Boolean= true;
 	dateClass() {
 		return (fecha_seleccionada: Date): MatCalendarCellCssClasses => {
-			if (fecha_seleccionada.getDate() === 1) 
+			if (fecha_seleccionada.getDate() === 1)
 			{return 'special-date';}
-			else 
+			else
 			{return 'nothing'}
 		};
 	}

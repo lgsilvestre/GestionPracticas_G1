@@ -1,0 +1,20 @@
+mat-card {
+    max-width: 70vh !important;
+}
+
+#info {
+    text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .step-buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .step-buttons button {
+        width: 10rem;
+    }
+     ::ng-deep .mat-dialog-actions button {
+        width: 5rem !important;
+    }
+}

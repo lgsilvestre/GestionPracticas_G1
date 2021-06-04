@@ -6,21 +6,23 @@ import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.c
 import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 import { Practica } from "src/app/model/practica.model";
+import { InformationComponent } from "../../dialogs/information/information.component";
+import { AlertComponent } from "../../dialogs/alert/alert.component";
 declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
-    if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
+	if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
 
-    length = Math.max(length, 0);
+	length = Math.max(length, 0);
 
-    const startIndex = page * pageSize;
+	const startIndex = page * pageSize;
 
-    // If the start index exceeds the list length, do not try and fix the end index to the end.
-    const endIndex = startIndex < length ?
-        Math.min(startIndex + pageSize, length) :
-        startIndex + pageSize;
+	// If the start index exceeds the list length, do not try and fix the end index to the end.
+	const endIndex = startIndex < length ?
+		Math.min(startIndex + pageSize, length) :
+		startIndex + pageSize;
 
-    return `${startIndex + 1} - ${endIndex} de ${length}`;
+	return `${startIndex + 1} - ${endIndex} de ${length}`;
 }
 
 
