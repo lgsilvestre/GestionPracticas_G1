@@ -5,6 +5,7 @@ mat-sidenav {
     min-width: 360px;
     max-width: 360px;
     margin: 10vh 0 10vh 0;
+    background-color: #eceff1;
 }
 
 @media only screen and (min-width: 576px) {
