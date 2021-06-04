@@ -48,7 +48,10 @@ export class SolicitududPracticaComponent implements OnInit {
   ngOnInit(): void
   {
     this.locaSTF.getEtapaActual$().subscribe( etapa => {
-      this.estadoEtapaActual = etapa;
+      this.etapaActual = etapa;
+    });
+    this.locaSTF.getEstadoEtapaActual$().subscribe( estado => {
+      this.estadoEtapaActual = estado;
     });
   }
   setEstado(sss: string): string

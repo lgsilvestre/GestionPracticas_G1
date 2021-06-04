@@ -11,8 +11,8 @@ export class LocalStorageService
 {
   private userSubject$ = new Subject<any>();
   private etapaActualSubject$ = new BehaviorSubject<string>('ninguna');
-  private documentosSubject$ = new Subject<string[]>();
-  private estadoEtapaActualSubject$ = new Subject<string>();
+  private documentosSubject$ = new BehaviorSubject<string[]>([]);
+  private estadoEtapaActualSubject$ = new BehaviorSubject<string>('ninguno');
   private uid: string | undefined = '';
   private user: any = '';
   private etapaActual: string = '';
@@ -43,9 +43,9 @@ export class LocalStorageService
   {
     return this.etapaActualSubject$;
   }
-  public getEstadoEtapaActual$(): Observable<string>
+  public getEstadoEtapaActual$(): BehaviorSubject<string>
   {
-    return this.estadoEtapaActualSubject$.asObservable();
+    return this.estadoEtapaActualSubject$;
   }
   public getUid(): string | undefined
   {
