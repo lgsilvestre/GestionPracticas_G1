@@ -24,12 +24,12 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
 }
 
 @Component({
-  selector: 'app-solicitud-practica-carrera',
-  templateUrl: './solicitud-practica-carrera.component.html',
-  styleUrls: ['./solicitud-practica-carrera.component.css']
+	selector: 'app-solicitud-practica-carrera',
+	templateUrl: './solicitud-practica-carrera.component.html',
+	styleUrls: ['./solicitud-practica-carrera.component.css', '../../../app.component.css']
 })
-export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
-  filtroSemestreSeleccionado: boolean = false;
+export class SolicitudPracticaCarreraComponent implements OnInit, AfterViewInit {
+	filtroSemestreSeleccionado: boolean = false;
 	filtroSituacionSeleccionado: boolean = false;
 	filtroNumeroMatriculaSeleccionado: boolean = false;
 
@@ -141,7 +141,7 @@ export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
 			querySnapshot.forEach(doc => {
 
 				const nuevaPractica: any = doc.data();
-        console.log(doc.data());
+				console.log(doc.data());
 				this.solicitudes.push(nuevaPractica);
 
 			});
@@ -175,11 +175,11 @@ export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
 			msg_error += "rechazar";
 		}
 
-    this.EC_service.get_estado_estudiante(solicitud.idUser).then((response:any) => {
-      var estudiante:any = response.data();
-      estudiante.estadoEtapaActual = param_estado;
-      this.EC_service.update_estado_estudiante(estudiante.correoInstitucional,solicitud.idUser,estudiante);
-    })
+		this.EC_service.get_estado_estudiante(solicitud.idUser).then((response: any) => {
+			var estudiante: any = response.data();
+			estudiante.estadoEtapaActual = param_estado;
+			this.EC_service.update_estado_estudiante(estudiante.correoInstitucional, solicitud.idUser, estudiante);
+		})
 
 		return solicitudRef.update({
 			estado: param_estado
