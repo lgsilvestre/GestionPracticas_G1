@@ -83,3 +83,7 @@ mat-paginator {
     background-color: white;
     border-radius: 5px;
 }
+
+::ng-deep mat-dialog-container {
+    text-align: center;
+}
