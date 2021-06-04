@@ -55,3 +55,9 @@
     margin-bottom: 1rem !important;
     text-align: center;
 }
+
+.info-icon {
+    font-size: 10rem;
+    margin-left: -8.6rem;
+    color: #546e7a;
+}
