@@ -162,7 +162,7 @@ export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
 	}
 
 	cambiar_estado(solicitud: any, param_estado: string) {
-		var solicitudRef = this.EC_service.update_solicitud_practica(solicitud.idSolicitud);
+		var solicitudRef = this.EC_service.update_solicitud_practica(solicitud.id);
 		var msg_success = "La solicitud fue ";
 		var msg_error = "Ocurrió un error y la solicitud no se pudo ";
 
@@ -184,7 +184,7 @@ export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
 				alertify.success(msg_success);
 			})
 			.catch((error) => {
-				alertify.error(msg_error);
+				alertify.error(msg_error + error);
 			});
 	}
 }
