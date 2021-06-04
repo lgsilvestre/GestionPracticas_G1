@@ -1,8 +1,4 @@
 <mat-vertical-stepper #stepper>
-    <mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
-        <ng-template matStepLabel>Datos solicitud de practica</ng-template>
-        <app-solicitudud-practica></app-solicitudud-practica>
-    </mat-step>
     <mat-step [stepControl]="documentosGenerales" errorMessage="Completa los datos obligatorios restantes">
         <form [formGroup]="documentosGenerales">
             <ng-template matStepLabel>Documentos importantes</ng-template>

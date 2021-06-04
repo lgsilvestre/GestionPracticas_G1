@@ -16,7 +16,6 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
-import { SolicitududPracticaComponent } from './solicitudud-practica/solicitudud-practica.component';
 
 
 
@@ -31,7 +30,6 @@ import { SolicitududPracticaComponent } from './solicitudud-practica/solicitudud
     CrearCuentaComponent,
     DynamicHostDirective,
     DinamicFileContainerComponent,
-    SolicitududPracticaComponent,
     GestionarCarrerasComponent,
 		preguntaEliminar,
 		editarPlanes,

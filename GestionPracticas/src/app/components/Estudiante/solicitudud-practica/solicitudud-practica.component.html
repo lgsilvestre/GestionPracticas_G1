@@ -1,4 +1,5 @@
-<form [formGroup]="datosSolicitudPractica">
+<mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
+  <form [formGroup]="datosSolicitudPractica">
     <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input matInput placeholder=" Nombres " formControlName="Nombres" required>
@@ -54,3 +55,4 @@
     </button>
     </div>
 </form>
+</mat-step>

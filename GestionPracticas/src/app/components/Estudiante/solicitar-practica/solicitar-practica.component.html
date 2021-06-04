@@ -9,10 +9,8 @@
 <mat-vertical-stepper #stepper>
     <mat-step [stepControl]="firstFormGroup" errorMessage="Debes solicitar tu práctica">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Solicitud de la práctica</ng-template>
-            <div id="app-plantilla-general">
-                <app-plantilla-general></app-plantilla-general>
-            </div>
+            <ng-template matStepLabel>Datos solicitud de practica</ng-template>
+            <app-solicitudud-practica></app-solicitudud-practica>
         </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
