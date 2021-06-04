@@ -13,6 +13,12 @@
             <app-solicitudud-practica></app-solicitudud-practica>
         </form>
     </mat-step>
+    <mat-step [stepControl]="inscripcionGroup" errorMessage="Debes inscribir tu práctica">
+        <form [formGroup]="inscripcionGroup">
+            <ng-template matStepLabel>Datos inscripción de práctica</ng-template>
+            <app-plantilla-general></app-plantilla-general>
+        </form>
+    </mat-step>
     <mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Subir informe de práctica</ng-template>

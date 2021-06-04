@@ -1,5 +1,4 @@
-<mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
-  <form [formGroup]="datosSolicitudPractica">
+<form [formGroup]="datosSolicitudPractica">
     <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input matInput placeholder=" Nombres " formControlName="Nombres" required>
@@ -31,28 +30,26 @@
         <mat-label>Correo electrónico institucional</mat-label>
         <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronicoInstitucional" required>
     </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Teléfono de Contacto</mat-label>
-    <input matInput placeholder="+569xxxxxxxx" formControlName="NumeroTelefono" required>
-  </mat-form-field>
-  <hr>
-  <div class="step-buttons" *ngIf="getEstadoEtapaActual() === 'ninguno'">
-    <div>
-      <button mat-raised-button color="primary" type="button" name="Enviar" (click)="sendSolicitud()">Enviar</button>
+    <mat-form-field appearance="outline">
+        <mat-label>Teléfono de Contacto</mat-label>
+        <input matInput placeholder="+569xxxxxxxx" formControlName="NumeroTelefono" required>
+    </mat-form-field>
+    <hr>
+    <div class="step-buttons" *ngIf="getEstadoEtapaActual() === 'ninguno'">
+        <div>
+            <button mat-raised-button color="primary" type="button" name="Enviar" (click)="sendSolicitud()">Enviar</button>
+        </div>
     </div>
-  </div>
-  <div class="step-buttons" *ngIf="getEstadoEtapaActual() == 'Pendiente'">
-    <mat-label> Su solicitud esta en proceso de revision </mat-label>
-  </div>
-  <div class="step-buttons" *ngIf="getEstadoEtapaActual() == 'Rechazado'">
-    <mat-label> Su solicitud fue rechazada </mat-label>
-    <textarea>hola</textarea>
-  </div>
-  <div class="step-buttons" *ngIf="getEstadoEtapaActual() == 'Aceptado'">
-    <mat-label> Su solicitud fue aceptada,<br/>
-      por ende  cumples con los requisitos para realizar tu practica  </mat-label>
-    <button mat-raised-button matStepperNext color="primary" type="button" disabled>Siguente<mat-icon>navigate_next</mat-icon>
+    <div class="step-buttons" *ngIf="getEstadoEtapaActual() == 'Pendiente'">
+        <mat-label> Su solicitud esta en proceso de revision </mat-label>
+    </div>
+    <div class="step-buttons" *ngIf="getEstadoEtapaActual() == 'Rechazado'">
+        <mat-label> Su solicitud fue rechazada </mat-label>
+        <textarea>hola</textarea>
+    </div>
+    <div class="step-buttons" *ngIf="getEstadoEtapaActual() == 'Aceptado'">
+        <mat-label> Su solicitud fue aceptada,<br/> por ende cumples con los requisitos para realizar tu practica </mat-label>
+        <button mat-raised-button matStepperNext color="primary" type="button" disabled>Siguente<mat-icon>navigate_next</mat-icon>
     </button>
     </div>
 </form>
-</mat-step>
