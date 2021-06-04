@@ -1,5 +1,9 @@
 @media only screen and (min-width: 768px) {
     .step-buttons {
         display: flex;
+        justify-content: space-evenly;
+    }
+    button {
+        width: 10rem;
     }
 }
