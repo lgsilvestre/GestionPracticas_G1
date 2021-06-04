@@ -175,6 +175,12 @@ export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
 			msg_error += "rechazar";
 		}
 
+    this.EC_service.get_estado_estudiante(solicitud.idUser).then((response:any) => {
+      var estudiante:any = response.data();
+      estudiante.estadoEtapaActual = param_estado;
+      this.EC_service.update_estado_estudiante(estudiante.correoInstitucional,solicitud.idUser,estudiante);
+    })
+
 		return solicitudRef.update({
 			estado: param_estado
 		})

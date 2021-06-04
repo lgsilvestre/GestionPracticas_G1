@@ -33,5 +33,13 @@ export class EncargadoCarreraService {
     return this.db.firestore.collection("SolicitudesPracticas").doc(idSolicitud);
   }
 
+  public get_estado_estudiante(idUsuario:string){
+    return this.db.firestore.collection('Usuarios').doc('estudiante').collection('estudiantes').doc(idUsuario).get();
+  }
+
+  public update_estado_estudiante(correo:string,idUsuario:string,usuario:any){
+    this.db.firestore.collection('Usuarios').doc('estudiante').collection('estudiantes').doc(idUsuario).update(usuario);
+  }
+
 
 }
