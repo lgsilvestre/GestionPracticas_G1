@@ -32,3 +32,17 @@ mat-card {
 #subtitle {
     text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+    #calendar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    button {
+        width: 20rem;
+    }
+}
