@@ -14,4 +14,7 @@ mat-card {
     .step-buttons button {
         width: 10rem;
     }
+     ::ng-deep .mat-dialog-actions button {
+        width: 5rem !important;
+    }
 }
