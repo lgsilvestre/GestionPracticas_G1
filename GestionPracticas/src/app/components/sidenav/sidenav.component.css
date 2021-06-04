@@ -20,14 +20,16 @@ mat-sidenav {
 }
 
 #logo {
-    background-image: url(../../../assets/logo_practica.png);
+    background-image: url(../../../assets/black.png);
     background-repeat: no-repeat;
     background-position: center !important;
-    width: 100%;
+    background-size: contain;
+    width: 70%;
     height: 120px;
     border-style: none none none none;
     border-color: rgba(0, 0, 0, 0.12);
     border-width: .125rem;
+    margin: 0 auto;
 }
 
 #outer-account {
