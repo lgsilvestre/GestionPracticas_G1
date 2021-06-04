@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Practica } from 'src/app/model/practica.model';
 import { EncargadoCarreraService } from '../../Servicios/encargado-carrera.service';
-import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
+import { DialogoSolicitudPracticaComponent } from '../dialogo-solicitud-practica/dialogo-solicitud-practica.component';
 declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
@@ -109,7 +109,7 @@ export class SolicitudPracticaCarreraComponent implements OnInit,AfterViewInit {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.data = elemento;
 
-		const dialogRef = this.dialog.open(DialogoPracticaComponent, dialogConfig);
+		const dialogRef = this.dialog.open(DialogoSolicitudPracticaComponent, dialogConfig);
 
 		dialogRef.afterClosed().subscribe(result => {
 			console.log(`Dialog result: ${result}`); // retorna lo que se seleccionó en cuadro diálogo.
