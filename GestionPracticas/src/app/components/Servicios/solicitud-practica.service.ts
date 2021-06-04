@@ -28,8 +28,6 @@ export class SolicitudPracticaService {
           correcto = true;
         }
       );
-      const  reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + nuevaSolicitud.idUser);
-      reff.set(this.locaSTF.getUser(), {merge: true});
     });
   }
 }

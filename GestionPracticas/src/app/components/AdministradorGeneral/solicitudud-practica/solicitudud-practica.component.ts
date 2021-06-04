@@ -1,3 +1,4 @@
+/* tslint:disable:no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SolicitudPracticaService} from '../../Servicios/solicitud-practica.service';
@@ -5,7 +6,6 @@ import {SolicitudPracticaModel} from '../../../model/solicitudPractica.model';
 import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {LocalStorageService} from '../../Servicios/local-storage.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-solicitudud-practica',
@@ -18,19 +18,13 @@ export class SolicitududPracticaComponent implements OnInit {
   mostrar = false;
   carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
   datosSolicitudPractica: FormGroup;
-  private etapaActual = '';
-  private etapaActual$: Observable<string>;
-  private estadoEtapaActual = ' ';
-  private  estadoEtapaActual$: Observable<string>;
+  private etapaActual: string = '';
+  private estadoEtapaActual: string = '';
   constructor(private _formBuilder: FormBuilder,
               private solicitudService: SolicitudPracticaService,
               public dialog: MatDialog,
               private locaSTF: LocalStorageService)
   {
-    this.etapaActual$ = this.locaSTF.getEtapaActual$();
-    this.etapaActual$.subscribe(etapa => this.etapaActual = etapa);
-    this.estadoEtapaActual$ = this.locaSTF.getEstadoEtapaActual$();
-    this.estadoEtapaActual$.subscribe( estado => this.estadoEtapaActual = estado);
     this.datosSolicitudPractica = this._formBuilder.group({
       Nombres: ['', Validators.required],
       Apellidos: ['', Validators.required],
@@ -40,10 +34,6 @@ export class SolicitududPracticaComponent implements OnInit {
       CorreoElectronicoInstitucional: ['', Validators.required],
       NumeroTelefono: ['', Validators.required],
     });
-  }
-
-  ngOnInit(): void
-  {
     this.datosSolicitudPractica.patchValue(
       {
         Nombres: this.locaSTF.getNombres(),
@@ -54,12 +44,25 @@ export class SolicitududPracticaComponent implements OnInit {
         NumeroTelefono: this.locaSTF.getNumeroTelefono()
       });
   }
+
+  ngOnInit(): void
+  {
+    this.locaSTF.getEtapaActual$().subscribe( etapa => {
+      this.estadoEtapaActual = etapa;
+    });
+  }
+  setEstado(sss: string): string
+  {
+    this.estadoEtapaActual = sss;
+    return this.estadoEtapaActual;
+  }
   onChangeCarrera(event: any): void
   {
     this.carreraActual = event;
   }
   sendSolicitud(): void
   {
+    console.log('etapa: ' + this.etapaActual + ' estado: ' + this.estadoEtapaActual);
     if (this.etapaActual === 'ninguna' && this.estadoEtapaActual === 'ninguno')
     {
       const solicitud: SolicitudPracticaModel =
