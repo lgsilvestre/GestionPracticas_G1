@@ -18,6 +18,7 @@ export class SidenavComponent implements OnInit {
   userApellidos: string;
   constructor(public auth: AngularFireAuth, private locaSTF: LocalStorageService)
   {
+    this.locaSTF.reloadUser();
     this.userName = this.locaSTF.getNombres();
     this.userApellidos = this.locaSTF.getApellidos();
   }
