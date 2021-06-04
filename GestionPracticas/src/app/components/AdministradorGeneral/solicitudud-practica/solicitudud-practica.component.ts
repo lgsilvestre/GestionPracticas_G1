@@ -89,4 +89,8 @@ export class SolicitududPracticaComponent implements OnInit {
       this.dialog.open(DialogElementsExampleDialogComponent);
     }
   }
+  getEstadoEtapaActual(): string
+  {
+    return this.estadoEtapaActual;
+  }
 }
