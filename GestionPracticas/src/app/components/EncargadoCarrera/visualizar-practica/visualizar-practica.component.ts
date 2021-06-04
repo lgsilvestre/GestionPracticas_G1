@@ -65,6 +65,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
 
         this.cargarDatos();
+        this.alertify_default_setting();
 
         this.filtroNombre.valueChanges
             .subscribe(
@@ -102,6 +103,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter();
     }
+
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Resultados por página";
         this.paginator._intl.nextPageLabel = "Página siguiente";
@@ -186,21 +188,63 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     cambiar_estado(solicitud: any, param_estado: string) 
     {
-        var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud);
-        var msg_success  = "La solicitud fue ";
-        var msg_error    = "Ocurrió un error y la solicitud no se pudo ";
+        var solicitudRef   = this.EC_service.update_solicitud(solicitud.idSolicitud);
+        var msg_success    = "La solicitud fue ";
+        var msg_error      = "Ocurrió un error y la solicitud no se pudo ";
 
         if ( param_estado == "Aceptado" )
         {
             msg_success += "aceptada";
             msg_error   += "aceptar";
+
+            alertify.confirm(
+                'Aceptar solicitud', 
+                '¿Está seguro que desea aceptar la solicitud?', 
+                () => { 
+                    return solicitudRef.update({
+                        estado: param_estado
+                    })
+                      .then(() => {
+                        this.solicitudes = [];
+                        this.cargarDatos();
+                        alertify.success(msg_success);
+                    })
+                      .catch((error) => {
+                        alertify.error(msg_error+error);
+                    });
+                }, 
+                () => { alertify.error("La acción fue cancelada") }
+            );
         }
+
         if ( param_estado == "Rechazada" )
         {
             msg_success += "rechazada";
             msg_error   += "rechazar";
+
+            alertify.prompt( 
+                'Feedback', 
+                '¿Por qué la solicitud será rechazada?', 
+                '', 
+                (evt: any, motivo: string) => { 
+                    return solicitudRef.update({
+                        estado: param_estado,
+                        feedback: motivo
+                      })
+                      .then(() => {
+                        this.solicitudes = [];
+                        this.cargarDatos();
+                        alertify.success(msg_success);
+                      })
+                      .catch((error) => {
+                        alertify.error(msg_error);
+                      });
+                }, 
+                () => { alertify.error('La acción fue cancelada') }
+            );
         }
 
+        return;
         return solicitudRef.update({
             estado: param_estado
           })
@@ -212,6 +256,15 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
           .catch((error) => {
             alertify.error(msg_error);
           });
+    }
+
+    alertify_default_setting()
+    {
+        alertify.defaults.theme.ok         = "btn btn-outline-primary";
+        alertify.defaults.theme.cancel     = "btn btn-secondary";
+        alertify.defaults.theme.input      = "form-control";
+        alertify.defaults.glossary.ok      = "Aceptar";
+        alertify.defaults.glossary.cancel  = "Cancelar";
     }
 
 }
