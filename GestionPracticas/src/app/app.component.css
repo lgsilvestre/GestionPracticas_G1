@@ -1,6 +1,6 @@
 #main {
     margin: 5rem 0 2rem 0;
-    min-height: calc(120vh - 70px);
+    min-height: calc(100vh - 70px);
 }
 
 @media only screen and (min-width: 576px) {
