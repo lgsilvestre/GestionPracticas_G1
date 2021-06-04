@@ -34,183 +34,239 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
 
 
 export class VisualizarComponent implements OnInit, AfterViewInit {
-	filtroSemestreSeleccionado: boolean = false;
-	filtroEmpresaSeleccionado: boolean = false;
-	filtroSituacionSeleccionado: boolean = false;
-	filtroNumeroMatriculaSeleccionado: boolean = false;
+    filtroSemestreSeleccionado: boolean = false;
+    filtroEmpresaSeleccionado: boolean = false;
+    filtroSituacionSeleccionado: boolean = false;
+    filtroNumeroMatriculaSeleccionado: boolean = false;
 
-	filtroNombre = new FormControl('');
-	filtroEmpresa = new FormControl('');
-	filtroNumeroMatricula = new FormControl('');
-	filtroSituacion = new FormControl('');
-
-
-	displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
+    filtroNombre = new FormControl('');
+    filtroEmpresa = new FormControl('');
+    filtroNumeroMatricula = new FormControl('');
+    filtroSituacion = new FormControl('');
 
 
-	solicitudes: Practica[];
-
-	dataSource = new MatTableDataSource();
-
-	@ViewChild(MatPaginator) paginator!: MatPaginator;
-
-	filterValues = {
-		rut: '',
-		numeroMatricula: '',
-		nombreEstudiante: '',
-		nombreEmpresa: '',
-		estado: '',
-		numeroPractica: '',
-	}
+    displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
 
 
-	ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
+    solicitudes: Practica[];
 
-		this.cargarDatos();
+    dataSource = new MatTableDataSource();
 
-		this.filtroNombre.valueChanges
-			.subscribe(
-				nombreEstudiante => {
-					this.filterValues.nombreEstudiante = nombreEstudiante;
-					this.dataSource.filter = JSON.stringify(this.filterValues);
-				}
-			)
-		this.filtroEmpresa.valueChanges
-			.subscribe(
-				nombreEmpresa => {
-					this.filterValues.nombreEmpresa = nombreEmpresa;
-					this.dataSource.filter = JSON.stringify(this.filterValues);
-				}
-			)
-		this.filtroNumeroMatricula.valueChanges
-			.subscribe(
-				numeroMatricula => {
-					this.filterValues.numeroMatricula = numeroMatricula;
-					this.dataSource.filter = JSON.stringify(this.filterValues);
-				}
-			)
-		this.filtroSituacion.valueChanges
-			.subscribe(
-				estado => {
-					this.filterValues.estado = estado;
-					this.dataSource.filter = JSON.stringify(this.filterValues);
-				}
-			)
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-	}
-
-	constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService) {
-		this.solicitudes = [];
-		this.dataSource.data = this.solicitudes;
-		this.dataSource.filterPredicate = this.createFilter();
-	}
-	ngAfterViewInit(): void {
-		this.paginator._intl.itemsPerPageLabel = "Resultados por página";
-		this.paginator._intl.nextPageLabel = "Página siguiente";
-		this.paginator._intl.firstPageLabel = "Primera página";
-		this.paginator._intl.lastPageLabel = "Última página";
-		this.paginator._intl.previousPageLabel = "Página anterior";
-		this.paginator._intl.getRangeLabel = spanishRangeLabel;
-		this.dataSource.paginator = this.paginator;
-	}
-
-	clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
-		this.filtroNombre.setValue('');
-		this.filtroEmpresa.setValue('');
-		this.filtroNumeroMatricula.setValue('');
-		this.filtroSituacion.setValue('');
-	}
-
-	openDialog(elemento: any) {
-		const dialogConfig = new MatDialogConfig();
-		dialogConfig.data = elemento;
-
-		const dialogRef = this.dialog.open(DialogoPracticaComponent, dialogConfig);
-
-		dialogRef.afterClosed().subscribe(result => {
-			console.log(`Dialog result: ${result}`); // retorna lo que se seleccionó en cuadro diálogo.
-		});
-	}
+    filterValues = {
+        rut: '',
+        numeroMatricula: '',
+        nombreEstudiante: '',
+        nombreEmpresa: '',
+        estado: '',
+        numeroPractica: '',
+    }
 
 
-	filtroSelectChange(filtroElegido: String) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
-	{
+    ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
 
-		if (filtroElegido == 'matricula') {
-			this.filtroNumeroMatriculaSeleccionado = true;
-			this.filtroEmpresaSeleccionado = false;
-			this.filtroSituacionSeleccionado = false;
-		}
+        this.cargarDatos();
+        this.alertify_default_setting();
 
-		if (filtroElegido == 'situacion') {
-			this.filtroNumeroMatriculaSeleccionado = false;
-			this.filtroEmpresaSeleccionado = false;
-			this.filtroSituacionSeleccionado = true;
-		}
+        this.filtroNombre.valueChanges
+            .subscribe(
+                nombreEstudiante => {
+                    this.filterValues.nombreEstudiante = nombreEstudiante;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
+        this.filtroEmpresa.valueChanges
+            .subscribe(
+                nombreEmpresa => {
+                    this.filterValues.nombreEmpresa = nombreEmpresa;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
+        this.filtroNumeroMatricula.valueChanges
+            .subscribe(
+                numeroMatricula => {
+                    this.filterValues.numeroMatricula = numeroMatricula;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
+        this.filtroSituacion.valueChanges
+            .subscribe(
+                estado => {
+                    this.filterValues.estado = estado;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
 
-		if (filtroElegido == 'empresa') {
-			this.filtroNumeroMatriculaSeleccionado = false;
-			this.filtroEmpresaSeleccionado = true;
-			this.filtroSituacionSeleccionado = false;
-		}
+    }
 
-		if (filtroElegido == 'sin_filtros') {
-			this.filtroNumeroMatriculaSeleccionado = false;
-			this.filtroEmpresaSeleccionado = false;
-			this.filtroSituacionSeleccionado = false;
-		}
-	}
+    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService) {
+        this.solicitudes = [];
+        this.dataSource.data = this.solicitudes;
+        this.dataSource.filterPredicate = this.createFilter();
+    }
 
-	cargarDatos() {
-		this.EC_service.load_data_visualizar_practica().then((querySnapshot) => {
-			querySnapshot.forEach(doc => {
+    ngAfterViewInit(): void {
+        this.paginator._intl.itemsPerPageLabel = "Resultados por página";
+        this.paginator._intl.nextPageLabel = "Página siguiente";
+        this.paginator._intl.firstPageLabel = "Primera página";
+        this.paginator._intl.lastPageLabel = "Última página";
+        this.paginator._intl.previousPageLabel = "Página anterior";
+        this.paginator._intl.getRangeLabel = spanishRangeLabel;
+        this.dataSource.paginator = this.paginator;
+    }
 
-				const nuevaPractica: any = doc.data();
-				this.solicitudes.push(nuevaPractica);
+    clearFilters() { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
+        this.filtroNombre.setValue('');
+        this.filtroEmpresa.setValue('');
+        this.filtroNumeroMatricula.setValue('');
+        this.filtroSituacion.setValue('');
+    }
 
-			});
+    openDialog(elemento: any) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = elemento;
 
-		}).finally(() => {
-			this.dataSource.data = this.solicitudes;
-		});
-	}
+        const dialogRef = this.dialog.open(DialogoPracticaComponent, dialogConfig);
 
-	createFilter(): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
-		let filterFunction = function (data: any, filter: string): boolean {
-			let searchTerms = JSON.parse(filter);
-			return data.nombreEstudiante.toString().toLowerCase().indexOf(searchTerms.nombreEstudiante) !== -1
-				&& data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
-				&& data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
-				&& data.numeroPractica.toString().toLowerCase().indexOf(searchTerms.numeroPractica) !== -1;
-		}
-		return filterFunction;
-	}
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`); // retorna lo que se seleccionó en cuadro diálogo.
+        });
+    }
 
-	cambiar_estado(solicitud: any, param_estado: string) {
-		var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud);
-		var msg_success = "La solicitud fue ";
-		var msg_error = "Ocurrió un error y la solicitud no se pudo ";
 
-		if (param_estado == "Aceptado") {
-			msg_success += "aceptada";
-			msg_error += "aceptar";
-		}
-		if (param_estado == "Rechazada") {
-			msg_success += "rechazada";
-			msg_error += "rechazar";
-		}
+    filtroSelectChange(filtroElegido: String) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
+    {
 
-		return solicitudRef.update({
-			estado: param_estado
-		})
-			.then(() => {
-				this.solicitudes = [];
-				this.cargarDatos();
-				alertify.success(msg_success);
-			})
-			.catch((error) => {
-				alertify.error(msg_error);
-			});
-	}
+        if (filtroElegido == 'matricula') {
+            this.filtroNumeroMatriculaSeleccionado = true;
+            this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = false;
+        }
+
+        if (filtroElegido == 'situacion') {
+            this.filtroNumeroMatriculaSeleccionado = false;
+            this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = true;
+        }
+
+        if (filtroElegido == 'empresa') {
+            this.filtroNumeroMatriculaSeleccionado = false;
+            this.filtroEmpresaSeleccionado = true;
+            this.filtroSituacionSeleccionado = false;
+        }
+
+        if (filtroElegido == 'sin_filtros') {
+            this.filtroNumeroMatriculaSeleccionado = false;
+            this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = false;
+        }
+    }
+
+    cargarDatos() {
+        this.EC_service.load_data_visualizar_practica().then((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+
+                const nuevaPractica: any = doc.data();
+                this.solicitudes.push(nuevaPractica);
+
+            });
+
+        }).finally(() => {
+            this.dataSource.data = this.solicitudes;
+        });
+    }
+
+    createFilter(): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
+        let filterFunction = function (data: any, filter: string): boolean {
+            let searchTerms = JSON.parse(filter);
+            return data.nombreEstudiante.toString().toLowerCase().indexOf(searchTerms.nombreEstudiante) !== -1
+                && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
+                && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
+                && data.numeroPractica.toString().toLowerCase().indexOf(searchTerms.numeroPractica) !== -1;
+        }
+        return filterFunction;
+    }
+
+    cambiar_estado(solicitud: any, param_estado: string) 
+    {
+        var solicitudRef   = this.EC_service.update_solicitud(solicitud.idSolicitud);
+        var msg_success    = "La solicitud fue ";
+        var msg_error      = "Ocurrió un error y la solicitud no se pudo ";
+
+        if ( param_estado == "Aceptado" )
+        {
+            msg_success += "aceptada";
+            msg_error   += "aceptar";
+
+            alertify.confirm(
+                'Aceptar solicitud', 
+                '¿Está seguro que desea aceptar la solicitud?', 
+                () => { 
+                    return solicitudRef.update({
+                        estado: param_estado
+                    })
+                      .then(() => {
+                        this.solicitudes = [];
+                        this.cargarDatos();
+                        alertify.success(msg_success);
+                    })
+                      .catch((error) => {
+                        alertify.error(msg_error+error);
+                    });
+                }, 
+                () => { alertify.error("La acción fue cancelada") }
+            );
+        }
+
+        if ( param_estado == "Rechazada" )
+        {
+            msg_success += "rechazada";
+            msg_error   += "rechazar";
+
+            alertify.prompt( 
+                'Feedback', 
+                '¿Por qué la solicitud será rechazada?', 
+                '', 
+                (evt: any, motivo: string) => { 
+                    return solicitudRef.update({
+                        estado: param_estado,
+                        feedback: motivo
+                      })
+                      .then(() => {
+                        this.solicitudes = [];
+                        this.cargarDatos();
+                        alertify.success(msg_success);
+                      })
+                      .catch((error) => {
+                        alertify.error(msg_error);
+                      });
+                }, 
+                () => { alertify.error('La acción fue cancelada') }
+            );
+        }
+
+        return;
+        return solicitudRef.update({
+            estado: param_estado
+          })
+          .then(() => {
+            this.solicitudes = [];
+            this.cargarDatos();
+            alertify.success(msg_success);
+          })
+          .catch((error) => {
+            alertify.error(msg_error);
+          });
+    }
+
+    alertify_default_setting()
+    {
+        alertify.defaults.theme.ok         = "btn btn-outline-primary";
+        alertify.defaults.theme.cancel     = "btn btn-secondary";
+        alertify.defaults.theme.input      = "form-control";
+        alertify.defaults.glossary.ok      = "Aceptar";
+        alertify.defaults.glossary.cancel  = "Cancelar";
+    }
 
 }
