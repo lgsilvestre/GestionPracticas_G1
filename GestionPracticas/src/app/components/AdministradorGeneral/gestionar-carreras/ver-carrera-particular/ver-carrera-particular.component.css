@@ -1,0 +1,19 @@
+.plans button {
+    height: 5rem !important;
+    width: 5rem;
+}
+
+.plans {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (min-width: 576px) {
+    .plans {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
