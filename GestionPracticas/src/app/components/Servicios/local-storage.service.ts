@@ -9,7 +9,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class LocalStorageService
 {
-  private userSubject$ = new Subject<any>();
+  private userSubject$ = new BehaviorSubject<any>('');
   private etapaActualSubject$ = new BehaviorSubject<string>('ninguna');
   private documentosSubject$ = new BehaviorSubject<string[]>([]);
   private estadoEtapaActualSubject$ = new BehaviorSubject<string>('ninguno');
@@ -20,6 +20,16 @@ export class LocalStorageService
   constructor(private angularFireStore: AngularFirestore)
   {
 
+  }
+  public reloadUser(): void
+  {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userSubject$.next(this.user);
+    this.etapaActual = this.user.etapaActual;
+    this.estadoEtapaActual = this.user.estadoEtapaActual;
+    this.documentosSubject$.next(this.user.documentos);
+    this.etapaActualSubject$.next(this.etapaActual);
+    this.estadoEtapaActualSubject$.next(this.estadoEtapaActual);
   }
   public setUID(uid: string | undefined): void
   {
@@ -53,6 +63,8 @@ export class LocalStorageService
   }
   public getNombres(): string
   {
+    console.log('user');
+    console.log(this.user);
     return this.user.nombres;
   }
   public getApellidos(): string

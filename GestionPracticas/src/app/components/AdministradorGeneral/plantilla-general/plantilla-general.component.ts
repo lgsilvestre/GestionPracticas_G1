@@ -70,7 +70,6 @@ export class PlantillaGeneralComponent implements OnInit {
       Jornada: ['', Validators.required],
       Archivo: [],
     });
-    this.createComponent();
     // tslint:disable-next-line:new-parens
   }
 
