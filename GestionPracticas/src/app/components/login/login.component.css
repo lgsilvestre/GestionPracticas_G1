@@ -1,5 +1,14 @@
 #main {
-    overflow: hidden;
+    background: radial-gradient(circle, rgba(84, 110, 122, 0.5) 0%, rgba(84, 110, 122, .75) 100%), url('../../../assets/background1.jpg') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    position: fixed;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
 }
 
 img {
@@ -11,5 +20,5 @@ img {
 mat-card {
     text-align: center;
     width: 360px;
-    margin: 2vh auto;
+    margin: 10vh auto;
 }

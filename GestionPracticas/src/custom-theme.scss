@@ -5,3 +5,5 @@ $GestionPracticas-accent: mat-palette($mat-blue-grey, 800);
 $GestionPracticas-warn: mat-palette($mat-red, 900);
 $GestionPracticas-theme: mat-light-theme(( color: ( primary: $GestionPracticas-primary, accent: $GestionPracticas-accent, warn: $GestionPracticas-warn, )));
 @include angular-material-theme($GestionPracticas-theme);
+$custom-typography: mat-typography-config( $font-family: 'Montserrat');
+@include angular-material-typography($custom-typography);
