@@ -1,20 +1,20 @@
-<div>
-    <mat-card>
-        <mat-card-title>Creación de cuenta</mat-card-title>
-        <mat-card-content>
-            <h2>Seleccione el tipo de cuenta que desee crear</h2>
-            <button routerLink="/crear-cuenta/estudiante" (click)="goToEstudiante()">
-                <mat-icon mat-list-icon>account_circle</mat-icon>
+<mat-card>
+    <mat-card-title>Creación de cuenta</mat-card-title>
+    <mat-card-content>
+        <h3><b>Seleccione el tipo de cuenta que desee crear</b></h3>
+        <div>
+            <button mat-raised-button color="primary" type="button" routerLink="/crear-cuenta/estudiante" (click)="goToEstudiante()">
+                <mat-icon class="info-icon" mat-list-icon>account_circle</mat-icon>
                 <h2>Estudiante</h2>
             </button>
-            <button routerLink="/crear-cuenta/encargado-carrera" (click)="goToEncargado()">
-                <mat-icon mat-list-icon>account_circle</mat-icon>
+            <button mat-raised-button color="primary" type="button" routerLink="/crear-cuenta/encargado-carrera" (click)="goToEncargado()">
+                <mat-icon class="info-icon" mat-list-icon>account_circle</mat-icon>
                 <h2>Encargado de carrera</h2>
             </button>
-            <button routerLink="/crear-cuenta/admin-general" (click)="goToAdminGeneral()">
-                <mat-icon mat-list-icon>account_circle</mat-icon>
+            <button mat-raised-button color="primary" type="button" routerLink="/crear-cuenta/admin-general" (click)="goToAdminGeneral()">
+                <mat-icon class="info-icon" mat-list-icon>account_circle</mat-icon>
                 <h2>Administrador general</h2>
             </button>
-        </mat-card-content>
-    </mat-card>
-</div>
+        </div>
+    </mat-card-content>
+</mat-card>
