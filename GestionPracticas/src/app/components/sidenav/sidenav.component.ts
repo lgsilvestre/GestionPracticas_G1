@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./sidenav.component.css', '../../app.component.css']
 })
 export class SidenavComponent implements OnInit {
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
   soyEstudiante = false;
   soyAdminGeneral = false;
   soyEncargadoDeCarrera = false;
@@ -22,20 +23,20 @@ export class SidenavComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log('ngOnInit');
-    if (this.locaSTF.getRol() == 'estudiante') {
+    if (this.user.rol == 'estudiante') {
       this.soyEstudiante = true;
       this.soyAdminGeneral = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
     }
-    if (this.locaSTF.getRol() == 'administradorGeneral') {
+    if (this.user.rol == 'administradorGeneral') {
       this.soyAdminGeneral = true;
       this.soyEstudiante = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
     }
-    if (this.locaSTF.getRol() == 'encargadoCarrera') {
+    if (this.user.rol == 'encargadoCarrera') {
       this.soyEncargadoDeCarrera = true;
       this.soyEstudiante = this.soyAdminGeneral = this.soySuperAdmin = false;
     }
 
-    if (this.locaSTF.getRol() == 'superadmiin') {
+    if (this.user.rol == 'superadmiin') {
       this.soySuperAdmin = true;
       this.soyEstudiante = this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
     }

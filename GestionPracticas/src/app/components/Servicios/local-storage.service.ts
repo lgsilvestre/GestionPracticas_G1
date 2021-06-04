@@ -1,7 +1,8 @@
 /* tslint:disable:no-inferrable-types */
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Subject} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,14 @@ import {Subject} from 'rxjs';
 export class LocalStorageService
 {
   private userSubject$ = new Subject<any>();
-  private etapaActualSubject$ = new Subject<string>();
-  private documentosSubject$ = new Subject<string[]>();
-  private estadoEtapaActualSubject$ = new Subject<string>();
+  private etapaActualSubject$ = new BehaviorSubject<string>('ninguna');
+  private documentosSubject$ = new BehaviorSubject<string[]>([]);
+  private estadoEtapaActualSubject$ = new BehaviorSubject<string>('ninguno');
   private uid: string | undefined = '';
   private user: any = '';
   private etapaActual: string = '';
   private estadoEtapaActual: string = '';
-  constructor()
+  constructor(private angularFireStore: AngularFirestore)
   {
 
   }
@@ -35,14 +36,16 @@ export class LocalStorageService
     this.etapaActualSubject$.next(this.etapaActual);
     this.estadoEtapaActualSubject$.next(this.estadoEtapaActual);
     localStorage.setItem('user', JSON.stringify(this.user));
+    /* comente la siguente linea porque no es nesesario por ahor, dependera del contexto */
+    // this.actualizarFirebaseStore();
   }
-  public getEtapaActual$(): Observable<string>
+  public getEtapaActual$(): BehaviorSubject<string>
   {
-    return this.etapaActualSubject$.asObservable();
+    return this.etapaActualSubject$;
   }
-  public getEstadoEtapaActual$(): Observable<string>
+  public getEstadoEtapaActual$(): BehaviorSubject<string>
   {
-    return this.estadoEtapaActualSubject$.asObservable();
+    return this.estadoEtapaActualSubject$;
   }
   public getUid(): string | undefined
   {
@@ -65,12 +68,14 @@ export class LocalStorageService
     this.user.etapaActual = etapa;
     this.etapaActualSubject$.next(this.user.etapaActual);
     localStorage.setItem('user', JSON.stringify(this.user));
+    this.actualizarFirebaseStore();
   }
   public setEstadoEtapaActual(estado: string): void
   {
     this.user.estadoEtapaActual = estado;
     this.estadoEtapaActualSubject$.next(this.user.estadoEtapaActual);
     localStorage.setItem('user', JSON.stringify(this.user));
+    this.actualizarFirebaseStore();
   }
   public getObservableDocuments(): Observable<string[]>
   {
@@ -86,10 +91,7 @@ export class LocalStorageService
     this.userSubject$.next(this.user);
     this.documentosSubject$.next(this.user.documentos);
     localStorage.setItem('user', JSON.stringify(this.user));
-  }
-  public getUser(): any
-  {
-    return this.user;
+    this.actualizarFirebaseStore();
   }
   public getRun(): string
   {
@@ -106,6 +108,11 @@ export class LocalStorageService
   public getNumeroTelefono(): string
   {
     return this.user.telefono;
+  }
+  private actualizarFirebaseStore(): void
+  {
+    const  reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + this.uid);
+    reff.set(this.user, {merge: true});
   }
 
 }
