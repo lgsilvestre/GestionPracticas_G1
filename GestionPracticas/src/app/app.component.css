@@ -1,59 +1,82 @@
-mat-form-field,
-mat-vertical-stepper {
-    width: 100%;
+#main {
+    margin: 5rem 0 2rem 0;
+    min-height: calc(100vh - 70px);
 }
 
-button:not(mat-sidenav-container button) {
-    min-width: 5rem;
-    min-height: 2.75rem;
+@media only screen and (min-width: 576px) {
+    #main {
+        margin: 2rem 18vw 2rem 18vw;
+    }
 }
 
-mat-vertical-stepper button {
-    min-width: 5rem !important;
+@media only screen and (min-width: 768px) {
+    #main {
+        margin: 2rem 20vw 2rem 20vw;
+    }
 }
 
-button:not(::ng-deep .mat-toolbar button),
- ::ng-deep .mat-dialog-container button {
-    box-shadow: none !important;
-    min-width: calc(20rem - 10vw);
+@media only screen and (min-width: 992px) {
+    #main {
+        margin: 2rem 25vw 2rem 25vw;
+    }
 }
 
-mat-vertical-stepper button,
-mat-card button {
-    margin: 0 1rem 0 1rem !important;
-}
-
-mat-card,
-mat-vertical-stepper,
-mat-paginator,
-::ng-deep .mat-dialog-container {
-    box-shadow: none !important;
-}
-
-mat-card,
-mat-vertical-stepper,
-mat-paginator table {
-    background: radial-gradient(circle, rgba(236, 239, 241, .95) 75%, rgba(236, 239, 241, .85) 100%);
-}
-
-mat-card,
-mat-vertical-stepper,
-::ng-deep .mat-dialog-container {
-    border: 1px rgb(144, 164, 174);
-    border-radius: 10px;
+::ng-deep mat-card {
     border-style: solid;
+    border-color: #546e7a;
+    border-width: .125rem;
+    margin: 2rem auto;
+    background-color: #eceff1 !important;
 }
 
-mat-label,
-a,
-button,
-mat-card-content,
-mat-card-actions {
-    font-size: medium !important;
+::ng-deep mat-vertical-stepper {
+    border-style: solid;
+    border-color: #546e7a;
+    border-width: .125rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+    background-color: #eceff1 !important;
 }
 
-mat-card {
-    margin: 0 0 1.5rem 0;
+::ng-deep mat-form-field {
+    display: block !important;
+}
+
+::ng-deep button {
+    display: block;
+    width: 100%;
+    margin: .25rem 0 !important;
+}
+
+::ng-deep mat-divider {
+    position: unset !important;
+    margin: 1rem 0 1rem 0 !important;
+}
+
+::ng-deep mat-card-title {
+    margin-bottom: 1rem !important;
+    text-align: center;
+}
+
+.info-icon {
+    font-size: 10rem;
+    margin-left: -8.6rem;
+    color: #546e7a;
+}
+
+table,
+mat-paginator {
+    width: 100%;
+    min-width: 720px;
+    background-color: transparent !important;
+}
+
+mat-paginator {
+    box-shadow: none;
+}
+
+.table-visualizer {
+    overflow-x: scroll;
 }
 
 ::ng-deep .mat-form-field-outline {
@@ -61,24 +84,6 @@ mat-card {
     border-radius: 5px;
 }
 
-table,
-mat-paginator {
-    width: 100%;
-    min-width: 720px;
-}
-
-#main {
-    margin: 2rem 0 2rem 0;
-}
-
-@media only screen and (min-width: 768px) {
-    #main {
-        margin: 2rem 8vw 2rem 8vw;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    #main {
-        margin: 2rem 16vw 2rem 16vw;
-    }
+::ng-deep mat-dialog-container {
+    text-align: center;
 }

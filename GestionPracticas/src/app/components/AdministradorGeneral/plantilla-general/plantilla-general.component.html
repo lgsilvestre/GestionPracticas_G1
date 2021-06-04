@@ -1,8 +1,8 @@
 <mat-vertical-stepper #stepper>
-  <mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
-    <ng-template matStepLabel>Datos Solicitud de practica</ng-template>
-    <app-solicitudud-practica></app-solicitudud-practica>
-  </mat-step>
+    <mat-step [stepControl]="datosSolicitudPractica" errorMessage="Completa los datos obligatorios restantes">
+        <ng-template matStepLabel>Datos solicitud de practica</ng-template>
+        <app-solicitudud-practica></app-solicitudud-practica>
+    </mat-step>
     <mat-step [stepControl]="documentosGenerales" errorMessage="Completa los datos obligatorios restantes">
         <form [formGroup]="documentosGenerales">
             <ng-template matStepLabel>Documentos importantes</ng-template>
@@ -54,7 +54,7 @@
                 <mat-label>Teléfono</mat-label>
                 <input matInput placeholder="+56912345678" formControlName="TelefonoEmergencia" required>
             </mat-form-field>
-            <hr>
+            <mat-divider></mat-divider>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
                 <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon></button>
@@ -84,7 +84,7 @@
                 <mat-label>Dirección</mat-label>
                 <input matInput placeholder="Dirección de la empresa" formControlName="Direccion" required>
             </mat-form-field>
-            <hr>
+            <mat-divider></mat-divider>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
                 <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon></button>
@@ -123,7 +123,7 @@
                 <mat-label>Correo electrónico</mat-label>
                 <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronico" required>
             </mat-form-field>
-            <hr>
+            <mat-divider></mat-divider>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
                 <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon></button>
@@ -164,7 +164,7 @@
             </mat-form-field>
             <h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
             <input type="file" (change)="onFileChange($event)" placeholder="consentimiento.pdf" formControlName="Archivo" required>
-            <hr>
+            <mat-divider></mat-divider>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
                 <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon>
@@ -175,7 +175,7 @@
     <mat-step>
         <ng-template matStepLabel>Resumen</ng-template>
         <h1>Haga click en el botón <i>Enviar</i> para enviar su formulario</h1>
-        <hr>
+        <mat-divider></mat-divider>
         <div class="step-buttons">
             <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
             <button mat-raised-button matStepperNext color="primary" (click)="enviar()" type="button">Enviar <mat-icon> send </mat-icon> </button>

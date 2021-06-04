@@ -1,17 +1,19 @@
+mat-vertical-stepper ::ng-deep mat-vertical-stepper {
+    background-color: transparent;
+    border-style: none;
+    box-shadow: none !important;
+    margin: -20px -30px -20px -30px;
+}
+
 .final-info {
     text-align: center;
 }
 
-mat-icon {
-    color: #ff9800;
-    font-size: 100px;
-    margin-left: -100px;
-}
-
-mat-card {
-    text-align: center;
-}
-
-#app-plantilla-general {
-    margin-left: -2rem;
+@media only screen and (max-width: 768px) {
+    mat-vertical-stepper ::ng-deep mat-vertical-stepper ::ng-deep mat-step-header {
+        justify-content: center;
+    }
+     ::ng-deep .mat-stepper-vertical-line {
+        display: contents;
+    }
 }

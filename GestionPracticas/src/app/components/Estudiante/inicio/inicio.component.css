@@ -1,37 +1,48 @@
-#first,
-#last-activities {
-    text-align: center;
-}
-
-strong {
-    color: #b71c1c;
-}
-
-#dates {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-mat-card-title,
 .centered-text {
     text-align: center;
 }
 
+mat-card {
+    max-width: 70vh !important;
+}
+
+#dates {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#important-dates {
+    text-align: left;
+}
+
+@media only screen and (max-width: 768px) {
+    #dates {
+        display: block;
+    }
+    #important-dates {
+        text-align: center;
+    }
+}
+
+#note {
+    text-align: center;
+}
+
+#subtitle {
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #calendar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 @media only screen and (min-width: 768px) {
-    mat-card {
-        margin: 2rem 16vw 2rem 16vw !important;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    mat-card {
-        margin: 2rem 14vw 2rem 14vw !important;
-    }
-}
-
-@media only screen and (min-width: 1080px) {
-    mat-card {
-        margin: 2rem 12vw 2rem 12vw !important;
+    button {
+        width: 20rem;
     }
 }

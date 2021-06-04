@@ -8,8 +8,7 @@ import { EditarSolicitudProcesoPracticaComponent } from './components/EncargadoC
 import { MenuEncargadoCarreraComponent } from './components/EncargadoCarrera/menu-encargado-carrera/menu-encargado-carrera.component';
 import { VisualizarComponent } from './components/EncargadoCarrera/visualizar-practica/visualizar-practica.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
-import { EditarProcesoCarreraComponent } from './components/EncargadoCarrera/editar-proceso-carrera/editar-proceso-carrera.component';
-import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CrearCuentaEncargadoComponent } from './components/AdministradorGeneral/crear-cuenta-encargado/crear-cuenta-encargado.component';
 import { VerCuentasComponent } from './components/SuperAdministrador/ver-cuentas/ver-cuentas.component';
@@ -34,7 +33,6 @@ const routes: Routes = [
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'visualizar-practica', component: VisualizarComponent },
 	{ path: 'editar-cuenta', component: EditarCuentaComponent },
-	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
 	{ path: 'ver-cuentas', component: VerCuentasComponent },
 	{ path: 'crear-cuentas-sa', component: CrearCuentasSaComponent },
 	{ path: 'crear-cuenta/encargado-carrera', component: CrearCuentaEncargadoComponent },
