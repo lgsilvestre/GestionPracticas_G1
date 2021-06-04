@@ -6,7 +6,6 @@ import { MenuEncargadoCarreraComponent } from './menu-encargado-carrera/menu-enc
 import { GraficosModule } from '../Graficos/graficos.module';
 import { VisualizarComponent } from './visualizar-practica/visualizar-practica.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { EditarProcesoCarreraComponent } from './editar-proceso-carrera/editar-proceso-carrera.component';
 import { DialogoPracticaComponent } from './dialogo-practica/dialogo-practica.component';
 import { SolicitudPracticaCarreraComponent } from './solicitud-practica-carrera/solicitud-practica-carrera.component';
 @NgModule({
@@ -15,7 +14,6 @@ import { SolicitudPracticaCarreraComponent } from './solicitud-practica-carrera/
     EditarSolicitudProcesoPracticaComponent,
     MenuEncargadoCarreraComponent,
     VisualizarComponent,
-    EditarProcesoCarreraComponent,
     DialogoPracticaComponent,
     SolicitudPracticaCarreraComponent
   ],
@@ -29,4 +27,4 @@ import { SolicitudPracticaCarreraComponent } from './solicitud-practica-carrera/
     // Aca van los modulos que se crean
   ]
 })
-export class EncargadoCarreraModule{}
+export class EncargadoCarreraModule { }

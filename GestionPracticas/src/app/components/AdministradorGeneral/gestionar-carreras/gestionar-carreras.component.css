@@ -1,74 +1,20 @@
-.texto
-{
-    text-align: center;
-    color: #c83609;
+mat-card {
+    max-width: 70vh !important;
 }
 
-.titulo
-{
-    color: #c83609;
-}
-
-.separador
-{
-    margin-top: 3vh;
-}
-
-.contenido
-{
+#info {
     text-align: center;
 }
 
-h3
-{
-    display: contents;
-    font-weight: bold;
-}
-
-.presentacion
-{
-    max-width: 140vh;
-    margin-left: 20vh;
-}
-
-.boton-eliminar
-{
-    background-color:#d9ab86;
-}
-
-.padre
-{
-    display: flex;
-    justify-content: center;
-}
-
-.button-creacion
-{
-    margin-left: 15vh;
-}
-
-.boton
-{
-    margin-inline-start: 2vh;
-    margin-inline-end: 2vh;
-}
-
-.justificar
-{
-    margin-top: 3vh;
-    justify-content: center;
-    text-align: center;
-    
-}
-
-h2,h3
-{
-    font-weight: bolder;
-    margin-bottom: 4vh;
-}
-
-div
-{
-    margin-top: 3vh;
-    margin-bottom:5vh
+@media only screen and (min-width: 768px) {
+    .step-buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .step-buttons button {
+        width: 10rem;
+    }
+     ::ng-deep .mat-dialog-actions button {
+        width: 5rem !important;
+    }
 }

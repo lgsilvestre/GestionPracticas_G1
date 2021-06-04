@@ -1,5 +1,5 @@
 /* tslint:disable:no-inferrable-types */
-import { Component, OnInit } from '@angular/core';
+import {AfterContentInit, Component, DoCheck, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SolicitudPracticaService} from '../../Servicios/solicitud-practica.service';
 import {SolicitudPracticaModel} from '../../../model/solicitudPractica.model';
@@ -12,7 +12,8 @@ import {LocalStorageService} from '../../Servicios/local-storage.service';
   templateUrl: './solicitudud-practica.component.html',
   styleUrls: ['./solicitudud-practica.component.css', '../../../app.component.css']
 })
-export class SolicitududPracticaComponent implements OnInit {
+export class SolicitududPracticaComponent implements OnInit
+{
 
   carreraActual = '';
   mostrar = false;
@@ -25,6 +26,7 @@ export class SolicitududPracticaComponent implements OnInit {
               public dialog: MatDialog,
               private locaSTF: LocalStorageService)
   {
+    this.locaSTF.reloadUser();
     this.datosSolicitudPractica = this._formBuilder.group({
       Nombres: ['', Validators.required],
       Apellidos: ['', Validators.required],
@@ -43,6 +45,7 @@ export class SolicitududPracticaComponent implements OnInit {
         CorreoElectronicoInstitucional: this.locaSTF.getCorreoElectronicoInstitucional(),
         NumeroTelefono: this.locaSTF.getNumeroTelefono()
       });
+    console.log(this.locaSTF.getNombres());
   }
 
   ngOnInit(): void

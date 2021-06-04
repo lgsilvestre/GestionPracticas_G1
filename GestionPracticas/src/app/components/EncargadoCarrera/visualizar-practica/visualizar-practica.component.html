@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>Visualización de prácticas</mat-card-title>
     <mat-card-content>
-        <h3>Filtros</h3>
+        <h3><b>Filtros</b></h3>
         <form>
             <mat-form-field appearance="outline">
                 <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input"> -->
@@ -35,8 +35,7 @@
                 <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
         </form>
-        <h3>Tabla de alumnos</h3>
-        <div>
+        <div class="table-visualizer">
             <table mat-table [dataSource]="dataSource">
                 <ng-container matColumnDef="matricula">
                     <th mat-header-cell *matHeaderCellDef> No. Matrícula </th>

@@ -1,7 +1,9 @@
 <mat-card id="first">
     <mat-card-title>¿Deseas empezar un nuevo proceso de práctica?</mat-card-title>
-    <p><b>¡Asegúrate de leer la sección de recordatorios antes de empezar!</b></p>
-    <button mat-raised-button color="primary" type="submit">Comenzar proceso</button>
+    <mat-card-content id="subtitle">
+        <p><b>¡Asegúrate de leer la sección de recordatorios antes de empezar!</b></p>
+        <button mat-raised-button color="primary" type="submit">Comenzar proceso</button>
+    </mat-card-content>
 </mat-card>
 <mat-card>
     <mat-card-title>Recordatorios</mat-card-title>
@@ -34,23 +36,25 @@
     </mat-card-content>
 </mat-card>
 <mat-card>
-    <mat-card-content id="dates">
-        <div>
-            <h1>Fechas importantes</h1>
-            <p><b>Fin del proceso de postulación:</b></p>
-            <p><strong>{{fecha_seleccionada.getDate()}}/{{fecha_seleccionada.getMonth()+1}}/{{fecha_seleccionada.getFullYear()}}</strong></p>
-            <p><b>Fin del plazo de la extensión de práctica:</b></p>
-            <p><strong>29/01/2022</strong></p>
+    <mat-card-content>
+        <div id="dates">
+            <div id="important-dates">
+                <h1>Fechas importantes</h1>
+                <p><b>Fin del proceso de postulación:</b></p>
+                <p><strong>{{fecha_seleccionada.getDate()}}/{{fecha_seleccionada.getMonth()+1}}/{{fecha_seleccionada.getFullYear()}}</strong></p>
+                <p><b>Fin del plazo de la extensión de práctica:</b></p>
+                <p><strong>29/01/2022</strong></p>
+            </div>
+            <div id="calendar">
+                <mat-calendar [selected]="fecha_seleccionada" disabled></mat-calendar>
+            </div>
         </div>
-        <div>
-            <mat-calendar [selected]="fecha_seleccionada" disabled></mat-calendar>
-            <strong>*</strong>Se indica el plazo más cercano a finalizar
-        </div>
+        <p id="note"><strong>*</strong>Se indica el plazo más cercano a finalizar</p>
     </mat-card-content>
 </mat-card>
 <mat-card id="last-activities">
     <mat-card-title>Últimas actividades</mat-card-title>
-    <mat-card-content>
+    <mat-card-content id="subtitle">
         <p>Ha enviado satisfactoriamente una solicitud para comenzar ha solicitar su práctica profesional.</p>
         <p>Se está procesando tu solicitud de:</p>
         <p><b>¡Tú solicitud ha sido aprobada!, puedes continuar con el siguiente paso:</b></p>
