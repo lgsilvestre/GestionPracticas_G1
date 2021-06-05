@@ -8,8 +8,7 @@ import { EditarSolicitudProcesoPracticaComponent } from './components/EncargadoC
 import { MenuEncargadoCarreraComponent } from './components/EncargadoCarrera/menu-encargado-carrera/menu-encargado-carrera.component';
 import { VisualizarComponent } from './components/EncargadoCarrera/visualizar-practica/visualizar-practica.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
-import { EditarProcesoCarreraComponent } from './components/EncargadoCarrera/editar-proceso-carrera/editar-proceso-carrera.component';
-import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CrearCuentaEncargadoComponent } from './components/AdministradorGeneral/crear-cuenta-encargado/crear-cuenta-encargado.component';
 import { VerCuentasComponent } from './components/SuperAdministrador/ver-cuentas/ver-cuentas.component';
@@ -19,6 +18,10 @@ import { InicioComponent } from './components/Estudiante/inicio/inicio.component
 import { CrearCuentaAdministradorGeneralComponent } from './components/AdministradorGeneral/crear-cuenta-administrador-general/crear-cuenta-administrador-general.component';
 import { CrearCuentaEstudianteComponent } from './components/AdministradorGeneral/crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './components/AdministradorGeneral/crear-cuenta/crear-cuenta.component';
+import { GestionarCarrerasComponent } from './components/AdministradorGeneral/gestionar-carreras/gestionar-carreras.component';
+import { VerCarreraParticularComponent } from './components/AdministradorGeneral/gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
+import { CrearCarreraComponent } from './components/AdministradorGeneral/gestionar-carreras/crear-carrera/crear-carrera.component';
+import { SolicitudPracticaCarreraComponent } from './components/EncargadoCarrera/solicitud-practica-carrera/solicitud-practica-carrera.component';
 
 
 
@@ -31,14 +34,17 @@ const routes: Routes = [
 	{ path: 'menu-encargado-carrera', component: MenuEncargadoCarreraComponent },
 	{ path: 'visualizar-practica', component: VisualizarComponent },
 	{ path: 'editar-cuenta', component: EditarCuentaComponent },
-	{ path: 'editar-proceso-carrera', component: EditarProcesoCarreraComponent },
 	{ path: 'ver-cuentas', component: VerCuentasComponent },
 	{ path: 'crear-cuentas-sa', component: CrearCuentasSaComponent },
 	{ path: 'crear-cuenta/encargado-carrera', component: CrearCuentaEncargadoComponent },
 	{ path: 'crear-cuenta/admin-general', component: CrearCuentaAdministradorGeneralComponent },
 	{ path: 'crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
 	{ path: 'crear-cuenta', component: CrearCuentaComponent },
+	{ path: 'gestionar-carreras', component: GestionarCarrerasComponent },
+	{ path: 'gestionar-carreras/ver-carrera-particular', component: VerCarreraParticularComponent },
+	{ path: 'gestionar-carreras/crear-carrera', component: CrearCarreraComponent },
 	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
+	{ path: 'solicitud-practica-carrera', component: SolicitudPracticaCarreraComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];

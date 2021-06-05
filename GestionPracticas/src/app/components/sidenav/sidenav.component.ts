@@ -1,41 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import {LocalStorageService} from '../Servicios/local-storage.service';
+import {Observable} from 'rxjs';
 
 @Component({
-	selector: 'app-sidenav',
-	templateUrl: './sidenav.component.html',
-	styleUrls: ['./sidenav.component.css', '../../app.component.css']
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.css', '../../app.component.css']
 })
 export class SidenavComponent implements OnInit {
-	user: any = JSON.parse(localStorage.getItem('user') || '{}');
-	soyEstudiante: boolean = false;
-	soyAdminGeneral: boolean = false;
-	soyEncargadoDeCarrera: boolean = false;
-	soySuperAdmin: boolean = false;
-	constructor(public auth: AngularFireAuth) {
-	}
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
+  soyEstudiante = false;
+  soyAdminGeneral = false;
+  soyEncargadoDeCarrera = false;
+  soySuperAdmin = false;
+  userName: string;
+  userApellidos: string;
+  constructor(public auth: AngularFireAuth, private locaSTF: LocalStorageService)
+  {
+    this.locaSTF.reloadUser();
+    this.userName = this.locaSTF.getNombres();
+    this.userApellidos = this.locaSTF.getApellidos();
+  }
+  ngOnInit(): void {
+    console.log('ngOnInit');
+    if (this.user.rol == 'estudiante') {
+      this.soyEstudiante = true;
+      this.soyAdminGeneral = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
+    }
+    if (this.user.rol == 'administradorGeneral') {
+      this.soyAdminGeneral = true;
+      this.soyEstudiante = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
+    }
+    if (this.user.rol == 'encargadoCarrera') {
+      this.soyEncargadoDeCarrera = true;
+      this.soyEstudiante = this.soyAdminGeneral = this.soySuperAdmin = false;
+    }
 
-	ngOnInit(): void {
-		console.log("ngOnInit");
-		if (this.user.rol == "estudiante") {
-			this.soyEstudiante = true;
-			this.soyAdminGeneral = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
-		}
-		if (this.user.rol == "administradorGeneral") {
-			this.soyAdminGeneral = true;
-			this.soyEstudiante = this.soyEncargadoDeCarrera = this.soySuperAdmin = false;
-		}
-		if (this.user.rol == "encargadoCarrera") {
-			this.soyEncargadoDeCarrera = true;
-			this.soyEstudiante = this.soyAdminGeneral = this.soySuperAdmin = false;
-		}
-
-		if (this.user.rol == "superadmiin") {
-			this.soySuperAdmin = true;
-			this.soyEstudiante = this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
-		}
-		this.user = JSON.parse(localStorage.getItem('user') || '{}');
-	}
+    if (this.user.rol == 'superadmiin') {
+      this.soySuperAdmin = true;
+      this.soyEstudiante = this.soyAdminGeneral = this.soyEncargadoDeCarrera = false;
+    }
+    // this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
 
 	cambiarAdmin() {
 		this.soyAdminGeneral = true;
@@ -64,10 +71,12 @@ export class SidenavComponent implements OnInit {
 		this.soyAdminGeneral = false;
 		this.soyEstudiante = false;
 	}
-
-	desloguear() {
-		this.user = '';
-		localStorage.setItem('user', JSON.stringify(this.user));
+	desloguear()
+  {
+		const user = '';
+		const uid = '';
+		localStorage.setItem('user', JSON.stringify(user));
+		localStorage.setItem('userUID', JSON.stringify(uid));
 		this.auth.signOut();
-	}
+  }
 }

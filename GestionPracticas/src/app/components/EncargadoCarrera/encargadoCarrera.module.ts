@@ -6,16 +6,18 @@ import { MenuEncargadoCarreraComponent } from './menu-encargado-carrera/menu-enc
 import { GraficosModule } from '../Graficos/graficos.module';
 import { VisualizarComponent } from './visualizar-practica/visualizar-practica.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { EditarProcesoCarreraComponent } from './editar-proceso-carrera/editar-proceso-carrera.component';
 import { DialogoPracticaComponent } from './dialogo-practica/dialogo-practica.component';
+import { SolicitudPracticaCarreraComponent } from './solicitud-practica-carrera/solicitud-practica-carrera.component';
+import { DialogoSolicitudPracticaComponent } from './dialogo-solicitud-practica/dialogo-solicitud-practica.component';
 @NgModule({
   declarations: [
     // Aca van los modulos que se crean
     EditarSolicitudProcesoPracticaComponent,
     MenuEncargadoCarreraComponent,
     VisualizarComponent,
-    EditarProcesoCarreraComponent,
-    DialogoPracticaComponent
+    DialogoPracticaComponent,
+    SolicitudPracticaCarreraComponent,
+    DialogoSolicitudPracticaComponent
   ],
   imports: [
     CommonModule,
@@ -27,4 +29,4 @@ import { DialogoPracticaComponent } from './dialogo-practica/dialogo-practica.co
     // Aca van los modulos que se crean
   ]
 })
-export class EncargadoCarreraModule{}
+export class EncargadoCarreraModule { }

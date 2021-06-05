@@ -16,4 +16,9 @@ export interface Estudiante{
   correoInstitucional: string;
   correoPersonal ?: string;
   rol: string;
+  practicaAbilitada: boolean;
+  practicaActual: number;
+  etapaActual: string;
+  estadoEtapaActual: string;
+  documentos: string[];
 }

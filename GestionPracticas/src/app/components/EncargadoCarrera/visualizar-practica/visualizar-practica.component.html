@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>Visualización de prácticas</mat-card-title>
     <mat-card-content>
-        <h3>Filtros</h3>
+        <h3><b>Filtros</b></h3>
         <form>
             <mat-form-field appearance="outline">
                 <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input"> -->
@@ -35,8 +35,7 @@
                 <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
         </form>
-        <h3>Tabla de alumnos</h3>
-        <div>
+        <div class="table-visualizer">
             <table mat-table [dataSource]="dataSource">
                 <ng-container matColumnDef="matricula">
                     <th mat-header-cell *matHeaderCellDef> No. Matrícula </th>
@@ -65,15 +64,15 @@
                 <ng-container matColumnDef="accion">
                     <th mat-header-cell *matHeaderCellDef> Acciones </th>
                     <td mat-cell *matCellDef="let element">
-                        <mat-icon (click)="openDialog(element)" type="button" style="margin-right: 10px;"> visibility </mat-icon>
-                        <mat-icon (click)='cambiar_estado(element, "Aceptado")' type="button" style="margin-right: 10px;">check</mat-icon>
-                        <mat-icon (click)='cambiar_estado(element, "Rechazada")' type="button">close</mat-icon>
+                        <mat-icon class="table-icon-first" (click)="openDialog(element)" type="button">visibility</mat-icon>
+                        <mat-icon class="table-icon" (click)='cambiar_estado(element, "Aceptado")' type="button">check</mat-icon>
+                        <mat-icon class="table-icon" (click)='cambiar_estado(element, "Rechazada")' type="button">close</mat-icon>
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="7" style="text-align: center; ">No se encontraron resultados.</td>
+                    <td class="mat-cell" colspan="7">No se encontraron resultados.</td>
                 </tr>
             </table>
             <mat-paginator [hidden]="!(solicitudes.length != 0)" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>

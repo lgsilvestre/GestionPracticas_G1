@@ -1,14 +1,11 @@
-mat-card-title {
-    text-align: center;
-}
-
 div {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
 }
 
-button {
-    width: 20rem;
+@media only screen and (min-width: 768px) {
+    button {
+        width: 10rem;
+    }
 }

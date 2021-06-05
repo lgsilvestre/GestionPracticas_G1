@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 /**
  * Firebase
  */
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
@@ -31,47 +31,53 @@ import { MaterialModule } from './material/material.module';
 import { GraficosModule } from './components/Graficos/graficos.module';
 import { LoginComponent } from './components/login/login.component';
 import { EditarCuentaComponent } from './components/editar-cuenta/editar-cuenta.component';
-import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found.component';
 import { SuperAdminModule } from './components/SuperAdministrador/superadministrador.module';
 import { InformationComponent } from './components/dialogs/information/information.component';
+import { SuccessComponent } from './components/dialogs/success/success.component';
+import { ErrorComponent } from './components/dialogs/error/error.component';
+import { AlertComponent } from './components/dialogs/alert/alert.component';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidenavComponent,
-    LoginComponent,
-    EditarCuentaComponent,
-    PageNotFoundComponent,
-    InformationComponent,
+	declarations: [
+		AppComponent,
+		SidenavComponent,
+		LoginComponent,
+		EditarCuentaComponent,
+		PageNotFoundComponent,
+		InformationComponent,
+		SuccessComponent,
+		ErrorComponent,
+		AlertComponent,
 
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    MaterialModule,
-    ReactiveFormsModule,
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppRoutingModule,
+		FlexLayoutModule,
+		MaterialModule,
+		ReactiveFormsModule,
 
-    // Modulos de firebase
-    AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireStorageModule,
+		// Modulos de firebase
+		AngularFireAuthModule,
+		AngularFireModule.initializeApp(environment.firebaseConfig),
+		AngularFirestoreModule,
+		AngularFireStorageModule,
 
-    // Modulos de roles de universidad
-    EstudianteModule,
-    AdminGeneralModule,
-    EncargadoCarreraModule,
-    SuperAdminModule,
+		// Modulos de roles de universidad
+		EstudianteModule,
+		AdminGeneralModule,
+		EncargadoCarreraModule,
+		SuperAdminModule,
 
-    // modulo de graficos
-    GraficosModule,
+		// modulo de graficos
+		GraficosModule,
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
