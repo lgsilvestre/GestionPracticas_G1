@@ -6,6 +6,7 @@ import {SolicitudPracticaModel} from '../../../model/solicitudPractica.model';
 import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {LocalStorageService} from '../../Servicios/local-storage.service';
+import {InformationComponent} from '../../dialogs/information/information.component';
 
 @Component({
   selector: 'app-solicitudud-practica',
@@ -41,11 +42,11 @@ export class SolicitududPracticaComponent implements OnInit
         Nombres: this.locaSTF.getNombres(),
         Apellidos: this.locaSTF.getApellidos(),
         Run: this.locaSTF.getRun(),
+        Carrera: this.locaSTF.getCarrera(),
         NumeroMatricula: this.locaSTF.getNumeroMatricula(),
         CorreoElectronicoInstitucional: this.locaSTF.getCorreoElectronicoInstitucional(),
         NumeroTelefono: this.locaSTF.getNumeroTelefono()
       });
-    console.log(this.locaSTF.getNombres());
   }
 
   ngOnInit(): void
@@ -56,15 +57,15 @@ export class SolicitududPracticaComponent implements OnInit
     this.locaSTF.getEstadoEtapaActual$().subscribe( estado => {
       this.estadoEtapaActual = estado;
     });
+    if ( !(this.estadoEtapaActual === 'ninguno'))
+    {
+      this.showDialog();
+    }
   }
   setEstado(sss: string): string
   {
     this.estadoEtapaActual = sss;
     return this.estadoEtapaActual;
-  }
-  onChangeCarrera(event: any): void
-  {
-    this.carreraActual = event;
   }
   sendSolicitud(): void
   {
@@ -95,5 +96,16 @@ export class SolicitududPracticaComponent implements OnInit
   getEstadoEtapaActual(): string
   {
     return this.estadoEtapaActual;
+  }
+  private showDialog(): void
+  {
+    const tituloAc: string = 'Estado de la solicitud: ' + this.estadoEtapaActual;
+    const contenidoAc: string = '';
+    this.dialog.open(InformationComponent, {
+      data: {
+        titulo: tituloAc,
+        contenido: contenidoAc,
+      }
+    });
   }
 }

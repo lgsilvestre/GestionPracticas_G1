@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DialogDataModel} from '../../../model/dialogData.model';
 
 @Component({
   selector: 'app-success',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogDataModel) { }
 
   ngOnInit(): void {
   }

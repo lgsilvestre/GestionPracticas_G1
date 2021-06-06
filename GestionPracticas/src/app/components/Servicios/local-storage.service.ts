@@ -105,6 +105,10 @@ export class LocalStorageService
     localStorage.setItem('user', JSON.stringify(this.user));
     this.actualizarFirebaseStore();
   }
+  public getCarrera(): string
+{
+  return this.user.carrera;
+}
   public getRun(): string
   {
     return this.user.run;

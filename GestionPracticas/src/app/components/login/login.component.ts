@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Estudiante } from '../../model/estudiante.model';
 import { LocalStorageService } from '../Servicios/local-storage.service';
 import {MatDialog} from '@angular/material/dialog';
-import {ErrorComponent} from "../dialogs/error/error.component";
+import {ErrorComponent} from '../dialogs/error/error.component';
 
 
 @Component({
@@ -78,15 +78,15 @@ export class LoginComponent implements OnInit {
 						this.router.navigate(['./menu-admin-general']);
 					}
 				}
-			);
-		}).
+				);
+      }).
       catch((error) =>
       {
         this.dialog.open(ErrorComponent, {
           data:
             {
-              titulo: 'Datos inicio de sesión erroneos',
-              contenido: 'no se encontro la combinacion de correo electronico y contraseña, por favor revise sus datos'
+              titulo: 'Datos de inicio de sesión erroneos',
+              contenido: 'no se encontro la combinacion de correo electronico y contraseña, por favor revise sus datos.'
             }
         });
       });
