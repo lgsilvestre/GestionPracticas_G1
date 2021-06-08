@@ -42,7 +42,7 @@ const routes: Routes = [
 	{ path: 'crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
 	{ path: 'crear-cuenta', component: CrearCuentaComponent },
 	{ path: 'gestionar-carreras', component: GestionarCarrerasComponent },
-	{ path: 'gestionar-carreras/ver-carrera-particular', component: VerCarreraParticularComponent },
+	{ path: 'gestionar-carreras/ver-carrera-particular/:id', component: VerCarreraParticularComponent },
 	{ path: 'gestionar-carreras/crear-carrera', component: CrearCarreraComponent },
 	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
 	{ path: 'solicitud-practica-carrera', component: SolicitudPracticaCarreraComponent },

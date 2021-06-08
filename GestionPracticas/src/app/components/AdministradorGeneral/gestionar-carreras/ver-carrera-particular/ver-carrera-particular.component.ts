@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
+import { FormControl, ɵangular_packages_forms_forms_g, FormGroup, Validators } from '@angular/forms';
+import { Carrera } from 'src/app/model/carreras.model';
+import { GestionCarreraService } from '../../../Servicios/adminGenerla/gestion-carrera.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,10 +12,12 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./ver-carrera-particular.component.css', '../gestionar-carreras.component.css', '../../../../app.component.css']
 })
 
-export class VerCarreraParticularComponent 
+export class VerCarreraParticularComponent implements OnInit
 {
 
   numeroPracticas = new FormControl('1');
+  formulario1: FormGroup;
+  carrera: Carrera= {};
 
   planesVigentes: number[]= [11,16]
 
@@ -20,10 +25,40 @@ export class VerCarreraParticularComponent
   CorreoEncargadoDeshabilitado: boolean = true;
   cantidadPracticasdeshabilitado:boolean= true;
 
-  constructor(public dialog: MatDialog) 
-  {}
+  constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute) 
+  {
+      this.formulario1= new FormGroup({
+          nombreEncargado: new FormControl('', Validators.required),
+          CorreoEncargado: new FormControl('', Validators.required),
+      });
+  }
 
-  openDialog() {
+  ngOnInit()
+  {
+      this._route.params.subscribe(parametro =>{
+          this._gestionCarrera.getCarrera(parametro['id']).subscribe(carrera =>{
+              this.carrera= carrera!;
+              this.formulario1.patchValue({
+                  nombreEncargado: this.carrera.nombreEncargadoCarrera,
+                  CorreoEncargado: this.carrera.correoEncargadoCarrera
+              })
+          })
+      })
+  }
+
+  updateFormulario()
+  {
+      const actualizacion= {
+          ...this.carrera,
+          nombreEncargadoCarrera: this.formulario1.value.nombreEncargado,
+          correoEncargadoCarrera: this.formulario1.value.CorreoEncargado,
+      }
+
+      this._gestionCarrera.guardarCarrera(actualizacion,this.carrera.id!);
+  }
+
+  openDialog() 
+  {
     const dialogoEliminar = this.dialog.open(editarPlanes)
 
     dialogoEliminar.afterClosed().subscribe(resultado => {

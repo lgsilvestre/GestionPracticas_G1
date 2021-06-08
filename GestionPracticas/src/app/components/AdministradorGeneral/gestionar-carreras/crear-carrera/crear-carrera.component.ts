@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { GestionCarreraService } from '../../../Servicios/adminGenerla/gestion-carrera.service';
 import { Carrera } from '../../../../model/carreras.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class CrearCarreraComponent implements OnInit {
 
   formularioCarrera:FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private _gestionCarrera: GestionCarreraService) 
+  constructor(private _formBuilder: FormBuilder, private _gestionCarrera: GestionCarreraService, private route: Router) 
   {
     this.formularioCarrera= new FormGroup({
       nombreCarrera: new FormControl('', Validators.required),
@@ -40,5 +41,13 @@ export class CrearCarreraComponent implements OnInit {
     }
 
     this._gestionCarrera.addCarreras(carreraEnCreacion);
+
+
+    this.route.navigate(['/gestionar-carreras']);
+  }
+
+  volver()
+  {
+      this.route.navigate(['/gestionar-carreras']);
   }
 }
