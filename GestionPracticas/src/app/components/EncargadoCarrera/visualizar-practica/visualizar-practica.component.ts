@@ -50,7 +50,13 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
 
 
-    displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
+    displayedColumns: string[]; 
+    displayedColumnsSolicitud: string[];
+    displayedColumnsInscripcion: string[];
+    displayedColumnsEnCurso: string[];
+    //Solicitud: matrícula, nombre, apellidos, rut, situación, accion
+    //Inscripcion: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
+    //En curso: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
 
 
     solicitudes: Practica[];
@@ -71,7 +77,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     ngOnInit(): void { //cada vez que se agregue un nuevo filtro no olvidar de agregar aquí.
 
-        this.cargarDatos();
+        this.cargarDatos('SolicitudesPracticas');
         this.alertify_default_setting();
 
         this.filtroNombre.valueChanges
@@ -113,6 +119,11 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         this.tablaSolicitudSeleccionada = true; //Por default está seleccionada.
         this.tablaIncripcionSeleccionada = false;
         this.tablaEnCursoSeleccionada = false;
+
+        this.displayedColumnsSolicitud = ['matricula', 'nombre', 'apellido', 'rut', 'situacion', 'accion'];
+        this.displayedColumnsInscripcion = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
+        this.displayedColumnsEnCurso = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
+        this.displayedColumns = this.displayedColumnsSolicitud; // Por default será las columnas de solicitud.
     }
 
     ngAfterViewInit(): void {
@@ -172,8 +183,8 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         }
     }
 
-    cargarDatos() {
-        this.EC_service.load_data_visualizar_practica().then((querySnapshot) => {
+    cargarDatos(coleccion : string) {
+        this.EC_service.load_data_visualizar_practica(coleccion).then((querySnapshot) => {
             querySnapshot.forEach(doc => {
 
                 const nuevaPractica: any = doc.data();
@@ -202,6 +213,19 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         var solicitudRef   = this.EC_service.update_solicitud(solicitud.idSolicitud);
         var msg_success    = "La solicitud fue ";
         var msg_error      = "Ocurrió un error y la solicitud no se pudo ";
+        var coleccion = '';
+
+        if (this.tablaSolicitudSeleccionada) {
+            coleccion = 'SolicitudesPracticas'
+        }
+
+        if (this.tablaIncripcionSeleccionada) {
+            coleccion = 'Solicitudes'
+        }
+
+        if (this.tablaEnCursoSeleccionada) {
+            coleccion = 'Solicitudes'
+        }
 
         if ( param_estado == "Aceptado" )
         {
@@ -217,7 +241,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
                     })
                       .then(() => {
                         this.solicitudes = [];
-                        this.cargarDatos();
+                        this.cargarDatos(coleccion);
                         alertify.success(msg_success);
                     })
                       .catch((error) => {
@@ -244,7 +268,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
                       })
                       .then(() => {
                         this.solicitudes = [];
-                        this.cargarDatos();
+                        this.cargarDatos(coleccion);
                         alertify.success(msg_success);
                       })
                       .catch((error) => {
@@ -254,19 +278,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
                 () => { alertify.error('La acción fue cancelada') }
             );
         }
-
-        return;
-        return solicitudRef.update({
-            estado: param_estado
-          })
-          .then(() => {
-            this.solicitudes = [];
-            this.cargarDatos();
-            alertify.success(msg_success);
-          })
-          .catch((error) => {
-            alertify.error(msg_error);
-          });
     }
 
     alertify_default_setting()
@@ -276,6 +287,36 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         alertify.defaults.theme.input      = "form-control";
         alertify.defaults.glossary.ok      = "Aceptar";
         alertify.defaults.glossary.cancel  = "Cancelar";
+    }
+
+    seleccionarTabla(nombreTabla: string){
+        if(nombreTabla == 'solicitudes'){
+            this.tablaSolicitudSeleccionada = true;
+            this.tablaIncripcionSeleccionada = false;
+            this.tablaEnCursoSeleccionada = false;
+            this.displayedColumns = this.displayedColumnsSolicitud;
+            this.solicitudes = [];
+            this.cargarDatos('SolicitudesPracticas');
+            console.log("solicitudes");
+        }
+        if(nombreTabla == 'inscripciones'){
+            this.tablaSolicitudSeleccionada = false;
+            this.tablaIncripcionSeleccionada = true;
+            this.tablaEnCursoSeleccionada = false;
+            this.displayedColumns = this.displayedColumnsInscripcion;
+            this.solicitudes = [];
+            this.cargarDatos('Solicitudes');
+            console.log("inscripciones");
+        }
+        if (nombreTabla == 'enCurso') {
+            this.tablaSolicitudSeleccionada = false;
+            this.tablaIncripcionSeleccionada = false;
+            this.tablaEnCursoSeleccionada = true;
+            this.displayedColumns = this.displayedColumnsEnCurso;
+            this.solicitudes = [];
+            this.cargarDatos('Solicitudes');
+            console.log("en curso");
+        }
     }
 
 }
