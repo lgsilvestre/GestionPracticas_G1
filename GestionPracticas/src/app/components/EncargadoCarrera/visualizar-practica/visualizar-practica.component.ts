@@ -44,6 +44,11 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     filtroNumeroMatricula = new FormControl('');
     filtroSituacion = new FormControl('');
 
+    tablaSolicitudSeleccionada: boolean;
+    tablaIncripcionSeleccionada: boolean;
+    tablaEnCursoSeleccionada: boolean;
+
+
 
     displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'];
 
@@ -104,6 +109,10 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         this.solicitudes = [];
         this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter();
+
+        this.tablaSolicitudSeleccionada = true; //Por default está seleccionada.
+        this.tablaIncripcionSeleccionada = false;
+        this.tablaEnCursoSeleccionada = false;
     }
 
     ngAfterViewInit(): void {
