@@ -17,7 +17,7 @@
         <h3><b>Encargado(a) de carrera asociado:</b></h3>
         <p>{{item.nombreEncargadoCarrera}}</p>
         <div class="step-buttons">
-            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
+            <button mat-raised-button class="boton-eliminar" type="submit" (click)="eliminarCarrera(item.id!)">Eliminar carrera</button>
             <button mat-raised-button color="primary" type="submit" (click)="goToCarrera(item)">Gestionar carrera</button>
         </div>
     </mat-card-content>

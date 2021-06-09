@@ -41,4 +41,11 @@ export class GestionCarreraService
       
       itemDoc.update(carrera);
   }
+
+  eliminarCarrera(id:string)
+  {
+      const itemDoc = this.afStore.doc<Carrera>(`Carreras/${id}`);
+      
+      itemDoc.delete()
+  }
 }

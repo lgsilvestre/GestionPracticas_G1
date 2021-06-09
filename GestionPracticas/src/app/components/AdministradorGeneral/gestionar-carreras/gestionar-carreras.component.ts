@@ -13,7 +13,6 @@ export class GestionarCarrerasComponent implements OnInit
 {
     carreras: Carrera[]= [];
 
-
     constructor(public dialog: MatDialog, private route: Router, private _gestionCarrera: GestionCarreraService) 
     { }
 
@@ -40,8 +39,14 @@ export class GestionarCarrerasComponent implements OnInit
     this.route.navigate([`/gestionar-carreras/ver-carrera-particular/${carrera.id}`]);
   }
 
-  goToCrearCarrera(): void {
+  goToCrearCarrera(): void 
+  {
     this.route.navigate(['/gestionar-carreras/crear-carrera']);
+  }
+
+  eliminarCarrera(id: string)
+  {
+      this._gestionCarrera.eliminarCarrera(id)
   }
 
 }
