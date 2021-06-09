@@ -1,17 +1,30 @@
 <mat-card>
-    <mat-card-title>Seleccione tabla</mat-card-title>
+    <mat-card-title>¿Qué desea visualizar?</mat-card-title>
     <mat-card-content>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1" (click)="seleccionarTabla('solicitudes')" [checked]="true">Tabla solicitudes</mat-radio-button>
-            <mat-radio-button value="2" (click)="seleccionarTabla('inscripciones')">Tabla inscripciones</mat-radio-button>
-            <mat-radio-button value="3" (click)="seleccionarTabla('enCurso')">Tabla prácticas en curso</mat-radio-button>
-          </mat-radio-group>
+        <div class="row">
+            <div class="col">
+                <mat-radio-group aria-label="Select an option">
+                    <div class="row" style="font-size: 12px; height: 10%;">
+                        <mat-radio-button value="1" (click)="seleccionarTabla('solicitudes')" [checked]="true"> <label *ngIf="!this.tablaSolicitudSeleccionada">Tabla solicitudes</label> <strong *ngIf="this.tablaSolicitudSeleccionada">Tabla solicitudes</strong> </mat-radio-button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="row" style="font-size: 12px; height: 10%;">
+                        <mat-radio-button value="2" (click)="seleccionarTabla('inscripciones')"><label *ngIf="!this.tablaIncripcionSeleccionada">Tabla inscripciones</label> <strong *ngIf="this.tablaIncripcionSeleccionada">Tabla solicitudes</strong></mat-radio-button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="row" style="font-size: 12px; height: 10%;">
+                        <mat-radio-button value="3" (click)="seleccionarTabla('enCurso')"><label *ngIf="!this.tablaEnCursoSeleccionada">Tabla inscripciones</label> <strong *ngIf="this.tablaEnCursoSeleccionada">Tabla solicitudes</strong></mat-radio-button>
+                    </div>
+                </mat-radio-group>                
+            </div>
+        </div>
+
     </mat-card-content>
 </mat-card>
 <mat-card>
     <mat-card-title>Visualización de prácticas</mat-card-title>
     <mat-card-content>
-        <h3><b>Filtros</b></h3>
+        <h3><b>Filtros </b></h3>
         <form>
             <mat-form-field appearance="outline">
                 <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input"> -->
@@ -45,7 +58,7 @@
             </mat-form-field>
         </form>
         <div class="table-visualizer">
-            <table mat-table [dataSource]="dataSource">
+            <table mat-table [dataSource]="dataSource" id="tabla">
                 <ng-container matColumnDef="matricula">
                     <th mat-header-cell *matHeaderCellDef> No. Matrícula </th>
                     <td mat-cell *matCellDef="let element"> {{element.numeroMatricula}} </td>

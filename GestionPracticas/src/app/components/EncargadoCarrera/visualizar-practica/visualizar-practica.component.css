@@ -4,4 +4,8 @@ h3 {
 
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 25px;
-  }
+}
+
+#tabla {
+    min-width: 1000px;
+}
