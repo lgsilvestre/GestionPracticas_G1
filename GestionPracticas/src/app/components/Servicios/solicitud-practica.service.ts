@@ -16,7 +16,6 @@ export class SolicitudPracticaService {
     this.angularFireStore.collection('SolicitudesPracticas').add(nuevaSolicitud).then(ref => {
       const referenciaSolicitud: string = ref.id;
       nuevaSolicitud.id = referenciaSolicitud;
-      let correcto: boolean = false;
       ref.set(nuevaSolicitud).then( refff =>
         {
           this.locaSTF.setEtapaActual('solicitudePractica');
@@ -25,7 +24,6 @@ export class SolicitudPracticaService {
           // si existiera otra referencia deberia eliminarse, por tiempo no lo programo ahora
           documentos[0] = referenciaSolicitud;
           this.locaSTF.setDocumentos(documentos);
-          correcto = true;
         }
       );
     });

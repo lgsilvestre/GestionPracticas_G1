@@ -53,6 +53,11 @@
                     <span>Gestionar carreras</span>
                 </a>
 
+                <a routerLink="./gestion-archivos" mat-list-item (click)="sidenav.toggle()">
+                  <mat-icon mat-list-icon>visibility</mat-icon>
+                  <span>Gestionar archivos generales</span>
+                </a>
+
             </div>
             <div *ngIf="soyEstudiante">
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
