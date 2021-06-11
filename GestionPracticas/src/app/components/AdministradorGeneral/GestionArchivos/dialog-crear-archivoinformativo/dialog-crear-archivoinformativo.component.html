@@ -1,33 +1,22 @@
-<mat-card>
-  <mat-card-title>Crear cuenta de encargado de carrera</mat-card-title>
-  <mat-card-content>
+<h1 mat-dialog-title>Crear cuenta de encargado de carrera</h1>
+<div mat-dialog-content>
     <form [formGroup]="crearArchivo">
-      <ng-template matStepLabel>Nuevo archivo informativo</ng-template>
-      <mat-form-field appearance="outline">
-        <mat-label>Titulo</mat-label>
-        <input matInput placeholder="Primer y segundo nombre" formControlName="Titulo" required>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Texto</mat-label>
-        <textarea matInput
-                  cdkTextareaAutosize
-                  #autosize="cdkTextareaAutosize"
-                  cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5"
-        formControlName="Texto" required></textarea>
-      </mat-form-field>
-      <br/>
-      <mat-label>Archivo</mat-label>
-      <br/>
-      <input type="file" formControlName="Archivo" required>
-      <br/>
-      <mat-divider></mat-divider>
-      <div class="step-buttons">
-        <button mat-raised-button color="primary" type="button">Enviar</button>
-      </div>
-
+        <ng-template matStepLabel>Nuevo archivo informativo</ng-template>
+        <mat-form-field appearance="outline">
+            <mat-label>Titulo</mat-label>
+            <input matInput placeholder="Primer y segundo nombre" formControlName="Titulo" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Texto</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" formControlName="Texto" required></textarea>
+        </mat-form-field>
+        <br/>
+        <mat-label>Archivo</mat-label>
+        <br/>
+        <input type="file" formControlName="Archivo" required>
+        <br/>
     </form>
-  </mat-card-content>
-
-</mat-card>
-
+</div>
+<div class="step-buttons" mat-dialog-actions>
+    <button mat-raised-button color="primary" type="button">Enviar</button>
+</div>
