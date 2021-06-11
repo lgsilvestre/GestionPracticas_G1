@@ -8,6 +8,7 @@ import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.servi
 import { Practica } from "src/app/model/practica.model";
 import { InformationComponent } from "../../dialogs/information/information.component";
 import { AlertComponent } from "../../dialogs/alert/alert.component";
+import { LocalStorageService } from "../../Servicios/local-storage.service";
 declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
@@ -111,7 +112,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     }
 
-    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService) {
+    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService) {
         this.solicitudes = [];
         this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter();
@@ -184,7 +185,9 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     cargarDatos(coleccion : string) {
-        this.EC_service.load_data_visualizar_practica(coleccion).then((querySnapshot) => {
+        var carrera = this.locaSTF.getCarrera(); //carrera del encargado
+        this.EC_service.load_data_visualizar_practica(coleccion, "Ingeniería Civil en Computación").then((querySnapshot) => {
+            this.solicitudes = [];
             querySnapshot.forEach(doc => {
 
                 const nuevaPractica: any = doc.data();
@@ -210,7 +213,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     cambiar_estado(solicitud: any, param_estado: string) 
     {
-        var solicitudRef   = this.EC_service.update_solicitud(solicitud.idSolicitud);
         var msg_success    = "La solicitud fue ";
         var msg_error      = "Ocurrió un error y la solicitud no se pudo ";
         var coleccion = '';
@@ -226,6 +228,9 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         if (this.tablaEnCursoSeleccionada) {
             coleccion = 'Solicitudes'
         }
+
+        var solicitudRef   = this.EC_service.update_solicitud(solicitud.idSolicitud, coleccion);
+        console.log("El id para actualizar es>>> "+solicitud.idSolicitud);
 
         if ( param_estado == "Aceptado" )
         {
@@ -290,12 +295,12 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     seleccionarTabla(nombreTabla: string){
+
         if(nombreTabla == 'solicitudes'){
-            this.tablaSolicitudSeleccionada = true;
+            this.tablaSolicitudSeleccionada  = true;
             this.tablaIncripcionSeleccionada = false;
-            this.tablaEnCursoSeleccionada = false;
+            this.tablaEnCursoSeleccionada    = false;
             this.displayedColumns = this.displayedColumnsSolicitud;
-            this.solicitudes = [];
             this.cargarDatos('SolicitudesPracticas');
             console.log("solicitudes");
         }
@@ -304,7 +309,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             this.tablaIncripcionSeleccionada = true;
             this.tablaEnCursoSeleccionada = false;
             this.displayedColumns = this.displayedColumnsInscripcion;
-            this.solicitudes = [];
             this.cargarDatos('Solicitudes');
             console.log("inscripciones");
         }
@@ -313,7 +317,6 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             this.tablaIncripcionSeleccionada = false;
             this.tablaEnCursoSeleccionada = true;
             this.displayedColumns = this.displayedColumnsEnCurso;
-            this.solicitudes = [];
             this.cargarDatos('Solicitudes');
             console.log("en curso");
         }
