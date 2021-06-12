@@ -5,6 +5,8 @@ import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
 import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';
 import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
 import {DinamicFileContainerComponent} from '../dinamic/dinamic-file-container/dinamic-file-container.component';
+import {ArchivosInformativoComponent} from "../GestionArchivos/archivos-informativo/archivos-informativo.component";
+import {GestionarArchivosGeneralesService} from "../../Servicios/gestionar-archivos-generales.service";
 
 export interface Documento
 {
@@ -19,7 +21,7 @@ export interface Documento
   styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
 })
 export class PlantillaGeneralComponent implements OnInit {
-  @ViewChild(DynamicHostDirective) public dynamicHost: DynamicHostDirective | undefined;
+  @ViewChild(DynamicHostDirective,  { static: true }) public dynamicHost: DynamicHostDirective | undefined;
   carreraActual: string = 'None';
   private documentos: Documento[] =
     [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: 'https://www.google.com/'}];
@@ -31,7 +33,9 @@ export class PlantillaGeneralComponent implements OnInit {
   cuartaEtapa: FormGroup;
   private files: File [] = [];
   constructor(private _formBuilder: FormBuilder,
-              private afStudent: FirebaseEstudianteService, private comFacResol: ComponentFactoryResolver)
+              private afStudent: FirebaseEstudianteService,
+              private comFacResol: ComponentFactoryResolver,
+              private gestionArchivosGenerales: GestionarArchivosGeneralesService)
   {
     this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
@@ -75,22 +79,17 @@ export class PlantillaGeneralComponent implements OnInit {
 
   ngOnInit(): void
   {
-    /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
-  }
-  public createComponent(): void
-  {
-    this.dynamicHost?.viewContainerRef.clear();
-    console.log('holoa');
-    /* extraido de
-    https://stackoverflow.com/questions/39280057/how-do-you-use-input-with-components-created-with-a-componentfactoryresolver*/
-    let reff: ComponentRef<DinamicFileContainerComponent>[] | undefined = [];
-    this.documentos.forEach((documento: Documento) => {
-      const component = this.comFacResol.resolveComponentFactory(DinamicFileContainerComponent);
-      const contt = this.dynamicHost?.viewContainerRef.createComponent(component);
-      contt?.instance.setValues(documento.titulo, documento.descripcion, documento.url);
-      // @ts-ignore
-      reff.push(contt);
+    this.gestionArchivosGenerales.getGeneralFiles().subscribe(files => {
+      this.dynamicHost?.viewContainerRef.clear();
+      files.forEach(file => {
+        console.log('file ' + file.id);
+        const component = this.comFacResol.resolveComponentFactory(ArchivosInformativoComponent);
+        const contt = this.dynamicHost?.viewContainerRef.createComponent<ArchivosInformativoComponent>(component)?.
+        instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo);
+      });
     });
+    this.gestionArchivosGenerales.updateGeneralFiles();
+    /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
   enviar(): void
   {

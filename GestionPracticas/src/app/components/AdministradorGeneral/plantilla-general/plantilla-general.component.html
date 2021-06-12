@@ -2,7 +2,6 @@
     <mat-step [stepControl]="documentosGenerales" errorMessage="Completa los datos obligatorios restantes">
         <form [formGroup]="documentosGenerales">
             <ng-template matStepLabel>Documentos importantes</ng-template>
-            <button mat-raised-button color="primary" (click)="createComponent()">crear</button>
             <ng-template appDynamicHost></ng-template>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
