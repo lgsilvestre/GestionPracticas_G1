@@ -36,7 +36,7 @@
                 <mat-select (selectionChange)="filtroSelectChange($event.value)">
                     <mat-option value="matricula">N° Matrícula</mat-option>
                     <mat-option value="situacion">Situación</mat-option>
-                    <mat-option value="empresa">Empresa</mat-option>
+                    <mat-option value="empresa" *ngIf="!this.tablaSolicitudSeleccionada">Empresa</mat-option>
                     <mat-option value="sin_filtros">Sin filtros</mat-option>
                 </mat-select>
             </mat-form-field>
