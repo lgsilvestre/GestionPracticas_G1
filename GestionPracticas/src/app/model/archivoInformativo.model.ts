@@ -1,7 +1,7 @@
 
 export interface ArchivoInformativoModel
 {
-  id: number;
+  id: string;
   nombre: string;
   textoInformativo: string;
   urlArchivo: string;

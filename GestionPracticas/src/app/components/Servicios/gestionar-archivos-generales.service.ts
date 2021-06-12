@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import {ArchivoInformativoModel} from '../../model/archivoInformativo.model';
 import {BehaviorSubject} from 'rxjs';
+import {finalize} from 'rxjs/operators';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {MatDialog} from '@angular/material/dialog';
+import {ErrorComponent} from '../dialogs/error/error.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +13,86 @@ import {BehaviorSubject} from 'rxjs';
 export class GestionarArchivosGeneralesService
 {
   private archivos$ = new BehaviorSubject<ArchivoInformativoModel[]>([]);
-  archivos: ArchivoInformativoModel[] = [{
-    id: 0,
-    nombre: 'informativo',
-    textoInformativo: 'hola soy un archivo informativo',
-    urlArchivo: 'www.google.cl',
-    visible: true }];
+  archivos: ArchivoInformativoModel[] = [];
 
-  constructor()
+  constructor(private storage: AngularFireStorage,
+              private angularFireStore: AngularFirestore,
+              public dialog: MatDialog)
   { }
+  private addInformativeFile(archivo: ArchivoInformativoModel): void
+  {
+    this.archivos.push(archivo);
+    this.archivos$.next(this.archivos);
+  }
   updateGeneralFiles(): void
   {
-    this.archivos$.next(this.archivos);
+    this.archivos = [];
+    const docc = this.angularFireStore.collection<ArchivoInformativoModel>('DocumentosGenerales').get();
+    docc.forEach( docc => {
+      docc.forEach(dov => {
+        const documentoAux: ArchivoInformativoModel = {
+          id: dov.data().id,
+          nombre: dov.data().nombre,
+          textoInformativo: dov.data().textoInformativo,
+          urlArchivo: dov.data().urlArchivo,
+          visible: dov.data().visible
+        };
+        this.archivos.push(documentoAux);
+      });
+    }).then( () => this.archivos$.next(this.archivos));
   }
   getGeneralFiles(): BehaviorSubject<ArchivoInformativoModel[]>
   {
     return this.archivos$;
+  }
+  public upLoadArchivoInformativo(file: File, archivoInformativo: ArchivoInformativoModel ): void
+  {
+    const filePath = 'ArchivosGenerales/' + archivoInformativo.nombre + '-' + file.lastModified;
+    console.log(filePath + ' ' + file.type);
+    const fileRef = this.storage.ref(filePath);
+    const tarea = this.storage.upload(filePath, file);
+    tarea.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe( urlFile => {
+          console.log('esxiss ' + urlFile.toString());
+          if ( urlFile.toString() !== '')
+          {
+            archivoInformativo.urlArchivo = urlFile.toString();
+            console.log('hola aaaa');
+            this.addArchivoInformativo(archivoInformativo);
+          }
+          else
+          {
+            this.dialog.open(ErrorComponent, {
+              data:
+                {
+                  titulo: 'Error al cargar archivo',
+                  contenido: 'por un error inesperado nos e pudo guardar el archivo intente nuevamente'
+                }
+            });
+          }
+          });
+      })
+    ).subscribe();
+  }
+  private addArchivoInformativo(archivo: ArchivoInformativoModel): void
+  {
+    this.angularFireStore.collection('DocumentosGenerales')
+      .add(archivo).then( reff => {
+        archivo.id = reff.id;
+        reff.set(archivo);
+        this.addInformativeFile(archivo);
+      });
+  }
+  private getFdocumentos(): void
+  {
+    const docc = this.angularFireStore.collection<ArchivoInformativoModel>('DocumentosGenerales').get();
+    docc.forEach( docc => {
+      docc.forEach(dov => {
+        const reff = this.angularFireStore.doc('DocumentosGenerales/' + dov.id);
+        console.log(dov.id);
+        reff.delete();
+      });
+    });
   }
 }

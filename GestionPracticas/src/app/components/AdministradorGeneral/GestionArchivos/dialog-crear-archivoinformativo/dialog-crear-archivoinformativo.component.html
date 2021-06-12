@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Crear cuenta de encargado de carrera</h1>
+<h1 mat-dialog-title>Datos nuevo Archivo</h1>
 <div mat-dialog-content>
     <form [formGroup]="crearArchivo">
         <ng-template matStepLabel>Nuevo archivo informativo</ng-template>
@@ -13,10 +13,10 @@
         <br/>
         <mat-label>Archivo</mat-label>
         <br/>
-        <input type="file" formControlName="Archivo" required>
+        <input type="file"  (change)="onFileChange($event)" formControlName="Archivo" required>
         <br/>
     </form>
 </div>
 <div class="step-buttons" mat-dialog-actions>
-    <button mat-raised-button color="primary" type="button">Enviar</button>
+    <button mat-raised-button color="primary" type="button" (click)="subirArchivo()">Enviar</button>
 </div>
