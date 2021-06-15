@@ -5,5 +5,6 @@ export interface ArchivoInformativoModel
   nombre: string;
   textoInformativo: string;
   urlArchivo: string;
+  filename: string;
   visible: boolean;
 }

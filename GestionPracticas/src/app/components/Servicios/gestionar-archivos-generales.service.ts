@@ -35,7 +35,8 @@ export class GestionarArchivosGeneralesService
           nombre: dov.data().nombre,
           textoInformativo: dov.data().textoInformativo,
           urlArchivo: dov.data().urlArchivo,
-          visible: dov.data().visible
+          visible: dov.data().visible,
+          filename: dov.data().filename
         };
         this.archivos.push(documentoAux);
       });
@@ -49,6 +50,7 @@ export class GestionarArchivosGeneralesService
   {
     const filePath = 'ArchivosGenerales/' + archivoInformativo.nombre + '-' + file.lastModified;
     console.log(filePath + ' ' + file.type);
+    archivoInformativo.filename = archivoInformativo.nombre + '-' + file.lastModified;
     const fileRef = this.storage.ref(filePath);
     const tarea = this.storage.upload(filePath, file);
     tarea.snapshotChanges().pipe(
@@ -94,5 +96,20 @@ export class GestionarArchivosGeneralesService
         reff.delete();
       });
     });
+  }
+  public deleteFile(id: string, url: string): void
+  {
+    const filePath = 'ArchivosGenerales/';
+    console.log(filePath);
+    console.log(url);
+    const fileRef = this.storage.ref(filePath).child(url);
+    console.log('file reff' + fileRef.toString());
+    const tarea = fileRef.delete();
+    const reff = this.angularFireStore.doc('DocumentosGenerales/' + id);
+    console.log(id);
+    reff.delete();
+    this.updateGeneralFiles();
+    console.log(' salio bien ');
+      // tslint:disable-next-line:only-arrow-functions
   }
 }

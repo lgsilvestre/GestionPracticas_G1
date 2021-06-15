@@ -34,7 +34,7 @@ export class GestionArchivosComponent implements OnInit
         console.log('file ' + file.id);
         const component = this.comFacResol.resolveComponentFactory(ArchivosInformativoComponent);
         const contt = this.dynamicHostInformativos?.viewContainerRef.createComponent<ArchivosInformativoComponent>(component)?.
-        instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo);
+        instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo, file.filename);
       });
     });
     const componentt = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
