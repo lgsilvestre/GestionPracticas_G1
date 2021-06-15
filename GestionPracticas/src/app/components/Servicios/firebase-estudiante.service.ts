@@ -13,9 +13,9 @@ export class FirebaseEstudianteService
   private filePath: any;
   private URLFile: Observable<string> | undefined;
   constructor(private angularFireStore: AngularFirestore, private storage: AngularFireStorage) { }
-  public upSolicitud(file: File, pantilla: PlantillaGeneral): void
+  public upSolicitud(pantilla: PlantillaGeneral): void
   {
-    this.upLoadFile(file, pantilla);
+    this.upLoadFile( pantilla );
   }
   private addSolicitudPractica(plantilla: PlantillaGeneral): void
   {
@@ -23,20 +23,8 @@ export class FirebaseEstudianteService
     console.log(plantilla);
     this.angularFireStore.collection('Solicitudes').add(plantilla);
   }
-  private upLoadFile(file: File, plantilla: PlantillaGeneral): void
+  private upLoadFile( plantilla: PlantillaGeneral): void
   {
-    this.filePath = 'ArchivosSolicitudes/' + plantilla.numeroMatricula + '-' + file.name;
-    console.log(this.filePath + ' ' + file.type);
-    const fileRef = this.storage.ref(this.filePath);
-    const tarea = this.storage.upload(this.filePath, file);
-    tarea.snapshotChanges().pipe(
-      finalize(() => {
-          fileRef.getDownloadURL().subscribe(urlFile => {
-            this.URLFile = urlFile;
-            plantilla.archivoConsentimiento = this.URLFile;
-            this.addSolicitudPractica(plantilla);
-          });
-        })
-    ).subscribe();
+    this.addSolicitudPractica(plantilla);
   }
 }

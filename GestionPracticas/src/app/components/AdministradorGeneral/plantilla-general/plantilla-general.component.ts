@@ -4,9 +4,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
 import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';
 import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
-import {DinamicFileContainerComponent} from '../dinamic/dinamic-file-container/dinamic-file-container.component';
-import {ArchivosInformativoComponent} from "../GestionArchivos/archivos-informativo/archivos-informativo.component";
-import {GestionarArchivosGeneralesService} from "../../Servicios/gestionar-archivos-generales.service";
+import {ArchivosInformativoComponent} from '../GestionArchivos/archivos-informativo/archivos-informativo.component';
+import {GestionarArchivosGeneralesService} from '../../Servicios/gestionar-archivos-generales.service';
+import {LocalStorageService} from '../../Servicios/local-storage.service';
 
 export interface Documento
 {
@@ -31,11 +31,12 @@ export class PlantillaGeneralComponent implements OnInit {
   segundaEtapa: FormGroup;
   terseraEtapa: FormGroup;
   cuartaEtapa: FormGroup;
-  private files: File [] = [];
+  files: string[] = [' '];
   constructor(private _formBuilder: FormBuilder,
               private afStudent: FirebaseEstudianteService,
               private comFacResol: ComponentFactoryResolver,
-              private gestionArchivosGenerales: GestionarArchivosGeneralesService)
+              private gestionArchivosGenerales: GestionarArchivosGeneralesService,
+              private locaSTF: LocalStorageService)
   {
     this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
@@ -72,8 +73,21 @@ export class PlantillaGeneralComponent implements OnInit {
       HoraInicio: ['', Validators.required],
       HoraFin: ['', Validators.required],
       Jornada: ['', Validators.required],
-      Archivo: [],
     });
+    if (this.locaSTF.getRol() === 'estudiante')
+    {
+      this.locaSTF.reloadUser();
+      this.datosEstudianteEtapa.patchValue(
+        {
+          Nombres: this.locaSTF.getNombres(),
+          Apellidos: this.locaSTF.getApellidos(),
+          Run: this.locaSTF.getRun(),
+          Carrera: this.locaSTF.getCarrera(),
+          NumeroMatricula: this.locaSTF.getNumeroMatricula(),
+          CorreoElectronico: this.locaSTF.getCorreoElectronicoInstitucional(),
+          NumeroContacto: this.locaSTF.getNumeroTelefono()
+        });
+    }
     // tslint:disable-next-line:new-parens
   }
 
@@ -94,13 +108,13 @@ export class PlantillaGeneralComponent implements OnInit {
   enviar(): void
   {
     const plantilla: PlantillaGeneral =
-       { nombreEstudiante: this.datosEstudianteEtapa.value.Nombres,
-         apellidoEstudiante: this.datosEstudianteEtapa.value.Apellidos,
-         carreraEstudiante: this.datosEstudianteEtapa.value.Carrera,
+       { nombres: this.datosEstudianteEtapa.value.Nombres,
+         apellidos: this.datosEstudianteEtapa.value.Apellidos,
+         carrera: this.datosEstudianteEtapa.value.Carrera,
          numeroMatricula : this.datosEstudianteEtapa.value.NumeroMatricula,
-         runEstudiante: this.datosEstudianteEtapa.value.Run,
-         numeroContactoEstudiante: this.datosEstudianteEtapa.value.NumeroContacto,
-         correoEstudiante: this.datosEstudianteEtapa.value.CorreoElectronico,
+         run: this.datosEstudianteEtapa.value.Run,
+         telefono: this.datosEstudianteEtapa.value.NumeroContacto,
+         correoInstitucional: this.datosEstudianteEtapa.value.CorreoElectronico,
          contactoEmergencia: this.datosEstudianteEtapa.value.ContactoEmergencia,
          telefonoEmergencia: this.datosEstudianteEtapa.value.TelefonoEmergencia,
          // Empresa
@@ -124,12 +138,12 @@ export class PlantillaGeneralComponent implements OnInit {
          horaInicio: this.cuartaEtapa.value.HoraInicio,
          horaTermino: this.cuartaEtapa.value.HoraFin,
          duracionJorada: this.cuartaEtapa.value.Jornada,
-         archivoConsentimiento: ' ', // revisar bien.
+         archivos: this.files, // revisar bien.
          // fin ( por el momento)
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
     console.log(plantilla);
-    this.afStudent.upSolicitud(this.files[0], plantilla);
+    this.afStudent.upSolicitud( plantilla);
   }
   /*
   upFile(): void
