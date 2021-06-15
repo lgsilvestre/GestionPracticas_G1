@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-title>
+    <div>{{titulo}}</div>
+    <button mat-raised-button color="primary" *ngIf="rol == 'administradorGeneral' "><mat-icon mat-list-icon>delete_forever</mat-icon></button>
+  </mat-card-title>
+  <mat-card-content>
+    {{descripcion}}
+    <br/>
+    <a href="{{urlOriginal}}">{{urlOriginal}}</a>
+   <div *ngIf="rol == 'administradorGeneral'">
+     <form [formGroup]="archivo">
+       <mat-label>Archivo</mat-label>
+       <br/>
+       <input type="file"  (change)="onFileChange($event)" formControlName="Archivo" required>
+       <br/>
+     </form>
+     <button>subir Archivo</button>
+     <br/>
+   </div>
+  </mat-card-content>
+</mat-card>

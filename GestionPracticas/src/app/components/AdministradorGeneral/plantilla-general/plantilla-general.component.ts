@@ -1,5 +1,5 @@
 /* tslint:disable:no-inferrable-types */
-import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
 import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';

@@ -18,6 +18,8 @@ import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/
 import { GestionArchivosComponent } from './GestionArchivos/gestion-archivos/gestion-archivos.component';
 import { ArchivosInformativoComponent } from './GestionArchivos/archivos-informativo/archivos-informativo.component';
 import { DialogCrearArchivoinformativoComponent } from './GestionArchivos/dialog-crear-archivoinformativo/dialog-crear-archivoinformativo.component';
+import { ArchivoFormContainerComponent } from './GestionArchivos/archivo-form-container/archivo-form-container.component';
+import { DynamicHostFormDirective } from './directivas/dynamic-host-form.directive';
 
 
 
@@ -41,6 +43,8 @@ import { DialogCrearArchivoinformativoComponent } from './GestionArchivos/dialog
 		GestionArchivosComponent,
 		ArchivosInformativoComponent,
 		DialogCrearArchivoinformativoComponent,
+		ArchivoFormContainerComponent,
+		DynamicHostFormDirective,
   ],
   entryComponents: [
     // aqui van los componentes que se crean en tiempo de ejecucion
