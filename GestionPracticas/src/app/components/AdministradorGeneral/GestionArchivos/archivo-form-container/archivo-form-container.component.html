@@ -1,21 +1,17 @@
 <mat-card>
-  <mat-card-title>
-    <div>{{titulo}}</div>
-    <button mat-raised-button color="primary" *ngIf="rol == 'administradorGeneral' "><mat-icon mat-list-icon>delete_forever</mat-icon></button>
-  </mat-card-title>
-  <mat-card-content>
-    {{descripcion}}
-    <br/>
-    <a href="{{urlOriginal}}">{{titulo}}</a>
-   <div *ngIf="rol != 'administradorGeneral'">
-     <form [formGroup]="archivo">
-       <mat-label>Archivo</mat-label>
-       <br/>
-       <input type="file"  (change)="onFileChange($event)" formControlName="Archivo" required>
-       <br/>
-     </form>
-     <button>subir Archivo</button>
-     <br/>
-   </div>
-  </mat-card-content>
+    <mat-card-title class="header-with-delete">
+        <div>{{titulo}}</div>
+        <button mat-raised-button color="primary" *ngIf="rol == 'administradorGeneral' "><mat-icon mat-list-icon>delete_forever</mat-icon></button>
+    </mat-card-title>
+    <mat-card-content>
+        <p>{{descripcion}}</p>
+        <a href="{{urlOriginal}}">{{titulo}}</a>
+        <form *ngIf="rol != 'administradorGeneral'" [formGroup]="archivo">
+            <h3>Archivo</h3>
+            <input type="file" (change)="onFileChange($event)" formControlName="Archivo" required>
+        </form>
+        <div class="step-buttons">
+            <button mat-raised-button color="primary" *ngIf="rol != 'administradorGeneral'">Subir archivo</button>
+        </div>
+    </mat-card-content>
 </mat-card>

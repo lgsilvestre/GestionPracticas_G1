@@ -1,23 +1,23 @@
-::ng-deep mat-card ::ng-deep button {
-  background: none !important;
-  box-shadow: none !important;
-  border-style: none !important;
-  height: 2rem !important;
-  width: 2rem !important;
-  position: absolute !important;
+.header-with-delete ::ng-deep button {
+    background: none !important;
+    box-shadow: none !important;
+    border-style: none !important;
+    height: 2rem !important;
+    width: 2rem !important;
+    position: absolute !important;
 }
 
-::ng-deep mat-card ::ng-deep mat-icon {
-  color: #546e7a;
-  font-size: 2rem !important;
+.header-with-delete ::ng-deep mat-icon {
+    color: #546e7a;
+    font-size: 2rem !important;
 }
 
-::ng-deep mat-card-title {
-  display: flex !important;
-  justify-content: flex-end;
-  align-items: flex-end;
+.header-with-delete {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 div {
-  margin: 0 auto;
+    margin: 0 auto;
 }

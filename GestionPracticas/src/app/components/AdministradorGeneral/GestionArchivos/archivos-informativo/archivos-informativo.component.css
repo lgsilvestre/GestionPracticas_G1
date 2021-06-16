@@ -1,4 +1,4 @@
-::ng-deep mat-card ::ng-deep button {
+.header-with-delete ::ng-deep button {
     background: none !important;
     box-shadow: none !important;
     border-style: none !important;
@@ -7,12 +7,12 @@
     position: absolute !important;
 }
 
-::ng-deep mat-card ::ng-deep mat-icon {
+.header-with-delete ::ng-deep mat-icon {
     color: #546e7a;
     font-size: 2rem !important;
 }
 
-::ng-deep mat-card-title {
+.header-with-delete {
     display: flex !important;
     justify-content: flex-end;
     align-items: flex-end;

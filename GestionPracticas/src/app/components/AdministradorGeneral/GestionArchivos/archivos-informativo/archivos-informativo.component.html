@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title>
+    <mat-card-title class="header-with-delete">
         <div>{{nombre}}</div>
         <button mat-raised-button color="primary" *ngIf="rol == 'administradorGeneral' " (click)="borrarArchivo()">
           <mat-icon mat-list-icon>delete_forever</mat-icon>

@@ -5,6 +5,12 @@ mat-vertical-stepper ::ng-deep mat-vertical-stepper {
     margin: -20px -30px -20px -30px;
 }
 
+::ng-deep .mat-vertical-content ::ng-deep mat-card {
+    background-color: transparent;
+    border-style: none;
+    box-shadow: none !important;
+}
+
 .final-info {
     text-align: center;
 }
