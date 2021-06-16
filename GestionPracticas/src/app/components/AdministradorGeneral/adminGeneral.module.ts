@@ -16,6 +16,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
+import { VisualizarPracticasAdminComponent } from './visualizar-practicas-admin/visualizar-practicas-admin.component';
 
 
 
@@ -36,6 +37,7 @@ import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/
 		AgregarPlan,
 		VerCarreraParticularComponent,
 		CrearCarreraComponent,
+		VisualizarPracticasAdminComponent,
   ],
   entryComponents: [
     // aqui van los componentes que se crean en tiempo de ejecucion

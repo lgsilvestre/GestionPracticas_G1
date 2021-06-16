@@ -21,6 +21,7 @@ import { CrearCuentaComponent } from './components/AdministradorGeneral/crear-cu
 import { GestionarCarrerasComponent } from './components/AdministradorGeneral/gestionar-carreras/gestionar-carreras.component';
 import { VerCarreraParticularComponent } from './components/AdministradorGeneral/gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
 import { CrearCarreraComponent } from './components/AdministradorGeneral/gestionar-carreras/crear-carrera/crear-carrera.component';
+import { VisualizarPracticasAdminComponent } from './components/AdministradorGeneral/visualizar-practicas-admin/visualizar-practicas-admin.component';
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
 	{ path: 'gestionar-carreras/ver-carrera-particular', component: VerCarreraParticularComponent },
 	{ path: 'gestionar-carreras/crear-carrera', component: CrearCarreraComponent },
 	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
+    { path: 'visualizar-practica-admin', component: VisualizarPracticasAdminComponent},
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];
