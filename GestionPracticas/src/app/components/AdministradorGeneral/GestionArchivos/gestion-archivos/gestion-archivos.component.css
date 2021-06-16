@@ -1,0 +1,4 @@
+mat-card ::ng-deep mat-card {
+    box-shadow: none !important;
+    border-color: #a7c0cd !important;
+}

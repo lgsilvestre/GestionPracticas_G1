@@ -109,7 +109,7 @@ mat-paginator {
         justify-content: space-evenly;
     }
     .step-buttons button {
-        width: 10rem;
+        width: 15rem;
     }
      ::ng-deep .mat-dialog-actions button {
         width: 5rem !important;

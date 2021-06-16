@@ -10,8 +10,8 @@
             <h3>Archivo</h3>
             <input type="file" (change)="onFileChange($event)" formControlName="Archivo" required>
         </form>
-        <div class="step-buttons">
-            <button mat-raised-button color="primary" *ngIf="rol != 'administradorGeneral'">Subir archivo</button>
+        <div *ngIf="rol != 'administradorGeneral'" class="step-buttons">
+            <button mat-raised-button color="primary">Subir archivo</button>
         </div>
     </mat-card-content>
 </mat-card>
