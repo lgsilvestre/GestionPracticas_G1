@@ -33,7 +33,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Elige un filtro de práctica</mat-label>
-                <mat-select (selectionChange)="filtroSelectChange($event.value)">
+                <mat-select (selectionChange)="filtroSelectChange($event.value)" [(value)]="selectFilterValue">
                     <mat-option value="matricula">N° Matrícula</mat-option>
                     <mat-option value="situacion">Situación</mat-option>
                     <mat-option value="empresa" *ngIf="!this.tablaSolicitudSeleccionada">Empresa</mat-option>

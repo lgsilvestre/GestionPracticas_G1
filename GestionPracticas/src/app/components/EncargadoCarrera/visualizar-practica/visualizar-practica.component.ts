@@ -33,7 +33,6 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
 
 
 export class VisualizarComponent implements OnInit, AfterViewInit {
-    filtroSemestreSeleccionado: boolean        = false;
     filtroEmpresaSeleccionado: boolean         = false;
     filtroSituacionSeleccionado: boolean       = false;
     filtroNumeroMatriculaSeleccionado: boolean = false;
@@ -47,7 +46,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     tablaIncripcionSeleccionada: boolean;
     tablaEnCursoSeleccionada: boolean;
 
-
+    selectFilterValue: string = "sin_filtros";
 
     displayedColumns: string[];
     displayedColumnsSolicitud: string[];
@@ -152,9 +151,8 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
 
-    filtroSelectChange(filtroElegido: String) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
+    filtroSelectChange(filtroElegido: string) //se ejecuta cuando el usuario selecciona un filtro del <mat-select>
     {
-
         if (filtroElegido == 'matricula') {
             this.filtroNumeroMatriculaSeleccionado = true;
             this.filtroEmpresaSeleccionado = false;
@@ -297,7 +295,11 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     seleccionarTabla(nombreTabla: string) {
-        this.filtroNombre.setValue('');        
+        this.filtroNombre.setValue('');       
+        this.selectFilterValue = "sin_filtros";
+        this.filtroNumeroMatriculaSeleccionado = false;
+        this.filtroSituacionSeleccionado       = false;
+        this.filtroEmpresaSeleccionado         = false;
 
         if (nombreTabla == 'solicitudes') {
             this.tablaSolicitudSeleccionada = true;
