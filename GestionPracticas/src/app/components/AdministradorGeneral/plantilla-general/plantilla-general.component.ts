@@ -7,6 +7,8 @@ import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
 import {ArchivosInformativoComponent} from '../GestionArchivos/archivos-informativo/archivos-informativo.component';
 import {GestionarArchivosGeneralesService} from '../../Servicios/gestionar-archivos-generales.service';
 import {LocalStorageService} from '../../Servicios/local-storage.service';
+import {DynamicHostFormDirective} from "../directivas/dynamic-host-form.directive";
+import {ArchivoFormContainerComponent} from "../GestionArchivos/archivo-form-container/archivo-form-container.component";
 
 export interface Documento
 {
@@ -22,6 +24,7 @@ export interface Documento
 })
 export class PlantillaGeneralComponent implements OnInit {
   @ViewChild(DynamicHostDirective,  { static: true }) public dynamicHost: DynamicHostDirective | undefined;
+  @ViewChild(DynamicHostFormDirective, { static: true }) public dynamicHostFromularios: DynamicHostFormDirective | undefined;
   carreraActual: string = 'None';
   private documentos: Documento[] =
     [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: 'https://www.google.com/'}];
@@ -102,6 +105,28 @@ export class PlantillaGeneralComponent implements OnInit {
         instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo, file.filename);
       });
     });
+    const existe = typeof this.locaSTF.getDocumentos()[1];
+    if (existe.toString() == 'undefined')
+    {
+      this.gestionArchivosGenerales.getFomulariolFiles().subscribe( formuFiles => {
+        this.dynamicHostFromularios?.viewContainerRef.clear();
+        formuFiles.forEach( fileForm => {
+          const  componnet = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
+          const contenido = this.dynamicHostFromularios?.viewContainerRef
+            .createComponent<ArchivoFormContainerComponent>(componnet)?.
+            instance
+            .setValues(
+              fileForm.id,
+              fileForm.nombre,
+              fileForm.textoInformativo,
+              fileForm.urlOriginal,
+              fileForm.urlArchivoEstuduante,
+              fileForm.filename
+            );
+        });
+      });
+      console.log(existe.toString());
+    }
     this.gestionArchivosGenerales.updateGeneralFiles();
     /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
