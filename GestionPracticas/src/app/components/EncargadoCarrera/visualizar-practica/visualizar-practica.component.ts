@@ -12,25 +12,25 @@ import { LocalStorageService } from "../../Servicios/local-storage.service";
 declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
-	if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
+    if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
 
-	length = Math.max(length, 0);
+    length = Math.max(length, 0);
 
-	const startIndex = page * pageSize;
+    const startIndex = page * pageSize;
 
-	// If the start index exceeds the list length, do not try and fix the end index to the end.
-	const endIndex = startIndex < length ?
-		Math.min(startIndex + pageSize, length) :
-		startIndex + pageSize;
+    // If the start index exceeds the list length, do not try and fix the end index to the end.
+    const endIndex = startIndex < length ?
+        Math.min(startIndex + pageSize, length) :
+        startIndex + pageSize;
 
-	return `${startIndex + 1} - ${endIndex} de ${length}`;
+    return `${startIndex + 1} - ${endIndex} de ${length}`;
 }
 
 
 @Component({
-	selector: 'app-visualizar-practicas',
-	templateUrl: './visualizar-practica.component.html',
-	styleUrls: ['./visualizar-practica.component.css', '../../../app.component.css']
+    selector: 'app-visualizar-practicas',
+    templateUrl: './visualizar-practica.component.html',
+    styleUrls: ['./visualizar-practica.component.css', '../../../app.component.css']
 })
 
 
@@ -51,7 +51,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
 
 
-    displayedColumns: string[]; 
+    displayedColumns: string[];
     displayedColumnsSolicitud: string[];
     displayedColumnsInscripcion: string[];
     displayedColumnsEnCurso: string[];
@@ -69,7 +69,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     filterValues = {
         rut: '',
         numeroMatricula: '',
-        nombreEstudiante: '',
+        nombres: '',
         nombreEmpresa: '',
         estado: '',
         numeroPractica: '',
@@ -83,8 +83,8 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
         this.filtroNombre.valueChanges
             .subscribe(
-                nombreEstudiante => {
-                    this.filterValues.nombreEstudiante = nombreEstudiante;
+                nombres => {
+                    this.filterValues.nombres = nombres;
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
@@ -115,7 +115,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService) {
         this.solicitudes = [];
         this.dataSource.data = this.solicitudes;
-        this.dataSource.filterPredicate = this.createFilter();
+        this.dataSource.filterPredicate = this.createFilter('Solicitudes');
 
         this.tablaSolicitudSeleccionada = true; //Por default está seleccionada.
         this.tablaIncripcionSeleccionada = false;
@@ -181,10 +181,11 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
+            this.clearFilters();
         }
     }
 
-    cargarDatos(coleccion : string) {
+    cargarDatos(coleccion: string) {
         var carrera = this.locaSTF.getCarrera(); //carrera del encargado
         this.EC_service.load_data_visualizar_practica(coleccion, "Ingeniería Civil en Computación").then((querySnapshot) => {
             this.solicitudes = [];
@@ -200,21 +201,20 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         });
     }
 
-    createFilter(): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
+    createFilter(tabla : string): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
         let filterFunction = function (data: any, filter: string): boolean {
             let searchTerms = JSON.parse(filter);
-            return data.nombreEstudiante.toString().toLowerCase().indexOf(searchTerms.nombreEstudiante) !== -1
+            return data.nombres.toString().toLowerCase().indexOf(searchTerms.nombres) !== -1
                 && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
                 && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
-                && data.numeroPractica.toString().toLowerCase().indexOf(searchTerms.numeroPractica) !== -1;
+                && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1;
         }
         return filterFunction;
     }
 
-    cambiar_estado(solicitud: any, param_estado: string) 
-    {
-        var msg_success    = "La solicitud fue ";
-        var msg_error      = "Ocurrió un error y la solicitud no se pudo ";
+    cambiar_estado(solicitud: any, param_estado: string) {
+        var msg_success = "La solicitud fue ";
+        var msg_error = "Ocurrió un error y la solicitud no se pudo ";
         var coleccion = '';
 
         if (this.tablaSolicitudSeleccionada) {
@@ -229,82 +229,80 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             coleccion = 'Solicitudes'
         }
 
-        var solicitudRef   = this.EC_service.update_solicitud(solicitud.idSolicitud, coleccion);
-        console.log("El id para actualizar es>>> "+solicitud.idSolicitud);
+        var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud, coleccion);
+        console.log("El id para actualizar es>>> " + solicitud.idSolicitud);
 
-        if ( param_estado == "Aceptado" )
-        {
+        if (param_estado == "Aceptado") {
             msg_success += "aceptada";
-            msg_error   += "aceptar";
+            msg_error += "aceptar";
 
             alertify.confirm(
-                'Aceptar solicitud', 
-                '¿Está seguro que desea aceptar la solicitud?', 
-                () => { 
+                'Aceptar solicitud',
+                '¿Está seguro que desea aceptar la solicitud?',
+                () => {
                     return solicitudRef.update({
                         estado: param_estado
                     })
-                      .then(() => {
-                        this.solicitudes = [];
-                        this.cargarDatos(coleccion);
-                        alertify.success(msg_success);
-                    })
-                      .catch((error) => {
-                        alertify.error(msg_error+error);
-                    });
-                }, 
+                        .then(() => {
+                            this.solicitudes = [];
+                            this.cargarDatos(coleccion);
+                            alertify.success(msg_success);
+                        })
+                        .catch((error) => {
+                            alertify.error(msg_error + error);
+                        });
+                },
                 () => { alertify.error("La acción fue cancelada") }
             );
         }
 
-        if ( param_estado == "Rechazada" )
-        {
+        if (param_estado == "Rechazada") {
             msg_success += "rechazada";
-            msg_error   += "rechazar";
+            msg_error += "rechazar";
 
-            alertify.prompt( 
-                'Feedback', 
-                '¿Por qué la solicitud será rechazada?', 
-                '', 
-                (evt: any, motivo: string) => { 
+            alertify.prompt(
+                'Feedback',
+                '¿Por qué la solicitud será rechazada?',
+                '',
+                (evt: any, motivo: string) => {
                     return solicitudRef.update({
                         estado: param_estado,
                         feedback: motivo
-                      })
-                      .then(() => {
-                        this.solicitudes = [];
-                        this.cargarDatos(coleccion);
-                        alertify.success(msg_success);
-                      })
-                      .catch((error) => {
-                        alertify.error(msg_error);
-                      });
-                }, 
+                    })
+                        .then(() => {
+                            this.solicitudes = [];
+                            this.cargarDatos(coleccion);
+                            alertify.success(msg_success);
+                        })
+                        .catch((error) => {
+                            alertify.error(msg_error);
+                        });
+                },
                 () => { alertify.error('La acción fue cancelada') }
             );
         }
     }
 
-    alertify_default_setting()
-    {
-        alertify.defaults.theme.ok         = "btn btn-outline-primary";
-        alertify.defaults.theme.cancel     = "btn btn-secondary";
-        alertify.defaults.theme.input      = "form-control";
-        alertify.defaults.glossary.ok      = "Aceptar";
-        alertify.defaults.glossary.cancel  = "Cancelar";
+    alertify_default_setting() {
+        alertify.defaults.theme.ok = "btn btn-outline-primary";
+        alertify.defaults.theme.cancel = "btn btn-secondary";
+        alertify.defaults.theme.input = "form-control";
+        alertify.defaults.glossary.ok = "Aceptar";
+        alertify.defaults.glossary.cancel = "Cancelar";
     }
 
-    seleccionarTabla(nombreTabla: string){
+    seleccionarTabla(nombreTabla: string) {
 
-        if(nombreTabla == 'solicitudes'){
-            this.tablaSolicitudSeleccionada  = true;
+
+        if (nombreTabla == 'solicitudes') {
+            this.tablaSolicitudSeleccionada = true;
             this.tablaIncripcionSeleccionada = false;
-            this.tablaEnCursoSeleccionada    = false;
+            this.tablaEnCursoSeleccionada = false;
             this.displayedColumns = this.displayedColumnsSolicitud;
             this.cargarDatos('SolicitudesPracticas');
             console.log("solicitudes");
         }
-        if(nombreTabla == 'inscripciones'){
+        if (nombreTabla == 'inscripciones') {
             this.tablaSolicitudSeleccionada = false;
             this.tablaIncripcionSeleccionada = true;
             this.tablaEnCursoSeleccionada = false;
@@ -320,6 +318,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             this.cargarDatos('Solicitudes');
             console.log("en curso");
         }
+
     }
 
 }

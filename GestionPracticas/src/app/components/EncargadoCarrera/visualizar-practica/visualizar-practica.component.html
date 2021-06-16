@@ -48,8 +48,8 @@
                 <mat-label>Elige la situación</mat-label>
                 <mat-select [formControl]="filtroSituacion">
                     <mat-option value="pendiente">Pendiente</mat-option>
-                    <mat-option value="en proceso">En proceso</mat-option>
-                    <mat-option value="terminada">Terminada</mat-option>
+                    <mat-option value="aceptado">Aceptado</mat-option>
+                    <mat-option value="rechazada">Rechazada</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" *ngIf="filtroEmpresaSeleccionado">
@@ -60,20 +60,20 @@
         <div class="table-visualizer">
             <table mat-table [dataSource]="dataSource" id="tabla">
                 <ng-container matColumnDef="matricula">
-                    <th mat-header-cell *matHeaderCellDef> No. Matrícula </th>
+                    <th mat-header-cell *matHeaderCellDef> Nro. Matrícula </th>
                     <td mat-cell *matCellDef="let element"> {{element.numeroMatricula}} </td>
                 </ng-container>
                 <ng-container matColumnDef="nombre">
                     <th mat-header-cell *matHeaderCellDef> Nombres </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nombreEstudiante}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
                 </ng-container>
                 <ng-container matColumnDef="apellido">
                     <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-                    <td mat-cell *matCellDef="let element"> {{element.apellidoEstudiante}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
                 </ng-container>
                 <ng-container matColumnDef="rut">
                     <th mat-header-cell *matHeaderCellDef> Rut </th>
-                    <td mat-cell *matCellDef="let element"> {{element.runEstudiante}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.run}} </td>
                 </ng-container>
                 <ng-container matColumnDef="empresa" *ngIf="!this.tablaSolicitudSeleccionada">
                     <th mat-header-cell *matHeaderCellDef> Empresa </th>
