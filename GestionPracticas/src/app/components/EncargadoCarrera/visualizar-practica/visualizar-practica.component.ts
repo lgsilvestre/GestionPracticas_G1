@@ -6,8 +6,6 @@ import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.c
 import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 import { Practica } from "src/app/model/practica.model";
-import { InformationComponent } from "../../dialogs/information/information.component";
-import { AlertComponent } from "../../dialogs/alert/alert.component";
 import { LocalStorageService } from "../../Servicios/local-storage.service";
 declare let alertify: any;
 
@@ -35,15 +33,15 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
 
 
 export class VisualizarComponent implements OnInit, AfterViewInit {
-    filtroSemestreSeleccionado: boolean = false;
-    filtroEmpresaSeleccionado: boolean = false;
-    filtroSituacionSeleccionado: boolean = false;
+    filtroSemestreSeleccionado: boolean        = false;
+    filtroEmpresaSeleccionado: boolean         = false;
+    filtroSituacionSeleccionado: boolean       = false;
     filtroNumeroMatriculaSeleccionado: boolean = false;
 
-    filtroNombre = new FormControl('');
-    filtroEmpresa = new FormControl('');
+    filtroNombre          = new FormControl('');
+    filtroEmpresa         = new FormControl('');
     filtroNumeroMatricula = new FormControl('');
-    filtroSituacion = new FormControl('');
+    filtroSituacion       = new FormControl('');
 
     tablaSolicitudSeleccionada: boolean;
     tablaIncripcionSeleccionada: boolean;
@@ -67,12 +65,10 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
     filterValues = {
-        rut: '',
         numeroMatricula: '',
         nombres: '',
         nombreEmpresa: '',
         estado: '',
-        numeroPractica: '',
     }
 
 
@@ -113,9 +109,9 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService) {
-        this.solicitudes = [];
+        this.solicitudes     = [];
         this.dataSource.data = this.solicitudes;
-        this.dataSource.filterPredicate = this.createFilter('Solicitudes');
+        this.dataSource.filterPredicate = this.createFilter('SolicitudesPractica');
 
         this.tablaSolicitudSeleccionada = true; //Por default está seleccionada.
         this.tablaIncripcionSeleccionada = false;
@@ -202,12 +198,21 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     createFilter(tabla : string): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
+
+        
         let filterFunction = function (data: any, filter: string): boolean {
             let searchTerms = JSON.parse(filter);
-            return data.nombres.toString().toLowerCase().indexOf(searchTerms.nombres) !== -1
-                && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1
-                && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
-                && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1;
+
+            let output = data.nombres.toString().toLowerCase().indexOf(searchTerms.nombres) !== -1
+            && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
+            && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1;
+
+            if ( tabla != "SolicitudesPractica" )
+            {
+                output = output && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1;
+            }
+
+            return output;
         }
         return filterFunction;
     }
@@ -293,14 +298,13 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     seleccionarTabla(nombreTabla: string) {
 
-
         if (nombreTabla == 'solicitudes') {
             this.tablaSolicitudSeleccionada = true;
             this.tablaIncripcionSeleccionada = false;
             this.tablaEnCursoSeleccionada = false;
             this.displayedColumns = this.displayedColumnsSolicitud;
             this.cargarDatos('SolicitudesPracticas');
-            console.log("solicitudes");
+            this.dataSource.filterPredicate = this.createFilter('SolicitudesPractica');
         }
         if (nombreTabla == 'inscripciones') {
             this.tablaSolicitudSeleccionada = false;
@@ -308,7 +312,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             this.tablaEnCursoSeleccionada = false;
             this.displayedColumns = this.displayedColumnsInscripcion;
             this.cargarDatos('Solicitudes');
-            console.log("inscripciones");
+            this.dataSource.filterPredicate = this.createFilter('Solicitudes');
         }
         if (nombreTabla == 'enCurso') {
             this.tablaSolicitudSeleccionada = false;
@@ -316,7 +320,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             this.tablaEnCursoSeleccionada = true;
             this.displayedColumns = this.displayedColumnsEnCurso;
             this.cargarDatos('Solicitudes');
-            console.log("en curso");
+            this.dataSource.filterPredicate = this.createFilter('Solicitudes');
         }
 
     }
