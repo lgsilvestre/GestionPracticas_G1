@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogCrearArchivoinformativoComponent } from '../dialog-crear-archivoinformativo/dialog-crear-archivoinformativo.component';
 import {ArchivoFormContainerComponent} from '../archivo-form-container/archivo-form-container.component';
 import {DynamicHostFormDirective} from '../../directivas/dynamic-host-form.directive';
+import {DialogSubirFormularioComponent} from '../dialog-subir-formulario/dialog-subir-formulario.component';
 
 @Component({
   selector: 'app-gestion-archivos',
@@ -28,7 +29,7 @@ export class GestionArchivosComponent implements OnInit
               public dialog: MatDialog){ }
   ngOnInit(): void
   {
-    this.gestionArchivosGenerales.getGeneralFiles().subscribe(files => {
+    this.gestionArchivosGenerales.getInformativelFiles().subscribe(files => {
       this.dynamicHostInformativos?.viewContainerRef.clear();
       files.forEach(file => {
         console.log('file ' + file.id);
@@ -37,16 +38,33 @@ export class GestionArchivosComponent implements OnInit
         instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo, file.filename);
       });
     });
-    const componentt = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
-    const conttt = this.dynamicHostFromularios?.viewContainerRef
-      .createComponent<ArchivoFormContainerComponent>(componentt)?.
-    instance.setValues('hola', 'hola', 'hola', 'hola');
+    this.gestionArchivosGenerales.getFomulariolFiles().subscribe( formuFiles => {
+      this.dynamicHostFromularios?.viewContainerRef.clear();
+      formuFiles.forEach( fileForm => {
+        const  componnet = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
+        const contenido = this.dynamicHostFromularios?.viewContainerRef
+          .createComponent<ArchivoFormContainerComponent>(componnet)?.
+          instance
+          .setValues(
+            fileForm.id,
+            fileForm.nombre,
+            fileForm.textoInformativo,
+            fileForm.urlOriginal,
+            fileForm.urlArchivoEstuduante,
+            fileForm.filename
+          );
+      });
+    });
     this.gestionArchivosGenerales.updateGeneralFiles();
   }
   // tslint:disable-next-line:use-lifecycle-interface
   public createComponent(): void
   {
     this.dialog.open(DialogCrearArchivoinformativoComponent);
+  }
+  public upLoadForm(): void
+  {
+    this.dialog.open(DialogSubirFormularioComponent);
   }
 
 }

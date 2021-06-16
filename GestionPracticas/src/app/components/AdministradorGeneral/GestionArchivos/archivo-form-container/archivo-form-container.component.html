@@ -6,8 +6,8 @@
   <mat-card-content>
     {{descripcion}}
     <br/>
-    <a href="{{urlOriginal}}">{{urlOriginal}}</a>
-   <div *ngIf="rol == 'administradorGeneral'">
+    <a href="{{urlOriginal}}">{{titulo}}</a>
+   <div *ngIf="rol != 'administradorGeneral'">
      <form [formGroup]="archivo">
        <mat-label>Archivo</mat-label>
        <br/>

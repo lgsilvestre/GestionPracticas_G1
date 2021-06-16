@@ -10,6 +10,8 @@ import {LocalStorageService} from '../../../Servicios/local-storage.service';
 })
 export class ArchivoFormContainerComponent implements OnInit {
 
+  id: string = '';
+  filename: string = '';
   archivo: FormGroup;
   titulo: string = '';
   descripcion: string = '';
@@ -28,11 +30,13 @@ export class ArchivoFormContainerComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-  public setValues(titulo: string, descripcion: string, url: string, urlEStudiante: string = ''): void {
+  setValues(id: string, titulo: string, textoInformativo: string, urlOriginal: string, urlEStudiante: string, filename: string): void
+  {
+    this.id = id;
     this.titulo = titulo;
-    this.descripcion = descripcion;
-    this.urlOriginal = url;
-    this.urlArchivoEstudiante = urlEStudiante;
+    this.descripcion = textoInformativo;
+    this.urlOriginal = urlOriginal;
+    this.filename = filename;
   }
   onFileChange(event: any): void
   {

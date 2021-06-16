@@ -93,13 +93,13 @@ export class PlantillaGeneralComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.gestionArchivosGenerales.getGeneralFiles().subscribe(files => {
+    this.gestionArchivosGenerales.getInformativelFiles().subscribe(files => {
       this.dynamicHost?.viewContainerRef.clear();
       files.forEach(file => {
         console.log('file ' + file.id);
         const component = this.comFacResol.resolveComponentFactory(ArchivosInformativoComponent);
         const contt = this.dynamicHost?.viewContainerRef.createComponent<ArchivosInformativoComponent>(component)?.
-        instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo);
+        instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo, file.filename);
       });
     });
     this.gestionArchivosGenerales.updateGeneralFiles();
