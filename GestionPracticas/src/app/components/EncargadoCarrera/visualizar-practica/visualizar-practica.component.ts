@@ -297,6 +297,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     seleccionarTabla(nombreTabla: string) {
+        this.filtroNombre.setValue('');        
 
         if (nombreTabla == 'solicitudes') {
             this.tablaSolicitudSeleccionada = true;
