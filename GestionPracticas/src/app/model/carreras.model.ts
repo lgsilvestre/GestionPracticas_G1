@@ -7,5 +7,5 @@ export interface Carrera
     nombreEncargadoCarrera?: string;
     correoEncargadoCarrera?: string;
     telefonoEncargadoCarrera?: string;
-    planEstudio?: PlanEstudios;
+    planEstudio?: PlanEstudios[];
 }

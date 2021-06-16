@@ -8,29 +8,12 @@
                     <mat-label>Nombre</mat-label>
                     <input matInput class="input" formControlName="nombreCarrera" placeholder="Ingeniería Civil en...">
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Planes de estudio activos</mat-label>
-                    <input matInput class="inpput" formControlName="planEstudio" placeholder="Plan 11, Plan 16...">
-                </mat-form-field>
-                <p id="note"><strong>*</strong>En caso de ser más de un plan de estudio, diferencielas por coma.</p>
-            </div>
-            <div id="amounts">
-                <h2>Cantidad de prácticas exigibles</h2>
-                <mat-form-field id="amount-select" appearance="outline">
-                    <mat-label>Cantidad</mat-label>
-                    <mat-select formControlName="cantidadPracticas">
-                        <mat-option value="1">1</mat-option>
-                        <mat-option value="2">2</mat-option>
-                        <mat-option value="3">3</mat-option>
-                    </mat-select>
-                </mat-form-field>
             </div>
             <div>
                 <h2>Datos Encargado</h2>
                 <mat-form-field appearance="outline">
                     <mat-label>Nombre Encargado</mat-label>
-                    <input matInput class="inpput" formControlName="nombreEncargado"
-                        placeholder="Nombre y apellido del encargado de carrera">
+                    <input matInput class="inpput" formControlName="nombreEncargado" placeholder="Nombre y apellido del encargado de carrera">
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Correo electrónico</mat-label>
@@ -41,20 +24,9 @@
                     <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
                 </mat-form-field>
             </div>
-            <div>
-                <h2>Datos plantilla de presentación de estudiante</h2>
-                <h3>Datos de estudiante postulante</h3>
-                <div>
-                    <p>Aquí debería ir algo</p>
-                </div>
-                <h3>Datos de práctica</h3>
-                <div>
-                    <p>Aquí debería ir algo</p>
-                </div>
-            </div>
             <div class="step-buttons">
-                <button color="primary" mat-raised-button (click)="volver()">Volver</button>
                 <button color="primary" mat-raised-button (click)="crearCarrera()">Crear carrera</button>
+                <button color="primary" mat-raised-button (click)="volver()">Volver</button>
             </div>
         </form>
     </mat-card-content>

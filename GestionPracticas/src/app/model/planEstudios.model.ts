@@ -2,6 +2,8 @@ import { practicasCarrera } from "./practicasCarrera.model";
 
 export interface PlanEstudios
 {
+    id?:string;
     nombre: string;
-    practicas: practicasCarrera[];
+    requisitos:string[];
+    numeroPracticas:string;
 }

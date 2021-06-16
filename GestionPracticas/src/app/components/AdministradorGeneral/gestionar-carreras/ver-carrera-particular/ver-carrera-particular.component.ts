@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl, ɵangular_packages_forms_forms_g, FormGroup, Validators } from '@angular/forms';
+import { FormControl, ɵangular_packages_forms_forms_g, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Carrera } from 'src/app/model/carreras.model';
 import { GestionCarreraService } from '../../../Servicios/adminGenerla/gestion-carrera.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { zipAll } from 'rxjs/operators';
+import { PlanEstudios } from '../../../../model/planEstudios.model';
+import { identifierModuleUrl } from '@angular/compiler';
+
 
 
 @Component({
@@ -15,21 +19,22 @@ import { ActivatedRoute } from '@angular/router';
 export class VerCarreraParticularComponent implements OnInit
 {
 
-  numeroPracticas = new FormControl('1');
   formulario1: FormGroup;
-  carrera: Carrera= {};
+  formularioPlanCarrera: FormGroup;
+  carrera: Carrera = {};
 
-  planesVigentes: number[]= [11,16]
-
-  Encargadodeshabilitado:boolean= true;
-  CorreoEncargadoDeshabilitado: boolean = true;
-  cantidadPracticasdeshabilitado:boolean= true;
-
-  constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute) 
+  constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute,private _formBuilder: FormBuilder,
+    private route: Router)
   {
       this.formulario1= new FormGroup({
           nombreEncargado: new FormControl('', Validators.required),
           CorreoEncargado: new FormControl('', Validators.required),
+      });
+
+      this.formularioPlanCarrera = new FormGroup({
+        nombrePlan: new FormControl('',[Validators.required]),
+        cantidadPracticas: new FormControl('',[Validators.required]),
+        requisitos: new FormControl('',[Validators.required]),
       });
   }
 
@@ -38,12 +43,15 @@ export class VerCarreraParticularComponent implements OnInit
       this._route.params.subscribe(parametro =>{
           this._gestionCarrera.getCarrera(parametro['id']).subscribe(carrera =>{
               this.carrera= carrera!;
+              console.log(this.carrera);
               this.formulario1.patchValue({
                   nombreEncargado: this.carrera.nombreEncargadoCarrera,
-                  CorreoEncargado: this.carrera.correoEncargadoCarrera
+                  CorreoEncargado: this.carrera.correoEncargadoCarrera,
               })
           })
-      })
+      });
+
+      this._gestionCarrera.getPlanEstudio(this.carrera.id!);
   }
 
   updateFormulario()
@@ -57,7 +65,7 @@ export class VerCarreraParticularComponent implements OnInit
       this._gestionCarrera.guardarCarrera(actualizacion,this.carrera.id!);
   }
 
-  openDialog() 
+  openDialog()
   {
     const dialogoEliminar = this.dialog.open(editarPlanes)
 
@@ -74,25 +82,22 @@ export class VerCarreraParticularComponent implements OnInit
     })
   }
 
-  habilitarDatosEncargado() 
-  {
-    this.CorreoEncargadoDeshabilitado = false;
-    this.Encargadodeshabilitado = false;
-  }
-  deshabilitarDatosEncargado() 
-  {
-    this.CorreoEncargadoDeshabilitado = true;
-    this.Encargadodeshabilitado = true;
+
+  agregarPlanEstudio(){
+    const planEnCreacion: PlanEstudios =
+    {
+      id: this.carrera.id ,
+      nombre: this.formularioPlanCarrera.value.nombrePlan,
+      numeroPracticas: this.formularioPlanCarrera.value.cantidadPracticas,
+      requisitos: this.formularioPlanCarrera.value.requisitos,
+    }
+
+    this._gestionCarrera.addPlanEstudio(planEnCreacion);
   }
 
-  habilitarSelectPracticas()
+  volver()
   {
-    this.cantidadPracticasdeshabilitado=false;
-  }
-
-  deshabilitarSelectPracticas() 
-  {
-    this.cantidadPracticasdeshabilitado = true;
+      this.route.navigate(['/gestionar-carreras']);
   }
 
 }
