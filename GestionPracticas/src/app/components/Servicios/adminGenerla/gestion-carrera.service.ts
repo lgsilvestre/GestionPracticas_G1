@@ -4,7 +4,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { PlanEstudios } from 'src/app/model/planEstudios.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +14,8 @@ export class GestionCarreraService
   carreras: Carrera[]= [];
   planesEstudios: PlanEstudios[] = [];
 
-  constructor(private afStore: AngularFirestore ) { }
+  constructor(private afStore: AngularFirestore)
+  { }
 
   getCarreras():Observable<Carrera[]>
   {
@@ -59,12 +59,15 @@ export class GestionCarreraService
     itemDoc.add(planEstudioNuevo);
   }
 
-  getPlanesEstudios(){
+  getPlanesEstudios()
+  {
     return this.afStore.collection<PlanEstudios>('PlanEstudio').valueChanges({idField:'id'});
   }
 
-  getPlanEstudio(id:string){
-    return this.afStore.doc<Carrera>(`PlanEstudio/${id}`).valueChanges({idField: 'id'});
+  getPlanEstudio(idCarrera:string)
+  {
+      return this.afStore.collection<PlanEstudios>('PlanEstudio', datos=> datos
+      .where("id", "==", idCarrera));
   }
 
 }

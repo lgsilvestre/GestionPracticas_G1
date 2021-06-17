@@ -36,6 +36,7 @@ export class VerCarreraParticularComponent implements OnInit
         cantidadPracticas: new FormControl('',[Validators.required]),
         requisitos: new FormControl('',[Validators.required]),
       });
+
   }
 
   ngOnInit()
@@ -93,6 +94,12 @@ export class VerCarreraParticularComponent implements OnInit
     }
 
     this._gestionCarrera.addPlanEstudio(planEnCreacion);
+
+    this._gestionCarrera.getPlanEstudio(this.carrera.id!).valueChanges().subscribe( datos=>
+        {
+            console.log(datos);
+        });
+
   }
 
   volver()
