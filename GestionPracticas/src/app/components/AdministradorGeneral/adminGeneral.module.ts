@@ -16,6 +16,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
+import { VisualizarPracticasAdminComponent } from './visualizar-practicas-admin/visualizar-practicas-admin.component';
 import { DefinirFechasImportantesComponent } from './definir-fechas-importantes/definir-fechas-importantes.component';
 
 
@@ -37,6 +38,7 @@ import { DefinirFechasImportantesComponent } from './definir-fechas-importantes/
 		AgregarPlan,
 		VerCarreraParticularComponent,
 		CrearCarreraComponent,
+		VisualizarPracticasAdminComponent,
 		DefinirFechasImportantesComponent,
   ],
   entryComponents: [

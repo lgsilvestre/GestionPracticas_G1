@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DialogoPracticaComponent } from '../dialogo-practica/dialogo-practica.component';
+import { DialogoPracticaComponent } from 'src/app/components/EncargadoCarrera/dialogo-practica/dialogo-practica.component';
 import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 import { Practica } from "src/app/model/practica.model";
@@ -24,23 +24,21 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
     return `${startIndex + 1} - ${endIndex} de ${length}`;
 }
 
-
 @Component({
-    selector: 'app-visualizar-practicas',
-    templateUrl: './visualizar-practica.component.html',
-    styleUrls: ['./visualizar-practica.component.css', '../../../app.component.css']
+    selector: 'app-visualizar-practicas-admin',
+    templateUrl: './visualizar-practicas-admin.component.html',
+    styleUrls: ['./visualizar-practicas-admin.component.css', '../../../app.component.css']
 })
+export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit {
 
-
-export class VisualizarComponent implements OnInit, AfterViewInit {
-    filtroEmpresaSeleccionado: boolean         = false;
-    filtroSituacionSeleccionado: boolean       = false;
+    filtroEmpresaSeleccionado: boolean = false;
+    filtroSituacionSeleccionado: boolean = false;
     filtroNumeroMatriculaSeleccionado: boolean = false;
 
-    filtroNombre          = new FormControl('');
-    filtroEmpresa         = new FormControl('');
+    filtroNombre = new FormControl('');
+    filtroEmpresa = new FormControl('');
     filtroNumeroMatricula = new FormControl('');
-    filtroSituacion       = new FormControl('');
+    filtroSituacion = new FormControl('');
 
     tablaSolicitudSeleccionada: boolean;
     tablaIncripcionSeleccionada: boolean;
@@ -108,7 +106,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService) {
-        this.solicitudes     = [];
+        this.solicitudes = [];
         this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter('SolicitudesPractica');
 
@@ -195,18 +193,17 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
         });
     }
 
-    createFilter(tabla : string): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
+    createFilter(tabla: string): (data: any, filter: string) => boolean { //crea el filtro de manera personalizada en la columna correspondiente.
 
-        
+
         let filterFunction = function (data: any, filter: string): boolean {
             let searchTerms = JSON.parse(filter);
 
             let output = data.nombres.toString().toLowerCase().indexOf(searchTerms.nombres) !== -1
-            && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
-            && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1;
+                && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
+                && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1;
 
-            if ( tabla != "SolicitudesPractica" )
-            {
+            if (tabla != "SolicitudesPractica") {
                 output = output && data.nombreEmpresa.toString().toLowerCase().indexOf(searchTerms.nombreEmpresa) !== -1;
             }
 
@@ -295,11 +292,11 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     seleccionarTabla(nombreTabla: string) {
-        this.filtroNombre.setValue('');       
+        this.filtroNombre.setValue('');
         this.selectFilterValue = "sin_filtros";
         this.filtroNumeroMatriculaSeleccionado = false;
-        this.filtroSituacionSeleccionado       = false;
-        this.filtroEmpresaSeleccionado         = false;
+        this.filtroSituacionSeleccionado = false;
+        this.filtroEmpresaSeleccionado = false;
 
         if (nombreTabla == 'solicitudes') {
             this.tablaSolicitudSeleccionada = true;
