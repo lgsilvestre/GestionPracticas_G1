@@ -17,6 +17,7 @@ import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
 import { VisualizarPracticasAdminComponent } from './visualizar-practicas-admin/visualizar-practicas-admin.component';
+import { DefinirFechasImportantesComponent } from './definir-fechas-importantes/definir-fechas-importantes.component';
 
 
 
@@ -38,6 +39,7 @@ import { VisualizarPracticasAdminComponent } from './visualizar-practicas-admin/
 		VerCarreraParticularComponent,
 		CrearCarreraComponent,
 		VisualizarPracticasAdminComponent,
+		DefinirFechasImportantesComponent,
   ],
   entryComponents: [
     // aqui van los componentes que se crean en tiempo de ejecucion

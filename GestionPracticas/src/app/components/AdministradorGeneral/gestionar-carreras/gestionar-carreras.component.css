@@ -18,3 +18,8 @@ mat-card {
         width: 5rem !important;
     }
 }
+
+.justify
+{
+    text-align: justify;
+}

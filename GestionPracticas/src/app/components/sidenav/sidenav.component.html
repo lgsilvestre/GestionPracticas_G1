@@ -53,6 +53,11 @@
                     <span>Gestionar carreras</span>
                 </a>
 
+                <a routerLink="./definir-fechas-importantes" mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon mat-list-icon>visibility</mat-icon>
+                    <span>Definir fechas importantes</span>
+                </a>
+
             </div>
             <div *ngIf="soyEstudiante">
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">

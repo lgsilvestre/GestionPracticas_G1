@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>Gestión de fechas importantes</mat-card-title>
+    <p>En esta sección se podrá agregar, editar o quitar fechas que sean relevantes para el periodo de práctica de la universidad.
+        Por ejemplo, en esta sección se debe agregar la fecha límite oficial para entregar solicitudes de prácticas en la 
+        universidad y, de ser necerario, de alguna carrera en específico que difiera de la fecha globar.
+    </p>
+</mat-card>
+
+<mat-card>
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"> Confirmar </button>
+</mat-card>
+

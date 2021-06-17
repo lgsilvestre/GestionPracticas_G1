@@ -1,39 +1,30 @@
 <mat-card>
     <mat-card-title>Carreras universitarias Universidad de Talca</mat-card-title>
-    <mat-card-content>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <mat-card-content class="justify">
+        <p>Podrás ver el listado de carreras habilitadas en el sistema para sus procesos de práctica. Podrás revisar la 
+        información detallada de cada carrera en particular puedes ir a "Gestionar carrera" en la carrera que desees. </p>
+    
+        <p>Si una carrera dejó de presentar alumnos practicantes podrás deshabilitarla del sistema. Por otro lado, si se crea
+        una nueva carrera dentro de la universidad, podrás incluirla y manejar la información que sea necesaria para que éstas 
+        puedan llevar sus prácticas cómo sus planes de estudio indiquen.</p>
     </mat-card-content>
 </mat-card>
-<mat-card>
+
+<mat-card *ngFor="let item of carreras">
     <!-- <mat-card-header>Campus Curicó</mat-card-header> -->
-    <mat-card-title>Ingeniería Civil en Computación</mat-card-title>
+    <mat-card-title>{{item.nombreCarrera}}</mat-card-title>
     <mat-card-content id="info">
         <h3><b>Encargado(a) de carrera asociado:</b></h3>
-        <p>Juan Pérez</p>
-        <h3><b>Alumnos habilitados para rendir prácticas:</b></h3>
-        <p>30</p>
+        <p>{{item.nombreEncargadoCarrera}}</p>
         <div class="step-buttons">
-            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
-            <button mat-raised-button routerLink="/gestionar-carreras/ver-carrera-particular" color="primary" type="submit" (click)="goToCarrera()">Gestionar carrera</button>
+            <button mat-raised-button class="boton-eliminar" type="submit" (click)="eliminarCarrera(item.id!)">Eliminar carrera</button>
+            <button mat-raised-button color="primary" type="submit" (click)="goToCarrera(item)">Gestionar carrera</button>
         </div>
     </mat-card-content>
 </mat-card>
-<mat-card>
-    <!-- <mat-card-header>Campus Curicó</mat-card-header> -->
-    <mat-card-title>Ingeniería Civil Industrial</mat-card-title>
-    <mat-card-content id="info">
-        <h3><b>Encargado(a) de carrera asociado:</b></h3>
-        <p>Maria Jimenez</p>
-        <h3><b>Alumnos habilitados para rendir prácticas:</b></h3>
-        <p>45</p>
-        <div class="step-buttons">
-            <button mat-raised-button class="boton-eliminar" type="submit" (click)="openDialog()">Eliminar carrera</button>
-            <button mat-raised-button color="primary" type="submit">Gestionar carrera</button>
-        </div>
-    </mat-card-content>
-</mat-card>
+
 <mat-card>
     <mat-card-content>
-        <button mat-raised-button routerLink="/gestionar-carreras/crear-carrera" color="primary" type="submit" (click)="goToCrearCarrera()">Agregar carrera al sistema de prácticas</button>
+        <button mat-raised-button color="primary" type="submit" (click)="goToCrearCarrera()">Agregar carrera al sistema de prácticas</button>
     </mat-card-content>
 </mat-card>
