@@ -22,10 +22,8 @@ import { GestionarCarrerasComponent } from './components/AdministradorGeneral/ge
 import { VerCarreraParticularComponent } from './components/AdministradorGeneral/gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
 import { CrearCarreraComponent } from './components/AdministradorGeneral/gestionar-carreras/crear-carrera/crear-carrera.component';
 import { VisualizarPracticasAdminComponent } from './components/AdministradorGeneral/visualizar-practicas-admin/visualizar-practicas-admin.component';
-import { SolicitudPracticaCarreraComponent } from './components/EncargadoCarrera/solicitud-practica-carrera/solicitud-practica-carrera.component';
-import {GestionArchivosComponent} from "./components/AdministradorGeneral/GestionArchivos/gestion-archivos/gestion-archivos.component";
+import { GestionArchivosComponent } from "./components/AdministradorGeneral/GestionArchivos/gestion-archivos/gestion-archivos.component";
 import { DefinirFechasImportantesComponent } from './components/AdministradorGeneral/definir-fechas-importantes/definir-fechas-importantes.component';
-
 
 
 const routes: Routes = [
@@ -47,10 +45,10 @@ const routes: Routes = [
 	{ path: 'gestionar-carreras/ver-carrera-particular/:id', component: VerCarreraParticularComponent },
 	{ path: 'gestionar-carreras/crear-carrera', component: CrearCarreraComponent },
 	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
-    { path: 'visualizar-practica-admin', component: VisualizarPracticasAdminComponent},
+	{ path: 'visualizar-practica-admin', component: VisualizarPracticasAdminComponent },
 	{ path: 'solicitud-practica-carrera', component: SolicitudPracticaCarreraComponent },
-  { path: 'gestion-archivos', component: GestionArchivosComponent},
-    { path: 'definir-fechas-importantes', component: DefinirFechasImportantesComponent},
+	{ path: 'gestion-archivos', component: GestionArchivosComponent },
+	{ path: 'definir-fechas-importantes', component: DefinirFechasImportantesComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];
