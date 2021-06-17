@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
+import { FormControl, ɵangular_packages_forms_forms_g, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { Carrera } from 'src/app/model/carreras.model';
+import { GestionCarreraService } from '../../../Servicios/adminGenerla/gestion-carrera.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { zipAll } from 'rxjs/operators';
+import { PlanEstudios } from '../../../../model/planEstudios.model';
+import { identifierModuleUrl } from '@angular/compiler';
+
 
 
 @Component({
@@ -9,21 +16,58 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./ver-carrera-particular.component.css', '../gestionar-carreras.component.css', '../../../../app.component.css']
 })
 
-export class VerCarreraParticularComponent 
+export class VerCarreraParticularComponent implements OnInit
 {
 
-  numeroPracticas = new FormControl('1');
+  formulario1: FormGroup;
+  formularioPlanCarrera: FormGroup;
+  carrera: Carrera = {};
 
-  planesVigentes: number[]= [11,16]
+  constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute,private _formBuilder: FormBuilder,
+    private route: Router)
+  {
+      this.formulario1= new FormGroup({
+          nombreEncargado: new FormControl('', Validators.required),
+          CorreoEncargado: new FormControl('', Validators.required),
+      });
 
-  Encargadodeshabilitado:boolean= true;
-  CorreoEncargadoDeshabilitado: boolean = true;
-  cantidadPracticasdeshabilitado:boolean= true;
+      this.formularioPlanCarrera = new FormGroup({
+        nombrePlan: new FormControl('',[Validators.required]),
+        cantidadPracticas: new FormControl('',[Validators.required]),
+        requisitos: new FormControl('',[Validators.required]),
+      });
 
-  constructor(public dialog: MatDialog) 
-  {}
+  }
 
-  openDialog() {
+  ngOnInit()
+  {
+      this._route.params.subscribe(parametro =>{
+          this._gestionCarrera.getCarrera(parametro['id']).subscribe(carrera =>{
+              this.carrera= carrera!;
+              console.log(this.carrera);
+              this.formulario1.patchValue({
+                  nombreEncargado: this.carrera.nombreEncargadoCarrera,
+                  CorreoEncargado: this.carrera.correoEncargadoCarrera,
+              })
+          })
+      });
+
+      this._gestionCarrera.getPlanEstudio(this.carrera.id!);
+  }
+
+  updateFormulario()
+  {
+      const actualizacion= {
+          ...this.carrera,
+          nombreEncargadoCarrera: this.formulario1.value.nombreEncargado,
+          correoEncargadoCarrera: this.formulario1.value.CorreoEncargado,
+      }
+
+      this._gestionCarrera.guardarCarrera(actualizacion,this.carrera.id!);
+  }
+
+  openDialog()
+  {
     const dialogoEliminar = this.dialog.open(editarPlanes)
 
     dialogoEliminar.afterClosed().subscribe(resultado => {
@@ -39,25 +83,28 @@ export class VerCarreraParticularComponent
     })
   }
 
-  habilitarDatosEncargado() 
-  {
-    this.CorreoEncargadoDeshabilitado = false;
-    this.Encargadodeshabilitado = false;
-  }
-  deshabilitarDatosEncargado() 
-  {
-    this.CorreoEncargadoDeshabilitado = true;
-    this.Encargadodeshabilitado = true;
+
+  agregarPlanEstudio(){
+    const planEnCreacion: PlanEstudios =
+    {
+      id: this.carrera.id ,
+      nombre: this.formularioPlanCarrera.value.nombrePlan,
+      numeroPracticas: this.formularioPlanCarrera.value.cantidadPracticas,
+      requisitos: this.formularioPlanCarrera.value.requisitos,
+    }
+
+    this._gestionCarrera.addPlanEstudio(planEnCreacion);
+
+    this._gestionCarrera.getPlanEstudio(this.carrera.id!).valueChanges().subscribe( datos=>
+        {
+            console.log(datos);
+        });
+
   }
 
-  habilitarSelectPracticas()
+  volver()
   {
-    this.cantidadPracticasdeshabilitado=false;
-  }
-
-  deshabilitarSelectPracticas() 
-  {
-    this.cantidadPracticasdeshabilitado = true;
+      this.route.navigate(['/gestionar-carreras']);
   }
 
 }

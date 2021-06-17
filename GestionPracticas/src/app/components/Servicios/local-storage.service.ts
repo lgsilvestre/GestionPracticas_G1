@@ -131,4 +131,9 @@ export class LocalStorageService
     reff.set(this.user, {merge: true});
   }
 
+  public getCarrera(): string 
+  {
+    return this.user.carrera;
+  }
+
 }

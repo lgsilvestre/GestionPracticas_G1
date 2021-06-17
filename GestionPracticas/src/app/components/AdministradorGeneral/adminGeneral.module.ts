@@ -21,6 +21,8 @@ import { DialogCrearArchivoinformativoComponent } from './GestionArchivos/dialog
 import { ArchivoFormContainerComponent } from './GestionArchivos/archivo-form-container/archivo-form-container.component';
 import { DynamicHostFormDirective } from './directivas/dynamic-host-form.directive';
 import { DialogSubirFormularioComponent } from './GestionArchivos/dialog-subir-formulario/dialog-subir-formulario.component';
+import { VisualizarPracticasAdminComponent } from './visualizar-practicas-admin/visualizar-practicas-admin.component';
+import { DefinirFechasImportantesComponent } from './definir-fechas-importantes/definir-fechas-importantes.component';
 
 
 
@@ -47,6 +49,8 @@ import { DialogSubirFormularioComponent } from './GestionArchivos/dialog-subir-f
 		ArchivoFormContainerComponent,
 		DynamicHostFormDirective,
 		DialogSubirFormularioComponent,
+		VisualizarPracticasAdminComponent,
+		DefinirFechasImportantesComponent,
   ],
   entryComponents: [
     // aqui van los componentes que se crean en tiempo de ejecucion

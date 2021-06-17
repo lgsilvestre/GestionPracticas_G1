@@ -1,7 +1,30 @@
 <mat-card>
-    <mat-card-title>Solicitudes de practica</mat-card-title>
+    <mat-card-title>¿Qué desea visualizar?</mat-card-title>
     <mat-card-content>
-        <h3>Filtros</h3>
+        <div class="row">
+            <div class="col">
+                <mat-radio-group aria-label="Select an option">
+                    <div class="row" style="font-size: 12px; height: 10%;">
+                        <mat-radio-button value="1" (click)="seleccionarTabla('solicitudes')" [checked]="true"> <label *ngIf="!this.tablaSolicitudSeleccionada">Solicitudes de prácticas</label> <strong *ngIf="this.tablaSolicitudSeleccionada">Solicitudes de prácticas</strong> </mat-radio-button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="row" style="font-size: 12px; height: 10%;">
+                        <mat-radio-button value="2" (click)="seleccionarTabla('inscripciones')"><label *ngIf="!this.tablaIncripcionSeleccionada">Inscripciones de prácticas</label> <strong *ngIf="this.tablaIncripcionSeleccionada">Inscripciones de prácticas</strong></mat-radio-button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="row" style="font-size: 12px; height: 10%;">
+                        <mat-radio-button value="3" (click)="seleccionarTabla('enCurso')"><label *ngIf="!this.tablaEnCursoSeleccionada">Prácticas en curso</label> <strong *ngIf="this.tablaEnCursoSeleccionada">Prácticas en curso</strong></mat-radio-button>
+                    </div>
+                </mat-radio-group>                
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-title>Visualización de prácticas</mat-card-title>
+    <mat-card-content>
+        <h3><b>Filtros </b></h3>
         <form>
             <mat-form-field appearance="outline">
                 <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del alumno" class="search-input"> -->
@@ -10,10 +33,10 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Elige un filtro de práctica</mat-label>
-                <mat-select (selectionChange)="filtroSelectChange($event.value)">
+                <mat-select (selectionChange)="filtroSelectChange($event.value)" [(value)]="selectFilterValue">
                     <mat-option value="matricula">N° Matrícula</mat-option>
                     <mat-option value="situacion">Situación</mat-option>
-                    <!-- <mat-option value="reprobadas">Reprobadas</mat-option> -->
+                    <mat-option value="empresa" *ngIf="!this.tablaSolicitudSeleccionada">Empresa</mat-option>
                     <mat-option value="sin_filtros">Sin filtros</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -25,15 +48,19 @@
                 <mat-label>Elige la situación</mat-label>
                 <mat-select [formControl]="filtroSituacion">
                     <mat-option value="pendiente">Pendiente</mat-option>
-                    <mat-option value="en proceso">En proceso</mat-option>
-                    <mat-option value="terminada">Terminada</mat-option>
+                    <mat-option value="aceptado">Aceptado</mat-option>
+                    <mat-option value="rechazada">Rechazada</mat-option>
                 </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="filtroEmpresaSeleccionado">
+                <input matInput [formControl]="filtroEmpresa" placeholder="Nombre de la empresa" class="search-input">
+                <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
         </form>
         <div class="table-visualizer">
-            <table mat-table [dataSource]="dataSource">
+            <table mat-table [dataSource]="dataSource" id="tabla">
                 <ng-container matColumnDef="matricula">
-                    <th mat-header-cell *matHeaderCellDef> No. Matrícula </th>
+                    <th mat-header-cell *matHeaderCellDef> Nro. Matrícula </th>
                     <td mat-cell *matCellDef="let element"> {{element.numeroMatricula}} </td>
                 </ng-container>
                 <ng-container matColumnDef="nombre">
@@ -48,6 +75,10 @@
                     <th mat-header-cell *matHeaderCellDef> Rut </th>
                     <td mat-cell *matCellDef="let element"> {{element.run}} </td>
                 </ng-container>
+                <ng-container matColumnDef="empresa" *ngIf="!this.tablaSolicitudSeleccionada">
+                    <th mat-header-cell *matHeaderCellDef> Empresa </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombreEmpresa}} </td>
+                </ng-container>
                 <ng-container matColumnDef="situacion">
                     <th mat-header-cell *matHeaderCellDef> Situación </th>
                     <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
@@ -56,8 +87,8 @@
                     <th mat-header-cell *matHeaderCellDef> Acciones </th>
                     <td mat-cell *matCellDef="let element">
                         <mat-icon class="table-icon-first" (click)="openDialog(element)" type="button">visibility</mat-icon>
-                        <mat-icon class="table-icon" (click)='cambiar_estado(element, "Aceptado")' type="button">check</mat-icon>
-                        <mat-icon class="table-icon" (click)='cambiar_estado(element, "Rechazada")' type="button">close</mat-icon>
+                        <mat-icon class="table-icon" (click)='cambiar_estado(element, "Aceptado")' type="button" *ngIf="!this.tablaEnCursoSeleccionada">check</mat-icon>
+                        <mat-icon class="table-icon" (click)='cambiar_estado(element, "Rechazada")' type="button" *ngIf="!this.tablaEnCursoSeleccionada">close</mat-icon>
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
