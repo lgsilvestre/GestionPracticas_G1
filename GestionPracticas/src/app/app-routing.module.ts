@@ -22,6 +22,7 @@ import { GestionarCarrerasComponent } from './components/AdministradorGeneral/ge
 import { VerCarreraParticularComponent } from './components/AdministradorGeneral/gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
 import { CrearCarreraComponent } from './components/AdministradorGeneral/gestionar-carreras/crear-carrera/crear-carrera.component';
 import { SolicitudPracticaCarreraComponent } from './components/EncargadoCarrera/solicitud-practica-carrera/solicitud-practica-carrera.component';
+import { DefinirFechasImportantesComponent } from './components/AdministradorGeneral/definir-fechas-importantes/definir-fechas-importantes.component';
 
 
 
@@ -41,10 +42,11 @@ const routes: Routes = [
 	{ path: 'crear-cuenta/estudiante', component: CrearCuentaEstudianteComponent },
 	{ path: 'crear-cuenta', component: CrearCuentaComponent },
 	{ path: 'gestionar-carreras', component: GestionarCarrerasComponent },
-	{ path: 'gestionar-carreras/ver-carrera-particular', component: VerCarreraParticularComponent },
+	{ path: 'gestionar-carreras/ver-carrera-particular/:id', component: VerCarreraParticularComponent },
 	{ path: 'gestionar-carreras/crear-carrera', component: CrearCarreraComponent },
 	{ path: 'solicitar-practica', component: SolicitarPracticaComponent },
 	{ path: 'solicitud-practica-carrera', component: SolicitudPracticaCarreraComponent },
+    { path: 'definir-fechas-importantes', component: DefinirFechasImportantesComponent},
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: '**', component: PageNotFoundComponent },
 ];
