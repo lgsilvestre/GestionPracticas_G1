@@ -52,12 +52,13 @@
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Gestionar carreras</span>
                 </a>
-
+                <a routerLink="./gestion-archivos" mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon mat-list-icon>visibility</mat-icon>
+                  <span>Gestionar archivos generales</span>
                 <a routerLink="./definir-fechas-importantes" mat-list-item (click)="sidenav.toggle()">
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Definir fechas importantes</span>
                 </a>
-
             </div>
             <div *ngIf="soyEstudiante">
                 <a routerLink="./menu-estudiante" mat-list-item (click)="sidenav.toggle()">
@@ -119,7 +120,6 @@
                     <mat-icon mat-list-icon>visibility</mat-icon>
                     <span>Inscripciones de practica</span>
                 </a>
-                <mat-divider></mat-divider>
             </div>
             <div *ngIf="soySuperAdmin">
                 <a routerLink="./ver-cuentas" mat-list-item (click)="sidenav.toggle()">

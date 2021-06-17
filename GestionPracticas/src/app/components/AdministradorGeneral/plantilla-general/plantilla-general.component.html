@@ -2,8 +2,22 @@
     <mat-step [stepControl]="documentosGenerales" errorMessage="Completa los datos obligatorios restantes">
         <form [formGroup]="documentosGenerales">
             <ng-template matStepLabel>Documentos importantes</ng-template>
-            <button mat-raised-button color="primary" (click)="createComponent()">crear</button>
-            <ng-template appDynamicHost></ng-template>
+          <mat-card>
+            <mat-card-title>
+             Archivos informativos
+            </mat-card-title>
+            <mat-card-content>
+              <ng-template appDynamicHost></ng-template>
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-title>
+              Formularios
+            </mat-card-title>
+            <mat-card-content>
+              <ng-template appDynamicHostForm></ng-template>
+            </mat-card-content>
+          </mat-card>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>
                 <button mat-raised-button matStepperNext color="primary" type="button">Siguente<mat-icon>navigate_next</mat-icon></button>
@@ -158,8 +172,10 @@
                 <mat-label>Número de horas de la jornada</mat-label>
                 <input matInput placeholder="0" formControlName="Jornada" type="number" min="0" required>
             </mat-form-field>
+            <!--
             <h3>Por favor, suba el archivo que contiene su consentimiento informado para su práctica</h3>
             <input type="file" (change)="onFileChange($event)" placeholder="consentimiento.pdf" formControlName="Archivo" required>
+            -->
             <mat-divider></mat-divider>
             <div class="step-buttons">
                 <button mat-raised-button matStepperPrevious color="primary" type="button"><mat-icon>navigate_before</mat-icon>Atrás</button>

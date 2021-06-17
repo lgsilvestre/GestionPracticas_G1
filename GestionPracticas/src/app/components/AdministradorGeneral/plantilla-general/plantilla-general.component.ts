@@ -1,10 +1,14 @@
 /* tslint:disable:no-inferrable-types */
-import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlantillaGeneral} from '../../../model/plantillaGeneral.model';
 import {FirebaseEstudianteService} from '../../Servicios/firebase-estudiante.service';
 import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
-import {DinamicFileContainerComponent} from '../dinamic/dinamic-file-container/dinamic-file-container.component';
+import {ArchivosInformativoComponent} from '../GestionArchivos/archivos-informativo/archivos-informativo.component';
+import {GestionarArchivosGeneralesService} from '../../Servicios/gestionar-archivos-generales.service';
+import {LocalStorageService} from '../../Servicios/local-storage.service';
+import {DynamicHostFormDirective} from "../directivas/dynamic-host-form.directive";
+import {ArchivoFormContainerComponent} from "../GestionArchivos/archivo-form-container/archivo-form-container.component";
 
 export interface Documento
 {
@@ -19,7 +23,8 @@ export interface Documento
   styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
 })
 export class PlantillaGeneralComponent implements OnInit {
-  @ViewChild(DynamicHostDirective) public dynamicHost: DynamicHostDirective | undefined;
+  @ViewChild(DynamicHostDirective,  { static: true }) public dynamicHost: DynamicHostDirective | undefined;
+  @ViewChild(DynamicHostFormDirective, { static: true }) public dynamicHostFromularios: DynamicHostFormDirective | undefined;
   carreraActual: string = 'None';
   private documentos: Documento[] =
     [{titulo: 'hola', descripcion: 'soy un coponente dinamico', url: 'https://www.google.com/'}];
@@ -29,9 +34,12 @@ export class PlantillaGeneralComponent implements OnInit {
   segundaEtapa: FormGroup;
   terseraEtapa: FormGroup;
   cuartaEtapa: FormGroup;
-  private files: File [] = [];
+  files: string[] = [' '];
   constructor(private _formBuilder: FormBuilder,
-              private afStudent: FirebaseEstudianteService, private comFacResol: ComponentFactoryResolver)
+              private afStudent: FirebaseEstudianteService,
+              private comFacResol: ComponentFactoryResolver,
+              private gestionArchivosGenerales: GestionarArchivosGeneralesService,
+              private locaSTF: LocalStorageService)
   {
     this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
@@ -68,40 +76,70 @@ export class PlantillaGeneralComponent implements OnInit {
       HoraInicio: ['', Validators.required],
       HoraFin: ['', Validators.required],
       Jornada: ['', Validators.required],
-      Archivo: [],
     });
+    if (this.locaSTF.getRol() === 'estudiante')
+    {
+      this.locaSTF.reloadUser();
+      this.datosEstudianteEtapa.patchValue(
+        {
+          Nombres: this.locaSTF.getNombres(),
+          Apellidos: this.locaSTF.getApellidos(),
+          Run: this.locaSTF.getRun(),
+          Carrera: this.locaSTF.getCarrera(),
+          NumeroMatricula: this.locaSTF.getNumeroMatricula(),
+          CorreoElectronico: this.locaSTF.getCorreoElectronicoInstitucional(),
+          NumeroContacto: this.locaSTF.getNumeroTelefono()
+        });
+    }
     // tslint:disable-next-line:new-parens
   }
 
   ngOnInit(): void
   {
-    /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
-  }
-  public createComponent(): void
-  {
-    this.dynamicHost?.viewContainerRef.clear();
-    console.log('holoa');
-    /* extraido de
-    https://stackoverflow.com/questions/39280057/how-do-you-use-input-with-components-created-with-a-componentfactoryresolver*/
-    let reff: ComponentRef<DinamicFileContainerComponent>[] | undefined = [];
-    this.documentos.forEach((documento: Documento) => {
-      const component = this.comFacResol.resolveComponentFactory(DinamicFileContainerComponent);
-      const contt = this.dynamicHost?.viewContainerRef.createComponent(component);
-      contt?.instance.setValues(documento.titulo, documento.descripcion, documento.url);
-      // @ts-ignore
-      reff.push(contt);
+    this.gestionArchivosGenerales.getInformativelFiles().subscribe(files => {
+      this.dynamicHost?.viewContainerRef.clear();
+      files.forEach(file => {
+        console.log('file ' + file.id);
+        const component = this.comFacResol.resolveComponentFactory(ArchivosInformativoComponent);
+        const contt = this.dynamicHost?.viewContainerRef.createComponent<ArchivosInformativoComponent>(component)?.
+        instance.setValues(file.id, file.nombre, file.textoInformativo, file.urlArchivo, file.filename);
+      });
     });
+    const existe = typeof this.locaSTF.getDocumentos()[1];
+    if (existe.toString() == 'undefined')
+    {
+      this.gestionArchivosGenerales.getFomulariolFiles().subscribe( formuFiles => {
+        this.dynamicHostFromularios?.viewContainerRef.clear();
+        formuFiles.forEach( fileForm => {
+          const  componnet = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
+          const contenido = this.dynamicHostFromularios?.viewContainerRef
+            .createComponent<ArchivoFormContainerComponent>(componnet)?.
+            instance
+            .setValues(
+              fileForm.id,
+              fileForm.nombre,
+              fileForm.textoInformativo,
+              fileForm.urlOriginal,
+              fileForm.urlArchivoEstuduante,
+              fileForm.filename
+            );
+        });
+      });
+      console.log(existe.toString());
+    }
+    this.gestionArchivosGenerales.updateGeneralFiles();
+    /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
   enviar(): void
   {
     const plantilla: PlantillaGeneral =
-       { nombreEstudiante: this.datosEstudianteEtapa.value.Nombres,
-         apellidoEstudiante: this.datosEstudianteEtapa.value.Apellidos,
-         carreraEstudiante: this.datosEstudianteEtapa.value.Carrera,
+       { nombres: this.datosEstudianteEtapa.value.Nombres,
+         apellidos: this.datosEstudianteEtapa.value.Apellidos,
+         carrera: this.datosEstudianteEtapa.value.Carrera,
          numeroMatricula : this.datosEstudianteEtapa.value.NumeroMatricula,
-         runEstudiante: this.datosEstudianteEtapa.value.Run,
-         numeroContactoEstudiante: this.datosEstudianteEtapa.value.NumeroContacto,
-         correoEstudiante: this.datosEstudianteEtapa.value.CorreoElectronico,
+         run: this.datosEstudianteEtapa.value.Run,
+         telefono: this.datosEstudianteEtapa.value.NumeroContacto,
+         correoInstitucional: this.datosEstudianteEtapa.value.CorreoElectronico,
          contactoEmergencia: this.datosEstudianteEtapa.value.ContactoEmergencia,
          telefonoEmergencia: this.datosEstudianteEtapa.value.TelefonoEmergencia,
          // Empresa
@@ -125,12 +163,12 @@ export class PlantillaGeneralComponent implements OnInit {
          horaInicio: this.cuartaEtapa.value.HoraInicio,
          horaTermino: this.cuartaEtapa.value.HoraFin,
          duracionJorada: this.cuartaEtapa.value.Jornada,
-         archivoConsentimiento: ' ', // revisar bien.
+         archivos: this.files, // revisar bien.
          // fin ( por el momento)
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
     console.log(plantilla);
-    this.afStudent.upSolicitud(this.files[0], plantilla);
+    this.afStudent.upSolicitud( plantilla);
   }
   /*
   upFile(): void

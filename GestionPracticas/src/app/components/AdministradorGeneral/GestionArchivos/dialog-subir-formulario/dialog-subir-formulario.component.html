@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Datos nuevo Archivo</h1>
+<div mat-dialog-content>
+  <form [formGroup]="crearArchivo">
+    <ng-template matStepLabel>Nuevo archivo informativo</ng-template>
+    <mat-form-field appearance="outline">
+      <mat-label>Titulo</mat-label>
+      <input matInput placeholder="Primer y segundo nombre" formControlName="Titulo" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Texto</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" formControlName="Texto" required></textarea>
+    </mat-form-field>
+    <br/>
+    <mat-label>Archivo</mat-label>
+    <br/>
+    <input type="file"  (change)="onFileChange($event)" formControlName="Archivo" required>
+    <br/>
+  </form>
+</div>
+<div class="step-buttons" mat-dialog-actions>
+  <button mat-raised-button color="primary" type="button" (click)="subirArchivo()">Enviar</button>
+</div>
