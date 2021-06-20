@@ -41,4 +41,11 @@ export class GestionAdminGeneralService {
     this.registrarUsuario(nuevoAdminGeneral, password).then((res) =>
     {}).catch( err => console.log('err', err.message));
   }
+
+  public crearCuentaEstudiante(correoEstudiante: string, password: string)
+  {
+    return this.afAutenticacion.createUserWithEmailAndPassword(correoEstudiante, password);
+  }
+
+
 }
