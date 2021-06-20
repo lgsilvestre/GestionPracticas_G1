@@ -182,7 +182,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     cargarDatos(coleccion: string) {
         var carrera = this.locaSTF.getCarrera(); //carrera del encargado
-        this.EC_service.load_data_visualizar_practica(coleccion, "Ingeniería Civil en Computación").then((querySnapshot) => {
+        this.EC_service.load_data_visualizar_practica_encargado(coleccion, carrera).then((querySnapshot) => {
             this.solicitudes = [];
             querySnapshot.forEach(doc => {
 
