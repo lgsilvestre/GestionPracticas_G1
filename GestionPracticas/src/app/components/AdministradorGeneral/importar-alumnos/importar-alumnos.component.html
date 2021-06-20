@@ -1,10 +1,12 @@
 <mat-card>
     <mat-card-title>Importar alumnos</mat-card-title>
+</mat-card>
+
+<mat-card>
+    <mat-card-title>Importar alumnos</mat-card-title>
     <mat-card-content>
-        <div class="row">
-            <div class="col">
-                <h1>columna 1</h1>
-            </div>
+        <div class="row text-center">
+            <input type="file" multiple="false" (change)="onFileChange($event)" />
         </div>
     </mat-card-content>
 </mat-card>
