@@ -315,6 +315,8 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
     }
 
     seleccionarTabla(nombreTabla: string) {
+        this.clearFilters();
+
         this.filtroNombre.setValue('');
         this.selectFilterValue = "sin_filtros";
         this.filtroNumeroMatriculaSeleccionado = false;
