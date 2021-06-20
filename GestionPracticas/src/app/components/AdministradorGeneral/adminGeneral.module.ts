@@ -23,6 +23,7 @@ import { DynamicHostFormDirective } from './directivas/dynamic-host-form.directi
 import { DialogSubirFormularioComponent } from './GestionArchivos/dialog-subir-formulario/dialog-subir-formulario.component';
 import { VisualizarPracticasAdminComponent } from './visualizar-practicas-admin/visualizar-practicas-admin.component';
 import { DefinirFechasImportantesComponent } from './definir-fechas-importantes/definir-fechas-importantes.component';
+import { ImportarAlumnosComponent } from './importar-alumnos/importar-alumnos.component';
 
 
 
@@ -51,6 +52,7 @@ import { DefinirFechasImportantesComponent } from './definir-fechas-importantes/
 		DialogSubirFormularioComponent,
 		VisualizarPracticasAdminComponent,
 		DefinirFechasImportantesComponent,
+		ImportarAlumnosComponent,
   ],
   entryComponents: [
     // aqui van los componentes que se crean en tiempo de ejecucion
