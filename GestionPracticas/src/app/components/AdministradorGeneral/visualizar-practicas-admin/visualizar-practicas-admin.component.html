@@ -35,6 +35,7 @@
                 <mat-label>Elige un filtro de práctica</mat-label>
                 <mat-select (selectionChange)="filtroSelectChange($event.value)" [(value)]="selectFilterValue">
                     <mat-option value="matricula">N° Matrícula</mat-option>
+                    <mat-option value="carrera">Carrera</mat-option>
                     <mat-option value="situacion">Situación</mat-option>
                     <mat-option value="empresa" *ngIf="!this.tablaSolicitudSeleccionada">Empresa</mat-option>
                     <mat-option value="sin_filtros">Sin filtros</mat-option>
@@ -55,6 +56,14 @@
             <mat-form-field appearance="outline" *ngIf="filtroEmpresaSeleccionado">
                 <input matInput [formControl]="filtroEmpresa" placeholder="Nombre de la empresa" class="search-input">
                 <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="filtroCarreraSeleccionado">
+                <mat-label>Elige la carrera</mat-label>
+                <mat-select [formControl]="filtroCarrera">
+                    <mat-option value="ingeniería civil en computación">Ingeniería Civil en Computación</mat-option>
+                    <mat-option value="ingeniería civil en obras civiles">Ingeniería Civil en Obras Civiles</mat-option>
+                    <mat-option value="ingeniería civil industrial">Ingeniería Civil Industrial</mat-option>
+                </mat-select>
             </mat-form-field>
         </form>
         <div class="table-visualizer">

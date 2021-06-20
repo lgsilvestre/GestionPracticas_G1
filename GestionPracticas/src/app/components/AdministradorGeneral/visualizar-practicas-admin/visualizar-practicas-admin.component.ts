@@ -34,11 +34,13 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
     filtroEmpresaSeleccionado: boolean = false;
     filtroSituacionSeleccionado: boolean = false;
     filtroNumeroMatriculaSeleccionado: boolean = false;
+    filtroCarreraSeleccionado: boolean = false;
 
     filtroNombre = new FormControl('');
     filtroEmpresa = new FormControl('');
     filtroNumeroMatricula = new FormControl('');
     filtroSituacion = new FormControl('');
+    filtroCarrera = new FormControl('');
 
     tablaSolicitudSeleccionada: boolean;
     tablaIncripcionSeleccionada: boolean;
@@ -66,6 +68,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
         nombres: '',
         nombreEmpresa: '',
         estado: '',
+        carrera: '',
     }
 
 
@@ -102,6 +105,13 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
                     this.dataSource.filter = JSON.stringify(this.filterValues);
                 }
             )
+        this.filtroCarrera.valueChanges
+            .subscribe(
+                carrera => {
+                    this.filterValues.carrera = carrera;
+                    this.dataSource.filter = JSON.stringify(this.filterValues);
+                }
+            )
 
     }
 
@@ -135,6 +145,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
         this.filtroEmpresa.setValue('');
         this.filtroNumeroMatricula.setValue('');
         this.filtroSituacion.setValue('');
+        this.filtroCarrera.setValue('');
     }
 
     openDialog(elemento: any) {
@@ -155,25 +166,36 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
             this.filtroNumeroMatriculaSeleccionado = true;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
+            this.filtroCarreraSeleccionado = false;
         }
 
         if (filtroElegido == 'situacion') {
             this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = true;
+            this.filtroCarreraSeleccionado = false;
         }
 
         if (filtroElegido == 'empresa') {
             this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = true;
             this.filtroSituacionSeleccionado = false;
+            this.filtroCarreraSeleccionado = false;
         }
 
         if (filtroElegido == 'sin_filtros') {
             this.filtroNumeroMatriculaSeleccionado = false;
             this.filtroEmpresaSeleccionado = false;
             this.filtroSituacionSeleccionado = false;
+            this.filtroCarreraSeleccionado = false;
             this.clearFilters();
+        }
+
+        if (filtroElegido == 'carrera') {
+            this.filtroNumeroMatriculaSeleccionado = false;
+            this.filtroEmpresaSeleccionado = false;
+            this.filtroSituacionSeleccionado = false;
+            this.filtroCarreraSeleccionado = true;
         }
     }
 
@@ -201,6 +223,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
 
             let output = data.nombres.toString().toLowerCase().indexOf(searchTerms.nombres) !== -1
                 && data.numeroMatricula.toString().toLowerCase().indexOf(searchTerms.numeroMatricula) !== -1
+                && data.carrera.toString().toLowerCase().indexOf(searchTerms.carrera) !== -1
                 && data.estado.toString().toLowerCase().indexOf(searchTerms.estado) !== -1;
 
             if (tabla != "SolicitudesPractica") {
@@ -297,6 +320,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
         this.filtroNumeroMatriculaSeleccionado = false;
         this.filtroSituacionSeleccionado = false;
         this.filtroEmpresaSeleccionado = false;
+        this.filtroCarreraSeleccionado = false;
 
         if (nombreTabla == 'solicitudes') {
             this.tablaSolicitudSeleccionada = true;
