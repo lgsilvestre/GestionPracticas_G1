@@ -11,16 +11,17 @@ declare let alertify: any;
 
 export class ImportarAlumnosComponent implements OnInit {
 
-  data: any;
-  cuentasCreadas: number;
-  totalCuentas: number;
-
+  data          : any;    //matriz con los datos del excel
+  cuentasCreadas: number; //cantidad de cuentas que han sido creadas desde el excel
+  totalCuentas  : number; //total de cuentas a crear desde el excel
+  formatoHeader : any;    //arreglo que contiene el encabezado que la tabla del excel importado debería contener
 
   constructor(private adminGeneralService: GestionAdminGeneralService) 
   { 
     this.data = [];
     this.cuentasCreadas = 0;
-    this.totalCuentas   = 0;
+    this.totalCuentas   = 1;//para evitar division por 0
+    this.formatoHeader  = ["NBE_CARRERA", "COD_CARRERA", "MATRICULA", "RUT", "NBE_ALUMNO", "CORREO_INS", "CORREO_PER", "SEXO", "FECHA_NAC", "PLAN", "ANHO_INGRESO", "VIA_INGRESO", "SIT_ACTUAL", "SIT_ACTUAL_ANHO", "SIT_ACTUAL_PERIODO", "REGULAR", "COMUNA_ORIGEN", "REGION", "NIVEL", "PORC_AVANCE", "ULT_PUNT_PRIO", "AL_DIA", "NIVEL_99_APROBADO"];
   }
 
   ngOnInit(): void {
@@ -48,7 +49,11 @@ export class ImportarAlumnosComponent implements OnInit {
 
         this.data = (XLSX.utils.sheet_to_json(ws, {header: 1}));
         
-        this.crearCuentas();
+        if ( this.formatoContenidoExcelEsValido() )
+        {
+            this.crearCuentas();
+        }
+        
         console.log(this.data);
     }
 
@@ -58,6 +63,7 @@ export class ImportarAlumnosComponent implements OnInit {
   crearCuentas()
   {
     this.cuentasCreadas = 0; //reset contador
+    this.totalCuentas   = 1; //reset en 1 para evitar division por 0
     this.totalCuentas   = this.data.length - 4; //4 debido a que es la linea donde comienzan a aparecer los alumnos en el formato del excel
 
     for ( var i = 4 ; i < this.data.length ; i++ )
@@ -74,5 +80,33 @@ export class ImportarAlumnosComponent implements OnInit {
         });
     }
   }
-  
+
+  /**
+   * Valida el formato del contenido del excel
+   *
+   */
+  formatoContenidoExcelEsValido(): boolean
+  {
+    if ( !this.headerTablaEsValido(this.data[3]) )
+    {
+        return false;
+    }
+    return true;
+  }
+
+  private headerTablaEsValido(encabezadoTablaExcelImportado: any): boolean
+  {
+    if ( this.formatoHeader.length !== encabezadoTablaExcelImportado.length ) 
+        return false;
+
+    for ( var col = 0 ; col < this.formatoHeader.length ; col++ )
+    {
+        if ( this.formatoHeader[col] !== encabezadoTablaExcelImportado[col] )
+        {
+            alertify.error("El nombre de la columna "+encabezadoTablaExcelImportado[col]+" es incorrecta, se esperaba "+this.formatoHeader[col]);
+            return false;
+        }            
+    }
+    return true;
+  }
 }
