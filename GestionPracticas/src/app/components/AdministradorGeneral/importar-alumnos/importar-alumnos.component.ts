@@ -24,7 +24,9 @@ export class ImportarAlumnosComponent implements OnInit {
     this.formatoHeader   = ["NBE_CARRERA", "COD_CARRERA", "MATRICULA", "RUT", "NBE_ALUMNO", "CORREO_INS", "CORREO_PER", "SEXO", "FECHA_NAC", "PLAN", "ANHO_INGRESO", "VIA_INGRESO", "SIT_ACTUAL", "SIT_ACTUAL_ANHO", "SIT_ACTUAL_PERIODO", "REGULAR", "COMUNA_ORIGEN", "REGION", "NIVEL", "PORC_AVANCE", "ULT_PUNT_PRIO", "AL_DIA", "NIVEL_99_APROBADO"];
 }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+
   }
 
   onFileChange(evt: any) 
@@ -49,7 +51,7 @@ export class ImportarAlumnosComponent implements OnInit {
 
         const ws: XLSX.WorkSheet = wb.Sheets[wsname];
 
-        console.log(ws);
+        //console.log(ws);
 
         this.data = (XLSX.utils.sheet_to_json(ws, {header: 1}));
         
@@ -73,21 +75,31 @@ export class ImportarAlumnosComponent implements OnInit {
     for ( var i = 4 ; i < this.data.length ; i++ )
     {
         var correo: string = this.data[i][5];
+
         this.adminGeneralService.crearCuentaEstudiante(correo, "123456")
         .then((userCredential) => {
             this.cuentasCreadas++;
-            console.log(i);
             if ( this.cuentasCreadas == this.totalCuentas ) //ultima cuenta
             {
                 alertify.success("Proceso de carga finalizado!");
             }
-          })
-          .catch((error) => {
+            
+            //Intentar hacerlo async
+            this.adminGeneralService.insertarEstudiante(this.data[i])
+            .then(()=> {
+                console.log("Creadox");
+            })
+            .catch(()=> {
+                console.log("No creadox");
+            });
+        })
+        .catch((error) => {
             if ( error.code == "auth/email-already-in-use" )
             {
                 alertify.error("Error, la cuenta ya se encontraba en el sistema!");
             }
         });
+
     }
   }
 

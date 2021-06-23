@@ -13,4 +13,17 @@ export class AutenticacionService
   constructor( private afAutenticacion: AngularFireAuth, private afStore: AngularFirestore)
   {
   }
+
+
+  public test()
+  {
+    this.afAutenticacion.onAuthStateChanged((user) => {
+        if (user) {
+            console.log("autenticado");
+        } else {
+            console.log("no autenticado");
+        } 
+    });
+  }
+
 }
