@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../../../Servicios/local-storage.service';
+import {SolicitudInscripcionPracticaService} from "../../../Servicios/solicitud-inscripcion-practica.service";
 
 @Component({
   selector: 'app-dinamic-file-form-container',
@@ -19,7 +20,9 @@ export class ArchivoFormContainerComponent implements OnInit {
   urlArchivoEstudiante: string = '';
   files: File[] = [];
   rol: string = ' ';
-  constructor(private _formBuilder: FormBuilder, private localStore: LocalStorageService)
+  constructor(private _formBuilder: FormBuilder,
+              private localStore: LocalStorageService,
+              private solicitudInscripcion: SolicitudInscripcionPracticaService)
   {
     this.rol = localStore.getRol();
     this.archivo = this._formBuilder.group({
@@ -42,6 +45,10 @@ export class ArchivoFormContainerComponent implements OnInit {
   {
     console.log(event.target.files[0]);
     this.files.push(event.target.files[0]);
+  }
+  subirArchivo(): void
+  {
+    this.solicitudInscripcion.upDocumentoFormularioEstudiante();
   }
 
 }

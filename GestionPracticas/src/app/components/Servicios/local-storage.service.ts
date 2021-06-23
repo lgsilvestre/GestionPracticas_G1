@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class LocalStorageService {
 	private userSubject$ = new BehaviorSubject<any>('');
