@@ -2,15 +2,20 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AdministradorGeneral} from '../../../model/administradorGeneral.model';
+declare let alertify: any;
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class GestionAdminGeneralService {
+export class GestionAdminGeneralService 
+{
+
 
   constructor(private afAutenticacion: AngularFireAuth, private afStore: AngularFirestore)
-  {}
+  {
+  }
+
   private registrarUsuario(nuevoAdminGeneral: AdministradorGeneral, password: string): Promise<any>
   {
     return new Promise((resolve, reject ) =>
@@ -24,7 +29,6 @@ export class GestionAdminGeneralService {
   }
   private addAddAdminGeneral(uID: string | undefined, nuevoAdminGeneral: AdministradorGeneral): void
   {
-    console.log(uID + ' addEn \n');
     if (typeof(uID) === undefined)
     {
       console.log('error uid is undefined');
@@ -32,7 +36,6 @@ export class GestionAdminGeneralService {
     else
     {
       const  reff = this.afStore.doc('/Usuarios/administrador/administradores/' + uID);
-      console.log( 'reff' + reff.ref);
       reff.set(nuevoAdminGeneral, {merge: true});
     }
   }
@@ -41,4 +44,16 @@ export class GestionAdminGeneralService {
     this.registrarUsuario(nuevoAdminGeneral, password).then((res) =>
     {}).catch( err => console.log('err', err.message));
   }
+
+  
+  public crearCuentaEstudiante(correoEstudiante: string, password: string)
+  {
+    return this.afAutenticacion.createUserWithEmailAndPassword(correoEstudiante, password);
+  }
+
+  public insertarEstudiante(estudiante: any)
+  {
+    return this.afStore.collection("Usuarios").doc("estudiante").collection("estudiantes").add(estudiante);
+  }
+
 }

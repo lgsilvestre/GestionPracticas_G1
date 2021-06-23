@@ -17,11 +17,20 @@ export class EncargadoCarreraService {
      * 
      * @param coleccion la coleccion de la solicitud correspondiente
      * @param carrera 
-     * @returns 
+     * @returns trae todos los datos. Este método lo accede el admin general.
      */
     public load_data_visualizar_practica(coleccion : string, carrera: string) {
         //return this.db.firestore.collection(coleccion).where("carrera", "==", carrera).get();
         return this.db.firestore.collection(coleccion).get();
+    }
+    /**
+     * 
+     * @param coleccion 
+     * @param carrera 
+     * @returns trae sólo datos correspondiente a la carrera que pertenece el encargado de carrera.
+     */
+    public load_data_visualizar_practica_encargado(coleccion : string, carrera: string) {
+        return this.db.firestore.collection(coleccion).where("carrera", "==", carrera).get();
     }
 
     /**
