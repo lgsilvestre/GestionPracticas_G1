@@ -72,7 +72,7 @@ export class ImportarAlumnosComponent implements OnInit {
     this.totalCuentas   = 1; //reset en 1 para evitar division por 0
     this.totalCuentas   = this.data.length - 4; //4 debido a que es la linea donde comienzan a aparecer los alumnos en el formato del excel
 
-    for ( var i = 4 ; i < this.data.length ; i++ )
+    for ( let i = 4 ; i < this.data.length ; i++ )
     {
         var correo: string = this.data[i][5];
 
@@ -85,7 +85,32 @@ export class ImportarAlumnosComponent implements OnInit {
             }
             
             //Intentar hacerlo async
-            this.adminGeneralService.insertarEstudiante(this.data[i])
+            let estudiante = {
+                carrera: this.data[i][0],
+                cod_carrera: this.data[i][1],
+                numeroMatricula: this.data[i][2],
+                run: this.data[i][3],
+                nombres: this.data[i][4],
+                apellidos: this.data[i][4],
+                correoInstitucional: this.data[i][5],
+                correoPersonal: this.data[i][6],
+                sexo: this.data[i][7],
+                fechaNacimiento: this.data[i][8],
+                plan: this.data[i][8],
+                añoIngreso: this.data[i][9],
+                viaIngreso: this.data[i][10],
+                situacionActual: this.data[i][11],
+                situacionActualAño: this.data[i][12],
+                situacionActualPeriodo: this.data[i][13],
+                regular: this.data[i][14],
+                nivel: this.data[i][15],
+                porcentajeAvance: this.data[i][16],
+                ult_punt_prio: this.data[i][17],
+                alDia: this.data[i][18],
+                nivel99Aprobado: this.data[i][19]
+            }
+            
+            this.adminGeneralService.insertarEstudiante(estudiante)
             .then(()=> {
                 console.log("Creadox");
             })

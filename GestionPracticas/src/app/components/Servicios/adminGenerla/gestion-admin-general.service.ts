@@ -45,12 +45,13 @@ export class GestionAdminGeneralService
     {}).catch( err => console.log('err', err.message));
   }
 
-  
+  //Firebase Auth
   public crearCuentaEstudiante(correoEstudiante: string, password: string)
   {
     return this.afAutenticacion.createUserWithEmailAndPassword(correoEstudiante, password);
   }
 
+  //Firebase
   public insertarEstudiante(estudiante: any)
   {
     return this.afStore.collection("Usuarios").doc("estudiante").collection("estudiantes").add(estudiante);

@@ -11,7 +11,9 @@ export interface Estudiante{
   carrera: string;
   numeroMatricula: number;
   plan?: string;
-  situacionActual: string;
+  situacionActual: string; //ej: titulado
+  situacionActualAño?: number;
+  situacionActualPeriodo?: number;
   añoIngreso?: string;
   correoInstitucional: string;
   correoPersonal ?: string;
@@ -21,4 +23,13 @@ export interface Estudiante{
   etapaActual: string;
   estadoEtapaActual: string;
   documentos: string[];
+  cod_carrera?: string;
+  sexo?: string;
+  viaIngreso?: string;
+  regular?: string;
+  nivel?: number;
+  porcentajeAvance?: number;
+  ult_punt_prio?: number; //ultimo puntaje de prioridad
+  alDia?: string;
+  nivel99Aprobado?: string;
 }
