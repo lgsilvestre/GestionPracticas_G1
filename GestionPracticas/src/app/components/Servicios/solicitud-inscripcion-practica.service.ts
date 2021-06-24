@@ -28,6 +28,19 @@ export class SolicitudInscripcionPracticaService {
       if (typeof documentos[1] === 'string')
       {
         console.log(documentos[1]);
+        const ref = this.angularFireStore.collection<PlantillaGeneral>('/Solicitudes').doc(documentos[1]);
+        ref.ref.get().then( (doc) => {
+          if (doc.exists)
+          {
+            const plantilla = doc.data();
+            plantilla?.archivos.push('hola');
+            if (plantilla) {
+              ref.set(plantilla, {merge: true});
+            }
+          }
+        });
+
+
       }
       else
       {
