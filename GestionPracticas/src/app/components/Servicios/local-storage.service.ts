@@ -21,6 +21,7 @@ export class LocalStorageService {
 	}
 	public reloadUser(): void {
 		this.user = JSON.parse(localStorage.getItem('user') || '{}');
+		this.uid = JSON.parse(localStorage.getItem('userUID') || '');
 		this.userSubject$.next(this.user);
 		this.etapaActual = this.user.etapaActual;
 		this.estadoEtapaActual = this.user.estadoEtapaActual;
@@ -104,8 +105,9 @@ export class LocalStorageService {
 	public getNumeroTelefono(): string {
 		return this.user.telefono;
 	}
-	private actualizarFirebaseStore(): void {
-		const reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + this.uid);
+	private actualizarFirebaseStore(): void
+  {
+		const reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + this.uid );
 		reff.set(this.user, { merge: true });
 	}
 

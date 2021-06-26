@@ -7,8 +7,9 @@ import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
 import {ArchivosInformativoComponent} from '../GestionArchivos/archivos-informativo/archivos-informativo.component';
 import {GestionarArchivosGeneralesService} from '../../Servicios/gestionar-archivos-generales.service';
 import {LocalStorageService} from '../../Servicios/local-storage.service';
-import {DynamicHostFormDirective} from "../directivas/dynamic-host-form.directive";
-import {ArchivoFormContainerComponent} from "../GestionArchivos/archivo-form-container/archivo-form-container.component";
+import {DynamicHostFormDirective} from '../directivas/dynamic-host-form.directive';
+import {ArchivoFormContainerComponent} from '../GestionArchivos/archivo-form-container/archivo-form-container.component';
+import {SolicitudInscripcionPracticaService} from '../../Servicios/solicitud-inscripcion-practica.service';
 
 export interface Documento
 {
@@ -39,7 +40,8 @@ export class PlantillaGeneralComponent implements OnInit {
               private afStudent: FirebaseEstudianteService,
               private comFacResol: ComponentFactoryResolver,
               private gestionArchivosGenerales: GestionarArchivosGeneralesService,
-              private locaSTF: LocalStorageService)
+              private locaSTF: LocalStorageService,
+              private siPracticaS: SolicitudInscripcionPracticaService)
   {
     this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
@@ -96,6 +98,7 @@ export class PlantillaGeneralComponent implements OnInit {
 
   ngOnInit(): void
   {
+    this.locaSTF.reloadUser();
     this.gestionArchivosGenerales.getInformativelFiles().subscribe(files => {
       this.dynamicHost?.viewContainerRef.clear();
       files.forEach(file => {
@@ -106,7 +109,7 @@ export class PlantillaGeneralComponent implements OnInit {
       });
     });
     const existe = typeof this.locaSTF.getDocumentos()[1];
-    if (existe.toString() == 'undefined')
+    if (existe.toString() === 'undefined')
     {
       this.gestionArchivosGenerales.getFomulariolFiles().subscribe( formuFiles => {
         this.dynamicHostFromularios?.viewContainerRef.clear();
@@ -127,7 +130,28 @@ export class PlantillaGeneralComponent implements OnInit {
       });
       console.log(existe.toString());
     }
+    else
+    {
+      this.siPracticaS.getArchivosFormulariosEstudiante$().subscribe( formuFiles => {
+        this.dynamicHostFromularios?.viewContainerRef.clear();
+        formuFiles.forEach( fileForm => {
+          const  componnet = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
+          const contenido = this.dynamicHostFromularios?.viewContainerRef
+            .createComponent<ArchivoFormContainerComponent>(componnet)?.
+            instance
+            .setValues(
+              fileForm.id,
+              fileForm.nombre,
+              fileForm.textoInformativo,
+              fileForm.urlOriginal,
+              fileForm.urlArchivoEstuduante,
+              fileForm.filename
+            );
+        });
+    });
+    }
     this.gestionArchivosGenerales.updateGeneralFiles();
+    this.siPracticaS.mapingFomFiles();
     /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
   enviar(): void

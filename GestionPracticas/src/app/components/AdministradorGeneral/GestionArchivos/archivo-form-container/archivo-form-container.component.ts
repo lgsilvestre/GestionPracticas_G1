@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../../../Servicios/local-storage.service';
-import {SolicitudInscripcionPracticaService} from "../../../Servicios/solicitud-inscripcion-practica.service";
+import {SolicitudInscripcionPracticaService} from '../../../Servicios/solicitud-inscripcion-practica.service';
 
 @Component({
   selector: 'app-dinamic-file-form-container',
