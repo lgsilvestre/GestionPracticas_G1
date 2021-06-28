@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../../../Servicios/local-storage.service';
 import {SolicitudInscripcionPracticaService} from '../../../Servicios/solicitud-inscripcion-practica.service';
+import {ArchivoFormularioModel} from '../../../../model/archivoFormulario.model';
 
 @Component({
   selector: 'app-dinamic-file-form-container',
@@ -48,6 +49,15 @@ export class ArchivoFormContainerComponent implements OnInit {
   }
   subirArchivo(): void
   {
+    const nuevoFormularioAlumno: ArchivoFormularioModel = {
+      id : ' ',
+      nombre: this.titulo,
+      textoInformativo: this.descripcion,
+      urlOriginal: this.urlOriginal,
+      urlArchivoEstuduante: ' ',
+      filename: ' ',
+      visible: true
+    };
     this.solicitudInscripcion.upDocumentoFormularioEstudiante();
   }
 
