@@ -21,6 +21,7 @@ export class BarChartComponent implements OnInit {
     }
   };
   
+  
   public barChartLabels: Label[] = ['2014', '2015', '2016', '2017', '2018', '2019', '2020'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
