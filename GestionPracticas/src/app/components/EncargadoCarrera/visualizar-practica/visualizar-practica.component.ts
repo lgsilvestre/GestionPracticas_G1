@@ -59,7 +59,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
 
     solicitudes: Practica[];
-
+    columnasIgnoradas: any = [5]; //arreglo con los indices de las columnas que serán ignoradas al exportar al excel (5 corresponde a la columna de acciones la cual no debería mostrarse al momento de exportar al excel)
     dataSource = new MatTableDataSource();
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
