@@ -83,15 +83,19 @@ export class ImportarAlumnosComponent implements OnInit {
             {
                 alertify.success("Proceso de carga finalizado!");
             }
-            
+
+            let splitted_full_name = this.data[i][4].split(" ", 5);
+            let lastNames = splitted_full_name[0] + ' ' + splitted_full_name[1];
+            let names     = splitted_full_name[2] + ' ' + splitted_full_name[3];   
+
             //Intentar hacerlo async
             let estudiante = {
                 carrera: this.data[i][0],
                 cod_carrera: this.data[i][1],
                 numeroMatricula: this.data[i][2],
                 run: this.data[i][3],
-                nombres: this.data[i][4],
-                apellidos: this.data[i][4],
+                nombres: names,
+                apellidos: lastNames,
                 correoInstitucional: this.data[i][5],
                 correoPersonal: this.data[i][6],
                 sexo: this.data[i][7],
@@ -134,7 +138,7 @@ export class ImportarAlumnosComponent implements OnInit {
    */
   formatoContenidoExcelEsValido(): boolean
   {
-    if ( !this.headerTablaEsValido(this.data[3]) )
+    if ( !this.headerTablaEsValido(this.data[3]) ) //3 representa la fila en donde está el encabezado de la tabla
     {
         return false;
     }
