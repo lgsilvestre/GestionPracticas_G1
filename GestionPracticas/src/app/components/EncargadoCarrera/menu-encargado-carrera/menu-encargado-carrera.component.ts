@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticacionService } from '../../Servicios/autenticacion.service';
 
 @Component({
 	selector: 'app-menu-encargado-carrera',
@@ -8,16 +7,18 @@ import { AutenticacionService } from '../../Servicios/autenticacion.service';
 })
 export class MenuEncargadoCarreraComponent implements OnInit 
 {
-    encargadoCarrera: JSON;
+    encargadoCarrera: any;
 
-	constructor(private autenticacionService: AutenticacionService) 
+	constructor() 
     {
-        this.encargadoCarrera = JSON.parse(localStorage.getItem('user')+'');
+        this.encargadoCarrera = {nombres: '', apellidos: ''};
+        let encargado = JSON.parse(localStorage.getItem('user')+'');
+        this.encargadoCarrera.nombres   = encargado.nombres;
+        this.encargadoCarrera.apellidos = encargado.apellidos;
     }
 
 	ngOnInit(): void 
     {
-
     }
 
 }

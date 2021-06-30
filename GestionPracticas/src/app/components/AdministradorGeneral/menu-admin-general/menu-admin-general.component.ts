@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticacionService } from '../../Servicios/autenticacion.service';
 
 @Component({
 	selector: 'app-menu-admin-general',
@@ -8,16 +7,18 @@ import { AutenticacionService } from '../../Servicios/autenticacion.service';
 })
 export class MenuAdminGeneralComponent implements OnInit 
 {
-    adminGeneral: JSON;
+    adminGeneral: any;
 
-	constructor(private autenticacionService: AutenticacionService) 
+	constructor() 
     {
-        this.adminGeneral = JSON.parse(localStorage.getItem('user')+'');
+        this.adminGeneral = {nombres:'', apellidos:''};
+        let admin = JSON.parse(localStorage.getItem('user')+'');
+        this.adminGeneral.nombres = admin.nombres;
+        this.adminGeneral.apellidos = admin.apellidos;
 	}
 
 	ngOnInit(): void 
     {
-
 	}
 
 }
