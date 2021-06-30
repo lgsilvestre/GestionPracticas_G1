@@ -57,7 +57,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
     //Inscripcion: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
     //En curso: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
 
-
+    
     solicitudes: Practica[];
 
     //arreglo con los indices de las columnas que serán ignoradas al exportar al excel 
