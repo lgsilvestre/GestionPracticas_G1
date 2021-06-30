@@ -29,6 +29,7 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
     templateUrl: './visualizar-practicas-admin.component.html',
     styleUrls: ['./visualizar-practicas-admin.component.css', '../../../app.component.css']
 })
+
 export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit {
 
     filtroEmpresaSeleccionado: boolean = false;
