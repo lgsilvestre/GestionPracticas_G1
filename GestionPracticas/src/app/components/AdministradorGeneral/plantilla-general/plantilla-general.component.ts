@@ -150,6 +150,9 @@ export class PlantillaGeneralComponent implements OnInit {
         });
     });
     }
+    this.siPracticaS.getPlantillageneral$().subscribe( plantilla => {
+      this.cargardatosPlantilla(plantilla);
+    });
     this.gestionArchivosGenerales.updateGeneralFiles();
     this.siPracticaS.mapingFomFiles();
     /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
@@ -187,12 +190,45 @@ export class PlantillaGeneralComponent implements OnInit {
          horaInicio: this.cuartaEtapa.value.HoraInicio,
          horaTermino: this.cuartaEtapa.value.HoraFin,
          duracionJorada: this.cuartaEtapa.value.Jornada,
-         archivos: this.files, // revisar bien.
+         archivos: this.siPracticaS.getRefArchivosPlantilla(), // revisar bien.
          // fin ( por el momento)
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
-    console.log(plantilla);
-    this.afStudent.upSolicitud( plantilla);
+    this.siPracticaS.subirSolicitudInscripcionPractica(plantilla);
+  }
+  private cargardatosPlantilla(actualPlantilla: PlantillaGeneral): void
+  {
+    if (actualPlantilla.id !== '')
+    {
+      this.datosEstudianteEtapa.patchValue({
+        ContactoEmergencia: actualPlantilla.contactoEmergencia,
+        TelefonoEmergencia: actualPlantilla.telefonoEmergencia
+      });
+      this.segundaEtapa.patchValue({
+        Nombre: actualPlantilla.nombreEmpresa,
+        Rut: actualPlantilla.rutEmpresa,
+        NumeroTelefono: actualPlantilla.telefonoEmpresa,
+        CorreoElectronico: actualPlantilla.correoEmpresa,
+        Direccion: actualPlantilla.direccionEmpresa,
+      });
+      this.terseraEtapa.patchValue({
+        Nombres: actualPlantilla.nombreTutor,
+        Apellidos: actualPlantilla.apellidoTutor,
+        Run: actualPlantilla.runTutor,
+        AreaDepto: actualPlantilla.areaTutor,
+        Puesto: actualPlantilla.puestoTutor,
+        NumeroContacto: actualPlantilla.contactoTutor,
+        CorreoElectronico: actualPlantilla.correoTutor,
+      });
+      this.cuartaEtapa.patchValue({
+        startDate: actualPlantilla.fechaInicio,
+        endDate: actualPlantilla.fechaTermino,
+        HoraInicio: actualPlantilla.horaInicio,
+        HoraFin: actualPlantilla.horaTermino,
+        Jornada: actualPlantilla.duracionJorada,
+        // numeroPractica: '1' falta la practica
+      });
+    }
   }
   /*
   upFile(): void

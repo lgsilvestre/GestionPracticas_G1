@@ -19,6 +19,7 @@ export class SolicitudInscripcionPracticaService
   private refFormEstudiantes: ArchivoFormularioModel[] = [];
   private archivosFormulariosEstudiante$ = new BehaviorSubject<ArchivoFormularioModel[]>([]);
   private plantillageneral: PlantillaGeneral;
+  private plantillageneral$: BehaviorSubject<PlantillaGeneral>;
   private mapFiles: Map<string, ArchivoFormularioModel>;
 
   constructor(private angularFireStore: AngularFirestore,
@@ -33,12 +34,14 @@ export class SolicitudInscripcionPracticaService
       if (documentos.length < 2)
       {
         this.plantillageneral = this.createunfinishedForm();
+        this.plantillageneral$ = new BehaviorSubject<PlantillaGeneral>(this.plantillageneral);
         this.mapingFomFiles();
         console.log(this.plantillageneral.archivos.toString() + 'archivos < 2');
       }
       else
       {
         this.plantillageneral = this.createunfinishedForm();
+        this.plantillageneral$ = new BehaviorSubject<PlantillaGeneral>(this.plantillageneral);
         this.cargarPlantillaGeneral(documentos[1]);
         console.log(this.plantillageneral.archivos.toString() + 'archivos >= 2');
       }
@@ -46,7 +49,12 @@ export class SolicitudInscripcionPracticaService
     else
     {
       this.plantillageneral = this.createunfinishedForm();
+      this.plantillageneral$ = new BehaviorSubject<PlantillaGeneral>(this.plantillageneral);
     }
+  }
+  public getRefArchivosPlantilla(): string[]
+  {
+    return this.plantillageneral.archivos;
   }
   private cargarModificacionesIncripcion(nuevaPlantilla: PlantillaGeneral): void
   {
@@ -54,6 +62,8 @@ export class SolicitudInscripcionPracticaService
     {
       const ref = this.angularFireStore.collection<PlantillaGeneral>('/Solicitudes').doc(this.plantillageneral.id);
       ref.set(nuevaPlantilla).then(succses => {
+        this.plantillageneral = nuevaPlantilla;
+        this.plantillageneral$.next(this.plantillageneral);
         console.log('plantilla actualizada correctamente');
       }).catch(( error: any) => {
         console.log('la pantilla existe pero no se cargo actualizo y F');
@@ -63,6 +73,10 @@ export class SolicitudInscripcionPracticaService
     else{
       console.log('no se creo nada porque la pantilla aun no se carga o no existe');
     }
+  }
+  public subirSolicitudInscripcionPractica(nuevaPlantilla: PlantillaGeneral): void
+  {
+    this.cargarModificacionesIncripcion(nuevaPlantilla);
   }
   private cargarPlantillaGeneral(referencia: string): void
   {
@@ -113,11 +127,19 @@ export class SolicitudInscripcionPracticaService
           this.plantillageneral = nuevaplantilla;
         }
       }
-    }).finally( () => this.mapingFomFiles() );
+    }).finally( () =>
+    {
+      this.plantillageneral$.next(this.plantillageneral);
+      this.mapingFomFiles();
+    });
   }
   getArchivosFormulariosEstudiante$(): BehaviorSubject<ArchivoFormularioModel[]>
   {
     return this.archivosFormulariosEstudiante$;
+  }
+  getPlantillageneral$(): BehaviorSubject<PlantillaGeneral>
+  {
+    return this.plantillageneral$;
   }
   upDocumentoFormularioEstudiante(nuevoFormulario: ArchivoFormularioModel, file: File): void {
     const documentos = this.locaSTF.getDocumentos();
@@ -263,7 +285,7 @@ export class SolicitudInscripcionPracticaService
     });
   }
 
-  private mapingFomFiles(): void {
+  public mapingFomFiles(): void {
     this.generalDoc.getFomulariolFiles().subscribe(files => {
       files.forEach(file => {
         this.mapFiles.set(file.nombre, file);
