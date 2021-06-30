@@ -40,6 +40,7 @@ export class ArchivoFormContainerComponent implements OnInit {
     this.titulo = titulo;
     this.descripcion = textoInformativo;
     this.urlOriginal = urlOriginal;
+    this.urlArchivoEstudiante = urlEStudiante;
     this.filename = filename;
   }
   onFileChange(event: any): void
@@ -58,7 +59,14 @@ export class ArchivoFormContainerComponent implements OnInit {
       filename: ' ',
       visible: true
     };
-    this.solicitudInscripcion.upDocumentoFormularioEstudiante(nuevoFormularioAlumno);
+    if ( this.files[0])
+    {
+      console.log('existe');
+      this.solicitudInscripcion.upDocumentoFormularioEstudiante(nuevoFormularioAlumno, this.files[0]);
+    }
+    else {
+      console.log('no existe');
+    }
   }
 
 }

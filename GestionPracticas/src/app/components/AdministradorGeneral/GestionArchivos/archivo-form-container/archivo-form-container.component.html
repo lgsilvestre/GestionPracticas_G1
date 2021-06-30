@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card xmlns="http://www.w3.org/1999/html">
     <mat-card-title class="header-with-delete">
         <div>{{titulo}}</div>
         <button mat-raised-button color="primary" *ngIf="rol == 'administradorGeneral' "><mat-icon mat-list-icon>delete_forever</mat-icon></button>
@@ -6,6 +6,9 @@
     <mat-card-content>
         <p>{{descripcion}}</p>
         <a href="{{urlOriginal}}">{{titulo}}</a>
+        <br/>
+        <br/>
+        <a *ngIf="urlArchivoEstudiante !=' '" href="{{urlArchivoEstudiante}}">Archivo Estuduate</a>
         <form *ngIf="rol != 'administradorGeneral'" [formGroup]="archivo">
             <h3>Archivo</h3>
             <input type="file" (change)="onFileChange($event)" formControlName="Archivo" required>

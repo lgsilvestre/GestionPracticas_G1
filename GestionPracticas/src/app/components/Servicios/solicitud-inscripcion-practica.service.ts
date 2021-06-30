@@ -19,26 +19,34 @@ export class SolicitudInscripcionPracticaService
   private refFormEstudiantes: ArchivoFormularioModel[] = [];
   private archivosFormulariosEstudiante$ = new BehaviorSubject<ArchivoFormularioModel[]>([]);
   private plantillageneral: PlantillaGeneral;
+  private mapFiles: Map<string, ArchivoFormularioModel>;
 
   constructor(private angularFireStore: AngularFirestore,
               private storage: AngularFireStorage,
               private locaSTF: LocalStorageService,
               private generalDoc: GestionarArchivosGeneralesService,
               public dialog: MatDialog) {
-    const documentos = this.locaSTF.getDocumentos();
-    if (documentos.length < 2)
+    this.mapFiles = new Map<string, ArchivoFormularioModel>();
+    if (this.locaSTF.getRol() === 'estudiante')
     {
-      this.plantillageneral = this.createunfinishedForm();
+      const documentos = this.locaSTF.getDocumentos();
+      if (documentos.length < 2)
+      {
+        this.plantillageneral = this.createunfinishedForm();
+        this.mapingFomFiles();
+        console.log(this.plantillageneral.archivos.toString() + 'archivos < 2');
+      }
+      else
+      {
+        this.plantillageneral = this.createunfinishedForm();
+        this.cargarPlantillaGeneral(documentos[1]);
+        console.log(this.plantillageneral.archivos.toString() + 'archivos >= 2');
+      }
     }
     else
     {
       this.plantillageneral = this.createunfinishedForm();
-      this.cargarPlantillaGeneral(documentos[1]);
     }
-  }
-  private actualizarArchivosPlantilla(archivos: string[]): void {
-    this.plantillageneral.archivos = archivos;
-    //Falta revisar el metodo qeu actualice el map ala gregar un nuevo formulario
   }
   private cargarModificacionesIncripcion(nuevaPlantilla: PlantillaGeneral): void
   {
@@ -97,6 +105,7 @@ export class SolicitudInscripcionPracticaService
             telefonoEmpresa: plantilla.telefonoEmpresa
           };
             this.plantillageneral = nuevaplantilla;
+            console.log( nuevaplantilla.id);
             console.log('la pantilla existe y la carge');
         }
         else {
@@ -104,25 +113,32 @@ export class SolicitudInscripcionPracticaService
           this.plantillageneral = nuevaplantilla;
         }
       }
-    });
+    }).finally( () => this.mapingFomFiles() );
   }
   getArchivosFormulariosEstudiante$(): BehaviorSubject<ArchivoFormularioModel[]>
   {
     return this.archivosFormulariosEstudiante$;
   }
-  upDocumentoFormularioEstudiante(nuevoFormulario: ArchivoFormularioModel): void {
+  upDocumentoFormularioEstudiante(nuevoFormulario: ArchivoFormularioModel, file: File): void {
     const documentos = this.locaSTF.getDocumentos();
     if (documentos.length < 2) {
       // creamoa la referencia
       const nuevaplantilla = this.createunfinishedForm();
       this.createSolicitudPractica(nuevaplantilla);
+      this.buscarYsiencuentraReemplazarFormulario(nuevoFormulario, file);
     } else {
       if (typeof documentos[1] === 'string') {
         console.log(documentos[1]);
-
-        this.cargarModificacionesIncripcion(this.plantillageneral);
+        this.buscarYsiencuentraReemplazarFormulario(nuevoFormulario, file);
       } else {
         console.log('este si es un error');
+        this.dialog.open(ErrorComponent, {
+          data:
+            {
+              titulo: 'este si es un error',
+              contenido: 'tengo una referencia a algo que no existe'
+            }
+        });
       }
     }
   }
@@ -133,6 +149,7 @@ export class SolicitudInscripcionPracticaService
     nuevoFormulario.filename = nuevoFormulario.nombre + '-' + this.locaSTF.getNombres() +
       this.locaSTF.getApellidos() + '-' + file.lastModified;
     const filePath = '/ArchivosSolicitudes/' +  nuevoFormulario.filename;
+    console.log('filePath');
     console.log(filePath + ' ' + file.type);
     const fileRef = this.storage.ref(filePath); // creamos al referencia al archivo
     const tarea = this.storage.upload(filePath, file);
@@ -142,56 +159,37 @@ export class SolicitudInscripcionPracticaService
           console.log('esxiss ' + urlFile.toString());
           if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
           {
-            nuevoFormulario.urlOriginal = urlFile.toString(); // asignamos la url y tenemos completo el formulario nuevo
+            nuevoFormulario.urlArchivoEstuduante = urlFile.toString(); // asignamos la url y tenemos completo el formulario nuevo
             /* bueno en esta parte ya tenemos el nuevo formulario completo
             pudiendo pasar a agregar el formulario a la solicitud.
              */
             // en la siguente linea obtenemso los archivos para resisar si el nuevo ya existe
-            const archivos = this.plantillageneral.archivos;
-            if (archivos) {
-              const refFormEstudiantes = this.angularFireStore.collection<ArchivoFormularioModel>('/DocumentosFormulariosEstudiantes/');
-              // luego revisamos si el formulario es una actualizacion o  es uno nuevo, si es una actualizacion la
-              // promesa regresa que true y si no false
-              const encontrado = new Promise<boolean>((resolved, reject) => {
-                // tslint:disable-next-line:prefer-for-of
-                let i = 0;
-                let continuar = true;
-                while (i < archivos.length && continuar)
+            this.angularFireStore.collection('/DocumentosFormulariosEstudiantes/').add(nuevoFormulario).then( ok => {
+              const referenciaSolicitud: string = ok.id;
+              nuevoFormulario.id = referenciaSolicitud;
+              ok.set(nuevoFormulario).then( refff =>
                 {
-                  const a = archivos[i];
-                  refFormEstudiantes.doc(a).ref.get().then(succses => {
-                    if (succses.data()?.nombre === nuevoFormulario.nombre) {
-                      // si lo encontramos lo reemplazamos.
-                      succses.ref.set(nuevoFormulario).then(r => console.log('ok'));
-                      continuar = false;
-                      resolved(true);
-                    }
+                  this.mapFiles.set(nuevoFormulario.nombre, nuevoFormulario);
+                  this.refFormEstudiantes = [];
+                  const archivosRef: string[] = [];
+                  this.mapFiles.forEach((valor, llave) => {
+                    archivosRef.push(valor.id);
+                    this.refFormEstudiantes.push(valor);
                   });
-                  i++;
+                  this.archivosFormulariosEstudiante$.next(this.refFormEstudiantes);
+                  this.plantillageneral.archivos = archivosRef;
+                  this.cargarModificacionesIncripcion(this.plantillageneral);
+                  this.dialog.open(SuccessComponent, {
+                    data:
+                      {
+                        titulo: 'archivo cargado correctamente',
+                        contenido: 'el archivo se cargo correctamente'
+                      }
+                  });
                 }
-                if ( continuar)
-                {
-                  reject(false);
-                }
-              });
-              encontrado
-                .then( esta => { console.log( 'el archivo esta yy se actualizo' + esta); })
-                .catch( noEsta => {
-               this.angularFireStore.collection('/DocumentosFormulariosEstudiantes/')
-                 .add(nuevoFormulario).then(reff => {
-                 nuevoFormulario.id = reff.id;
-                 archivos.push(nuevoFormulario.id);
-                 reff.set(nuevoFormulario);
-
-               });
-             });
-                /*
-                ok.ref.get().then(plantilla => {
-                      // aqui la agregamos
-                    });
-                 */
-              }
-            } else {
+              );
+            });
+          } else {
               this.dialog.open(ErrorComponent, {
                 data:
                   {
@@ -265,54 +263,50 @@ export class SolicitudInscripcionPracticaService
     });
   }
 
-  mapingFomFiles(): void {
-    const mapFiles: Map<string, ArchivoFormularioModel> = new Map<string, ArchivoFormularioModel>();
+  private mapingFomFiles(): void {
     this.generalDoc.getFomulariolFiles().subscribe(files => {
       files.forEach(file => {
-        mapFiles.set(file.nombre, file);
+        this.mapFiles.set(file.nombre, file);
       });
-      this.contrasmapp(mapFiles);
+      this.contrasmapp(this.mapFiles);
     });
   }
   private contrasmapp(mapFiles: Map<string, ArchivoFormularioModel>): void
   {
     console.log('mapFiles');
     console.log(mapFiles);
-    const referenciaIdSolicitud: string = this.locaSTF.getDocumentos()[1];
-    const plantillaref = this.angularFireStore.collection<PlantillaGeneral>('/Solicitudes/').doc(referenciaIdSolicitud);
-    plantillaref.ref.get().then(datos => {
-      if (datos.exists)
-      {
-        const files = datos.data()?.archivos || [];
-        const fireref = this.angularFireStore.collection<ArchivoFormularioModel>('/DocumentosFormulariosEstudiantes');
-        files.forEach(id => {
-          fireref.doc(id).ref.get().then(
-            data => {
-              if (data.exists) {
-                const documentoAux: ArchivoFormularioModel = {
-                  id: data.data()?.id || '',
-                  nombre: data.data()?.nombre || '',
-                  textoInformativo: data.data()?.textoInformativo || '',
-                  urlOriginal: data.data()?.urlOriginal || '',
-                  visible: data.data()?.visible || false,
-                  filename: data.data()?.filename || '',
-                  urlArchivoEstuduante: data.data()?.urlArchivoEstuduante || ''
-                };
-                mapFiles.set(documentoAux.nombre, documentoAux);
-              }
-            });
+    const files = this.plantillageneral.archivos;
+    console.log('files');
+    console.log(this.plantillageneral.archivos.toString());
+    const fireref = this.angularFireStore.collection<ArchivoFormularioModel>('/DocumentosFormulariosEstudiantes/');
+    files.forEach(id => {
+      console.log(id + 'id ');
+      fireref.doc(id).ref.get().then(
+        data => {
+          console.log(data.exists + 'existe');
+          if (data.exists) {
+            const documentoAux: ArchivoFormularioModel = {
+              id: data.data()?.id || '',
+              nombre: data.data()?.nombre || '',
+              textoInformativo: data.data()?.textoInformativo || '',
+              urlOriginal: data.data()?.urlOriginal || '',
+              visible: data.data()?.visible || false,
+              filename: data.data()?.filename || '',
+              urlArchivoEstuduante: data.data()?.urlArchivoEstuduante || ''
+            };
+            mapFiles.set(documentoAux.nombre, documentoAux);
+          }
+        })
+        .finally(() => {
+          console.log('mapFilesdespues');
+          console.log(mapFiles);
+          this.refFormEstudiantes = [];
+          mapFiles.forEach((valor, clave) => {
+            this.refFormEstudiantes.push(valor);
         });
-      }
-    }).finally(() => {
-      this.refFormEstudiantes = [];
-      mapFiles.forEach((valor, clave) => {
-        this.refFormEstudiantes.push(valor);
-      });
-      this.refFormEstudiantes.forEach(fille => {
-        console.log(fille);
-      });
-      this.archivosFormulariosEstudiante$.next(this.refFormEstudiantes);
+          console.log(this.refFormEstudiantes.toString());
+          this.archivosFormulariosEstudiante$.next(this.refFormEstudiantes);
+        });
     });
-
   }
 }
