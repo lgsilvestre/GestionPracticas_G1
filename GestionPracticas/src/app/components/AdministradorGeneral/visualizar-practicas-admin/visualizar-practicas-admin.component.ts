@@ -60,6 +60,11 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
 
     solicitudes: Practica[];
 
+    //arreglo con los indices de las columnas que serán ignoradas al exportar al excel 
+    //El valor 5 corresponde al indice de la columna acciones en la tabla solicitudes, la cual no debería mostrarse al exportar al excel
+    //El valor 6 corresponde al indice de la columna acciones en las tablas inscripciones y enCurso, la cual no debería mostrarse al exportar al excel
+    columnasIgnoradas: any = [5];
+
     dataSource = new MatTableDataSource();
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
