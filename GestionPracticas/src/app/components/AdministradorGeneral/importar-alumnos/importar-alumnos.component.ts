@@ -128,7 +128,6 @@ export class ImportarAlumnosComponent implements OnInit {
                 alertify.error("Error, la cuenta ya se encontraba en el sistema!");
             }
         });
-
     }
   }
 

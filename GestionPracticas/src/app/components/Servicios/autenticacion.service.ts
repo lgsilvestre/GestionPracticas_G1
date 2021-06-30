@@ -7,6 +7,7 @@ import {Estudiante} from '../../model/estudiante.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AutenticacionService
 {
 
@@ -18,12 +19,15 @@ export class AutenticacionService
   public test()
   {
     this.afAutenticacion.onAuthStateChanged((user) => {
-        if (user) {
+        if (user) 
+        {
             console.log("autenticado");
-        } else {
+        } else 
+        {
             console.log("no autenticado");
         } 
     });
   }
+
 
 }

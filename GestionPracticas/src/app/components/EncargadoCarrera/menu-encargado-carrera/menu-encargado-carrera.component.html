@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title>¡Bienvenido [nombre] [apellido]!</mat-card-title>
+    <mat-card-title>¡Bienvenido {{encargadoCarrera.nombres}} {{encargadoCarrera.apellidos}}!</mat-card-title>
     <mat-card-content>
         <p>Existen <b>33</b> solicitudes de práctica pendientes. Si deseas verlas, haz click <a href="#">aquí</a>.</p>
     </mat-card-content>
@@ -9,9 +9,6 @@
         <div class="row">
             <div class="col">
                 <app-bar-chart></app-bar-chart>
-            </div>
-            <div class="col">
-                <app-pie-chart></app-pie-chart>
             </div>
         </div>
     </mat-card-content>
