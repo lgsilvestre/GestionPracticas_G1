@@ -58,7 +58,7 @@ export class ArchivoFormContainerComponent implements OnInit {
       filename: ' ',
       visible: true
     };
-    this.solicitudInscripcion.upDocumentoFormularioEstudiante();
+    this.solicitudInscripcion.upDocumentoFormularioEstudiante(nuevoFormularioAlumno);
   }
 
 }

@@ -36,6 +36,10 @@ export class SolicitudInscripcionPracticaService
       this.cargarPlantillaGeneral(documentos[1]);
     }
   }
+  private actualizarArchivosPlantilla(archivos: string[]): void {
+    this.plantillageneral.archivos = archivos;
+    //Falta revisar el metodo qeu actualice el map ala gregar un nuevo formulario
+  }
   private cargarModificacionesIncripcion(nuevaPlantilla: PlantillaGeneral): void
   {
     if (this.plantillageneral.id !== ' ')
@@ -122,8 +126,8 @@ export class SolicitudInscripcionPracticaService
       }
     }
   }
-  buscarYsiencuentraReemplazarFormulario(nuevoFormulario: ArchivoFormularioModel,
-                                         file: File): void
+  private buscarYsiencuentraReemplazarFormulario(nuevoFormulario: ArchivoFormularioModel,
+                                                 file: File): void
   {
     // creamos el filename que no servira para crear el path del archivo
     nuevoFormulario.filename = nuevoFormulario.nombre + '-' + this.locaSTF.getNombres() +
@@ -134,57 +138,70 @@ export class SolicitudInscripcionPracticaService
     const tarea = this.storage.upload(filePath, file);
     tarea.snapshotChanges().pipe(
       finalize(() => {
-        fileRef.getDownloadURL().subscribe( urlFile => {
+        fileRef.getDownloadURL().subscribe(urlFile => {
           console.log('esxiss ' + urlFile.toString());
-          if ( urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
+          if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
           {
             nuevoFormulario.urlOriginal = urlFile.toString(); // asignamos la url y tenemos completo el formulario nuevo
             /* bueno en esta parte ya tenemos el nuevo formulario completo
             pudiendo pasar a agregar el formulario a la solicitud.
              */
+            // en la siguente linea obtenemso los archivos para resisar si el nuevo ya existe
             const archivos = this.plantillageneral.archivos;
-            if (archivos)
-            {
+            if (archivos) {
               const refFormEstudiantes = this.angularFireStore.collection<ArchivoFormularioModel>('/DocumentosFormulariosEstudiantes/');
-              let encontrado = false;
-              archivos.forEach( a => {
-                refFormEstudiantes.doc(a).ref.get().then( succses => {
-                  if (succses.data()?.nombre === nuevoFormulario.nombre)
-                  {
-                    // si lo encontramos lo reemplazamos.
-                    succses.ref.set(nuevoFormulario).then(r => console.log('ok'));
-                    encontrado = true;
-                        // falta eliminar el archivo antiguo
-                  }
-                });
-              });
-              //amigo revisa lo de las prommesas y usalo aquie
-              if (!encontrado)
-              {
-                this.angularFireStore.collection('/DocumentosFormulariosEstudiantes/')
-                  .add(nuevoFormulario).then( reff => {
-                    nuevoFormulario.id = reff.id;
-                    archivos.push(nuevoFormulario.id);
-                    reff.set(nuevoFormulario);
+              // luego revisamos si el formulario es una actualizacion o  es uno nuevo, si es una actualizacion la
+              // promesa regresa que true y si no false
+              const encontrado = new Promise<boolean>((resolved, reject) => {
+                // tslint:disable-next-line:prefer-for-of
+                let i = 0;
+                let continuar = true;
+                while (i < archivos.length && continuar)
+                {
+                  const a = archivos[i];
+                  refFormEstudiantes.doc(a).ref.get().then(succses => {
+                    if (succses.data()?.nombre === nuevoFormulario.nombre) {
+                      // si lo encontramos lo reemplazamos.
+                      succses.ref.set(nuevoFormulario).then(r => console.log('ok'));
+                      continuar = false;
+                      resolved(true);
+                    }
                   });
+                  i++;
+                }
+                if ( continuar)
+                {
+                  reject(false);
+                }
+              });
+              encontrado
+                .then( esta => { console.log( 'el archivo esta yy se actualizo' + esta); })
+                .catch( noEsta => {
+               this.angularFireStore.collection('/DocumentosFormulariosEstudiantes/')
+                 .add(nuevoFormulario).then(reff => {
+                 nuevoFormulario.id = reff.id;
+                 archivos.push(nuevoFormulario.id);
+                 reff.set(nuevoFormulario);
+
+               });
+             });
+                /*
                 ok.ref.get().then(plantilla => {
                       // aqui la agregamos
                     });
+                 */
               }
+            } else {
+              this.dialog.open(ErrorComponent, {
+                data:
+                  {
+                    titulo: 'Error al cargar archivo',
+                    contenido: 'por un error inesperado nos e pudo guardar el archivo intente nuevamente'
+                  }
+              });
             }
-          else
-          {
-            this.dialog.open(ErrorComponent, {
-              data:
-                {
-                  titulo: 'Error al cargar archivo',
-                  contenido: 'por un error inesperado nos e pudo guardar el archivo intente nuevamente'
-                }
-            });
-          }
         });
-      })
-    ).subscribe();
+      })).subscribe();
   }
   private createunfinishedForm(): PlantillaGeneral {
     const plantilla: PlantillaGeneral = {
