@@ -9,13 +9,16 @@ import {Estudiante} from '../../../model/estudiante.model';
 export class GestionEstudianteService {
 
   constructor(private afAutenticacion: AngularFireAuth, private afStore: AngularFirestore)
-  {}
+  {
+    afAutenticacion.useDeviceLanguage();
+  }
   private registrarUsuario(nuevoEstudiante: Estudiante, password: string): Promise<any>
   {
     return new Promise((resolve, reject ) =>
     {
       this.afAutenticacion.createUserWithEmailAndPassword(nuevoEstudiante.correoInstitucional , password)
         .then(userData => {
+            userData.user?.sendEmailVerification();
           resolve(userData),
             this.addEstuadiante(userData.user?.uid , nuevoEstudiante );
         }).catch(err => console.log(reject(err)));
@@ -31,7 +34,7 @@ export class GestionEstudianteService {
     else
     {
       const  reff = this.afStore.doc('/Usuarios/estudiante/estudiantes/' + uID);
-      console.log( 'reff' + reff.ref);
+      console.log( 'reff: ', reff.ref);
       reff.set(nuevoEstudiante, {merge: true});
     }
   }
