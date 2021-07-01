@@ -110,5 +110,9 @@ export class LocalStorageService {
 		const reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + this.uid );
 		reff.set(this.user, { merge: true });
 	}
+	getEstadoEtapaActual(): string
+  {
+    return this.estadoEtapaActual;
+  }
 
 }

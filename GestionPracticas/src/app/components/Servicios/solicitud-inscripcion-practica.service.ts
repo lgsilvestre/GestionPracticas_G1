@@ -62,6 +62,11 @@ export class SolicitudInscripcionPracticaService
     {
       const ref = this.angularFireStore.collection<PlantillaGeneral>('/Solicitudes').doc(this.plantillageneral.id);
       ref.set(nuevaPlantilla).then(succses => {
+        if (this.locaSTF.getEstadoEtapaActual() !== nuevaPlantilla.estado)
+        {
+          console.log(nuevaPlantilla.estado + ' oooooo ');
+          this.locaSTF.setEstadoEtapaActual(nuevaPlantilla.estado);
+        }
         this.plantillageneral = nuevaPlantilla;
         this.plantillageneral$.next(this.plantillageneral);
         console.log('plantilla actualizada correctamente');
