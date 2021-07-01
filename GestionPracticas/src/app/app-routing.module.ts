@@ -25,6 +25,7 @@ import { VisualizarPracticasAdminComponent } from './components/AdministradorGen
 import { GestionArchivosComponent } from './components/AdministradorGeneral/GestionArchivos/gestion-archivos/gestion-archivos.component';
 import { DefinirFechasImportantesComponent } from './components/AdministradorGeneral/definir-fechas-importantes/definir-fechas-importantes.component';
 import {SolicitududPracticaComponent} from './components/Estudiante/solicitudud-practica/solicitudud-practica.component';
+import { ImportarAlumnosComponent } from './components/AdministradorGeneral/importar-alumnos/importar-alumnos.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
 	{ path: 'visualizar-practica', component: VisualizarComponent },
 	{ path: 'editar-cuenta', component: EditarCuentaComponent },
 	{ path: 'ver-cuentas', component: VerCuentasComponent },
+    { path: 'importar-alumnos', component: ImportarAlumnosComponent },
 	{ path: 'crear-cuentas-sa', component: CrearCuentasSaComponent },
 	{ path: 'crear-cuenta/encargado-carrera', component: CrearCuentaEncargadoComponent },
 	{ path: 'crear-cuenta/admin-general', component: CrearCuentaAdministradorGeneralComponent },

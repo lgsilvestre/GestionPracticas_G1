@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
 						this.localStorageF.setUser(userData);
 						this.localStorageF.setUID(userUID);
 						this.router.navigate(['./menu-estudiante']);
-						console.log(userData?.rol);
 					}
 				}
 			);
@@ -64,7 +63,6 @@ export class LoginComponent implements OnInit {
 						const userData: any = doc.data();
 						localStorage.setItem('user', JSON.stringify(userData));
 						this.router.navigate(['./menu-encargado-carrera']);
-						console.log(userData?.rol);
 					}
 				}
 			);
