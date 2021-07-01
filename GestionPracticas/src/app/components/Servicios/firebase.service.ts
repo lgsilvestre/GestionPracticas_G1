@@ -5,12 +5,9 @@ import * as firebase from 'firebase/app';
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseService 
+export class FirebaseService
 {
 
-  constructor() 
-  { }
-
-  firestore()
-  {  }
+  constructor()
+  {}
 }

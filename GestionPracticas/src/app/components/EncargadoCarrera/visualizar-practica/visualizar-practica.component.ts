@@ -7,6 +7,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 import { Practica } from "src/app/model/practica.model";
 import { LocalStorageService } from "../../Servicios/local-storage.service";
+import { ActivatedRoute, Router } from "@angular/router";
 declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
@@ -107,7 +108,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     }
 
-    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService) {
+    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService, private rutaActiva: ActivatedRoute, private router: Router) {
         this.solicitudes     = [];
         this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter('SolicitudesPractica');
@@ -181,7 +182,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     cargarDatos(coleccion: string) {
         var carrera = this.locaSTF.getCarrera(); //carrera del encargado
-        this.EC_service.load_data_visualizar_practica(coleccion, "Ingeniería Civil en Computación").then((querySnapshot) => {
+        this.EC_service.load_data_visualizar_practica_encargado(coleccion, carrera).then((querySnapshot) => {
             this.solicitudes = [];
             querySnapshot.forEach(doc => {
 
@@ -295,6 +296,8 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     }
 
     seleccionarTabla(nombreTabla: string) {
+        this.clearFilters();
+
         this.filtroNombre.setValue('');       
         this.selectFilterValue = "sin_filtros";
         this.filtroNumeroMatriculaSeleccionado = false;

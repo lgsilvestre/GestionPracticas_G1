@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker/calendar-body';
 import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
+import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
 	selector: 'app-inicio',
