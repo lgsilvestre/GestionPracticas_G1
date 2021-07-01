@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
 
 		this.router.events.pipe(
 			filter((event: any) => event instanceof NavigationEnd)).subscribe(event => {
-			console.log(event);
 			if (
 				event.url === "/login" || event.url === "/"
 			) {

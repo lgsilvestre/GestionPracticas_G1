@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 /**
  * Se agregan los modules en imports y exports para poder usarlos en los otros componentes
@@ -50,6 +51,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatNativeDateModule,
     MatDialogModule,
     MatPaginatorModule,
+    MatProgressBarModule,
   ],
 	exports: [
 		MatSliderModule,
@@ -71,6 +73,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		MatNativeDateModule,
 		MatDialogModule,
 		MatPaginatorModule,
+        MatProgressBarModule,
 	],
 })
 

@@ -21,11 +21,8 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" errorMessage="Debes subir tu informe de práctica">
         <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Subir informe de práctica</ng-template>
-            <div>
-                <h3>Por favor, suba el archivo que contiene su informe de práctica</h3>
-                <input type="file" placeholder="consentimiento.pdf" required>
-            </div>
+            <ng-template matStepLabel>Practica en curso</ng-template>
+            <app-practica></app-practica>
         </form>
     </mat-step>
     <mat-step>

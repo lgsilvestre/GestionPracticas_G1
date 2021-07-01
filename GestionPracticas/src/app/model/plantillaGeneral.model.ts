@@ -1,5 +1,6 @@
 export interface PlantillaGeneral{
   // Estudiante
+  id: string;
   nombres: string;
   apellidos: string;
   run: string;

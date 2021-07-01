@@ -90,7 +90,6 @@ export class GestionarArchivosGeneralesService
           if ( urlFile.toString() !== '')
           {
             archivoInformativo.urlArchivo = urlFile.toString();
-            console.log('hola aaaa');
             this.addArchivoInformativo(archivoInformativo);
           }
           else

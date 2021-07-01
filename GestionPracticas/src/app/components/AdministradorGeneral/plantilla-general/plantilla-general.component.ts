@@ -7,8 +7,9 @@ import {DynamicHostDirective} from '../directivas/dynamic-host.directive';
 import {ArchivosInformativoComponent} from '../GestionArchivos/archivos-informativo/archivos-informativo.component';
 import {GestionarArchivosGeneralesService} from '../../Servicios/gestionar-archivos-generales.service';
 import {LocalStorageService} from '../../Servicios/local-storage.service';
-import {DynamicHostFormDirective} from "../directivas/dynamic-host-form.directive";
-import {ArchivoFormContainerComponent} from "../GestionArchivos/archivo-form-container/archivo-form-container.component";
+import {DynamicHostFormDirective} from '../directivas/dynamic-host-form.directive';
+import {ArchivoFormContainerComponent} from '../GestionArchivos/archivo-form-container/archivo-form-container.component';
+import {SolicitudInscripcionPracticaService} from '../../Servicios/solicitud-inscripcion-practica.service';
 
 export interface Documento
 {
@@ -39,7 +40,8 @@ export class PlantillaGeneralComponent implements OnInit {
               private afStudent: FirebaseEstudianteService,
               private comFacResol: ComponentFactoryResolver,
               private gestionArchivosGenerales: GestionarArchivosGeneralesService,
-              private locaSTF: LocalStorageService)
+              private locaSTF: LocalStorageService,
+              private siPracticaS: SolicitudInscripcionPracticaService)
   {
     this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
@@ -96,6 +98,7 @@ export class PlantillaGeneralComponent implements OnInit {
 
   ngOnInit(): void
   {
+    this.locaSTF.reloadUser();
     this.gestionArchivosGenerales.getInformativelFiles().subscribe(files => {
       this.dynamicHost?.viewContainerRef.clear();
       files.forEach(file => {
@@ -106,7 +109,7 @@ export class PlantillaGeneralComponent implements OnInit {
       });
     });
     const existe = typeof this.locaSTF.getDocumentos()[1];
-    if (existe.toString() == 'undefined')
+    if (existe.toString() === 'undefined')
     {
       this.gestionArchivosGenerales.getFomulariolFiles().subscribe( formuFiles => {
         this.dynamicHostFromularios?.viewContainerRef.clear();
@@ -127,13 +130,38 @@ export class PlantillaGeneralComponent implements OnInit {
       });
       console.log(existe.toString());
     }
+    else
+    {
+      this.siPracticaS.getArchivosFormulariosEstudiante$().subscribe( formuFiles => {
+        this.dynamicHostFromularios?.viewContainerRef.clear();
+        formuFiles.forEach( fileForm => {
+          const  componnet = this.comFacResol.resolveComponentFactory(ArchivoFormContainerComponent);
+          const contenido = this.dynamicHostFromularios?.viewContainerRef
+            .createComponent<ArchivoFormContainerComponent>(componnet)?.
+            instance
+            .setValues(
+              fileForm.id,
+              fileForm.nombre,
+              fileForm.textoInformativo,
+              fileForm.urlOriginal,
+              fileForm.urlArchivoEstuduante,
+              fileForm.filename
+            );
+        });
+    });
+    }
+    this.siPracticaS.getPlantillageneral$().subscribe( plantilla => {
+      this.cargardatosPlantilla(plantilla);
+    });
     this.gestionArchivosGenerales.updateGeneralFiles();
+    this.siPracticaS.mapingFomFiles();
     /* asi se puedne setear valores this.primeraEtapa.patchValue({Nombres: 'juan' , Apellidos: 'rodiguez' });*/
   }
   enviar(): void
   {
     const plantilla: PlantillaGeneral =
-       { nombres: this.datosEstudianteEtapa.value.Nombres,
+       { id: this.siPracticaS.getIdsolicitudActual(),
+         nombres: this.datosEstudianteEtapa.value.Nombres,
          apellidos: this.datosEstudianteEtapa.value.Apellidos,
          carrera: this.datosEstudianteEtapa.value.Carrera,
          numeroMatricula : this.datosEstudianteEtapa.value.NumeroMatricula,
@@ -163,12 +191,45 @@ export class PlantillaGeneralComponent implements OnInit {
          horaInicio: this.cuartaEtapa.value.HoraInicio,
          horaTermino: this.cuartaEtapa.value.HoraFin,
          duracionJorada: this.cuartaEtapa.value.Jornada,
-         archivos: this.files, // revisar bien.
+         archivos: this.siPracticaS.getRefArchivosPlantilla(), // revisar bien.
          // fin ( por el momento)
          estado: 'Pendiente', // aprobado,rechazado,en revision
      };
-    console.log(plantilla);
-    this.afStudent.upSolicitud( plantilla);
+    this.siPracticaS.subirSolicitudInscripcionPractica(plantilla);
+  }
+  private cargardatosPlantilla(actualPlantilla: PlantillaGeneral): void
+  {
+    if (actualPlantilla.id !== '')
+    {
+      this.datosEstudianteEtapa.patchValue({
+        ContactoEmergencia: actualPlantilla.contactoEmergencia,
+        TelefonoEmergencia: actualPlantilla.telefonoEmergencia
+      });
+      this.segundaEtapa.patchValue({
+        Nombre: actualPlantilla.nombreEmpresa,
+        Rut: actualPlantilla.rutEmpresa,
+        NumeroTelefono: actualPlantilla.telefonoEmpresa,
+        CorreoElectronico: actualPlantilla.correoEmpresa,
+        Direccion: actualPlantilla.direccionEmpresa,
+      });
+      this.terseraEtapa.patchValue({
+        Nombres: actualPlantilla.nombreTutor,
+        Apellidos: actualPlantilla.apellidoTutor,
+        Run: actualPlantilla.runTutor,
+        AreaDepto: actualPlantilla.areaTutor,
+        Puesto: actualPlantilla.puestoTutor,
+        NumeroContacto: actualPlantilla.contactoTutor,
+        CorreoElectronico: actualPlantilla.correoTutor,
+      });
+      this.cuartaEtapa.patchValue({
+        startDate: actualPlantilla.fechaInicio,
+        endDate: actualPlantilla.fechaTermino,
+        HoraInicio: actualPlantilla.horaInicio,
+        HoraFin: actualPlantilla.horaTermino,
+        Jornada: actualPlantilla.duracionJorada,
+        // numeroPractica: '1' falta la practica
+      });
+    }
   }
   /*
   upFile(): void
