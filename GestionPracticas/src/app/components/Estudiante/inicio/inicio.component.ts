@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker/calendar-body';
+import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
 	selector: 'app-inicio',
@@ -16,17 +17,6 @@ export class InicioComponent implements OnInit {
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
   userName: string = this.user.nombres;
   userApellidos: string = this.user.apellidos;
-	// firstFormGroup: FormGroup;
-	// secondFormGroup: FormGroup;
-
-	// constructor(private _formBuilder: FormBuilder) {
-	// 	this.firstFormGroup = this._formBuilder.group({
-	// 		firstCtrl: ['', Validators.required]
-	// 	});
-	// 	this.secondFormGroup = this._formBuilder.group({
-	// 		secondCtrl: ['', Validators.required]
-	// 	});
-	// }
 
 	fecha_seleccionada = new Date('2021/05/29')
 	fecha_seleccionada_arreglo = [new Date('2021/05/29'), new Date('2022/01/29')];

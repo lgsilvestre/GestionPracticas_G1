@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
   selector: 'app-pie-chart',
@@ -22,8 +23,8 @@ export class PieChartComponent implements OnInit {
       },
     }
   };
-  public pieChartLabels: Label[] = [['Aprobadas'], ['Reprobadas'], 'No completadas'];
-  public pieChartData: number[] = [331, 20, 7];
+  public pieChartLabels: Label[] = [['Aprobadas'], ['Reprobadas'], ['Pendientes']];
+  public pieChartData: number[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [pluginDataLabels];
@@ -33,7 +34,35 @@ export class PieChartComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  carreras:string[] = [];
+  activarDropdown:boolean = false;
+  opcionCarrera: string = 'Desplegar carreras';
+  datosPracticasAprobadas: number = 0;
+  datosPracticasReprobadas: number = 0;
+  datosPracticasPendientes: number = 0;
+
+  constructor(private _gestionGraficos: GraficosService) {
+    const aprobadas = _gestionGraficos.obtenerInformacionPracticasAprobadas().valueChanges().subscribe(datos => {
+      this.datosPracticasAprobadas = datos.length;
+
+      const reprobadas = _gestionGraficos.obtenerInformacionPracticasReprobadas().valueChanges().subscribe(datos => {
+        this.datosPracticasReprobadas = datos.length;
+
+        const pendientes = _gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
+          this.datosPracticasPendientes = datos.length;
+
+          this.pieChartData = [this.datosPracticasAprobadas,this.datosPracticasReprobadas,this.datosPracticasPendientes];
+        })
+
+      })
+
+    })
+
+  }
+
+  cambiarGraficoFiltro(){
+
+  }
 
   ngOnInit(): void {
   }
