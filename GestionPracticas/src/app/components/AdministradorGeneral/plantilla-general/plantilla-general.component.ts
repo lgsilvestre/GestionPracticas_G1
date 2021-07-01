@@ -160,7 +160,8 @@ export class PlantillaGeneralComponent implements OnInit {
   enviar(): void
   {
     const plantilla: PlantillaGeneral =
-       { nombres: this.datosEstudianteEtapa.value.Nombres,
+       { id: this.siPracticaS.getIdsolicitudActual(),
+         nombres: this.datosEstudianteEtapa.value.Nombres,
          apellidos: this.datosEstudianteEtapa.value.Apellidos,
          carrera: this.datosEstudianteEtapa.value.Carrera,
          numeroMatricula : this.datosEstudianteEtapa.value.NumeroMatricula,

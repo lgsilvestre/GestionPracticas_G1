@@ -52,6 +52,10 @@ export class SolicitudInscripcionPracticaService
       this.plantillageneral$ = new BehaviorSubject<PlantillaGeneral>(this.plantillageneral);
     }
   }
+  public getIdsolicitudActual(): string
+  {
+    return this.plantillageneral.id;
+  }
   public getRefArchivosPlantilla(): string[]
   {
     return this.plantillageneral.archivos;
@@ -60,8 +64,10 @@ export class SolicitudInscripcionPracticaService
   {
     if (this.plantillageneral.id !== ' ')
     {
+      console.log(this.plantillageneral.id);
+      console.log(nuevaPlantilla.id);
       const ref = this.angularFireStore.collection<PlantillaGeneral>('/Solicitudes').doc(this.plantillageneral.id);
-      ref.set(nuevaPlantilla).then(succses => {
+      ref.set(nuevaPlantilla, { merge: true }).then(succses => {
         if (this.locaSTF.getEstadoEtapaActual() !== nuevaPlantilla.estado)
         {
           console.log(nuevaPlantilla.estado + ' oooooo ');
@@ -124,7 +130,8 @@ export class SolicitudInscripcionPracticaService
             telefonoEmpresa: plantilla.telefonoEmpresa
           };
             this.plantillageneral = nuevaplantilla;
-            console.log( nuevaplantilla.id);
+            console.log( 'id: ' + nuevaplantilla.id);
+            console.log( 'run: ' + nuevaplantilla.run);
             console.log('la pantilla existe y la carge');
         }
         else {
