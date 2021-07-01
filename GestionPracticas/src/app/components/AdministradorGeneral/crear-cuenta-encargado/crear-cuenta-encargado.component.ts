@@ -18,12 +18,12 @@ export class CrearCuentaEncargadoComponent implements OnInit {
   carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
   constructor(private _formBuilder: FormBuilder, private gestionEncargados: GestionEncargadosService, public dialog: MatDialog) {
     this.nuevaCuenta = this._formBuilder.group({
-      Nombres: new FormControl('', Validators.required),
-      Apellidos: new FormControl('', Validators.required),
-      Run: new FormControl('', Validators.required),
+      Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
       Carrera: new FormControl('', Validators.required),
-      CorreoInstitucional: new FormControl('', Validators.required),
-      CorreoElectronico: new FormControl(''),
+      CorreoInstitucional: new FormControl('', [Validators.required, Validators.email]),
+      CorreoElectronico: new FormControl('', Validators.email),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
       rol: [{ value: 'Encargado de carrera', disabled: true }],

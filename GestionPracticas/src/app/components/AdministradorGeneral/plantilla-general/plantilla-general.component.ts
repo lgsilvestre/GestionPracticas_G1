@@ -11,17 +11,16 @@ import {DynamicHostFormDirective} from '../directivas/dynamic-host-form.directiv
 import {ArchivoFormContainerComponent} from '../GestionArchivos/archivo-form-container/archivo-form-container.component';
 import {SolicitudInscripcionPracticaService} from '../../Servicios/solicitud-inscripcion-practica.service';
 
-export interface Documento
-{
-  titulo: string;
-  descripcion: string;
-  url: string;
+export interface Documento {
+	titulo: string;
+	descripcion: string;
+	url: string;
 }
 
 @Component({
-  selector: 'app-plantilla-general',
-  templateUrl: './plantilla-general.component.html',
-  styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
+	selector: 'app-plantilla-general',
+	templateUrl: './plantilla-general.component.html',
+	styleUrls: ['./plantilla-general.component.css', '../../../app.component.css']
 })
 export class PlantillaGeneralComponent implements OnInit {
   @ViewChild(DynamicHostDirective,  { static: true }) public dynamicHost: DynamicHostDirective | undefined;
@@ -45,33 +44,33 @@ export class PlantillaGeneralComponent implements OnInit {
   {
     this.datosSolicitudPractica = this._formBuilder.group({});
     this.documentosGenerales = this._formBuilder.group({});
-    this.datosEstudianteEtapa = this._formBuilder.group({
-      Nombres: ['', Validators.required],
-      Apellidos: ['', Validators.required],
-      Carrera: ['', Validators.required],
-      NumeroMatricula: ['', Validators.required],
-      Run: ['', Validators.required],
-      NumeroContacto: ['', Validators.required],
-      CorreoElectronico: ['', Validators.required],
-      ContactoEmergencia: ['', Validators.required],
-      TelefonoEmergencia: ['', Validators.required],
-    });
-    this.segundaEtapa = this._formBuilder.group({
-      Nombre: ['', Validators.required],
-      Rut: ['', Validators.required],
-      NumeroTelefono: ['', Validators.required],
-      CorreoElectronico: ['', Validators.required],
-      Direccion: ['', Validators.required],
-    });
-    this.terseraEtapa = this._formBuilder.group({
-      Nombres: ['', Validators.required],
-      Apellidos: ['', Validators.required],
-      Run: ['', Validators.required],
-      AreaDepto: ['', Validators.required],
-      Puesto: ['', Validators.required],
-      NumeroContacto: ['', Validators.required],
-      CorreoElectronico: ['', Validators.required],
-    });
+		this.datosEstudianteEtapa = this._formBuilder.group({
+			Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+			Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+			Carrera: ['', Validators.required],
+			NumeroMatricula: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]),
+			Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
+			NumeroContacto: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
+			CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
+			ContactoEmergencia: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
+			TelefonoEmergencia: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
+		});
+		this.segundaEtapa = this._formBuilder.group({
+			Nombre: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+			Rut: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
+			NumeroTelefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
+			CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
+			Direccion: ['', Validators.required],
+		});
+		this.terseraEtapa = this._formBuilder.group({
+			Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+			Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+			Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
+			AreaDepto: ['', Validators.required],
+			Puesto: ['', Validators.required],
+			NumeroContacto: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
+			CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
+		});
     this.cuartaEtapa = this._formBuilder.group({
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
@@ -258,5 +257,4 @@ export class PlantillaGeneralComponent implements OnInit {
       this.cuartaEtapa.patchValue({endDate: ddate});
     }
   }
-
 }

@@ -5,19 +5,19 @@
 
 @media only screen and (min-width: 576px) {
     #main {
-        margin: 2rem 18vw 2rem 18vw;
+        margin: 2rem 13vw 2rem 13vw;
     }
 }
 
 @media only screen and (min-width: 768px) {
     #main {
-        margin: 2rem 20vw 2rem 20vw;
+        margin: 2rem 15vw 2rem 15vw;
     }
 }
 
 @media only screen and (min-width: 992px) {
     #main {
-        margin: 2rem 25vw 2rem 25vw;
+        margin: 2rem 20vw 2rem 20vw;
     }
 }
 

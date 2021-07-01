@@ -17,16 +17,18 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
   nuevoAdminGenerl: FormGroup;
   constructor(private _formBuilder: FormBuilder, private gestionAdminGeneral: GestionAdminGeneralService, public dialog: MatDialog) {
     this.nuevoAdminGenerl = this._formBuilder.group({
-      Nombres: new FormControl('', Validators.required),
-      Apellidos: new FormControl('', Validators.required),
-      Run: new FormControl('', Validators.required),
-      CorreoInstitucional: new FormControl('', Validators.required),
-      CorreoElectronico: new FormControl(''),
+      // \u00f1\u00d1 Permite indicar que la letra ñ/Ñ se permite como parámetro.
+      Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
+      CorreoInstitucional: new FormControl('', [Validators.required, Validators.email]),
+      CorreoElectronico: new FormControl('', Validators.email),
       rol: [{ value: 'Administrador general', disabled: true }],
-      Telefono: new FormControl('', Validators.required),
+      Telefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[0-9]*')]),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
-    });
+    }, { validators: this.revisarPasswords }
+    );
   }
   ngOnInit(): void
   {
@@ -58,5 +60,17 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
     {
       this.openDialog();
     }
+  }
+
+  revisarPasswords(group: FormGroup) 
+  { // here we have the 'passwords' group
+    const password = group.get('Contrasenna1')!.value;
+    const confirmPassword = group.get('Contrasenna2')!.value;
+
+    console.log(password);
+    console.log(confirmPassword)
+    
+
+    return password === confirmPassword ? null : { notSame: true }     
   }
 }
