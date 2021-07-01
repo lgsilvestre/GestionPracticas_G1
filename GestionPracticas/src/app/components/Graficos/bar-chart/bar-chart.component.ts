@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
+import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
   selector: 'app-bar-chart',
@@ -20,21 +21,39 @@ export class BarChartComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
 
 
-  public barChartData: ChartDataSets[] = [
-    { data: [38, 40, 41, 52, 56, 55, 49], label: 'Aprobadas', backgroundColor: 'rgba(0,255,0,0.3)', borderColor: 'rgba(0,255,0,0.9)' },
-    { data: [2, 5, 4, 0, 1, 3, 5], label: 'Reprobadas', backgroundColor: 'rgba(255,0,0,0.3)', borderColor: 'rgba(255,0,0,0.9)' },
-    { data: [0, 2, 3, 0, 0, 1, 1], label: 'No completadas', backgroundColor: 'rgba(0,0,255,0.3)', borderColor: 'rgba(0,0,255,0.9)' }
-  ];
+  public barChartData: ChartDataSets[] = [];
 
+  datosPracticasAprobadas: number = 0;
+  datosPracticasReprobadas: number = 0;
+  datosPracticasPendientes: number = 0;
 
+  constructor(private _gestionGraficos:GraficosService) {
+    const aprobadas = _gestionGraficos.obtenerInformacionPracticasAprobadas().valueChanges().subscribe(datos => {
+      this.datosPracticasAprobadas = datos.length;
 
-  constructor() { }
+      const reprobadas = _gestionGraficos.obtenerInformacionPracticasReprobadas().valueChanges().subscribe(datos => {
+        this.datosPracticasReprobadas = datos.length;
+
+        const pendientes = _gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
+          this.datosPracticasPendientes = datos.length;
+
+          this.barChartData = [
+            { data: [this.datosPracticasAprobadas], label: 'Aprobadas', backgroundColor: 'rgba(0,255,0,0.3)', borderColor: 'rgba(0,255,0,0.9)' },
+            { data: [this.datosPracticasReprobadas], label: 'Reprobadas', backgroundColor: 'rgba(255,0,0,0.3)', borderColor: 'rgba(255,0,0,0.9)' },
+            { data: [this.datosPracticasPendientes], label: 'Pendientes', backgroundColor: 'rgba(0,0,255,0.3)', borderColor: 'rgba(0,0,255,0.9)' }
+          ];
+        })
+
+      })
+
+    })
+   }
 
   ngOnInit(): void {
   }
