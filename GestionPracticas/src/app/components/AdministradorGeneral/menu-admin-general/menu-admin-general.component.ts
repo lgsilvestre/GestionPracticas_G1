@@ -9,8 +9,12 @@ import { GraficosService } from '../../Servicios/graficos.service';
 export class MenuAdminGeneralComponent implements OnInit {
 
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
+  practicasPendientes: number = 0;
 
 	constructor(private _gestionGraficos:GraficosService) {
+    this._gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
+      this.practicasPendientes = datos.length;
+    })
 	}
 
 	ngOnInit(): void {
