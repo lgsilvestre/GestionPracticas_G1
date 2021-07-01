@@ -8,6 +8,8 @@ import { GraficosService } from '../../Servicios/graficos.service';
 })
 export class MenuAdminGeneralComponent implements OnInit {
 
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
+
 	constructor(private _gestionGraficos:GraficosService) {
 	}
 
