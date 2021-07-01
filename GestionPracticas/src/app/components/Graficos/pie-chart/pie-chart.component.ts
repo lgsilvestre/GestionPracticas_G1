@@ -23,8 +23,8 @@ export class PieChartComponent implements OnInit {
       },
     }
   };
-  public pieChartLabels: Label[] = [['Aprobadas'], ['Reprobadas'], 'No completadas'];
-  public pieChartData: number[] = [331, 20, 7];
+  public pieChartLabels: Label[] = [['Aprobadas'], ['Reprobadas'], ['Pendientes']];
+  public pieChartData: number[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [pluginDataLabels];
@@ -34,22 +34,30 @@ export class PieChartComponent implements OnInit {
     },
   ];
 
-  datosPracticasAprobadas:number = 0;
-  datosPracticasReprobadas:number = 0;
-  datosPracticasPendientes:number = 0;
+  datosPracticasAprobadas: number = 0;
+  datosPracticasReprobadas: number = 0;
+  datosPracticasPendientes: number = 0;
 
-  constructor(private _gestionGraficos:GraficosService) {
+  constructor(private _gestionGraficos: GraficosService) {
     const aprobadas = _gestionGraficos.obtenerInformacionPracticasAprobadas().valueChanges().subscribe(datos => {
-      console.log(datos);
+      this.datosPracticasAprobadas = datos.length;
+      console.log(this.datosPracticasAprobadas);
+
+      const reprobadas = _gestionGraficos.obtenerInformacionPracticasReprobadas().valueChanges().subscribe(datos => {
+        this.datosPracticasReprobadas = datos.length;
+        console.log(this.datosPracticasReprobadas);
+
+        const pendientes = _gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
+          this.datosPracticasPendientes = datos.length;
+          console.log(this.datosPracticasPendientes);
+
+          this.pieChartData = [this.datosPracticasAprobadas,this.datosPracticasReprobadas,this.datosPracticasPendientes];
+        })
+
+      })
+
     })
 
-    const reprobadas = _gestionGraficos.obtenerInformacionPracticasReprobadas().valueChanges().subscribe(datos => {
-      console.log(datos);
-    })
-
-    const pendientes = _gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
-      console.log(datos);
-    })
   }
 
   ngOnInit(): void {
