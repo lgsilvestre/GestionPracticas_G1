@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker/calendar-body';
+import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
 import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
@@ -13,6 +14,10 @@ import { GraficosService } from '../../Servicios/graficos.service';
 	}]
 })
 export class InicioComponent implements OnInit {
+
+  constructor(private _gestionCarrera:GestionCarreraService){
+
+  }
 
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
   userName: string = this.user.nombres;
@@ -36,6 +41,10 @@ export class InicioComponent implements OnInit {
 	// }
 
 	ngOnInit(): void {
-	}
+    this._gestionCarrera.getPlanesEstudios().subscribe( respuesta => {
+      console.log(respuesta);
+    })
+
+  }
 
 }
