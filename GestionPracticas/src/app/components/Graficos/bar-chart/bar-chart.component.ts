@@ -34,13 +34,13 @@ export class BarChartComponent implements OnInit {
   datosPracticasPendientes: number = 0;
 
   constructor(private _gestionGraficos:GraficosService) {
-    const aprobadas = _gestionGraficos.obtenerInformacionPracticasAprobadas().valueChanges().subscribe(datos => {
+    const aprobadas = _gestionGraficos.obtenerInformacionSolicitudPracticasAprobadas().valueChanges().subscribe(datos => {
       this.datosPracticasAprobadas = datos.length;
 
-      const reprobadas = _gestionGraficos.obtenerInformacionPracticasReprobadas().valueChanges().subscribe(datos => {
+      const reprobadas = _gestionGraficos.obtenerInformacionSolicitudPracticasReprobadas().valueChanges().subscribe(datos => {
         this.datosPracticasReprobadas = datos.length;
 
-        const pendientes = _gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
+        const pendientes = _gestionGraficos.obtenerInformacionSolicitudPracticasPendientes().valueChanges().subscribe(datos => {
           this.datosPracticasPendientes = datos.length;
 
           this.barChartData = [
