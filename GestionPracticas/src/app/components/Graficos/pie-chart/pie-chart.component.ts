@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
   selector: 'app-pie-chart',
@@ -33,7 +34,23 @@ export class PieChartComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  datosPracticasAprobadas:number = 0;
+  datosPracticasReprobadas:number = 0;
+  datosPracticasPendientes:number = 0;
+
+  constructor(private _gestionGraficos:GraficosService) {
+    const aprobadas = _gestionGraficos.obtenerInformacionPracticasAprobadas().valueChanges().subscribe(datos => {
+      console.log(datos);
+    })
+
+    const reprobadas = _gestionGraficos.obtenerInformacionPracticasReprobadas().valueChanges().subscribe(datos => {
+      console.log(datos);
+    })
+
+    const pendientes = _gestionGraficos.obtenerInformacionPracticasPendientes().valueChanges().subscribe(datos => {
+      console.log(datos);
+    })
+  }
 
   ngOnInit(): void {
   }

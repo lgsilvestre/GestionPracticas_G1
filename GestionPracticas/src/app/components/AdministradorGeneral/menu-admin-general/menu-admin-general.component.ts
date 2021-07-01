@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GraficosService } from '../../Servicios/graficos.service';
 
 @Component({
 	selector: 'app-menu-admin-general',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuAdminGeneralComponent implements OnInit {
 
-	constructor() {
+	constructor(private _gestionGraficos:GraficosService) {
 	}
 
 	ngOnInit(): void {
