@@ -292,7 +292,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
                 (evt: any, motivo: string) => {
                     return solicitudRef.update({
                         estado: param_estado,
-                        feedback: motivo
+                        feedBack: motivo
                     })
                         .then(() => {
                             this.solicitudes = [];
