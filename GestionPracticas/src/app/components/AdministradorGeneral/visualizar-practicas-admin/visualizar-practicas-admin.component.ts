@@ -29,6 +29,7 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => { 
     templateUrl: './visualizar-practicas-admin.component.html',
     styleUrls: ['./visualizar-practicas-admin.component.css', '../../../app.component.css']
 })
+
 export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit {
 
     filtroEmpresaSeleccionado: boolean = false;
@@ -56,8 +57,13 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
     //Inscripcion: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
     //En curso: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
 
-
+    
     solicitudes: Practica[];
+
+    //arreglo con los indices de las columnas que serán ignoradas al exportar al excel 
+    //El valor 5 corresponde al indice de la columna acciones en la tabla solicitudes, la cual no debería mostrarse al exportar al excel
+    //El valor 6 corresponde al indice de la columna acciones en las tablas inscripciones y enCurso, la cual no debería mostrarse al exportar al excel
+    columnasIgnoradas: any = [5];
 
     dataSource = new MatTableDataSource();
 

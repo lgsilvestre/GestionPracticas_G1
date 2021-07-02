@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 /**
  * Se agregan los modules en imports y exports para poder usarlos en los otros componentes
@@ -52,6 +53,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatDialogModule,
     MatPaginatorModule,
     MatProgressBarModule,
+    MatTableExporterModule,
   ],
 	exports: [
 		MatSliderModule,
@@ -74,6 +76,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 		MatDialogModule,
 		MatPaginatorModule,
         MatProgressBarModule,
+        MatTableExporterModule,
 	],
 })
 

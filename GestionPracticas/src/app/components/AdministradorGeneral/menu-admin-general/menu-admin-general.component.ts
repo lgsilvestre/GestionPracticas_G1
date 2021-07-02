@@ -7,8 +7,9 @@ import { GraficosService } from '../../Servicios/graficos.service';
 	templateUrl: './menu-admin-general.component.html',
 	styleUrls: ['./menu-admin-general.component.css', '../../../app.component.css']
 })
-export class MenuAdminGeneralComponent implements OnInit {
-
+export class MenuAdminGeneralComponent implements OnInit 
+{
+  adminGeneral: any;
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
   practicasPendientes: number = 0;
 
@@ -17,6 +18,10 @@ export class MenuAdminGeneralComponent implements OnInit {
   activarDropdown:boolean = false;
 
 	constructor(private _gestionGraficos:GraficosService, private _gestionCarreras:GestionCarreraService) {
+    this.adminGeneral = {nombres:'', apellidos:''};
+    let admin = JSON.parse(localStorage.getItem('user')+'');
+    this.adminGeneral.nombres = admin.nombres;
+    this.adminGeneral.apellidos = admin.apellidos;
     this._gestionGraficos.obtenerInformacionSolicitudPracticasPendientes().valueChanges().subscribe(datos => {
       this.practicasPendientes = datos.length;
     })
