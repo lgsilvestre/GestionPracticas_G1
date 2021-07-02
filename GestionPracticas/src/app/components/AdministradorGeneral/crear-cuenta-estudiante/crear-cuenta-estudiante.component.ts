@@ -5,6 +5,8 @@ import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dia
 import {MatDialog} from '@angular/material/dialog';
 import {GestionEstudianteService} from '../../Servicios/estudiante/gestionEstudiante.service';
 import {Estudiante} from '../../../model/estudiante.model';
+import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
+import { Carrera } from 'src/app/model/carreras.model';
 
 @Component({
   selector: 'app-crear-cuenta-estudiante',
@@ -16,25 +18,35 @@ export class CrearCuentaEstudianteComponent implements OnInit
 {
   estudiante: FormGroup;
   carreraActual: string = 'None';
-  carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, public gestionEstudiante: GestionEstudianteService) {
+  carreras: string[] = [];
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, public gestionEstudiante: GestionEstudianteService,
+              private _gestionCarrera:GestionCarreraService
+    ) {
     this.estudiante = this._formBuilder.group({
-      Nombres: new FormControl('', Validators.required),
-      Apellidos: new FormControl('', Validators.required),
-      Run: new FormControl('', Validators.required),
+      Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
       Carrera: new FormControl('', Validators.required),
-      NumeroMatricula: new FormControl('', Validators.required),
-      CorreoInstitucional: new FormControl('', Validators.required),
-      SituacionActual: new FormControl('', Validators.required),
-      CorreoElectronico: new FormControl('', Validators.required),
-      Telefono: new FormControl('', Validators.required),
+      NumeroMatricula: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]),
+      CorreoInstitucional: new FormControl('', [Validators.required, Validators.email]),
+      SituacionActual: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+      CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
+      Telefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
       rol: [{ value: 'Estudiante', disabled: true }],
     });
   }
   ngOnInit(): void
-  {}
+  {
+    this._gestionCarrera.getCarreras().subscribe(carrerasDatos => {
+      console.log(carrerasDatos);
+      carrerasDatos.forEach( carreraObtenida => {
+        console.log(carreraObtenida);
+        this.carreras.push(carreraObtenida.nombreCarrera!);
+      })
+    })
+  }
   onChangeCarrera(event: any): void
   {
     this.carreraActual = event;

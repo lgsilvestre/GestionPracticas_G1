@@ -8,6 +8,7 @@ import { AdminGeneralModule } from '../AdministradorGeneral/adminGeneral.module'
 import { SolicitarPracticaComponent } from './solicitar-practica/solicitar-practica.component';
 import { FooterComponent } from '../footer/footer.component';
 import {SolicitududPracticaComponent} from './solicitudud-practica/solicitudud-practica.component';
+import { PracticaComponent } from './practica/practica.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {SolicitududPracticaComponent} from './solicitudud-practica/solicitudud-p
     InicioComponent,
     SolicitarPracticaComponent,
     FooterComponent,
-    SolicitududPracticaComponent
+    SolicitududPracticaComponent,
+    PracticaComponent
   ],
 	imports: [
 		CommonModule,

@@ -99,8 +99,8 @@ export class SolicitududPracticaComponent implements OnInit
   }
   private showDialog(): void
   {
-    const tituloAc: string = 'Estado de la solicitud: ' + this.estadoEtapaActual;
-    const contenidoAc: string = '';
+    const tituloAc: string = 'Etapa actual: ' + this.etapaActual;
+    const contenidoAc: string = 'El estado de la etapa actual es: ' + this.estadoEtapaActual;
     this.dialog.open(InformationComponent, {
       data: {
         titulo: tituloAc,
