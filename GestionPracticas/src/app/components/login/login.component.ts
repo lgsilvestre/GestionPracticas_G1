@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
 					data:
 					{
 						titulo: 'Datos de inicio de sesión erroneos',
-						contenido: 'no se encontro la combinacion de correo electronico y contraseña, por favor revise sus datos.'
+						contenido: 'No se encontró la combinacin de correo electrónico y contraseña, por favor revise sus datos.'
 					}
 				});
 			});
