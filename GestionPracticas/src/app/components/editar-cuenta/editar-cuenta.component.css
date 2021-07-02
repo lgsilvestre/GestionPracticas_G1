@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+    button {
+        width: 20rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    mat-card {
+        max-width: 480px;
+    }
+}

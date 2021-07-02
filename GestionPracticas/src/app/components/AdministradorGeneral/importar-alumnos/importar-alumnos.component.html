@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-title>Importar alumnos</mat-card-title>
+</mat-card>
+
+<div class="container p-4 bg-light">
+    <div class="row mb-2">
+        Seleccione un archivo (.xlsx, .xls)
+    </div>
+    <div class="row text-center">
+        <input type="file" multiple="false" (change)="onFileChange($event)" accept=".xlsx, .xls"/>
+    </div>
+
+    <hr>
+
+    <div class="row text-center mb-2">
+        <label> Cuentas creadas </label>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <mat-progress-bar mode="determinate" value="{{cuentasCreadas*100/totalCuentas}}"></mat-progress-bar>
+        </div>
+    </div>
+
+</div>

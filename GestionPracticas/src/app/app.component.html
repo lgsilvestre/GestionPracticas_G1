@@ -1,4 +1,11 @@
-
-<button (click)="mostrar_alerta_success()">Success</button>
-
-<button (click)="mostrar_alerta_error()">Error</button>
+<ng-container *ngIf="fullscreenRoute; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+    <router-outlet></router-outlet>
+</ng-template>
+<ng-template #elseTemplate>
+    <div class="wrapper">
+        <div class="main-panel">
+            <app-sidenav></app-sidenav>
+        </div>
+    </div>
+</ng-template>

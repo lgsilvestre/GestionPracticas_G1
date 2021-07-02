@@ -1,0 +1,117 @@
+#main {
+    margin: 5rem 0 2rem 0;
+    min-height: calc(100vh - 70px);
+}
+
+@media only screen and (min-width: 576px) {
+    #main {
+        margin: 2rem 13vw 2rem 13vw;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #main {
+        margin: 2rem 15vw 2rem 15vw;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #main {
+        margin: 2rem 20vw 2rem 20vw;
+    }
+}
+
+::ng-deep mat-card,
+ ::ng-deep mat-dialog-container {
+    border-style: solid;
+    border-color: #546e7a;
+    border-width: .125rem;
+    margin: 2rem auto;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+    background-color: #eceff1 !important;
+}
+
+::ng-deep mat-vertical-stepper {
+    border-style: solid;
+    border-color: #546e7a;
+    border-width: .125rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+    background-color: #eceff1 !important;
+}
+
+::ng-deep mat-form-field {
+    display: block !important;
+}
+
+::ng-deep button {
+    display: block;
+    width: 100%;
+    margin: .25rem 0 !important;
+}
+
+::ng-deep mat-divider {
+    position: unset !important;
+    margin: 1rem 0 1rem 0 !important;
+}
+
+::ng-deep mat-card-title {
+    margin-bottom: 1rem !important;
+    text-align: center;
+}
+
+.info-icon {
+    font-size: 10rem;
+    margin-left: -8.6rem;
+    color: #546e7a;
+}
+
+.table-icon {
+    color: #546e7a;
+    margin-left: 1rem;
+}
+
+.table-icon-first {
+    color: #546e7a;
+}
+
+table,
+mat-paginator {
+    width: 100%;
+    min-width: 720px;
+    background-color: transparent !important;
+}
+
+mat-paginator {
+    box-shadow: none;
+}
+
+.table-visualizer {
+    overflow-x: scroll;
+}
+
+::ng-deep .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+}
+
+::ng-deep mat-dialog-container {
+    text-align: center;
+}
+
+::ng-deep .mat-dialog-content {
+    text-align: justify;
+}
+
+@media only screen and (min-width: 768px) {
+    .step-buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .step-buttons button {
+        width: 15rem;
+    }
+     ::ng-deep .mat-dialog-actions button {
+        width: 5rem !important;
+    }
+}

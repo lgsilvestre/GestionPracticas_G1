@@ -1,23 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { NavigationEnd, Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { filter } from 'rxjs/operators';
 declare let alertify: any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(){}
+	fullscreenRoute: boolean = false;
+	public title: String = "Sistema de Gestión de Prácticas de la Universidad de Talca";
 
-  mostrar_alerta_success()
-  {
-    alertify.success("Todo bien, todo correcto");
-  }
+	constructor(private router: Router,private afAuth: AngularFireAuth,private ngZone: NgZone) {
+	}
 
-  mostrar_alerta_error()
-  {
-    alertify.error("Lo siento man, error");
-  }
+	ngOnInit() {
 
+		this.router.events.pipe(
+			filter((event: any) => event instanceof NavigationEnd)).subscribe(event => {
+			if (
+				event.url === "/login" || event.url === "/"
+			) {
+				this.fullscreenRoute = true;
+			} else {
+				this.fullscreenRoute = false;
+			}
+		});
+	}
 }
+

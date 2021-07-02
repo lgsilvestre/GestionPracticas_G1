@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-title>Crear carrera</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="formularioCarrera">
+            <div>
+                <h2>Datos de la carrera</h2>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput class="input" formControlName="nombreCarrera" placeholder="Ingeniería Civil en...">
+                </mat-form-field>
+            </div>
+            <div>
+                <h2>Datos Encargado</h2>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre Encargado</mat-label>
+                    <input matInput class="inpput" formControlName="nombreEncargado" placeholder="Nombre y apellido del encargado de carrera">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input matInput class="inpput" formControlName="correoEncargado" placeholder="usuario@sitio.cl">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Número de teléfono</mat-label>
+                    <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
+                </mat-form-field>
+            </div>
+            <div class="step-buttons">
+                <button color="primary" mat-raised-button (click)="crearCarrera()">Crear carrera</button>
+                <button color="primary" mat-raised-button (click)="volver()">Volver</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

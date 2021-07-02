@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title>¡Bienvenido <strong>{{adminGeneral.nombres}} {{adminGeneral.apellidos}}</strong>!</mat-card-title>
+    <mat-card-content>
+        <p>Existen <b>{{practicasPendientes}}</b> solicitudes de práctica pendientes. Si deseas verlas, haz click <a href="/visualizar-practica-admin">aquí</a>.</p>
+        <!-- <p>Existen <b>42</b> solicitudes de encargado/s pendiente/s. <a href="/visualizar-practica">Ver solicitudes</a>.</p> -->
+    </mat-card-content>
+</mat-card>
+<!-- <div>
+    <label><b>Carreras:</b></label>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle btn-primary" type="button" id="dropdownMenuButton" style="width: -webkit-fill-available;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ opcionCarrera }}
+  </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a *ngFor="let carrera of carreras" class="dropdown-item" (click)="cambiarCarrera(carrera)">
+          {{carrera}}
+      </a>
+        </div>
+    </div>
+</div> -->
+<mat-card>
+    <mat-card-content>
+        <p>Solicitudes de practicas</p>
+        <app-bar-chart></app-bar-chart>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-content>
+        <p>Practicas en curso</p>
+        <app-pie-chart></app-pie-chart>
+    </mat-card-content>
+</mat-card>

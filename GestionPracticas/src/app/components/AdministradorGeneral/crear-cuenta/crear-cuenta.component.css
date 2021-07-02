@@ -1,0 +1,31 @@
+h3 {
+    text-align: center;
+}
+
+div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button mat-icon {
+    color: #eceff1 !important;
+}
+
+button h2 {
+    margin-top: 8rem;
+}
+
+@media only screen and (max-width: 768px) {
+    div {
+        display: inline;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    mat-card {
+        margin: 2rem -10rem 2rem -10rem;
+    }
+    button {
+        margin: 0 1rem 0 1rem !important;
+    }
+}
