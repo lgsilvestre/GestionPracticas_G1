@@ -5,15 +5,15 @@
             <div class="col">
                 <mat-radio-group aria-label="Select an option">
                     <div class="row" style="font-size: 12px; height: 10%;">
-                        <mat-radio-button value="1" (click)="seleccionarTabla('solicitudes')" [checked]="true"> <label *ngIf="!this.tablaSolicitudSeleccionada">Tabla solicitudes</label> <strong *ngIf="this.tablaSolicitudSeleccionada">Tabla solicitudes</strong> </mat-radio-button>
+                        <mat-radio-button value="1" (click)="seleccionarTabla('solicitudes');columnasIgnoradas=[5]" [checked]="true"> <label *ngIf="!this.tablaSolicitudSeleccionada">Tabla solicitudes</label> <strong *ngIf="this.tablaSolicitudSeleccionada">Tabla solicitudes</strong> </mat-radio-button>
                     </div>
                     <mat-divider></mat-divider>
                     <div class="row" style="font-size: 12px; height: 10%;">
-                        <mat-radio-button value="2" (click)="seleccionarTabla('inscripciones')"><label *ngIf="!this.tablaIncripcionSeleccionada">Tabla inscripciones</label> <strong *ngIf="this.tablaIncripcionSeleccionada">Tabla inscripciones</strong></mat-radio-button>
+                        <mat-radio-button value="2" (click)="seleccionarTabla('inscripciones');columnasIgnoradas=[6]"><label *ngIf="!this.tablaIncripcionSeleccionada">Tabla inscripciones</label> <strong *ngIf="this.tablaIncripcionSeleccionada">Tabla inscripciones</strong></mat-radio-button>
                     </div>
                     <mat-divider></mat-divider>
                     <div class="row" style="font-size: 12px; height: 10%;">
-                        <mat-radio-button value="3" (click)="seleccionarTabla('enCurso')"><label *ngIf="!this.tablaEnCursoSeleccionada">Tabla en curso</label> <strong *ngIf="this.tablaEnCursoSeleccionada">Tabla en curso</strong></mat-radio-button>
+                        <mat-radio-button value="3" (click)="seleccionarTabla('enCurso');columnasIgnoradas=[6]"><label *ngIf="!this.tablaEnCursoSeleccionada">Tabla en curso</label> <strong *ngIf="this.tablaEnCursoSeleccionada">Tabla en curso</strong></mat-radio-button>
                     </div>
                 </mat-radio-group>                
             </div>
@@ -50,6 +50,7 @@
                     <mat-option value="pendiente">Pendiente</mat-option>
                     <mat-option value="aceptado">Aceptado</mat-option>
                     <mat-option value="rechazada">Rechazada</mat-option>
+                    <mat-option value="incompleta">Incompleta</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" *ngIf="filtroEmpresaSeleccionado">
@@ -58,7 +59,7 @@
             </mat-form-field>
         </form>
         <div class="table-visualizer">
-            <table mat-table [dataSource]="dataSource" id="tabla">
+            <table mat-table matTableExporter [dataSource]="dataSource" id="tabla" #exporter="matTableExporter" [hiddenColumns]="columnasIgnoradas">
                 <ng-container matColumnDef="matricula">
                     <th mat-header-cell *matHeaderCellDef> Nro. Matrícula </th>
                     <td mat-cell *matCellDef="let element"> {{element.numeroMatricula}} </td>
@@ -98,6 +99,30 @@
                 </tr>
             </table>
             <mat-paginator [hidden]="!(solicitudes.length != 0)" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-title><small>Exportar tabla</small></mat-card-title>
+    <mat-card-subtitle>Seleccione el formato</mat-card-subtitle>
+    <mat-card-content>
+        <div class="row">
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="exporter.exportTable('xls', {fileName:'Resumen-prácticas-Utal'})">.xls <mat-icon>file_download</mat-icon></button>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx', {fileName:'Resumen-prácticas-Utal'})">.xlsx <mat-icon>file_download</mat-icon></button>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="exporter.exportTable('csv', {fileName:'Resumen-prácticas-Utal'})">.csv <mat-icon>file_download</mat-icon></button>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="exporter.exportTable('txt', {fileName:'Resumen-prácticas-Utal'})">.txt <mat-icon>file_download</mat-icon></button>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="exporter.exportTable('json', {fileName:'Resumen-prácticas-Utal'})">.json <mat-icon>file_download</mat-icon></button>
+            </div>
         </div>
     </mat-card-content>
 </mat-card>

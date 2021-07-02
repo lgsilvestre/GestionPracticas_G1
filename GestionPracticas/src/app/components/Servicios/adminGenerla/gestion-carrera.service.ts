@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Carrera } from 'src/app/model/carreras.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -8,14 +8,18 @@ import { PlanEstudios } from 'src/app/model/planEstudios.model';
   providedIn: 'root'
 })
 
-export class GestionCarreraService
+export class GestionCarreraService implements OnInit
 {
 
   carreras: Carrera[]= [];
-  planesEstudios: PlanEstudios[] = [];
+  planesEstudios: any[] = [];
 
   constructor(private afStore: AngularFirestore)
   { }
+
+  ngOnInit(): void {
+    console.log("holiii");
+  }
 
   getCarreras():Observable<Carrera[]>
   {
@@ -51,23 +55,27 @@ export class GestionCarreraService
       itemDoc.delete()
   }
 
-  addPlanEstudio(planEstudio:PlanEstudios){
+  addPlanEstudio(planEstudio:any){
     const planEstudioNuevo = {
       ...planEstudio,
     }
-    const itemDoc = this.afStore.collection<PlanEstudios>(`PlanEstudio`);
+    const itemDoc = this.afStore.collection<PlanEstudios>(`PlanesCarreras`);
     itemDoc.add(planEstudioNuevo);
   }
 
   getPlanesEstudios()
   {
-    return this.afStore.collection<PlanEstudios>('PlanEstudio').valueChanges({idField:'id'});
+    return this.afStore.collection<PlanEstudios>('PlanesCarreras').valueChanges({idField:'id'});
   }
 
   getPlanEstudio(idCarrera:string)
   {
-      return this.afStore.collection<PlanEstudios>('PlanEstudio', datos=> datos
+      return this.afStore.collection<PlanEstudios>('PlanesCarreras', datos=> datos
       .where("id", "==", idCarrera));
+  }
+
+  getPlanesEstudio(){
+    return this.afStore.collection<PlanEstudios>('PlanesCarreras');
   }
 
 }
