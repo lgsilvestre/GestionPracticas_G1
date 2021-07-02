@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="91d8805b-011e-4943-a1a8-75d83c3db831" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/adminGeneral.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/adminGeneral.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/Servicios/solicitud-practica.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/Servicios/solicitud-practica.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPracticas/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/login/login.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +148,18 @@
       <workItem from="1622585012096" duration="764000" />
       <workItem from="1622599754962" duration="1072000" />
       <workItem from="1622603254390" duration="5478000" />
+      <workItem from="1623896116192" duration="1844000" />
+      <workItem from="1624049183782" duration="1490000" />
+      <workItem from="1624481891456" duration="9377000" />
+      <workItem from="1624500360001" duration="125000" />
+      <workItem from="1624653290735" duration="16917000" />
+      <workItem from="1624830755193" duration="12264000" />
+      <workItem from="1624931424467" duration="751000" />
+      <workItem from="1624996504109" duration="17227000" />
+      <workItem from="1625087661242" duration="13552000" />
+      <workItem from="1625170508565" duration="7600000" />
+      <workItem from="1625233798001" duration="54000" />
+      <workItem from="1625253099140" duration="312000" />
     </task>
     <servers />
   </component>
