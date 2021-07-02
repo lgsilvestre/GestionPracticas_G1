@@ -53,12 +53,8 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
     displayedColumnsSolicitud: string[];
     displayedColumnsInscripcion: string[];
     displayedColumnsEnCurso: string[];
-    //Solicitud: matrícula, nombre, apellidos, rut, situación, accion
-    //Inscripcion: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
-    //En curso: 'matricula', 'nombre', 'apellido', 'rut', 'empresa', 'situacion', 'accion'
 
-
-    solicitudes: Practica[];
+    solicitudes: any;
 
     //arreglo con los indices de las columnas que serán ignoradas al exportar al excel 
     //El valor 5 corresponde al indice de la columna acciones en la tabla solicitudes, la cual no debería mostrarse al exportar al excel
@@ -238,8 +234,8 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
             coleccion = 'Solicitudes'
         }
 
-        var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud, coleccion);
-        console.log("El id para actualizar es>>> " + solicitud.idSolicitud);
+        var solicitudRef = this.EC_service.update_solicitud(solicitud.id, coleccion);
+        console.log("El id para actualizar es>>> " + solicitud.id);
 
         if (param_estado == "Aceptado") {
             msg_success += "aceptada";
@@ -276,7 +272,7 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
                 (evt: any, motivo: string) => {
                     return solicitudRef.update({
                         estado: param_estado,
-                        feedback: motivo
+                        feedBack: motivo
                     })
                         .then(() => {
                             this.solicitudes = [];
