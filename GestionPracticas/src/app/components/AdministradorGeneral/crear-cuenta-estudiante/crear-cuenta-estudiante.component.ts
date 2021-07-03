@@ -7,6 +7,7 @@ import {GestionEstudianteService} from '../../Servicios/estudiante/gestionEstudi
 import {Estudiante} from '../../../model/estudiante.model';
 import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
 import { Carrera } from 'src/app/model/carreras.model';
+declare let alertify: any;
 
 @Component({
   selector: 'app-crear-cuenta-estudiante',
@@ -25,9 +26,9 @@ export class CrearCuentaEstudianteComponent implements OnInit
     this.estudiante = this._formBuilder.group({
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
+      Run: new FormControl('', [Validators.required, Validators.min(10000000), Validators.max(30000000), Validators.pattern(/^[0-9]{8,9}$/)]),
       Carrera: new FormControl('', Validators.required),
-      NumeroMatricula: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]),
+      NumeroMatricula: new FormControl('', [Validators.required, Validators.pattern('^20[0-9]{7,7}$')]),
       CorreoInstitucional: new FormControl('', [Validators.required, Validators.email]),
       SituacionActual: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
@@ -55,9 +56,16 @@ export class CrearCuentaEstudianteComponent implements OnInit
   {
     this.dialog.open(DialogElementsExampleDialogComponent);
   }
+
   crear(): void
   {
-    const rolFinal: string = 'estudiante';
+    if ( this.estudiante.status == "INVALID" )
+    {
+        alertify.error("Error, existen campos con valores no válidos!");
+        return;
+    }
+
+
     if (this.estudiante.value.Contrasenna1 === this.estudiante.value.Contrasenna2)
     {
       const nuevoUsuario: Estudiante =
@@ -67,7 +75,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
           correoInstitucional: this.estudiante.value.CorreoInstitucional,
           nombres: this.estudiante.value.Nombres,
           numeroMatricula: this.estudiante.value.NumeroMatricula,
-          rol: rolFinal,
+          rol: 'estudiante',
           run: this.estudiante.value.Run,
           situacionActual: this.estudiante.value.SituacionActual,
           telefono: this.estudiante.value.Telefono,
