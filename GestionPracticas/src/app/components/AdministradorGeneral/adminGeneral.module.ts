@@ -11,8 +11,8 @@ import { CrearCuentaAdministradorGeneralComponent } from './crear-cuenta-adminis
 import { CrearCuentaEstudianteComponent } from './crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { GestionarCarrerasComponent, preguntaEliminar } from './gestionar-carreras/gestionar-carreras.component';
-import { editarPlanes, VerCarreraParticularComponent, AgregarPlan } from './gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
-import { CrearCarreraComponent } from './gestionar-carreras/crear-carrera/crear-carrera.component';
+import { editarPlanes, VerCarreraParticularComponent, AgregarPlan } from './ver-carrera-particular/ver-carrera-particular.component';
+import { CrearCarreraComponent } from './crear-carrera/crear-carrera.component';
 import { DynamicHostDirective } from './directivas/dynamic-host.directive';
 import { DinamicFileContainerComponent } from './dinamic/dinamic-file-container/dinamic-file-container.component';
 import { GestionArchivosComponent } from './GestionArchivos/gestion-archivos/gestion-archivos.component';

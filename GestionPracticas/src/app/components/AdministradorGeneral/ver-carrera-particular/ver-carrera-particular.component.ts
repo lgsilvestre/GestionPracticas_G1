@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, ɵangular_packages_forms_forms_g, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Carrera } from 'src/app/model/carreras.model';
-import { GestionCarreraService } from '../../../Servicios/adminGenerla/gestion-carrera.service';
+import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { zipAll } from 'rxjs/operators';
-import { PlanEstudios } from '../../../../model/planEstudios.model';
+import { PlanEstudios } from '../../../model/planEstudios.model';
 import { identifierModuleUrl } from '@angular/compiler';
 
 
@@ -13,7 +13,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 @Component({
   selector: 'app-ver-carrera-particular',
   templateUrl: './ver-carrera-particular.component.html',
-  styleUrls: ['./ver-carrera-particular.component.css', '../gestionar-carreras.component.css', '../../../../app.component.css']
+  styleUrls: ['./ver-carrera-particular.component.css', '../../../app.component.css']
 })
 
 export class VerCarreraParticularComponent implements OnInit
@@ -112,13 +112,13 @@ export class VerCarreraParticularComponent implements OnInit
 @Component({
   selector: 'editar-planes',
   templateUrl: './editarPlanes.component.html',
-  styleUrls: ['../gestionar-carreras.component.css', '../../../../app.component.css']
+  styleUrls: ['../../../app.component.css']
 })
 export class editarPlanes { }
 
 @Component({
   selector: 'agregaar-plan',
   templateUrl: './AgregarPlan.component.html',
-  styleUrls: ['../gestionar-carreras.component.css', '../../../../app.component.css']
+  styleUrls: ['../../../app.component.css']
 })
 export class AgregarPlan { }
