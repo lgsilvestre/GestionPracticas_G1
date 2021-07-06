@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="91d8805b-011e-4943-a1a8-75d83c3db831" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/adminGeneral.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/adminGeneral.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/AdministradorGeneral/plantilla-general/plantilla-general.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPracticas/src/app/components/Servicios/solicitud-practica.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPracticas/src/app/components/Servicios/solicitud-practica.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +146,7 @@
       <workItem from="1622585012096" duration="764000" />
       <workItem from="1622599754962" duration="1072000" />
       <workItem from="1622603254390" duration="5478000" />
+      <workItem from="1625253581062" duration="648000" />
     </task>
     <servers />
   </component>
