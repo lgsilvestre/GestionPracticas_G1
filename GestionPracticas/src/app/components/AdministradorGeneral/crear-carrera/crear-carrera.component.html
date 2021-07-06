@@ -34,9 +34,9 @@
 
 
 
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
   {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
+</button> -->
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="formularioCarrera" label="Carrera">
         <form [formGroup]="formularioCarrera">
@@ -64,8 +64,8 @@
                 <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Paso anterior</button>
                 <button mat-button matStepperNext>Paso siguiente</button>
+                <button mat-button matStepperPrevious>Paso anterior</button>
             </div>
         </form>
     </mat-step>
@@ -78,19 +78,44 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Cantidad de practicas</mat-label>
-                <mat-select formcontrolName="cantidadPracticas">
-                    <mat-option value="1">una practica</mat-option>
-                    <mat-option value="2">dos practicas</mat-option>
-                    <mat-option value="3">tres practicas</mat-option>
+                <mat-select formcontrolName="cantidadPracticas" [(value)]="opcionSelecionada">
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Requisitos de las practicas</mat-label>
                 <input matInput class="inpput" formControlName="requisitos" placeholder="requisitos generales de las practicas">
             </mat-form-field>
+            <button mat-button color="primary" (click)="agregarPlan()">Agregar Plan</button>
+
+            <div *ngIf="plan.length == 0" style="text-align: center;">
+                <h1>No existen planes creados.</h1>
+            </div>
+            <div *ngIf="plan.length > 0">
+                <h2>Planes creados para la carrera</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre Plan</th>
+                            <th scope="col">Requisitos</th>
+                            <th scope="col">No. Practicas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of plan">
+                            <td> {{item.nombre}} </td>
+                            <td> {{item.requisitos}} </td>
+                            <td> {{item.numeroPracticas}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div>
-                <button mat-button matStepperPrevious>Paso anterior</button>
                 <button mat-button matStepperNext>Paso siguiente</button>
+                <button mat-button matStepperPrevious>Paso anterior</button>
             </div>
         </form>
     </mat-step>
@@ -99,7 +124,7 @@
         <p>Resumen de la carrera creada</p>
         <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="crearCarrera()">Crear carrera</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>

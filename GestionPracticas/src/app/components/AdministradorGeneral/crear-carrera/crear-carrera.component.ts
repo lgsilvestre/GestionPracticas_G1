@@ -5,7 +5,6 @@ import { Carrera } from '../../../model/carreras.model';
 import { Router } from '@angular/router';
 import { PlanEstudios } from '../../../model/planEstudios.model';
 
-
 @Component({
   selector: 'app-crear-carrera',
   templateUrl: './crear-carrera.component.html',
@@ -16,6 +15,8 @@ export class CrearCarreraComponent implements OnInit {
   formularioCarrera:FormGroup;
   isLinear = false;
   formularioPlan:FormGroup;
+  plan:PlanEstudios[] = [];
+  opcionSelecionada:string = '';
 
   constructor(private _formBuilder: FormBuilder, private _gestionCarrera: GestionCarreraService, private route: Router)
   {
@@ -57,6 +58,17 @@ export class CrearCarreraComponent implements OnInit {
   volver()
   {
       this.route.navigate(['/gestionar-carreras']);
+  }
+
+  agregarPlan(){
+    const planEnCreacion:PlanEstudios = {
+      nombre: this.formularioPlan.value.nombrePlan,
+      numeroPracticas: this.opcionSelecionada,
+      requisitos: this.formularioPlan.value.requisitos,
+    }
+    console.log('Plan creado exitosamente:' + planEnCreacion.numeroPracticas);
+    this.plan.push(planEnCreacion);
+    console.log(this.plan.length);
   }
 
 }
