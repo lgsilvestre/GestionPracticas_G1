@@ -155,6 +155,7 @@ export class PlantillaGeneralComponent implements OnInit {
 		const plantilla: PlantillaGeneral =
 		{
 			id: this.siPracticaS.getIdsolicitudActual(),
+      idUser: this.locaSTF.getUid().toString(),
 			nombres: this.datosEstudianteEtapa.value.Nombres,
 			apellidos: this.datosEstudianteEtapa.value.Apellidos,
 			carrera: this.datosEstudianteEtapa.value.Carrera,

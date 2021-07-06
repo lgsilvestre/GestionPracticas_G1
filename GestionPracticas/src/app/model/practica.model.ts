@@ -1,5 +1,7 @@
 export interface Practica{
   //Estudiante
+  id:string;
+  idUser:string;
   nombreEstudiante:string;
   apellidoEstudiante:string;
   carreraEstudiante:string;

@@ -1,4 +1,4 @@
-/* tslint:disable:no-inferrable-types */
+/* tslint:disable:no-inferrable-types indent */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -8,16 +8,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class LocalStorageService {
-	private userSubject$ = new BehaviorSubject<any>('');
-	private etapaActualSubject$ = new BehaviorSubject<string>('ninguna');
+  private userSubject$ = new BehaviorSubject<any>('');
+  private etapaActualSubject$ = new BehaviorSubject<string>('ninguna');
 	private documentosSubject$ = new BehaviorSubject<string[]>([]);
 	private estadoEtapaActualSubject$ = new BehaviorSubject<string>('ninguno');
-	private uid: string | undefined = '';
+	private uid: string;
 	private user: any = '';
 	private etapaActual: string = '';
 	private estadoEtapaActual: string = '';
 	constructor(private angularFireStore: AngularFirestore) {
-
+	  this.uid = ' ';
 	}
 	public reloadUser(): void {
 		this.user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -29,8 +29,8 @@ export class LocalStorageService {
 		this.etapaActualSubject$.next(this.etapaActual);
 		this.estadoEtapaActualSubject$.next(this.estadoEtapaActual);
 	}
-	public setUID(uid: string | undefined): void {
-		this.uid = uid;
+	public setUID(uid: string ): void {
+	  this.uid = uid;
 		localStorage.setItem('userUID', JSON.stringify(uid));
 	}
 	public setUser(user: any): void {
@@ -51,7 +51,7 @@ export class LocalStorageService {
 	public getEstadoEtapaActual$(): BehaviorSubject<string> {
 		return this.estadoEtapaActualSubject$;
 	}
-	public getUid(): string | undefined {
+	public getUid(): string {
 		return this.uid;
 	}
 	public getNombres(): string {

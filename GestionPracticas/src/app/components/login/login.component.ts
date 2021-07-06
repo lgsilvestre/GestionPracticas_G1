@@ -52,8 +52,11 @@ export class LoginComponent implements OnInit {
 					if (doc.exists) {
 						const userData: any = doc.data();
 						this.localStorageF.setUser(userData);
-						this.localStorageF.setUID(userUID);
-						this.router.navigate(['./menu-estudiante']);
+						if (userUID)
+            {
+              this.localStorageF.setUID(userUID);
+              this.router.navigate(['./menu-estudiante']);
+            }
 					}
 				}
 			);
@@ -62,8 +65,11 @@ export class LoginComponent implements OnInit {
 					if (doc.exists) {
 						const userData: any = doc.data();
 						localStorage.setItem('user', JSON.stringify(userData));
-						this.localStorageF.setUID(userUID);
-						this.router.navigate(['./menu-encargado-carrera']);
+						if (userUID)
+            {
+              this.localStorageF.setUID(userUID);
+              this.router.navigate(['./menu-encargado-carrera']);
+            }
 					}
 				}
 			);
@@ -72,8 +78,11 @@ export class LoginComponent implements OnInit {
 					if (doc.exists) {
 						const userData: any = doc.data();
 						localStorage.setItem('user', JSON.stringify(userData));
-						this.localStorageF.setUID(userUID);
-						this.router.navigate(['./menu-admin-general']);
+						if ( userUID)
+            {
+              this.localStorageF.setUID(userUID);
+              this.router.navigate(['./menu-admin-general']);
+            }
 					}
 				}
 			);
