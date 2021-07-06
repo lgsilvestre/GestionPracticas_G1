@@ -49,7 +49,7 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="formularioCarrera" label="Encargado">
+    <mat-step [stepControl]="formularioCarrera" label="Encargado" disabled>
         <form [formGroup]="formularioCarrera">
             <mat-form-field appearance="outline">
                 <mat-label>Nombre Encargado</mat-label>
@@ -64,13 +64,13 @@
                 <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Paso siguiente</button>
+                <button mat-button matStepperNext (click)='guardarDatosCarrera()'>Paso siguiente</button>
                 <button mat-button matStepperPrevious>Paso anterior</button>
             </div>
         </form>
     </mat-step>
 
-    <mat-step [stepControl]="formularioPlan" label="Plan">
+    <mat-step [stepControl]="formularioPlan" label="Plan" disabled>
         <form [formGroup]="formularioPlan">
             <mat-form-field appearance="outline">
                 <mat-label>Nombre del plan de estudio</mat-label>
@@ -120,11 +120,43 @@
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Termino</ng-template>
-        <p>Resumen de la carrera creada</p>
+        <ng-template matStepLabel>Finalizar</ng-template>
+        <div style="text-align: center;">
+            <h1>Resumen de la carrera creada</h1>
+            <p>Nombre de la carrera:</p>
+            <p> {{carreraCreada.nombreCarrera}} </p>
+            <br>
+            <p>Nombre encargado de la carrera:</p>
+            <p> {{carreraCreada.nombreEncargadoCarrera}} </p>
+            <br>
+            <p>Correo del encargado de la carrera:</p>
+            <p> {{carreraCreada.correoEncargadoCarrera}} </p>
+            <br>
+            <p>Telefono del encargado de carrera:</p>
+            <p> {{carreraCreada.telefonoEncargadoCarrera}} </p>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre Plan</th>
+                        <th scope="col">Requisitos</th>
+                        <th scope="col">No. Practicas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of plan">
+                        <td> {{item.nombre}} </td>
+                        <td> {{item.requisitos}} </td>
+                        <td> {{item.numeroPracticas}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div>
-            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperPrevious>volver</button>
             <button mat-button (click)="crearCarrera()">Crear carrera</button>
+            <button mat-button (click)="volver()">Salir</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>

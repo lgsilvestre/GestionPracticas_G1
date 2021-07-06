@@ -13,10 +13,11 @@ import { PlanEstudios } from '../../../model/planEstudios.model';
 export class CrearCarreraComponent implements OnInit {
 
   formularioCarrera:FormGroup;
-  isLinear = false;
   formularioPlan:FormGroup;
   plan:PlanEstudios[] = [];
   opcionSelecionada:string = '';
+  carreraCreada:Carrera = {};
+  isLinear = false;
 
   constructor(private _formBuilder: FormBuilder, private _gestionCarrera: GestionCarreraService, private route: Router)
   {
@@ -39,19 +40,22 @@ export class CrearCarreraComponent implements OnInit {
 
   }
 
+  extraerIDCarrera(){
+    this._gestionCarrera.getCarreras().forEach(datos => {
+      datos.forEach(carrerasObtenidas => {
+        if(carrerasObtenidas.nombreCarrera == this.carreraCreada.nombreCarrera){
+          this.carreraCreada.id = carrerasObtenidas.id;
+        }
+      })
+    })
+  }
+
   crearCarrera()
   {
-    const carreraEnCreacion: Carrera=
-    {
-      nombreCarrera: this.formularioCarrera.value.nombreCarrera,
-      nombreEncargadoCarrera: this.formularioCarrera.value.nombreEncargado,
-      correoEncargadoCarrera: this.formularioCarrera.value.correoEncargado,
-      telefonoEncargadoCarrera: this.formularioCarrera.value.telefonoEncargado,
-    }
-
-    this._gestionCarrera.addCarreras(carreraEnCreacion);
-
-
+    this.plan.forEach(elemento => {
+      elemento.id = this.carreraCreada.id;
+      this._gestionCarrera.addPlanEstudio(elemento);
+    })
     this.route.navigate(['/gestionar-carreras']);
   }
 
@@ -68,7 +72,20 @@ export class CrearCarreraComponent implements OnInit {
     }
     console.log('Plan creado exitosamente:' + planEnCreacion.numeroPracticas);
     this.plan.push(planEnCreacion);
-    console.log(this.plan.length);
+  }
+
+  guardarDatosCarrera(){
+    const carreraEnCreacion: Carrera=
+    {
+      nombreCarrera: this.formularioCarrera.value.nombreCarrera,
+      nombreEncargadoCarrera: this.formularioCarrera.value.nombreEncargado,
+      correoEncargadoCarrera: this.formularioCarrera.value.correoEncargado,
+      telefonoEncargadoCarrera: this.formularioCarrera.value.telefonoEncargado,
+    }
+
+    this.carreraCreada = carreraEnCreacion;
+    this._gestionCarrera.addCarreras(carreraEnCreacion);
+    this.extraerIDCarrera();
   }
 
 }
