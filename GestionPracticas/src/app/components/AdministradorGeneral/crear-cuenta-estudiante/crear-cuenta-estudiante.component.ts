@@ -31,7 +31,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
       CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]+[a-z0-9]*@alumnos\.utalca\.cl$/)]),
       SituacionActual: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
-      Telefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
+      Telefono: new FormControl('', [Validators.required, Validators.pattern(/^(\+569[0-9]{8,8}|\+569 [0-9]{8,8}|[0-9]{8,8}|569[0-9]{8,8})$/)]),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
     });

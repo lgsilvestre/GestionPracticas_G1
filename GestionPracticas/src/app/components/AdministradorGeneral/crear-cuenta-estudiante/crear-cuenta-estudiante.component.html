@@ -48,8 +48,10 @@
                 <input matInput placeholder="Regular" formControlName="SituacionActual" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Teléfono</mat-label>
-                <input matInput placeholder="+5601234567" formControlName="Telefono" required>
+                <mat-label>Celular</mat-label>
+                <input matInput placeholder="+56988888888" formControlName="Telefono" required>
+                <mat-error *ngIf="estudiante.controls.Telefono.hasError('required') && !estudiante.controls.Telefono.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!estudiante.controls.Telefono.hasError('required') && estudiante.controls.Telefono.hasError('pattern')">Formato no válido. ej. formato válido: +56988888888, 88888888, +569 88888888, 56988888888</mat-error>
                 <mat-icon matSuffix>phone</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
