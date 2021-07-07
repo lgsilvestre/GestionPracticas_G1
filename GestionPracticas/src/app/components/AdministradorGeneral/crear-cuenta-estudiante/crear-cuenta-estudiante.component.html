@@ -40,12 +40,13 @@
                 <mat-label>Correo Electrónico (institucional)</mat-label>
                 <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoInstitucional" required>
                 <mat-error *ngIf="estudiante.controls.CorreoInstitucional.hasError('required') && !estudiante.controls.CorreoInstitucional.hasError('pattern')">Campo obligatorio</mat-error>
-                <mat-error *ngIf="!estudiante.controls.CorreoInstitucional.hasError('required') && estudiante.controls.CorreoInstitucional.hasError('pattern')">Correo no válido</mat-error>
+                <mat-error *ngIf="!estudiante.controls.CorreoInstitucional.hasError('required') && estudiante.controls.CorreoInstitucional.hasError('pattern')">Correo no válido. Ej. correo válido: alumno18@alumnos.utalca.cl</mat-error>
                 <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Situación actual</mat-label>
                 <input matInput placeholder="Regular" formControlName="SituacionActual" required>
+                <mat-error *ngIf="!estudiante.controls.SituacionActual.hasError('required')">Campo obligatorio</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Celular</mat-label>
