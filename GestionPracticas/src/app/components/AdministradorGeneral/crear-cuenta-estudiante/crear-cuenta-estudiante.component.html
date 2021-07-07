@@ -46,7 +46,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Situación actual</mat-label>
                 <input matInput placeholder="Regular" formControlName="SituacionActual" required>
-                <mat-error *ngIf="!estudiante.controls.SituacionActual.hasError('required')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="estudiante.controls.SituacionActual.hasError('required')">Campo obligatorio</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Celular</mat-label>
