@@ -39,8 +39,8 @@
             <mat-form-field appearance="outline">
                 <mat-label>Correo Electrónico (institucional)</mat-label>
                 <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoInstitucional" required>
-                <mat-error *ngIf="estudiante.controls.CorreoInstitucional.hasError('required') && !estudiante.controls.CorreoInstitucional.hasError('email')">Campo obligatorio</mat-error>
-                <mat-error *ngIf="!estudiante.controls.CorreoInstitucional.hasError('required') && estudiante.controls.CorreoInstitucional.hasError('email')">Correo no válido</mat-error>
+                <mat-error *ngIf="estudiante.controls.CorreoInstitucional.hasError('required') && !estudiante.controls.CorreoInstitucional.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!estudiante.controls.CorreoInstitucional.hasError('required') && estudiante.controls.CorreoInstitucional.hasError('pattern')">Correo no válido</mat-error>
                 <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
