@@ -21,8 +21,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
   carreraActual: string = 'None';
   carreras: string[] = [];
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, public gestionEstudiante: GestionEstudianteService,
-              private _gestionCarrera:GestionCarreraService
-    ) {
+              private _gestionCarrera:GestionCarreraService) {
     this.estudiante = this._formBuilder.group({
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
@@ -35,7 +34,6 @@ export class CrearCuentaEstudianteComponent implements OnInit
       Telefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[+0-9]*')]),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
-      rol: [{ value: 'Estudiante', disabled: true }],
     });
   }
   ngOnInit(): void
