@@ -144,9 +144,7 @@
         <form [formGroup]="cuartaEtapa">
             <ng-template matStepLabel>Datos de la práctica</ng-template>
             <mat-radio-group>
-                <mat-label>Número de la práctica</mat-label><br/>
-                <mat-radio-button value="1">Práctica número 1</mat-radio-button>
-                <mat-radio-button value="2">Práctica número 2</mat-radio-button>
+                <mat-label>Número de la práctica: {{numeroPractica}}</mat-label>
             </mat-radio-group>
             <mat-form-field appearance="outline">
                 <mat-label>Fecha de inicio</mat-label>

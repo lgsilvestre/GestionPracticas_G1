@@ -114,5 +114,9 @@ export class LocalStorageService {
   {
     return this.estadoEtapaActual;
   }
+  getNumeroPracticaActual(): string
+  {
+    return this.user.practicaActual.toString();
+  }
 
 }

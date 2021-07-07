@@ -1,17 +1,36 @@
 <h1 mat-dialog-title>Estado Practica: {{estadoPractica}}</h1>
 <br/>
-<div>
-  <p>puedes ver tu seguro de practica pinchando sobre el siguente link:</p>
-  <a href="{{urlSeguroPractica}}">link al documento</a>
+<div *ngIf="urlSeguroPractica !== ' '; else sinSeguro">
+  <br/>
+  <div>
+    <p>puedes ver tu seguro de practica pinchando sobre el siguente link:</p>
+    <a href="{{urlSeguroPractica}}">link al documento</a>
+  </div>
+  <br/>
+  <div mat-dialog-content>Fecha inicio practica: {{fechaInicioMostrar}}</div>
+  <br/>
+  <div mat-dialog-content>Fecha fin practica: {{fechaFinMostrar}}</div>
+  <div *ngIf="comprarFeschas(); else aunNoTermina">
+    <div>
+      <div>
+        recuerda enviar tu informe de practica dentro de los plazos establecidos.
+      </div>
+      <br/>
+      <button>subir informe de practica</button>
+      <br/>
+      <button>subir evaluacioan empresa</button>
+    </div>
+  </div>
+  <ng-template #aunNoTermina>
+    <br/>
+    <div> tu practica esta en curso, recuerda que al terminarla <br/>
+      tienes que subir los documentos restante desde esta platafora</div>
+  </ng-template>
 </div>
+<ng-template #sinSeguro>
+  <div>
+    Tu seguro de practica aun se encuenta en proceso.
+  </div>
+</ng-template>
 
-<br/>
-<br/>
-<div mat-dialog-content>Fecha inicio practica: {{fechaInicioMostrar}}</div>
-<br/>
-<div mat-dialog-content>Fecha fin practica: {{fechaFinMostrar}}</div>
-<div>
-  <div mat-dialog-content>Subir Informe de Practica</div>
-  <input type="file">
-</div>
 
