@@ -298,9 +298,13 @@ export class VisualizarComponent implements OnInit, AfterViewInit {
 
     agregarPractica(solicitud: any, estado : string){
         if (estado == 'Aceptado') {
-            this.EC_service.crear_practica(solicitud);
+            this.EC_service.crear_practica(solicitud).then(() => {
+                console.log("----> Se agregó práctica correctamente. <-----");
+            })
+            .catch((error) => {
+                console.log("----> Error al agregar práctica <-----");
+            });
         }
-        console.log("----> Se agregó práctica correctamente. <-----")
     }
 
     alertify_default_setting() {
