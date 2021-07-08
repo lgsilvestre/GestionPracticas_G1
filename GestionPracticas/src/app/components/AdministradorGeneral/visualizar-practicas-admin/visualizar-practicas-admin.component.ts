@@ -255,11 +255,11 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
         }
 
         if (this.tablaEnCursoSeleccionada) {
-            coleccion = 'Solicitudes'
+            coleccion = 'Practicas'
         }
 
-        var solicitudRef = this.EC_service.update_solicitud(solicitud.idSolicitud, coleccion);
-        console.log("El id para actualizar es>>> " + solicitud.idSolicitud);
+        var solicitudRef = this.EC_service.update_solicitud(solicitud.id, coleccion);
+        console.log("El id para actualizar es>>> " + solicitud.id);
 
         if (param_estado == "Aceptado") {
             msg_success += "aceptada";
@@ -275,6 +275,9 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
                         .then(() => {
                             this.solicitudes = [];
                             this.cargarDatos(coleccion);
+                            if(coleccion == 'Solicitudes'){
+                                this.agregarPractica(solicitud, param_estado);
+                            }
                             alertify.success(msg_success);
                         })
                         .catch((error) => {
@@ -310,6 +313,13 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
                 () => { alertify.error('La acción fue cancelada') }
             );
         }
+    }
+
+    agregarPractica(solicitud: any, estado : string){
+        if (estado == 'Aceptado') {
+            this.EC_service.crear_practica(solicitud);
+        }
+        console.log("----> Se agregó práctica correctamente. <-----")
     }
 
     alertify_default_setting() {
@@ -351,7 +361,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
             this.tablaIncripcionSeleccionada = false;
             this.tablaEnCursoSeleccionada = true;
             this.displayedColumns = this.displayedColumnsEnCurso;
-            this.cargarDatos('Solicitudes');
+            this.cargarDatos('Practicas');
             this.dataSource.filterPredicate = this.createFilter('Solicitudes');
         }
 
