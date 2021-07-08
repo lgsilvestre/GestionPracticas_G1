@@ -14,10 +14,14 @@
             <mat-form-field appearance="outline">
                 <mat-label>RUT</mat-label>
                 <input matInput placeholder="RUT" formControlName="Run" required>
+                <mat-error *ngIf="nuevoAdminGenerl.controls.Run.hasError('required') && !nuevoAdminGenerl.controls.Run.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!nuevoAdminGenerl.controls.Run.hasError('required') && nuevoAdminGenerl.controls.Run.hasError('pattern')">Run no válido. Ej. Run válido: 19298298-7</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Correo Electrónico (institucional)</mat-label>
                 <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoInstitucional" required>
+                <mat-error *ngIf="nuevoAdminGenerl.controls.CorreoInstitucional.hasError('required') && !nuevoAdminGenerl.controls.CorreoInstitucional.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!nuevoAdminGenerl.controls.CorreoInstitucional.hasError('required') && nuevoAdminGenerl.controls.CorreoInstitucional.hasError('pattern')">Correo no válido. Ej. correo válido: adminGeneral@utalca.cl</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Correo Electrónico (personal)</mat-label>
@@ -26,6 +30,8 @@
             <mat-form-field appearance="outline">
                 <mat-label>Teléfono</mat-label>
                 <input matInput placeholder="+5601234567" formControlName="Telefono" required>
+                <mat-error *ngIf="nuevoAdminGenerl.controls.Telefono.hasError('required') && !nuevoAdminGenerl.controls.Telefono.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!nuevoAdminGenerl.controls.Telefono.hasError('required') && nuevoAdminGenerl.controls.Telefono.hasError('pattern')">Teléfono no válido. Ej. correo válido: +569 1345678</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Contraseña</mat-label>
