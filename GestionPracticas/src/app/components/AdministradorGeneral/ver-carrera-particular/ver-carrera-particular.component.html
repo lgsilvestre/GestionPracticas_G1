@@ -64,7 +64,7 @@
                 <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Paso siguiente</button>
+                <button mat-button matStepperNext (click)="crearCarreraTemp()">Paso siguiente</button>
                 <button mat-button matStepperPrevious>Paso anterior</button>
             </div>
         </form>
@@ -101,6 +101,7 @@
                             <th scope="col">Nombre Plan</th>
                             <th scope="col">Requisitos</th>
                             <th scope="col">No. Practicas</th>
+                            <th scope="col">Accion</th>
                         </tr>
                     </thead>
                     <tbody>

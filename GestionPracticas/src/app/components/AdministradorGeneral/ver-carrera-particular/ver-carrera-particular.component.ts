@@ -22,7 +22,7 @@ export class VerCarreraParticularComponent implements OnInit {
   formularioPlan: FormGroup;
   plan: PlanEstudios[] = [];
   carreraCreada: Carrera = {};
-  opcionSelecionada:string = '';
+  opcionSelecionada: string = '';
 
   constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute, private _formBuilder: FormBuilder,
     private route: Router) {
@@ -52,23 +52,19 @@ export class VerCarreraParticularComponent implements OnInit {
           correoEncargado: this.carreraCreada.correoEncargadoCarrera,
           telefonoEncargado: this.carreraCreada.telefonoEncargadoCarrera,
         })
+        this._gestionCarrera.getPlanEstudio(this.carreraCreada.id!).valueChanges().subscribe(datos => {
+          datos.forEach(planes => {
+            console.log(planes);
+            this.plan.push(planes);
+          })
+        })
       })
     });
-
-    this._gestionCarrera.getPlanEstudio(this.carreraCreada.id!).valueChanges().subscribe(datos => {
-      datos.forEach(planes => {
-        this.plan.push(planes);
-      })
-    })
   }
 
   updateFormulario() {
     const actualizacion = {
       ...this.carreraCreada,
-      nombreCarrera: this.formularioPlan.value.nombreCarrera,
-      nombreEncargadoCarrera: this.formularioCarrera.value.nombreEncargado,
-      correoEncargadoCarrera: this.formularioCarrera.value.correoEncargado,
-      telefonoEncargado: this.formularioCarrera.value.telefonoEncargado,
     }
 
     this._gestionCarrera.guardarCarrera(actualizacion, this.carreraCreada.id!);
@@ -90,9 +86,20 @@ export class VerCarreraParticularComponent implements OnInit {
     })
   }
 
+  crearCarreraTemp() {
+    this.carreraCreada = {
+      id: this.carreraCreada.id,
+      nombreCarrera: this.formularioCarrera.value.nombreCarrera,
+      nombreEncargadoCarrera: this.formularioCarrera.value.nombreEncargado,
+      correoEncargadoCarrera: this.formularioCarrera.value.correoEncargado,
+      telefonoEncargadoCarrera: this.formularioCarrera.value.telefonoEncargado,
+    }
+    console.log(this.carreraCreada);
+  }
 
-  agregarPlan(){
-    const planEnCreacion:PlanEstudios = {
+
+  agregarPlan() {
+    const planEnCreacion: PlanEstudios = {
       nombre: this.formularioPlan.value.nombrePlan,
       numeroPracticas: this.opcionSelecionada,
       requisitos: this.formularioPlan.value.requisitos,
@@ -105,7 +112,7 @@ export class VerCarreraParticularComponent implements OnInit {
     this.route.navigate(['/gestionar-carreras']);
   }
 
-  eliminarPlan(item:any){
+  eliminarPlan(item: any) {
     this.plan = this.plan.filter(planes => planes.nombre != item.nombre)
     this._gestionCarrera.eliminarPlanEstudio(item.nombre);
   }
