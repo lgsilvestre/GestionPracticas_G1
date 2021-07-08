@@ -13,12 +13,30 @@
   <div *ngIf="comprarFeschas(); else aunNoTermina">
     <div>
       <div>
-        recuerda enviar tu informe de practica dentro de los plazos establecidos.
+        <br/>
+        recuerda subir tu informe de practica dentro de los plazos establecidos,
+        ademas de los demas documentos.
       </div>
       <br/>
-      <button>subir informe de practica</button>
+      <div *ngIf="urlInformePractica === ' ';else editarInforme">
+        <label>Informe de practia</label>
+        <input type="file">
+        <button>subir informe de practica</button>
+      </div>
+      <ng-template #editarInforme>
+        <a href="{{urlInformePractica}}">Enlace informe de Practica</a>
+        <button>editar informe de practica</button>
+      </ng-template>
       <br/>
-      <button>subir evaluacioan empresa</button>
+      <div *ngIf="urlEvaluacionEmpresa === ' ';else editarEvaluacion">
+        <label>Evaluacion empresa</label>
+        <input type="file">
+        <button>subir evaluacion empresa</button>
+      </div>
+      <ng-template #editarEvaluacion>
+        <a href="{{urlEvaluacionEmpresa}}">Enlace informe de evaluacion de empresa</a>
+        <button>editar evaluacion empresa</button>
+      </ng-template>
     </div>
   </div>
   <ng-template #aunNoTermina>

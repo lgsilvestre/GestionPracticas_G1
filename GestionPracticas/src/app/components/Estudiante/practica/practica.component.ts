@@ -1,3 +1,4 @@
+/* tslint:disable:no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import {LocalStorageService} from '../../Servicios/local-storage.service';
 
@@ -10,9 +11,10 @@ export class PracticaComponent implements OnInit {
 
   urlInformePractica: string = ' ';
   urlSeguroPractica: string = 'https://www.google.com/';
+  urlEvaluacionEmpresa: string = ' ';
   estadoPractica: string = 'pendiente';
   fechaInicio: Date = new Date();
-  fechaFin: Date = new Date();
+  fechaFin: Date = new Date(1995, 11, 17);
   fechaInicioMostrar: string = '';
   fechaFinMostrar: string = '';
   fechaActual: Date = new Date();
