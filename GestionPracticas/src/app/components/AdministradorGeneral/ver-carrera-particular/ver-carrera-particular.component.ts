@@ -49,7 +49,7 @@ export class VerCarreraParticularComponent implements OnInit {
         this.formularioCarrera.patchValue({
           nombreCarrera: this.carreraCreada.nombreCarrera,
           nombreEncargado: this.carreraCreada.nombreEncargadoCarrera,
-          CorreoEncargado: this.carreraCreada.correoEncargadoCarrera,
+          correoEncargado: this.carreraCreada.correoEncargadoCarrera,
           telefonoEncargado: this.carreraCreada.telefonoEncargadoCarrera,
         })
       })
@@ -67,7 +67,7 @@ export class VerCarreraParticularComponent implements OnInit {
       ...this.carreraCreada,
       nombreCarrera: this.formularioPlan.value.nombreCarrera,
       nombreEncargadoCarrera: this.formularioCarrera.value.nombreEncargado,
-      correoEncargadoCarrera: this.formularioCarrera.value.CorreoEncargado,
+      correoEncargadoCarrera: this.formularioCarrera.value.correoEncargado,
       telefonoEncargado: this.formularioCarrera.value.telefonoEncargado,
     }
 
