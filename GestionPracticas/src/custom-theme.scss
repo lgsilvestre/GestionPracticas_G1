@@ -7,3 +7,27 @@ $GestionPracticas-theme: mat-light-theme(( color: ( primary: $GestionPracticas-p
 @include angular-material-theme($GestionPracticas-theme);
 $custom-typography: mat-typography-config( $font-family: 'Montserrat');
 @include angular-material-typography($custom-typography);
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 8px;
+    padding: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+background: #b3b2b281;
+width: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: rgba(29, 29, 29, 0.605); 
+border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
