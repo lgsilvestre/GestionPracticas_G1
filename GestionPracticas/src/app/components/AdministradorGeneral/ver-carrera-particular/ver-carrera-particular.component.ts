@@ -16,58 +16,65 @@ import { identifierModuleUrl } from '@angular/compiler';
   styleUrls: ['./ver-carrera-particular.component.css', '../../../app.component.css']
 })
 
-export class VerCarreraParticularComponent implements OnInit
-{
+export class VerCarreraParticularComponent implements OnInit {
 
-  formulario1: FormGroup;
-  formularioPlanCarrera: FormGroup;
-  carrera: Carrera = {};
+  formularioCarrera: FormGroup;
+  formularioPlan: FormGroup;
+  plan: PlanEstudios[] = [];
+  carreraCreada: Carrera = {};
+  opcionSelecionada:string = '';
 
-  constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute,private _formBuilder: FormBuilder,
-    private route: Router)
-  {
-      this.formulario1= new FormGroup({
-          nombreEncargado: new FormControl('', Validators.required),
-          CorreoEncargado: new FormControl('', Validators.required),
-      });
+  constructor(public dialog: MatDialog, private _gestionCarrera: GestionCarreraService, private _route: ActivatedRoute, private _formBuilder: FormBuilder,
+    private route: Router) {
+    this.formularioCarrera = new FormGroup({
+      nombreCarrera: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ]*'))]),
+      nombreEncargado: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ]*'))]),
+      correoEncargado: new FormControl('', [Validators.required, Validators.email]),
+      telefonoEncargado: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(12), Validators.pattern('[+0-9]*')]),
+    });
 
-      this.formularioPlanCarrera = new FormGroup({
-        nombrePlan: new FormControl('',[Validators.required]),
-        cantidadPracticas: new FormControl('',[Validators.required]),
-        requisitos: new FormControl('',[Validators.required]),
-      });
+    this.formularioPlan = new FormGroup({
+      nombrePlan: new FormControl('', [Validators.required]),
+      cantidadPracticas: new FormControl('', [Validators.required]),
+      requisitos: new FormControl('', [Validators.required]),
+    });
 
   }
 
-  ngOnInit()
-  {
-      this._route.params.subscribe(parametro =>{
-          this._gestionCarrera.getCarrera(parametro['id']).subscribe(carrera =>{
-              this.carrera= carrera!;
-              console.log(this.carrera);
-              this.formulario1.patchValue({
-                  nombreEncargado: this.carrera.nombreEncargadoCarrera,
-                  CorreoEncargado: this.carrera.correoEncargadoCarrera,
-              })
-          })
-      });
+  ngOnInit() {
+    this._route.params.subscribe(parametro => {
+      this._gestionCarrera.getCarrera(parametro['id']).subscribe(carrera => {
+        this.carreraCreada = carrera!;
+        console.log(this.carreraCreada);
+        this.formularioCarrera.patchValue({
+          nombreCarrera: this.carreraCreada.nombreCarrera,
+          nombreEncargado: this.carreraCreada.nombreEncargadoCarrera,
+          CorreoEncargado: this.carreraCreada.correoEncargadoCarrera,
+          telefonoEncargado: this.carreraCreada.telefonoEncargadoCarrera,
+        })
+      })
+    });
 
-      this._gestionCarrera.getPlanEstudio(this.carrera.id!);
+    this._gestionCarrera.getPlanEstudio(this.carreraCreada.id!).valueChanges().subscribe(datos => {
+      datos.forEach(planes => {
+        this.plan.push(planes);
+      })
+    })
   }
 
-  updateFormulario()
-  {
-      const actualizacion= {
-          ...this.carrera,
-          nombreEncargadoCarrera: this.formulario1.value.nombreEncargado,
-          correoEncargadoCarrera: this.formulario1.value.CorreoEncargado,
-      }
+  updateFormulario() {
+    const actualizacion = {
+      ...this.carreraCreada,
+      nombreCarrera: this.formularioPlan.value.nombreCarrera,
+      nombreEncargadoCarrera: this.formularioCarrera.value.nombreEncargado,
+      correoEncargadoCarrera: this.formularioCarrera.value.CorreoEncargado,
+      telefonoEncargado: this.formularioCarrera.value.telefonoEncargado,
+    }
 
-      this._gestionCarrera.guardarCarrera(actualizacion,this.carrera.id!);
+    this._gestionCarrera.guardarCarrera(actualizacion, this.carreraCreada.id!);
   }
 
-  openDialog()
-  {
+  openDialog() {
     const dialogoEliminar = this.dialog.open(editarPlanes)
 
     dialogoEliminar.afterClosed().subscribe(resultado => {
@@ -84,27 +91,23 @@ export class VerCarreraParticularComponent implements OnInit
   }
 
 
-  agregarPlanEstudio(){
-    const planEnCreacion: PlanEstudios =
-    {
-      id: this.carrera.id ,
-      nombre: this.formularioPlanCarrera.value.nombrePlan,
-      numeroPracticas: this.formularioPlanCarrera.value.cantidadPracticas,
-      requisitos: this.formularioPlanCarrera.value.requisitos,
+  agregarPlan(){
+    const planEnCreacion:PlanEstudios = {
+      nombre: this.formularioPlan.value.nombrePlan,
+      numeroPracticas: this.opcionSelecionada,
+      requisitos: this.formularioPlan.value.requisitos,
     }
-
-    this._gestionCarrera.addPlanEstudio(planEnCreacion);
-
-    this._gestionCarrera.getPlanEstudio(this.carrera.id!).valueChanges().subscribe( datos=>
-        {
-            console.log(datos);
-        });
-
+    console.log('Plan creado exitosamente:' + planEnCreacion.numeroPracticas);
+    this.plan.push(planEnCreacion);
   }
 
-  volver()
-  {
-      this.route.navigate(['/gestionar-carreras']);
+  volver() {
+    this.route.navigate(['/gestionar-carreras']);
+  }
+
+  eliminarPlan(item:any){
+    this.plan = this.plan.filter(planes => planes.nombre != item.nombre)
+    this._gestionCarrera.eliminarPlanEstudio(item.nombre);
   }
 
 }

@@ -12,11 +12,11 @@ import { PlanEstudios } from '../../../model/planEstudios.model';
 })
 export class CrearCarreraComponent implements OnInit {
 
-  formularioCarrera:FormGroup;
+    formularioCarrera:FormGroup;
   formularioPlan:FormGroup;
   plan:PlanEstudios[] = [];
-  opcionSelecionada:string = '';
   carreraCreada:Carrera = {};
+  opcionSelecionada:string = '';
   isLinear = false;
 
   constructor(private _formBuilder: FormBuilder, private _gestionCarrera: GestionCarreraService, private route: Router)

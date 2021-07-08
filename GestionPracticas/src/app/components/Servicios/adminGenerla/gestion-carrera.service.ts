@@ -53,6 +53,8 @@ export class GestionCarreraService implements OnInit
       const itemDoc = this.afStore.doc<Carrera>(`Carreras/${id}`);
 
       itemDoc.delete()
+
+      this.eliminarMasivamentePlanEstudio(id);
   }
 
   addPlanEstudio(planEstudio:any){
@@ -74,8 +76,17 @@ export class GestionCarreraService implements OnInit
       .where("id", "==", idCarrera));
   }
 
-  getPlanesEstudio(){
-    return this.afStore.collection<PlanEstudios>('PlanesCarreras');
+  eliminarMasivamentePlanEstudio(idCarrera:string){
+    const itemDoc = this.afStore.doc<PlanEstudios>(`PlanesCarreras/${idCarrera}`);
+    itemDoc.delete();
+  }
+
+  eliminarPlanEstudio(nombre:string){
+    const itemDoc = this.afStore.collection<PlanEstudios>(`PlanesCarreras`).doc(nombre);
+    if(itemDoc != null){
+      itemDoc.delete();
+    }
+
   }
 
 }
