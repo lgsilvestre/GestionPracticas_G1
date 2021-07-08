@@ -18,10 +18,10 @@ export class CrearCarreraComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _gestionCarrera: GestionCarreraService, private route: Router)
   {
     this.formularioCarrera= new FormGroup({
-      nombreCarrera: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ]*'))]),
-      nombreEncargado: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ]*'))]),
-      correoEncargado: new FormControl('', [Validators.required, Validators.email]),
-      telefonoEncargado: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(12), Validators.pattern('[+0-9]*')]),
+      nombreCarrera: new FormControl('', [Validators.required, Validators.pattern((/^(Ingeniería civil )[a-zA-ZÀ-ÿ\u00f1\u00d1]+/))]),
+      nombreEncargado: new FormControl('', [Validators.required, Validators.pattern(/^[A-ZÀ-Ý\u00d1][a-zA-ZÀ-ÿ\u00f1\u00d1]+/)]),
+      correoEncargado: new FormControl('', [Validators.required, Validators.pattern((/^[a-z][a-z0-9]*@utalca.cl$/))]),
+      telefonoEncargado: new FormControl('', [Validators.required, Validators.pattern(/^\+569(([0-9]){8,8}$)/)]),
     });
 
   }
