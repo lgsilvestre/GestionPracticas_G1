@@ -4,6 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {LocalStorageService} from './local-storage.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {finalize} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -112,11 +113,80 @@ export class PracticaService {
     return this.practica;
   }
   public subirSeguroPractica(seguro: File): void
-  {}
+  {
+    const filename = 'seguro' + this.practica.numeroMatricula + '-' + this.locaSTF.getNombres() +
+      this.locaSTF.getApellidos() + '-' + this.practica.numeroPractica;
+    const filePath = '/ArchivosPracticas/seguros/' + filename;
+    console.log('filePath');
+    console.log(filePath + ' ' + seguro.type);
+    const fileRef = this.storage.ref(filePath); // creamos al referencia al archivo
+    const tarea = this.storage.upload(filePath, seguro);
+    tarea.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(urlFile => {
+          console.log('esxiss ' + urlFile.toString());
+          if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
+          {
+            this.practica.urlSeguroDePractica = urlFile;
+            this.actualizarPractica(this.practica);
+          }
+          else
+          {
+            console.log('error al subir seguro de:' + this.locaSTF.getNumeroMatricula());
+          }
+        });
+      }));
+  }
   public subirInformePractica(informe: File): void
-  {}
+  {
+    const filename = 'informe' + this.practica.numeroMatricula + '-' + this.locaSTF.getNombres() +
+      this.locaSTF.getApellidos() + '-' + this.practica.numeroPractica;
+    const filePath = '/ArchivosPracticas/informes/' + filename;
+    console.log('filePath');
+    console.log(filePath + ' ' + informe.type);
+    const fileRef = this.storage.ref(filePath); // creamos al referencia al archivo
+    const tarea = this.storage.upload(filePath, informe);
+    tarea.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(urlFile => {
+          console.log('esxiss ' + urlFile.toString());
+          if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
+          {
+            this.practica.urlInformePractica = urlFile;
+            this.actualizarPractica(this.practica);
+          }
+          else
+          {
+            console.log('error al subir informe practica');
+          }
+        });
+      }));
+  }
   public subirEvaluacionEmpresa(evaluacionEmpresa: File): void
-  {}
+  {
+    const filename = 'evaluacionEmpresa' + this.practica.numeroMatricula + '-' + this.locaSTF.getNombres() +
+      this.locaSTF.getApellidos() + '-' + this.practica.numeroPractica;
+    const filePath = '/ArchivosPracticas/evaluaciones/' + filename;
+    console.log('filePath');
+    console.log(filePath + ' ' + evaluacionEmpresa.type);
+    const fileRef = this.storage.ref(filePath); // creamos al referencia al archivo
+    const tarea = this.storage.upload(filePath, evaluacionEmpresa);
+    tarea.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(urlFile => {
+          console.log('esxiss ' + urlFile.toString());
+          if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
+          {
+            this.practica.urlEvaluacionEmpresa = urlFile;
+            this.actualizarPractica(this.practica);
+          }
+          else
+          {
+            console.log('error al subir evaluacion empresa');
+          }
+        });
+      }));
+  }
   private createEmptyPractica(): Practica
   {
     const practica: Practica = {

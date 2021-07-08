@@ -216,8 +216,6 @@ export class PlantillaGeneralComponent implements OnInit {
 				CorreoElectronico: actualPlantilla.correoTutor,
 			});
 			this.cuartaEtapa.patchValue({
-				startDate: actualPlantilla.fechaInicio.toString(),
-				endDate: actualPlantilla.fechaTermino.toString(),
 				HoraInicio: actualPlantilla.horaInicio,
 				HoraFin: actualPlantilla.horaTermino,
 				Jornada: actualPlantilla.duracionJorada,
