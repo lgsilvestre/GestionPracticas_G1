@@ -38,6 +38,10 @@ export interface Practica{
   retroalimentacion: string;
   // documentos
   urlSeguroDePractica: string;
+  nombreArchivoseguro: string;
   urlEvaluacionEmpresa: string;
+  nombreArchivoEvaluacionEmpresa: string;
   urlInformePractica: string;
+  nombreArchivoInformePractica: string;
+  // los nombres de lso archivos son nesesarioa para eliminarlos del store
 }

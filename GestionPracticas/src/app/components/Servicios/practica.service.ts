@@ -37,6 +37,9 @@ export class PracticaService {
             if (practica)
             {
               const nuevaPractica: Practica = {
+                nombreArchivoEvaluacionEmpresa: practica.nombreArchivoEvaluacionEmpresa,
+                nombreArchivoInformePractica: practica.nombreArchivoInformePractica,
+                nombreArchivoseguro: practica.nombreArchivoseguro,
                 apellidoEstudiante: practica.apellidoEstudiante,
                 apellidoTutor: practica.apellidoTutor,
                 areaTutor: practica.areaTutor,
@@ -127,7 +130,10 @@ export class PracticaService {
           console.log('esxiss ' + urlFile.toString());
           if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
           {
+            const archivoAnterior = this.practica.nombreArchivoseguro;
+            // con el nombre se puede eliminar
             this.practica.urlSeguroDePractica = urlFile;
+            this.practica.nombreArchivoseguro = filename;
             this.actualizarPractica(this.practica);
           }
           else
@@ -152,7 +158,10 @@ export class PracticaService {
           console.log('esxiss ' + urlFile.toString());
           if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
           {
+            const archivoAnterior = this.practica.nombreArchivoInformePractica;
+            // con el nombre se puede eliminar
             this.practica.urlInformePractica = urlFile;
+            this.practica.nombreArchivoInformePractica = filename;
             this.actualizarPractica(this.practica);
           }
           else
@@ -177,7 +186,10 @@ export class PracticaService {
           console.log('esxiss ' + urlFile.toString());
           if (urlFile.toString() !== '') // uhna vez ya se subio ela rchivo y tenemos la url
           {
+            const archivoAnterior = this.practica.nombreArchivoEvaluacionEmpresa;
+            // con el nombre se puede eliminar
             this.practica.urlEvaluacionEmpresa = urlFile;
+            this.practica.nombreArchivoEvaluacionEmpresa = filename;
             this.actualizarPractica(this.practica);
           }
           else
@@ -190,6 +202,9 @@ export class PracticaService {
   private createEmptyPractica(): Practica
   {
     const practica: Practica = {
+      nombreArchivoEvaluacionEmpresa: ' ',
+      nombreArchivoInformePractica: ' ',
+      nombreArchivoseguro: ' ',
       urlEvaluacionEmpresa: ' ',
       urlInformePractica: ' ',
       urlSeguroDePractica: ' ',

@@ -29,7 +29,7 @@ export class PracticaComponent implements OnInit {
   constructor(
     private locaSTF: LocalStorageService,
     public dialog: MatDialog,
-    private miPeacticaService: PracticaService
+    private miPracticaService: PracticaService
   )
   {
     this.rol = this.locaSTF.getRol();
@@ -57,6 +57,7 @@ export class PracticaComponent implements OnInit {
     if (this.informe.length > 0)
     {
       // llamar al metodo de subir informe de el servicio practica
+      this.miPracticaService.subirInformePractica(this.informe[0]);
       this.editarInformeValue = false;
     }
     else
@@ -66,9 +67,10 @@ export class PracticaComponent implements OnInit {
   }
   public subirEvaluacion(): void
   {
-    if (this.informe.length > 0)
+    if (this.evaluacion.length > 0)
     {
       // llamar al metodo de subir evaluacion de el servicio practica
+      this.miPracticaService.subirEvaluacionEmpresa(this.evaluacion[0]);
       this.editarEvaluacionValue = false;
     }
     else
@@ -79,12 +81,12 @@ export class PracticaComponent implements OnInit {
   onInformeChange(event: any): void
   {
     console.log(event.target.files[0]);
-    this.informe.push(event.target.files[0]);
+    this.informe[0] = event.target.files[0];
   }
   onEvaluacionChange(event: any): void
   {
     console.log(event.target.files[0]);
-    this.evaluacion.push(event.target.files[0]);
+    this.evaluacion[0] = event.target.files[0];
   }
   changeEditInforme(valor: boolean): void
   {
