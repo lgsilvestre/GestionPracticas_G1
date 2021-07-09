@@ -30,7 +30,6 @@ export class CrearCuentaEstudianteComponent implements OnInit
       NumeroMatricula: new FormControl('', [Validators.required, Validators.pattern('^20[0-9]{8,8}$')]),
       CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]+[a-z0-9]*@alumnos\.utalca\.cl$/)]),
       SituacionActual: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
       Telefono: new FormControl('', [Validators.required, Validators.pattern(/^(\+569[0-9]{8,8}|\+569 [0-9]{8,8}|[0-9]{8,8}|569[0-9]{8,8})$/)]),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
@@ -66,7 +65,6 @@ export class CrearCuentaEstudianteComponent implements OnInit
         console.error(this.estudiante.controls.Carrera.hasError('required'));
         console.log(this.estudiante.controls.CorreoInstitucional.invalid);
         console.log(this.estudiante.controls.SituacionActual.invalid);
-        console.log(this.estudiante.controls.CorreoElectronico.invalid);
         console.log(this.estudiante.controls.Telefono.invalid);
         console.log(this.estudiante.controls.Contrasenna1.invalid);
         console.log(this.estudiante.controls.Contrasenna2.invalid);
