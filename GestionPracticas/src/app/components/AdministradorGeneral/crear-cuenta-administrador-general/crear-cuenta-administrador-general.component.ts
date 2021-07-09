@@ -7,6 +7,8 @@ import {GestionAdminGeneralService} from '../../Servicios/adminGenerla/gestion-a
 import {AdministradorGeneral} from '../../../model/administradorGeneral.model';
 
 
+declare let alertify: any;
+
 @Component({
   selector: 'app-crear-cuenta-administrador-general',
   templateUrl: './crear-cuenta-administrador-general.component.html',
@@ -20,11 +22,11 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
       // \u00f1\u00d1 Permite indicar que la letra ñ/Ñ se permite como parámetro.
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
-      CorreoInstitucional: new FormControl('', [Validators.required, Validators.email]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]),
+      CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern((/^[a-z][a-z0-9]*@utalca.cl$/))]),
       CorreoElectronico: new FormControl('', Validators.email),
       rol: [{ value: 'Administrador general', disabled: true }],
-      Telefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[0-9]*')]),
+      Telefono: new FormControl('', [Validators.required, Validators.pattern(/^\+569(([0-9]){8,8}$)/)]),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
     }, { validators: this.revisarPasswords }

@@ -29,13 +29,13 @@ export class SolicitududPracticaComponent implements OnInit
   {
     this.locaSTF.reloadUser();
     this.datosSolicitudPractica = this._formBuilder.group({
-      Nombres: ['', Validators.required],
-      Apellidos: ['', Validators.required],
-      Carrera: ['', Validators.required],
-      NumeroMatricula: ['', Validators.required],
-      Run: ['', Validators.required],
-      CorreoElectronicoInstitucional: ['', Validators.required],
-      NumeroTelefono: ['', Validators.required],
+      Nombres: ['', [Validators.required, Validators.pattern(/^[A-ZÀ-Ý\u00d1][ a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]],
+      Apellidos: ['', [Validators.required, Validators.pattern(/^[A-ZÀ-Ý\u00d1][ a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]],
+      Carrera: ['', [Validators.required, Validators.required, Validators.pattern((/^(Ingeniería civil )[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+/))]],
+      NumeroMatricula: ['', [Validators.required, Validators.pattern(/^(20)[0-9]{2,2}4070[0-9]{2,3}$/)]],
+      Run: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]],
+      CorreoElectronicoInstitucional: ['', [Validators.required, Validators.pattern((/^[a-z][a-z0-9]*@alumnos.utalca.cl$/))]],
+      NumeroTelefono: ['', [Validators.required, Validators.pattern(/^\+569(([0-9]){8,8}$)/)]],
     });
     this.datosSolicitudPractica.patchValue(
       {
