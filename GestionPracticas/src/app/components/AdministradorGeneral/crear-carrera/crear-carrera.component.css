@@ -1,0 +1,10 @@
+#note {
+    text-align: center;
+}
+
+
+/* esto es para bloquear el stepper en la cabecera */
+
+::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}

@@ -1,20 +1,20 @@
 <mat-card>
     <mat-card-title>¡Bienvenido <strong>{{this.encargadoCarrera.nombres}} {{this.encargadoCarrera.apellidos}}</strong>!</mat-card-title>
     <mat-card-content>
-        <p>Existen <b>33</b> solicitudes de práctica pendientes. Si deseas verlas, haz click <a href="#">aquí</a>.</p>
+        <p>Existen <b>{{cantidadSolicitudesPracticasPendientes}}</b> solicitudes de práctica pendientes. Si deseas verlas, haz click <a href="/visualizar-practica">aquí</a>.</p>
     </mat-card-content>
 </mat-card>
 <mat-card>
     <mat-card-content>
         <div class="row">
             <div class="col">
-                <app-bar-chart></app-bar-chart>
+                <app-grafico-solicitud-enc-carrera></app-grafico-solicitud-enc-carrera>
             </div>
         </div>
     </mat-card-content>
 </mat-card>
 <mat-card>
     <mat-card-content>
-        <app-pie-chart></app-pie-chart>
+        <app-grafico-circular-enc-carrera></app-grafico-circular-enc-carrera>
     </mat-card-content>
 </mat-card>

@@ -42,7 +42,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
       console.log(carrerasDatos);
       carrerasDatos.forEach( carreraObtenida => {
         console.log(carreraObtenida);
-        this.carreras.push(carreraObtenida.nombreCarrera!);
+        this.verificarCarreraRepetida(carreraObtenida);
       })
     })
   }
@@ -89,6 +89,15 @@ export class CrearCuentaEstudianteComponent implements OnInit
     else
     {
       this.openDialog();
+    }
+  }
+
+  verificarCarreraRepetida(carreraObtenida:Carrera){
+    if(!this.carreras.includes(carreraObtenida.nombreCarrera!)){
+      this.carreras.push(carreraObtenida.nombreCarrera!);
+      console.log('carrera agregada:',carreraObtenida.nombreCarrera);
+    }else{
+      console.log('carrera repetida');
     }
   }
 }

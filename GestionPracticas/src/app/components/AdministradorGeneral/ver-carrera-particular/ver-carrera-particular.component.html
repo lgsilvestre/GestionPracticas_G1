@@ -1,0 +1,164 @@
+<!-- <mat-card>
+    <mat-card-title>Crear carrera</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="formularioCarrera">
+            <div>
+                <h2>Datos de la carrera</h2>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput class="input" formControlName="nombreCarrera" placeholder="Ingeniería Civil en...">
+                </mat-form-field>
+            </div>
+            <div>
+                <h2>Datos Encargado</h2>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre Encargado</mat-label>
+                    <input matInput class="inpput" formControlName="nombreEncargado" placeholder="Nombre y apellido del encargado de carrera">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input matInput class="inpput" formControlName="correoEncargado" placeholder="usuario@sitio.cl">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Número de teléfono</mat-label>
+                    <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
+                </mat-form-field>
+            </div>
+            <div class="step-buttons">
+                <button color="primary" mat-raised-button (click)="crearCarrera()">Crear carrera</button>
+                <button color="primary" mat-raised-button (click)="volver()">Volver</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card> -->
+
+
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="formularioCarrera" label="Carrera">
+        <form [formGroup]="formularioCarrera">
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre de carrera</mat-label>
+                <input matInput class="input" formControlName="nombreCarrera" placeholder="Ingeniería Civil en...">
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Siguiente paso</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="formularioCarrera" label="Encargado" disabled>
+        <form [formGroup]="formularioCarrera">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre Encargado</mat-label>
+                <input matInput class="inpput" formControlName="nombreEncargado" placeholder="Nombre y apellido del encargado de carrera">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput class="inpput" formControlName="correoEncargado" placeholder="usuario@sitio.cl">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Número de teléfono</mat-label>
+                <input matInput class="inpput" formControlName="telefonoEncargado" placeholder="+5612345678">
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext (click)="crearCarreraTemp()">Paso siguiente</button>
+                <button mat-button matStepperPrevious>Paso anterior</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="formularioPlan" label="Plan" disabled>
+        <form [formGroup]="formularioPlan">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre del plan de estudio</mat-label>
+                <input matInput class="inpput" formControlName="nombrePlan" placeholder="16">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Cantidad de practicas</mat-label>
+                <mat-select formcontrolName="cantidadPracticas" [(value)]="opcionSelecionada">
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Requisitos de las practicas</mat-label>
+                <input matInput class="inpput" formControlName="requisitos" placeholder="requisitos generales de las practicas">
+            </mat-form-field>
+            <button mat-button color="primary" (click)="agregarPlan()">Agregar Plan</button>
+
+            <div *ngIf="plan.length == 0" style="text-align: center;">
+                <h1>No existen planes creados.</h1>
+            </div>
+            <div *ngIf="plan.length > 0">
+                <h2>Planes creados para la carrera</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre Plan</th>
+                            <th scope="col">Requisitos</th>
+                            <th scope="col">No. Practicas</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of plan">
+                            <td> {{item.nombre}} </td>
+                            <td> {{item.requisitos}} </td>
+                            <td> {{item.numeroPracticas}} </td>
+                            <td> <button (click)="eliminarPlan(item)">Eliminar</button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <button mat-button matStepperNext>Paso siguiente</button>
+                <button mat-button matStepperPrevious>Paso anterior</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Finalizar</ng-template>
+        <div style="text-align: center;">
+            <h1>Resumen de la carrera creada</h1>
+            <p>Nombre de la carrera:</p>
+            <p> {{carreraCreada.nombreCarrera}} </p>
+            <br>
+            <p>Nombre encargado de la carrera:</p>
+            <p> {{carreraCreada.nombreEncargadoCarrera}} </p>
+            <br>
+            <p>Correo del encargado de la carrera:</p>
+            <p> {{carreraCreada.correoEncargadoCarrera}} </p>
+            <br>
+            <p>Telefono del encargado de carrera:</p>
+            <p> {{carreraCreada.telefonoEncargadoCarrera}} </p>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre Plan</th>
+                        <th scope="col">Requisitos</th>
+                        <th scope="col">No. Practicas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of plan">
+                        <td> {{item.nombre}} </td>
+                        <td> {{item.requisitos}} </td>
+                        <td> {{item.numeroPracticas}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <button mat-button matStepperPrevious>volver</button>
+            <button mat-button (click)="updateFormulario()">Modificar carrera</button>
+            <button mat-button (click)="volver()">Salir</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

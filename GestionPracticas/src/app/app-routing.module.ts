@@ -19,8 +19,8 @@ import { CrearCuentaAdministradorGeneralComponent } from './components/Administr
 import { CrearCuentaEstudianteComponent } from './components/AdministradorGeneral/crear-cuenta-estudiante/crear-cuenta-estudiante.component';
 import { CrearCuentaComponent } from './components/AdministradorGeneral/crear-cuenta/crear-cuenta.component';
 import { GestionarCarrerasComponent } from './components/AdministradorGeneral/gestionar-carreras/gestionar-carreras.component';
-import { VerCarreraParticularComponent } from './components/AdministradorGeneral/gestionar-carreras/ver-carrera-particular/ver-carrera-particular.component';
-import { CrearCarreraComponent } from './components/AdministradorGeneral/gestionar-carreras/crear-carrera/crear-carrera.component';
+import { VerCarreraParticularComponent } from './components/AdministradorGeneral/ver-carrera-particular/ver-carrera-particular.component';
+import { CrearCarreraComponent } from './components/AdministradorGeneral/crear-carrera/crear-carrera.component';
 import { VisualizarPracticasAdminComponent } from './components/AdministradorGeneral/visualizar-practicas-admin/visualizar-practicas-admin.component';
 import { GestionArchivosComponent } from './components/AdministradorGeneral/GestionArchivos/gestion-archivos/gestion-archivos.component';
 import { DefinirFechasImportantesComponent } from './components/AdministradorGeneral/definir-fechas-importantes/definir-fechas-importantes.component';

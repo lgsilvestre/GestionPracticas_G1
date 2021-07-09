@@ -13,14 +13,15 @@ export class GestionarCarrerasComponent implements OnInit
 {
     carreras: Carrera[]= [];
 
-    constructor(public dialog: MatDialog, private route: Router, private _gestionCarrera: GestionCarreraService) 
+    constructor(public dialog: MatDialog, private route: Router, private _gestionCarrera: GestionCarreraService)
     { }
 
 
-  ngOnInit() 
+  ngOnInit()
   { this._gestionCarrera.getCarreras().subscribe( carreras =>
     {
         this.carreras= carreras;
+        console.log(this.carreras);
     }
   )}
 
@@ -34,12 +35,12 @@ export class GestionarCarrerasComponent implements OnInit
       })
   }
 
-  goToCarrera(carrera: Carrera): void 
+  goToCarrera(carrera: Carrera): void
   {
     this.route.navigate([`/gestionar-carreras/ver-carrera-particular/${carrera.id}`]);
   }
 
-  goToCrearCarrera(): void 
+  goToCrearCarrera(): void
   {
     this.route.navigate(['/gestionar-carreras/crear-carrera']);
   }
