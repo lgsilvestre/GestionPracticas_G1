@@ -26,9 +26,9 @@ export class CrearCuentaEstudianteComponent implements OnInit
     this.estudiante = this._formBuilder.group({
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Run: new FormControl('', [Validators.required, Validators.min(10000000), Validators.max(30000000), Validators.pattern(/^[0-9]{8,9}$/)]),
-      Carrera: new FormControl('', Validators.required),
-      NumeroMatricula: new FormControl('', [Validators.required, Validators.pattern('^20[0-9]{7,7}$')]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]),
+      Carrera: new FormControl(''),
+      NumeroMatricula: new FormControl('', [Validators.required, Validators.pattern('^20[0-9]{8,8}$')]),
       CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]+[a-z0-9]*@alumnos\.utalca\.cl$/)]),
       SituacionActual: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       CorreoElectronico: new FormControl('', [Validators.required, Validators.email]),
@@ -60,6 +60,18 @@ export class CrearCuentaEstudianteComponent implements OnInit
   {
     if ( this.estudiante.status == "INVALID" )
     {
+        console.log(this.estudiante.controls.Nombres.invalid);
+        console.log(this.estudiante.controls.Apellidos.invalid);
+        console.log(this.estudiante.controls.Run.invalid);
+        console.error(this.estudiante.controls.Carrera.invalid);
+        console.error(this.estudiante.controls.Carrera.hasError('required'));
+        console.log(this.estudiante.controls.CorreoInstitucional.invalid);
+        console.log(this.estudiante.controls.SituacionActual.invalid);
+        console.log(this.estudiante.controls.CorreoElectronico.invalid);
+        console.log(this.estudiante.controls.Telefono.invalid);
+        console.log(this.estudiante.controls.Contrasenna1.invalid);
+        console.log(this.estudiante.controls.Contrasenna2.invalid);
+
         alertify.error("Error, existen campos con valores no válidos!");
         return;
     }
