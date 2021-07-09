@@ -4,7 +4,10 @@
             <div id="logo">
             </div>
             <div id="outer-account">
-                <div mat-card-avatar id="avatar-image" class="mt-4"></div>
+                <div mat-card-avatar id="avatar-image" class="mt-4" style="border: 12px solid rgba(163, 145, 145, 0.75) !important;">
+                    <mat-icon type="button" style="padding-left: 45px;padding-top: 50px;">photo_camera</mat-icon>
+                </div>
+                           
                 <div id="name-edit">
                     <h3 mat-h3 class="mt-2"><b>{{userName}} {{userApellidos}}</b></h3>
                     <a routerLink="./editar-cuenta" (click)="sidenav.toggle()">
