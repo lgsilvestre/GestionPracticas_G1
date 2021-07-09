@@ -5,6 +5,9 @@ import {EncargadoCarrera} from '../../../model/encargadoCarrera.model';
 import {GestionEncargadosService} from '../../Servicios/encargado/gestion-encargados.service';
 import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dialog/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
+import { Carrera } from 'src/app/model/carreras.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cuenta-encargado',
@@ -16,13 +19,14 @@ export class CrearCuentaEncargadoComponent implements OnInit {
   nuevaCuenta: FormGroup;
   carreraActual: string = 'None';
   carreras: string[] = ['Ingeniería Civil en Computación', 'Ingeniería Civil Eléctrica', 'Ingeniería Civil Mecatrónica'];
-  constructor(private _formBuilder: FormBuilder, private gestionEncargados: GestionEncargadosService, public dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder, private gestionEncargados: GestionEncargadosService, public dialog: MatDialog,
+    private _gestionCarrera:GestionCarreraService,private route: Router) {
     this.nuevaCuenta = this._formBuilder.group({
-      Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]),
+      Nombres: new FormControl('', [Validators.required]),
+      Apellidos: new FormControl('', [Validators.required]),
+      Run: new FormControl('', [Validators.required]),
       Carrera: new FormControl('', Validators.required),
-      CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern((/^[a-z][a-z0-9]*@utalca.cl$/))]),
+      CorreoInstitucional: new FormControl('', [Validators.required]),
       CorreoElectronico: new FormControl('', Validators.email),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],
@@ -30,7 +34,15 @@ export class CrearCuentaEncargadoComponent implements OnInit {
     });
   }
   ngOnInit(): void
-  {}
+  {
+    this._gestionCarrera.getCarreras().subscribe(carrerasDatos => {
+      console.log(carrerasDatos);
+      carrerasDatos.forEach( carreraObtenida => {
+        console.log(carreraObtenida);
+        this.verificarCarreraRepetida(carreraObtenida);
+      })
+    })
+  }
   onChangeCarrera(event: any): void
   {
     this.carreraActual = event;
@@ -56,10 +68,20 @@ export class CrearCuentaEncargadoComponent implements OnInit {
         };
       console.log(nuevoUsuario);
       this.gestionEncargados.crearNuevoEncargado(nuevoUsuario, this.nuevaCuenta.value.Contrasenna1);
+      this.route.navigate(['/crear-cuenta']);
     }
     else
     {
       this.openDialog();
+    }
+  }
+
+  verificarCarreraRepetida(carreraObtenida:Carrera){
+    if(!this.carreras.includes(carreraObtenida.nombreCarrera!)){
+      this.carreras.push(carreraObtenida.nombreCarrera!);
+      console.log('carrera agregada:',carreraObtenida.nombreCarrera);
+    }else{
+      console.log('carrera repetida');
     }
   }
 }
