@@ -7,6 +7,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { EncargadoCarreraService } from "../../Servicios/encargado-carrera.service";
 import { Practica } from "src/app/model/practica.model";
 import { LocalStorageService } from "../../Servicios/local-storage.service";
+import { PracticaService } from '../../Servicios/practica.service';
 declare let alertify: any;
 
 const spanishRangeLabel = (page: number, pageSize: number, length: number) => { // esta constante sirve para la paginación.
@@ -53,10 +54,10 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
     displayedColumnsSolicitud: string[];
     displayedColumnsInscripcion: string[];
     displayedColumnsEnCurso: string[];
-    
+
     solicitudes: any;
 
-    //arreglo con los indices de las columnas que serán ignoradas al exportar al excel 
+    //arreglo con los indices de las columnas que serán ignoradas al exportar al excel
     //El valor 5 corresponde al indice de la columna acciones en la tabla solicitudes, la cual no debería mostrarse al exportar al excel
     //El valor 6 corresponde al indice de la columna acciones en las tablas inscripciones y enCurso, la cual no debería mostrarse al exportar al excel
     columnasIgnoradas: any = [5];
@@ -117,7 +118,9 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
 
     }
 
-    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService) {
+    constructor(public dialog: MatDialog, private EC_service: EncargadoCarreraService, private locaSTF: LocalStorageService,
+                private practicaService: PracticaService
+      ) {
         this.solicitudes = [];
         this.dataSource.data = this.solicitudes;
         this.dataSource.filterPredicate = this.createFilter('SolicitudesPractica');
@@ -313,6 +316,7 @@ export class VisualizarPracticasAdminComponent implements OnInit, AfterViewInit 
 
     agregarPractica(solicitud: any, estado : string){
         if (estado == 'Aceptado') {
+            this.practicaService.cambiarEstadoUsuario(solicitud.idUser);
             this.EC_service.crear_practica(solicitud);
         }
         console.log("----> Se agregó práctica correctamente. <-----")

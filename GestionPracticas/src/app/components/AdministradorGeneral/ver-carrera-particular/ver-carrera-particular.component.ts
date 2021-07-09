@@ -54,7 +54,9 @@ export class VerCarreraParticularComponent implements OnInit {
         })
         this._gestionCarrera.getPlanEstudio(this.carreraCreada.id!).valueChanges().subscribe(datos => {
           datos.forEach(planes => {
-            console.log(planes);
+            if(this.plan.length != 0){
+              // continuar
+            }
             this.plan.push(planes);
           })
         })
@@ -113,7 +115,15 @@ export class VerCarreraParticularComponent implements OnInit {
   }
 
   eliminarPlan(item: any) {
-    this.plan = this.plan.filter(planes => planes.nombre != item.nombre)
+    const respaldo:any[] = [];
+    this.plan.forEach( elemento => {
+      if(elemento.nombre != item.nombre){
+        respaldo.push(elemento);
+      }else{
+        console.log(item);
+      }
+    })
+    this.plan = respaldo;
     this._gestionCarrera.eliminarPlanEstudio(item.nombre);
   }
 

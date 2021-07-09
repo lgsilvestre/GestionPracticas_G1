@@ -5,6 +5,7 @@ import {LocalStorageService} from './local-storage.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {finalize} from 'rxjs/operators';
+import { Estudiante } from 'src/app/model/estudiante.model';
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +77,7 @@ export class PracticaService {
                 urlInformePractica: practica.urlInformePractica,
                 urlSeguroDePractica: practica.urlSeguroDePractica
               };
-              this.practica = practica;
+              this.practica = nuevaPractica;
               this.practica$.next(this.practica);
             }
             else
@@ -114,6 +115,10 @@ export class PracticaService {
   public getPractica(): Practica
   {
     return this.practica;
+  }
+  public getPractica$():BehaviorSubject<Practica>
+  {
+    return this.practica$;
   }
   public subirSeguroPractica(seguro: File): void
   {
@@ -243,4 +248,10 @@ export class PracticaService {
     };
     return practica;
   }
+
+  cambiarEstadoUsuario(uid:string){
+    const reff = this.angularFireStore.doc('/Usuarios/estudiante/estudiantes/' + uid );
+    reff.set({etapaActual:'EnPractica'},{merge:true});
+  }
+
 }
