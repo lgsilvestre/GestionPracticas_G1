@@ -43,6 +43,10 @@ export class EncargadoCarreraService {
         return this.db.firestore.collection(coleccion).doc(idSolicitud);
     }
 
+    public crear_practica(estudiante: any){
+        return this.db.firestore.collection('Practicas').add(estudiante);
+    }
+
 
 
 }
