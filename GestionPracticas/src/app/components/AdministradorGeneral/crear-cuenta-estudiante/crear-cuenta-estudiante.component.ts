@@ -26,7 +26,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]),
-      Carrera: new FormControl('', Validators.required),
+      Carrera: new FormControl(''),
       NumeroMatricula: new FormControl('', [Validators.required, Validators.pattern('^20[0-9]{8,8}$')]),
       CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]+[a-z0-9]*@alumnos\.utalca\.cl$/)]),
       SituacionActual: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
@@ -62,7 +62,8 @@ export class CrearCuentaEstudianteComponent implements OnInit
         console.log(this.estudiante.controls.Nombres.invalid);
         console.log(this.estudiante.controls.Apellidos.invalid);
         console.log(this.estudiante.controls.Run.invalid);
-        console.log(this.estudiante.controls.Carrera.invalid);
+        console.error(this.estudiante.controls.Carrera.invalid);
+        console.error(this.estudiante.controls.Carrera.hasError('required'));
         console.log(this.estudiante.controls.CorreoInstitucional.invalid);
         console.log(this.estudiante.controls.SituacionActual.invalid);
         console.log(this.estudiante.controls.CorreoElectronico.invalid);
