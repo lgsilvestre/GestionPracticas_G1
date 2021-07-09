@@ -70,8 +70,6 @@ export class CrearCuentaEstudianteComponent implements OnInit
         console.log(this.estudiante.controls.Contrasenna1.invalid);
         console.log(this.estudiante.controls.Contrasenna2.invalid);
 
-        console.log(this.estudiante.errors);
-
         alertify.error("Error, existen campos con valores no válidos!");
         return;
     }
