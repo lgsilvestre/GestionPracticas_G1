@@ -25,7 +25,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
     this.estudiante = this._formBuilder.group({
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Run: new FormControl('', [Validators.required, Validators.min(10000000), Validators.max(30000000), Validators.pattern(/^[0-9]{8,9}$/)]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]),
       Carrera: new FormControl('', Validators.required),
       NumeroMatricula: new FormControl('', [Validators.required, Validators.pattern('^20[0-9]{7,7}$')]),
       CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]+[a-z0-9]*@alumnos\.utalca\.cl$/)]),
