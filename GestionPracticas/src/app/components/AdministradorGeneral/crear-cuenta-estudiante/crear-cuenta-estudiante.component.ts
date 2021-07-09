@@ -7,6 +7,7 @@ import {GestionEstudianteService} from '../../Servicios/estudiante/gestionEstudi
 import {Estudiante} from '../../../model/estudiante.model';
 import { GestionCarreraService } from '../../Servicios/adminGenerla/gestion-carrera.service';
 import { Carrera } from 'src/app/model/carreras.model';
+import { Router } from '@angular/router';
 declare let alertify: any;
 
 @Component({
@@ -21,7 +22,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
   carreraActual: string = 'None';
   carreras: string[] = [];
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, public gestionEstudiante: GestionEstudianteService,
-              private _gestionCarrera:GestionCarreraService) {
+              private _gestionCarrera:GestionCarreraService,private route: Router) {
     this.estudiante = this._formBuilder.group({
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
@@ -85,6 +86,7 @@ export class CrearCuentaEstudianteComponent implements OnInit
         };
       console.log(nuevoUsuario);
       this.gestionEstudiante.crearNuevoEstudiante(nuevoUsuario, this.estudiante.value.Contrasenna1);
+      this.route.navigate(['/crear-cuenta']);
     }
     else
     {

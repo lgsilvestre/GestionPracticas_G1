@@ -5,6 +5,7 @@ import {DialogElementsExampleDialogComponent} from '../../SuperAdministrador/dia
 import {MatDialog} from '@angular/material/dialog';
 import {GestionAdminGeneralService} from '../../Servicios/adminGenerla/gestion-admin-general.service';
 import {AdministradorGeneral} from '../../../model/administradorGeneral.model';
+import { Router } from '@angular/router';
 
 
 declare let alertify: any;
@@ -17,7 +18,7 @@ declare let alertify: any;
 
 export class CrearCuentaAdministradorGeneralComponent implements OnInit {
   nuevoAdminGenerl: FormGroup;
-  constructor(private _formBuilder: FormBuilder, private gestionAdminGeneral: GestionAdminGeneralService, public dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder, private gestionAdminGeneral: GestionAdminGeneralService, public dialog: MatDialog, private route: Router) {
     this.nuevoAdminGenerl = this._formBuilder.group({
       // \u00f1\u00d1 Permite indicar que la letra ñ/Ñ se permite como parámetro.
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
@@ -57,6 +58,7 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
         };
       console.log(nuevoUsuario);
       this.gestionAdminGeneral.gestionAdminGeneral(nuevoUsuario, this.nuevoAdminGenerl.value.Contrasenna1);
+      this.route.navigate(['/crear-cuenta']);
     }
     else
     {
@@ -64,15 +66,15 @@ export class CrearCuentaAdministradorGeneralComponent implements OnInit {
     }
   }
 
-  revisarPasswords(group: FormGroup) 
+  revisarPasswords(group: FormGroup)
   { // here we have the 'passwords' group
     const password = group.get('Contrasenna1')!.value;
     const confirmPassword = group.get('Contrasenna2')!.value;
 
     console.log(password);
     console.log(confirmPassword)
-    
 
-    return password === confirmPassword ? null : { notSame: true }     
+
+    return password === confirmPassword ? null : { notSame: true }
   }
 }

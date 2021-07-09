@@ -19,11 +19,9 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Carrera</mat-label>
-                <mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)">
+                <mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)" required>
                     <mat-option>None</mat-option>
                     <mat-option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</mat-option>
-                    <mat-error *ngIf="nuevaCuenta.controls.CorreoInstitucional.hasError('required') && !nuevaCuenta.controls.CorreoInstitucional.hasError('pattern')">Campo obligatorio</mat-error>
-                <mat-error *ngIf="!nuevaCuenta.controls.CorreoInstitucional.hasError('required') && nuevaCuenta.controls.CorreoInstitucional.hasError('pattern')">Correo no válido. Ej. correo válido: adminGeneral@utalca.cl</mat-error>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">

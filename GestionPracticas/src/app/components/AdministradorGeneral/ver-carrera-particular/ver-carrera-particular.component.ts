@@ -70,6 +70,7 @@ export class VerCarreraParticularComponent implements OnInit {
     }
 
     this._gestionCarrera.guardarCarrera(actualizacion, this.carreraCreada.id!);
+    this.route.navigate(['/gestionar-carreras']);
   }
 
   openDialog() {
