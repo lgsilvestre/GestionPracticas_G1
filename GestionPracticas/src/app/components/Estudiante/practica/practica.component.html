@@ -1,17 +1,69 @@
 <h1 mat-dialog-title>Estado Practica: {{estadoPractica}}</h1>
 <br/>
-<div>
-  <p>puedes ver tu seguro de practica pinchando sobre el siguente link:</p>
-  <a href="{{urlSeguroPractica}}">link al documento</a>
+<div *ngIf="urlSeguroPractica !== ' '; else sinSeguro">
+  <br/>
+  <div>
+    <p>puedes ver tu seguro de practica pinchando sobre el siguente link:</p>
+    <a href="{{urlSeguroPractica}}">link al documento</a>
+  </div>
+  <br/>
+  <div mat-dialog-content>Fecha inicio practica: {{fechaInicioMostrar}}</div>
+  <br/>
+  <div mat-dialog-content>Fecha fin practica: {{fechaFinMostrar}}</div>
+  <div *ngIf="comprarFeschas(); else aunNoTermina">
+    <div>
+      <div>
+        <br/>
+        recuerda subir tu informe de practica dentro de los plazos establecidos,
+        ademas de los demas documentos.
+      </div>
+      <br/>
+      <div *ngIf="urlInformePractica === ' ';else editarInforme">
+        <label>Informe de practia</label><br/>
+        <input type="file" (change)="onInformeChange($event)">
+        <button (click)="subirInforme()">subir informe de practica</button>
+      </div>
+      <ng-template #editarInforme>
+        <a href="{{urlInformePractica}}">Enlace informe de Practica</a>
+        <button (click)="changeEditInforme(true)">editar informe de practica</button>
+        <div *ngIf="editarInformeValue">
+          <label> Ingrese su nueva evaluacion</label>
+          <input type="file" (change)="onInformeChange($event)">
+          <button (click)="subirInforme()">subir informe de practica</button>
+        </div>
+      </ng-template>
+      <br/>
+      <div *ngIf="urlEvaluacionEmpresa === ' ';else editarEvaluacion">
+        <label>Evaluacion empresa</label><br/>
+        <input type="file" (change)="onEvaluacionChange($event)">
+        <button (click)="subirEvaluacion()">subir evaluacion empresa</button>
+      </div>
+      <ng-template #editarEvaluacion>
+        <a href="{{urlEvaluacionEmpresa}}">Enlace informe de evaluacion de empresa</a>
+        <button (click)="changeEditEvaluacion(true)">editar evaluacion empresa</button>
+        <div *ngIf="editarEvaluacionValue">
+          <label> Ingrese su nueva evaluacion</label><br/>
+          <input type="file" (change)="onEvaluacionChange($event)">
+          <button (click)="subirEvaluacion()">subir evaluacion empresa</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <ng-template #aunNoTermina>
+    <br/>
+    <div> tu practica esta en curso, recuerda que al terminarla <br/>
+      tienes que subir los documentos restante desde esta platafora</div>
+  </ng-template>
+</div>
+<ng-template #sinSeguro>
+  <div>
+    Tu seguro de practica aun se encuenta en proceso.
+  </div>
+</ng-template>
+<br/>
+<div *ngIf="notaPractica !== ' '">
+  Tu practica fue evaluada con una nota de: {{notaPractica}}
 </div>
 
-<br/>
-<br/>
-<div mat-dialog-content>Fecha inicio practica: {{fechaInicioMostrar}}</div>
-<br/>
-<div mat-dialog-content>Fecha fin practica: {{fechaFinMostrar}}</div>
-<div>
-  <div mat-dialog-content>Subir Informe de Practica</div>
-  <input type="file">
-</div>
+
 

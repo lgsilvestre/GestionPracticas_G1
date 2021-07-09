@@ -144,19 +144,17 @@
         <form [formGroup]="cuartaEtapa">
             <ng-template matStepLabel>Datos de la práctica</ng-template>
             <mat-radio-group>
-                <mat-label>Número de la práctica</mat-label><br/>
-                <mat-radio-button value="1">Práctica número 1</mat-radio-button>
-                <mat-radio-button value="2">Práctica número 2</mat-radio-button>
+                <mat-label>Número de la práctica: {{numeroPractica}}</mat-label>
             </mat-radio-group>
             <mat-form-field appearance="outline">
                 <mat-label>Fecha de inicio</mat-label>
-                <input matInput (dateChange)="onDataChange($event, 0)" [matDatepicker]="startDate">
+                <input matInput (dateChange)="onDataChange($event, 0)" [matDatepicker]="startDate" placeholder="chosen data">
                 <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
                 <mat-datepicker #startDate></mat-datepicker>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Fecha de término</mat-label>
-                <input matInput (dateChange)="onDataChange($event, 1)" [matDatepicker]="endDate">
+                <input matInput (dateChange)="onDataChange($event, 1)" [matDatepicker]="endDate" >
                 <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
                 <mat-datepicker #endDate></mat-datepicker>
             </mat-form-field>
