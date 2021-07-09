@@ -20,9 +20,9 @@ export class CrearCuentaEncargadoComponent implements OnInit {
     this.nuevaCuenta = this._formBuilder.group({
       Nombres: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
       Apellidos: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
-      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]),
+      Run: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^[0-9]+\-(([0-9kK]{1,1}))$/)]),
       Carrera: new FormControl('', Validators.required),
-      CorreoInstitucional: new FormControl('', [Validators.required, Validators.email]),
+      CorreoInstitucional: new FormControl('', [Validators.required, Validators.pattern((/^[a-z][a-z0-9]*@utalca.cl$/))]),
       CorreoElectronico: new FormControl('', Validators.email),
       Contrasenna1: ['', Validators.required],
       Contrasenna2: ['', Validators.required],

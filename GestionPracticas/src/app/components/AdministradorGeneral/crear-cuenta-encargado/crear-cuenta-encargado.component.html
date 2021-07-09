@@ -14,12 +14,16 @@
             <mat-form-field appearance="outline">
                 <mat-label>RUT</mat-label>
                 <input matInput placeholder="RUT" formControlName="Run" required>
+                <mat-error *ngIf="nuevaCuenta.controls.Run.hasError('required') && !nuevaCuenta.controls.Run.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!nuevaCuenta.controls.Run.hasError('required') && nuevaCuenta.controls.Run.hasError('pattern')">Run no válido. Ej. Run válido: 19298298-7</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Carrera</mat-label>
                 <mat-select formControlName="Carrera" [ngModel]="carreraActual" (ngModelChange)="onChangeCarrera($event)">
                     <mat-option>None</mat-option>
                     <mat-option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</mat-option>
+                    <mat-error *ngIf="nuevaCuenta.controls.CorreoInstitucional.hasError('required') && !nuevaCuenta.controls.CorreoInstitucional.hasError('pattern')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="!nuevaCuenta.controls.CorreoInstitucional.hasError('required') && nuevaCuenta.controls.CorreoInstitucional.hasError('pattern')">Correo no válido. Ej. correo válido: adminGeneral@utalca.cl</mat-error>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
@@ -32,11 +36,11 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Contraseña</mat-label>
-                <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1">
+                <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna1" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Repita su contraseña</mat-label>
-                <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2">
+                <input type="password" matInput placeholder="Contraseña preliminar" formControlName="Contrasenna2" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Rol</mat-label>

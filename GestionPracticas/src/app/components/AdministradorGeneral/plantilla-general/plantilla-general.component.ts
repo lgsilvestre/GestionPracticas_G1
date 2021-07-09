@@ -35,6 +35,7 @@ export class PlantillaGeneralComponent implements OnInit {
 	terseraEtapa: FormGroup;
 	cuartaEtapa: FormGroup;
 	files: string[] = [' '];
+	numeroPractica: string = '1';
 	constructor(private _formBuilder: FormBuilder,
 		private afStudent: FirebaseEstudianteService,
 		private comFacResol: ComponentFactoryResolver,
@@ -155,6 +156,7 @@ export class PlantillaGeneralComponent implements OnInit {
 		const plantilla: PlantillaGeneral =
 		{
 			id: this.siPracticaS.getIdsolicitudActual(),
+      idUser: this.locaSTF.getUid().toString(),
 			nombres: this.datosEstudianteEtapa.value.Nombres,
 			apellidos: this.datosEstudianteEtapa.value.Apellidos,
 			carrera: this.datosEstudianteEtapa.value.Carrera,
@@ -179,7 +181,7 @@ export class PlantillaGeneralComponent implements OnInit {
 			contactoTutor: this.terseraEtapa.value.NumeroContacto,
 			correoTutor: this.terseraEtapa.value.CorreoElectronico,
 			// Practica
-			numeroPractica: '1',
+			numeroPractica: this.locaSTF.getNumeroPracticaActual(),
 			fechaInicio: this.cuartaEtapa.value.startDate,
 			fechaTermino: this.cuartaEtapa.value.endDate,
 			horaInicio: this.cuartaEtapa.value.HoraInicio,
@@ -214,8 +216,6 @@ export class PlantillaGeneralComponent implements OnInit {
 				CorreoElectronico: actualPlantilla.correoTutor,
 			});
 			this.cuartaEtapa.patchValue({
-				startDate: actualPlantilla.fechaInicio,
-				endDate: actualPlantilla.fechaTermino,
 				HoraInicio: actualPlantilla.horaInicio,
 				HoraFin: actualPlantilla.horaTermino,
 				Jornada: actualPlantilla.duracionJorada,

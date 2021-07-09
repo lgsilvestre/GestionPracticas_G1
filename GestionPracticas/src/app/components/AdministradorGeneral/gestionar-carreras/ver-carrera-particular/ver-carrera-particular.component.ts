@@ -27,14 +27,14 @@ export class VerCarreraParticularComponent implements OnInit
     private route: Router)
   {
       this.formulario1= new FormGroup({
-          nombreEncargado: new FormControl('', Validators.required),
-          CorreoEncargado: new FormControl('', Validators.required),
+          nombreEncargado: new FormControl('', [Validators.required, Validators.pattern(('[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*'))]),
+          CorreoEncargado: new FormControl('', [Validators.required, Validators.pattern((/^[a-z][a-z0-9]*@utalca.cl$/))]),
       });
 
       this.formularioPlanCarrera = new FormGroup({
-        nombrePlan: new FormControl('',[Validators.required]),
-        cantidadPracticas: new FormControl('',[Validators.required]),
-        requisitos: new FormControl('',[Validators.required]),
+        nombrePlan: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]+/)]),
+        cantidadPracticas: new FormControl('',[Validators.required, Validators.pattern(/^[1-9]{1,1}$/)]),
+        requisitos: new FormControl('',[Validators.required, Validators.pattern(/^([A-ZÁÉÍÓÚ\u00d1 ]|\- [A-ZÁÉÍÓÚ\u00d1])[a-zA-ZáÁéÉíÍóÓúÚü0-9\u00f1\u00d1\n\,\.\- ]+\.$/)]),
       });
 
   }

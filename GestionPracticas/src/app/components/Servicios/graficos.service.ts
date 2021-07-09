@@ -13,13 +13,13 @@ export class GraficosService {
   //Metodo que obtiene el total de solicitud de practicas aprobadas en general
   obtenerInformacionSolicitudPracticasAprobadas(){
     return this.afStore.collection('SolicitudesPracticas', referencia => referencia
-    .where('estado','==','Aprobado'));
+    .where('estado','==','Aceptado'));
   }
 
   //Metodo que obtiene el total de solicitud de practicas reprobadas en general
   obtenerInformacionSolicitudPracticasReprobadas(){
     return this.afStore.collection('SolicitudesPracticas', referencia => referencia
-    .where('estado','==','Reprobado'));
+    .where('estado','==','Rechazada'));
 
   }
 
@@ -33,7 +33,7 @@ export class GraficosService {
   obtenerInformacionSolicitudPracticasAprobadasCarrera(carrera:string){
     return this.afStore.collection('SolicitudesPracticas', referencia => referencia
     .where('carrera','==',carrera)
-    .where('estado','==','Aprobado')
+    .where('estado','==','Aceptado')
     );
   }
 
@@ -41,7 +41,7 @@ export class GraficosService {
   obtenerInformacionSolicitudPracticasReprobadasCarrera(carrera:string){
     return this.afStore.collection('SolicitudesPracticas', referencia => referencia
     .where('carrera','==',carrera)
-    .where('estado','==','Reprobado')
+    .where('estado','==','Rechazada')
     );
   }
 
@@ -59,13 +59,13 @@ export class GraficosService {
   //Metodo que obtiene el total de practicas aprobadas en general
   obtenerInformacionPracticasAprobadas(){
     return this.afStore.collection('Solicitudes', referencia => referencia
-    .where('estado','==','Aprobado'));
+    .where('estado','==','Aceptado'));
   }
 
   //Metodo que obtiene el total de practicas reprobadas en general
   obtenerInformacionPracticasReprobadas(){
     return this.afStore.collection('Solicitudes', referencia => referencia
-    .where('estado','==','Reprobado'));
+    .where('estado','==','Rechazada'));
 
   }
 
@@ -79,7 +79,7 @@ export class GraficosService {
   obtenerInformacionPracticasAprobadasCarrera(carrera:string){
     return this.afStore.collection('Solicitudes', referencia => referencia
     .where('carrera','==',carrera)
-    .where('estado','==','Aprobado')
+    .where('estado','==','Aceptado')
     );
   }
 
@@ -87,7 +87,7 @@ export class GraficosService {
   obtenerInformacionPracticasReprobadasCarrera(carrera:string){
     return this.afStore.collection('Solicitudes', referencia => referencia
     .where('carrera','==',carrera)
-    .where('estado','==','Reprobado')
+    .where('estado','==','Rechazada')
     );
   }
 

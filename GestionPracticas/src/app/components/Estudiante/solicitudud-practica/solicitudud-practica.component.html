@@ -2,34 +2,77 @@
     <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input matInput placeholder=" Nombres " formControlName="Nombres" required>
+        <mat-error *ngIf="datosSolicitudPractica.controls.Nombres.hasError('required') && !datosSolicitudPractica.controls.Nombres.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.Nombres.hasError('required') && datosSolicitudPractica.controls.Nombres.hasError('pattern')">
+            Todo nombre empieza con mayúscula. Sólo se permiten letras.
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Apellidos</mat-label>
         <input matInput placeholder=" Apellidos " formControlName="Apellidos" required>
+        <mat-error *ngIf="datosSolicitudPractica.controls.Apellidos.hasError('required') && !datosSolicitudPractica.controls.Apellidos.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.Apellidos.hasError('required') && datosSolicitudPractica.controls.Apellidos.hasError('pattern')">
+            Todo apellido empieza con mayúscula. Sólo se permiten letras.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>RUN</mat-label>
         <input matInput placeholder="RUN estudiante" formControlName="Run" required>
+
+        <mat-error *ngIf="datosSolicitudPractica.controls.Run.hasError('required') && !datosSolicitudPractica.controls.Run.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.Run.hasError('required') && datosSolicitudPractica.controls.Run.hasError('pattern')">
+            Ejemplo: 12345678-9, 1234567-1 ó 12345678-k
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Carrera</mat-label>
         <input matInput formControlName="Carrera" required>
+        <mat-error *ngIf="datosSolicitudPractica.controls.Carrera.hasError('required') && !datosSolicitudPractica.controls.Carrera.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.Carrera.hasError('required') && datosSolicitudPractica.controls.Carrera.hasError('pattern')">
+            Ejemplo: Ingeniería Civil Computación.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Número de matricula</mat-label>
         <input matInput placeholder="2021407001" formControlName="NumeroMatricula" required>
+        <mat-error *ngIf="datosSolicitudPractica.controls.NumeroMatricula.hasError('required') && !datosSolicitudPractica.controls.NumeroMatricula.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.NumeroMatricula.hasError('required') && datosSolicitudPractica.controls.NumeroMatricula.hasError('pattern')">
+            Cadena númerica de mínimo 10 y máximo 11 valores. Se restringe a comenzar en 20 y se usa el código 4070 de icc
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Correo electrónico institucional</mat-label>
-        <input matInput placeholder="usuario@utalca.cl" formControlName="CorreoElectronicoInstitucional" required>
+        <input matInput placeholder="usuario@alumnos.utalca.cl" formControlName="CorreoElectronicoInstitucional" required>
+        <mat-error *ngIf="datosSolicitudPractica.controls.CorreoElectronicoInstitucional.hasError('required') && !datosSolicitudPractica.controls.CorreoElectronicoInstitucional.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.CorreoElectronicoInstitucional.hasError('required') && datosSolicitudPractica.controls.CorreoElectronicoInstitucional.hasError('pattern')">
+            Se necesita correo institucional de estudiante
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Teléfono de Contacto</mat-label>
         <input matInput placeholder="+569xxxxxxxx" formControlName="NumeroTelefono" required>
+        <mat-error *ngIf="datosSolicitudPractica.controls.NumeroTelefono.hasError('required') && !datosSolicitudPractica.controls.NumeroTelefono.hasError('pattern')">
+            Campo obligatorio.
+        </mat-error>
+        <mat-error *ngIf="!datosSolicitudPractica.controls.NumeroTelefono.hasError('required') && datosSolicitudPractica.controls.NumeroTelefono.hasError('pattern')">
+            Se requiere número teléfonico incluyendo código de Chile (+569)
+        </mat-error>
     </mat-form-field>
     <hr>
     <div class="step-buttons" *ngIf="getEstadoEtapaActual() === 'ninguno'">

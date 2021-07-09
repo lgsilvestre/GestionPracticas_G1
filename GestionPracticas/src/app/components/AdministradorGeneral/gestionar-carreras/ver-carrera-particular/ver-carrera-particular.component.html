@@ -33,11 +33,28 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Cantidad de practicas</mat-label>
                         <input matInput class="input" formControlName="cantidadPracticas" placeholder="cantidad de practicas">
+                        <mat-error *ngIf="formularioPlanCarrera.controls.cantidadPracticas.hasError('required') && !formularioPlanCarrera.controls.cantidadPracticas.hasError('pattern')"> 
+                            Campo obligatorio. 
+                        </mat-error>
+                        <mat-error *ngIf="!formularioPlanCarrera.controls.cantidadPracticas.hasError('required') && formularioPlanCarrera.controls.cantidadPracticas.hasError('pattern')"> 
+                            Cantidad de prácticas debe ser un número entre 1 y 9.
+                        </mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>requisitos</mat-label>
                         <textarea matInput formControlName="requisitos" placeholder="requisitos de la carrera para las practicas"></textarea>
+                        <mat-error *ngIf="formularioPlanCarrera.controls.requisitos.hasError('required') && !formularioPlanCarrera.controls.requisitos.hasError('pattern')">
+                            Campo obligatorio
+                        </mat-error>
+                        <mat-error *ngIf="!formularioPlanCarrera.controls.requisitos.hasError('required') && formularioPlanCarrera.controls.requisitos.hasError('pattern')">
+                            Se empieza con mayúscula. Si se desea se puede incluír guión. Se debe terminar con punto. 
+                            <p>Ejemplo: Ésta es una prueba.</p>
+                            Ejemplo 2: - Ésta es una prueba.
+                        </mat-error>
                     </mat-form-field>
+                    <br />
+                    <br />
+                    <br />
                     <div class="step-buttons">
                         <button color="primary" mat-raised-button (click)="agregarPlanEstudio()">agregar plan</button>
                     </div>
